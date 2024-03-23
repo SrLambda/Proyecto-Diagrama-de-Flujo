@@ -116,9 +116,13 @@ public class Graficador extends JFrame {
                 lapiz.setColor(Color.MAGENTA);
                 lapiz.drawLine(50,200,150,200);
                 lapiz.drawLine(50,250,150,250);
-                curve.setCurve(50,200,25,225,50,250);
+                curve.setCurve(50,200,30,205,30,225);
                 lapiz.draw(curve);
-                curve.setCurve(150,200,175,225,150,250);
+                curve.setCurve(50,250,30,245,30,225);
+                lapiz.draw(curve);
+                curve.setCurve(150,200,170,205,170,225);
+                lapiz.draw(curve);
+                curve.setCurve(150,250,170,245,170,225);
                 lapiz.draw(curve);
             }
         });
