@@ -3,10 +3,10 @@
   <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="9" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="5" left="5" bottom="5" right="5"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="712" height="580"/>
     </constraints>
     <properties>
-      <background color="-4730391"/>
+      <background color="-2502445"/>
       <foreground color="-4478029"/>
     </properties>
     <border type="empty">
@@ -18,6 +18,10 @@
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="Editar"/>
         </properties>
       </component>
@@ -26,6 +30,10 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="Configurar"/>
         </properties>
       </component>
@@ -34,6 +42,8 @@
           <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
           <text value="Ejecutar"/>
         </properties>
       </component>
@@ -42,6 +52,8 @@
           <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
           <text value="Ayuda"/>
           <verticalAlignment value="1"/>
         </properties>
@@ -51,78 +63,89 @@
           <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="11dab" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Comandos"/>
-        </properties>
-      </component>
       <component id="335f7" class="javax.swing.JButton" binding="inicioFinButton" default-binding="true">
         <constraints>
-          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-3085864"/>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <horizontalAlignment value="0"/>
           <text value="Inicio\Fin"/>
         </properties>
       </component>
       <component id="3bbcc" class="javax.swing.JButton" binding="lineaDeFlujoButton" default-binding="true">
         <constraints>
-          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-3085864"/>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
           <text value="Linea de flujo"/>
         </properties>
       </component>
       <component id="8c37a" class="javax.swing.JButton" binding="etapaDelProcesoButton" default-binding="true">
         <constraints>
-          <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-3085864"/>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
           <text value="Etapa del proceso"/>
         </properties>
       </component>
       <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
         <constraints>
-          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-3085864"/>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
           <text value="Decision"/>
         </properties>
       </component>
       <component id="11435" class="javax.swing.JButton" binding="entradaSalidaButton" default-binding="true">
         <constraints>
-          <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-3085864"/>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
           <text value="Entrada\Salida"/>
         </properties>
       </component>
       <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
         <constraints>
-          <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-3085864"/>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
           <text value="Documento"/>
         </properties>
       </component>
-      <grid id="91c96" binding="panel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="91c96" binding="panel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="true" same-size-vertically="true" hgap="0" vgap="0">
+        <margin top="1" left="1" bottom="1" right="1"/>
         <constraints>
-          <grid row="1" column="0" row-span="7" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="7" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="500" height="502"/>
+            <preferred-size width="500" height="502"/>
+            <maximum-size width="500" height="502"/>
+          </grid>
         </constraints>
         <properties>
           <background color="-197889"/>
+          <foreground color="-16772298"/>
         </properties>
         <border type="line">
           <title-color color="-16772298"/>
+          <color color="-16772298"/>
         </border>
         <children/>
       </grid>
@@ -131,7 +154,9 @@
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-4203299"/>
+          <background color="-16772298"/>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-2765617"/>
           <text value="Limpiar"/>
         </properties>
       </component>
@@ -141,7 +166,21 @@
         </constraints>
         <properties>
           <background color="-4478029"/>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="Archivo"/>
+        </properties>
+      </component>
+      <component id="11dab" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14" style="1"/>
+          <foreground color="-12828863"/>
+          <text value="Comandos"/>
         </properties>
       </component>
     </children>

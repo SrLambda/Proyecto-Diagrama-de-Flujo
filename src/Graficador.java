@@ -24,7 +24,7 @@ public class Graficador extends JFrame {
     {
 
         setContentPane(panel);
-        setSize(500, 400);
+        setSize(700, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Graficador Interactivo de Diagramas de flujo");
         setVisible(true);
