@@ -34,22 +34,37 @@ public class Graficador extends JFrame {
         //QuadCurve2D curvaCuadratica1 = new QuadCurve2D.Double(50, 50, 100, 150, 150, 50);
 
 
-        //botón para dibujar un rectángulo
+        //botón para dibujar un Proceso
         etapaDelProcesoButton.addActionListener(new ActionListener()
         {
 
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                JPanel nuevoProceso = new JPanel() {
+                    @Override
+                    protected void paintComponent(Graphics g)
+                    {
 
-                Graphics g = panel1.getGraphics();
-                g.setColor(Color.BLUE);
-                g.drawLine(100, 100, 200, 100);
-                g.drawLine(100, 100, 100, 40);
-                g.drawLine(200, 100, 200, 40);
-                g.drawLine(100, 40, 200, 40);
+                        super.paintComponent(g);
+
+
+                        g.setColor(Color.BLUE);
+                        g.drawLine(50, 50, 250, 50);   //Superior
+                        g.drawLine(250, 50, 250, 100); //Derecha
+                        g.drawLine(250, 100, 50, 100); // Inferior
+                        g.drawLine(50, 100, 50, 50);   //Izquierda
+
+                    }
+
+                };
+
+                nuevoProceso.setPreferredSize(new Dimension(300, 200));
+                panel1.add(nuevoProceso);
+                panel1.revalidate();
 
             }
+
 
         });
 
