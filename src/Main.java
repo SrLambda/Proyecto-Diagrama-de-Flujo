@@ -1,5 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        new Graficador();
+
+        Controlador controlador = Controlador.getInstancia();
+        new Front(controlador);
+
+
     }
 }

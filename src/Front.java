@@ -2,12 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.CubicCurve2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
 import java.awt.geom.QuadCurve2D;
 
-public class Graficador extends JFrame {
+public class Front extends JFrame {
 
     private JPanel panel1;
     private JPanel panel;
@@ -20,7 +17,7 @@ public class Graficador extends JFrame {
     private JButton limpiarButton;
 
 
-    public Graficador()
+    public Front(Controlador controlador)
     {
 
         setContentPane(panel);
@@ -42,13 +39,7 @@ public class Graficador extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                Graphics g = panel1.getGraphics();
-                g.setColor(Color.BLUE);
-                g.drawLine(100, 100, 200, 100);
-                g.drawLine(100, 100, 100, 40);
-                g.drawLine(200, 100, 200, 40);
-                g.drawLine(100, 40, 200, 40);
-
+                controlador.crearProceso(Front.this);
             }
 
         });
@@ -79,9 +70,8 @@ public class Graficador extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel1.removeAll();
-                panel1.repaint();
 
+                controlador.limpiarPantalla(Front.this);
             }
 
         });
@@ -146,16 +136,7 @@ public class Graficador extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                QuadCurve2D curve = new QuadCurve2D.Double();
-                Graphics2D lapiz = (Graphics2D) panel1.getGraphics();
-                lapiz.setColor(Color.CYAN);
-                lapiz.drawLine(100,100,200,100);
-                lapiz.drawLine(200,100,200,140);
-                lapiz.drawLine(100,100,100,150);
-                curve.setCurve(100,150,125,165,150,150);
-                lapiz.draw(curve);
-                curve.setCurve(150,150,175,135,200,140);
-                lapiz.draw(curve);
+                controlador.crearImpresion(Front.this);
 
             }
 
@@ -187,5 +168,9 @@ public class Graficador extends JFrame {
             }
 
         });
+    }
+
+    public JPanel getPanel1() {
+        return panel1;
     }
 }
