@@ -53,12 +53,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                Graphics g = panel1.getGraphics();
-                g.setColor(Color.RED);
-                g.drawLine(100,70,150, 100);
-                g.drawLine(150,100, 100, 130);
-                g.drawLine(100, 130, 50,100);
-                g.drawLine(50, 100, 100, 70);
+                controlador.crearDecision(Front.this);
 
             }
 
@@ -89,7 +84,8 @@ public class Front extends JFrame {
         });
 
 
-        //Dibujar Flechita -->
+        //Dibujar Flechita ⇾ | Esta función debe cambiar proximamente
+
         lineaDeFlujoButton.addActionListener(new ActionListener()
         {
 
@@ -116,12 +112,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                Graphics g = panel1.getGraphics();
-                g.setColor(Color.orange);
-                g.drawLine(125,150,250, 150);
-                g.drawLine(250,150,225,200);
-                g.drawLine(225,200,100,200);
-                g.drawLine(100,200,125,150);
+                controlador.crearEntredaSalida(Front.this);
 
             }
 
@@ -151,19 +142,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                QuadCurve2D curve = new QuadCurve2D.Double();
-                Graphics2D lapiz = (Graphics2D) panel1.getGraphics();
-                lapiz.setColor(Color.MAGENTA);
-                lapiz.drawLine(50,200,150,200);
-                lapiz.drawLine(50,250,150,250);
-                curve.setCurve(50,200,30,205,30,225);
-                lapiz.draw(curve);
-                curve.setCurve(50,250,30,245,30,225);
-                lapiz.draw(curve);
-                curve.setCurve(150,200,170,205,170,225);
-                lapiz.draw(curve);
-                curve.setCurve(150,250,170,245,170,225);
-                lapiz.draw(curve);
+                controlador.crearInicioFin(Front.this);
 
             }
 

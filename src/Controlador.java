@@ -3,12 +3,14 @@ import java.awt.*;
 import java.awt.geom.QuadCurve2D;
 
 public class Controlador {
+
+
     private static Controlador instancia;
     private final Graficador graficador;
 
 
 
-    // Instanciar Singleton
+    // Instance Singleton
     private Controlador()
     {
 
@@ -50,6 +52,28 @@ public class Controlador {
     }
 
 
+    public void crearInicioFin(Front front)
+    {
+
+        this.graficador.dibujarInicioFin(front);
+
+    }
+
+
+    public void crearDecision(Front front)
+    {
+
+        this.graficador.dibujarDecision(front);
+
+    }
+
+    public void crearEntredaSalida(Front front)
+    {
+
+        this.graficador.dibujarEntradaSalida(front);
+    }
+
+
     public void limpiarPantalla(Front front)
     {
 
@@ -61,7 +85,10 @@ public class Controlador {
 
 
 
-    //====================================================
+
+
+
+    //===============================================================================================================
 
     private static class Graficador
     {
@@ -98,6 +125,53 @@ public class Controlador {
             lapiz.draw(curve);
             curve.setCurve(150,150,175,135,200,140);
             lapiz.draw(curve);
+
+        }
+
+
+        public void dibujarInicioFin(Front front)
+        {
+
+            QuadCurve2D curve = new QuadCurve2D.Double();
+            Graphics2D lapiz = (Graphics2D) front.getGraphics();
+
+            lapiz.setColor(Color.MAGENTA);
+            lapiz.drawLine(50,200,150,200);
+            lapiz.drawLine(50,250,150,250);
+            curve.setCurve(50,200,30,205,30,225);
+            lapiz.draw(curve);
+            curve.setCurve(50,250,30,245,30,225);
+            lapiz.draw(curve);
+            curve.setCurve(150,200,170,205,170,225);
+            lapiz.draw(curve);
+            curve.setCurve(150,250,170,245,170,225);
+            lapiz.draw(curve);
+
+        }
+
+
+        public void dibujarDecision(Front front)
+        {
+
+            Graphics g = front.getGraphics();
+            g.setColor(Color.RED);
+            g.drawLine(100,70,150, 100);
+            g.drawLine(150,100, 100, 130);
+            g.drawLine(100, 130, 50,100);
+            g.drawLine(50, 100, 100, 70);
+
+        }
+
+
+        public void dibujarEntradaSalida(Front front)
+        {
+
+            Graphics g = front.getGraphics();
+            g.setColor(Color.orange);
+            g.drawLine(125,150,250, 150);
+            g.drawLine(250,150,225,200);
+            g.drawLine(225,200,100,200);
+            g.drawLine(100,200,125,150);
 
         }
 
