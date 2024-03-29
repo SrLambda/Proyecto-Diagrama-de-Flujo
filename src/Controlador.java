@@ -7,7 +7,6 @@ public class Controlador {
     private final Graficador graficador;
 
 
-
     // Instanciar Singleton
     private Controlador()
     {
