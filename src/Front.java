@@ -17,6 +17,9 @@ public class Front extends JFrame {
     private JButton limpiarButton;
     private JButton FinButton;
 
+    private JPanel columna;
+
+
 
     public Front(Controlador controlador)
     {
@@ -26,6 +29,13 @@ public class Front extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Graficador Interactivo de Diagramas de flujo");
         setVisible(true);
+
+
+        this.columna = new JPanel();
+        controlador.initFront(Front.this);
+
+
+
 
         //Point2D punto1 = new Point2D.Double(10, 10);
         //Line2D linea1 = new Line2D.Double(50, 50, 150, 150);
@@ -195,7 +205,17 @@ public class Front extends JFrame {
 
     }
 
-    public JPanel getPanel1() {
+    public JPanel getPanel1()
+    {
+
         return panel1;
+
+    }
+
+    public JPanel getColumna()
+    {
+
+        return columna;
+
     }
 }

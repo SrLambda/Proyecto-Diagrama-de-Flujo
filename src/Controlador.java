@@ -36,10 +36,33 @@ public class Controlador {
     //Metodos
 
 
+    public void initFront(Front front)
+    {
+
+        front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
+        front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+    }
+
+
     public void crearProceso(Front front)
     {
 
-        this.graficador.dibujarProceso(front);
+        JPanel nuevo = new JPanel();
+        nuevo.setPreferredSize(new Dimension(100, 50));
+
+        JTextArea texto = new JTextArea("Proceso");
+        texto.setFont(new Font("Arial", Font.PLAIN, 14));
+        texto.setLineWrap(true);
+
+        nuevo.add(texto,BorderLayout.CENTER);
+
+        front.getPanel1().add(nuevo);
+
+        front.getPanel1().revalidate();
+
+        this.graficador.dibujarProceso(nuevo);
+
 
     }
 
@@ -94,17 +117,17 @@ public class Controlador {
     {
 
 
-        public void dibujarProceso(Front front)
+        public void dibujarProceso(JPanel lienzo)
         {
 
-            JPanel lienzo = front.getPanel1();
+
 
             Graphics g = lienzo.getGraphics();
             g.setColor(Color.BLUE);
-            g.drawLine(100, 100, 200, 100);
-            g.drawLine(100, 100, 100, 40);
-            g.drawLine(200, 100, 200, 40);
-            g.drawLine(100, 40, 200, 40);
+            g.drawLine(0, 50, 100, 50);   // Línea superior
+            g.drawLine(0, 50, 0, 10);     // Línea izquierda
+            g.drawLine(100, 50, 100, 10); // Línea derecha
+            g.drawLine(0, 10, 100, 10);   // Línea inferior
 
         }
 
