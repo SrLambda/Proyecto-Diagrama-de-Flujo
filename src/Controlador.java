@@ -10,7 +10,7 @@ public class Controlador {
 
 
 
-    // Instance Singleton
+    // Instanciar Singleton
     private Controlador()
     {
 

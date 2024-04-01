@@ -36,7 +36,6 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;266&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;clase-controladora&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -109,7 +108,6 @@
       <workItem from="1711056144708" duration="2118000" />
       <workItem from="1711069031272" duration="202000" />
       <workItem from="1711204161415" duration="3993000" />
-      <workItem from="1711656779927" duration="1455000" />
     </task>
     <servers />
   </component>
