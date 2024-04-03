@@ -1,3 +1,8 @@
+import Dibujos.DibujoEntrada;
+import Dibujos.DibujoProceso;
+import Dibujos.DibujoSalida;
+import Dibujos.PanelPersonalizado;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
@@ -47,21 +52,9 @@ public class Controlador {
 
     public void crearProceso(Front front)
     {
-
-        JPanel nuevo = new JPanel();
-        nuevo.setPreferredSize(new Dimension(100, 50));
-
-        JTextArea texto = new JTextArea("Proceso");
-        texto.setFont(new Font("Arial", Font.PLAIN, 14));
-        texto.setLineWrap(true);
-
-        nuevo.add(texto,BorderLayout.CENTER);
-
+        PanelPersonalizado nuevo = new DibujoProceso(entradaDeTexto());
         front.getPanel1().add(nuevo);
-
         front.getPanel1().revalidate();
-
-        this.graficador.dibujarProceso(nuevo);
 
 
     }
@@ -90,10 +83,22 @@ public class Controlador {
 
     }
 
-    public void crearEntredaSalida(Front front)
+    public void crearSalida(Front front)
     {
 
-        this.graficador.dibujarEntradaSalida(front);
+        PanelPersonalizado nuevo = new DibujoSalida(entradaDeTexto());
+        front.getPanel1().add(nuevo);
+        front.getPanel1().revalidate();
+
+    }
+
+    public void crearEntreda(Front front)
+    {
+
+        PanelPersonalizado nuevo = new DibujoEntrada(entradaDeTexto());
+        front.getPanel1().add(nuevo);
+        front.getPanel1().revalidate();
+
     }
 
 
@@ -209,5 +214,26 @@ public class Controlador {
 
         }
 
+    }
+    public static String entradaDeTexto() {
+
+        JTextField textField = new JTextField();
+
+        Object[] message = {
+                "Ingrese datos:", textField
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, message, "Datos", JOptionPane.OK_CANCEL_OPTION);
+
+        if (option == JOptionPane.OK_OPTION)
+        {
+            return textField.getText();
+
+        }
+        else
+        {
+            return "----";
+
+        }
     }
 }

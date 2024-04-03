@@ -102,36 +102,12 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                Graphics g = panel1.getGraphics();
-                g.setColor(Color.orange);
-                g.drawLine(125,150,250, 150);
-                g.drawLine(250,150,225,200);
-                g.drawLine(225,200,100,200);
-                g.drawLine(100,200,125,150);
+                controlador.crearEntreda(Front.this);
 
             }
 
         });
 
-
-        //Dibujar Flechita -->
-        /*lineaDeFlujoButton.addActionListener(new ActionListener()
->>>>>>> 0d4c021a21ffbbf13ff369ffe821342ff5599ef6
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                Graphics g = panel1.getGraphics();
-                g.setColor(Color.BLACK);
-                g.drawLine(200,200,200, 100);
-                g.drawLine(200,200,225,175);
-                g.drawLine(200,200,175,175);
-
-            }
-
-        });*/
 
 
         //Dibujar Paralelogramo /__/
@@ -142,7 +118,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearEntredaSalida(Front.this);
+                controlador.crearSalida(Front.this);
 
             }
 
