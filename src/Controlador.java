@@ -1,7 +1,4 @@
-import Dibujos.DibujoEntrada;
-import Dibujos.DibujoProceso;
-import Dibujos.DibujoSalida;
-import Dibujos.PanelPersonalizado;
+import Dibujos.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -79,7 +76,11 @@ public class Controlador {
     public void crearDecision(Front front)
     {
 
-        this.graficador.dibujarDecision(front);
+        PanelPersonalizado nuevo = new DibujarDecision(entradaDeTexto());
+        PanelPersonalizado aux = new DibujoDecisionFin("");
+        front.getPanel1().add(nuevo);
+        front.getPanel1().add(aux);
+        front.getPanel1().revalidate();
 
     }
 

@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoEntrada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoInicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Front.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Front.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +109,7 @@
       <workItem from="1711056144708" duration="2118000" />
       <workItem from="1711069031272" duration="202000" />
       <workItem from="1711204161415" duration="3993000" />
+      <workItem from="1712169342698" duration="4975000" />
     </task>
     <servers />
   </component>
