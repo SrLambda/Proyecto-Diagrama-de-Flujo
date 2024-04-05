@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="" />
+    <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoDecision.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +40,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "201",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "clase-controladora",
+    "git-widget-placeholder": "Merging clase-controladora",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/PDP/U1",
     "node.js.detected.package.eslint": "true",

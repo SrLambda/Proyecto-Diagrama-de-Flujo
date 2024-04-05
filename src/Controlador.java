@@ -1,12 +1,4 @@
-import Dibujos.DibujoEntrada;
-import Dibujos.DibujoProceso;
-import Dibujos.DibujoSalida;
-import Dibujos.DibujoInicio;
-import Dibujos.DibujoFin;
-import Dibujos.DibujoDecision;
-import Dibujos.DibujoDocumento;
-import Dibujos.PanelPersonalizado;
-
+import Dibujos.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
@@ -74,7 +66,7 @@ public class Controlador {
     public void crearInicio(Front front)
     {
 
-        PanelPersonalizado nuevo = new DibujoInicio(entradaDeTexto());
+        PanelPersonalizado nuevo = new DibujoInicio("Inicio");
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
 
@@ -83,7 +75,7 @@ public class Controlador {
     public void crearFin(Front front)
     {
 
-        PanelPersonalizado nuevo = new DibujoFin(entradaDeTexto());
+        PanelPersonalizado nuevo = new DibujoFin("Fin");
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
 
@@ -92,8 +84,10 @@ public class Controlador {
     public void crearDecision(Front front)
     {
 
-        PanelPersonalizado nuevo = new DibujoDecision(entradaDeTexto());
+        PanelPersonalizado nuevo = new DibujarDecision(entradaDeTexto());
+        PanelPersonalizado aux = new DibujoDecisionFin("");
         front.getPanel1().add(nuevo);
+        front.getPanel1().add(aux);
         front.getPanel1().revalidate();
     }
 
