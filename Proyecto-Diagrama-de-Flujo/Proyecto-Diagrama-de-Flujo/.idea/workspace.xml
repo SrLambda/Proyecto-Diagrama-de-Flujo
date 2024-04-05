@@ -8,33 +8,6 @@
       <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]/shelved.patch" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]1/shelved.patch" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/libraries/javafx_swt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/Diagrama de Flujo/Diagrama de Flujo.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/GraficadorInteractivo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Controlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoDecision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoDocumento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoEntrada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoFin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoInicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoProceso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoSalida.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Front.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Front.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/EtapaProceso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/Figura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/InicioFin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecision.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoEntrada.java" afterDir="false" />
@@ -154,9 +127,7 @@
       <workItem from="1712162504669" duration="15892000" />
       <workItem from="1712182456727" duration="56000" />
       <workItem from="1712256365472" duration="3130000" />
-      <workItem from="1712261643015" duration="5612000" />
-      <workItem from="1712278467115" duration="123000" />
-      <workItem from="1712318046766" duration="398000" />
+      <workItem from="1712261643015" duration="4157000" />
     </task>
     <servers />
   </component>
