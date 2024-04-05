@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/libraries/javafx_swt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/Diagrama de Flujo/Diagrama de Flujo.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/GraficadorInteractivo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Controlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoDecision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoDocumento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoEntrada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoFin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoInicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoProceso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoSalida.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Front.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Front.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/EtapaProceso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/Figura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/InicioFin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoEntrada.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoFin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoInicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Front.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Front.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.java" afterDir="false" />
-    </list>
+    <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,26 +28,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;201&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging clase-controladora&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/PDP&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.file-colors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "201",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "clase-controladora",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/PDP/U1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="LogicaFiguras" />
@@ -157,6 +113,7 @@
       <workItem from="1712261643015" duration="5612000" />
       <workItem from="1712278467115" duration="123000" />
       <workItem from="1712318046766" duration="398000" />
+      <workItem from="1712325676227" duration="369000" />
     </task>
     <servers />
   </component>
