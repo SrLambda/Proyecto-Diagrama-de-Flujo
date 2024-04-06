@@ -1,12 +1,52 @@
 package Dibujos;
+
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 public class DibujoEntrada extends PanelPersonalizado{
+    private int ultimoEjeY;
+    private boolean moviendo;
+    private int ejeYMouse;
     public DibujoEntrada(String texto)
     {
 
         super(texto);
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                ultimoEjeY = e.getYOnScreen();
+                moviendo = true;
+                //System.out.println("Moviendo "+"Entrada"+" "); //Para verificar el movimiento sostenido
+            }
 
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                moviendo = false;
+                //System.out.println("Soltado "+"Entrada"+" "); //Para verificar el termino del movimiento sostenido
+            }
+        });
+
+        addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            //Aqui se implementa la toma de un panel y arrastre
+            public void mouseDragged(MouseEvent e) {
+                if(moviendo){
+                    int cambioPosicionY = e.getYOnScreen() - ultimoEjeY;
+                    setLocation(getX(), getY() + cambioPosicionY);
+                    ultimoEjeY = e.getYOnScreen();
+                }
+            }
+
+            @Override
+            //Detectamos la posicion del mouse dentro de un panel
+            public void mouseMoved(MouseEvent e) {
+                ejeYMouse = e.getY();
+                setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
+                repaint(); //Volvemos a dibujar el panel
+            }
+        });
     }
 
 
@@ -31,14 +71,15 @@ public class DibujoEntrada extends PanelPersonalizado{
 
 
         // Dibujar las líneas que forman el paralelogramo
-        g.setColor(Color.BLUE);
+        g.setColor(Color.ORANGE);
         g.drawLine(x1 + desvio, y1, x2 + desvio, y1);     // Lado superior
         g.drawLine(x2 + desvio, y1, x2 - desvio, y2);     // Lado derecho
         g.drawLine(x2 - desvio, y2, x1 - desvio, y2);     // Lado inferior
         g.drawLine(x1 - desvio, y2, x1 + desvio, y1);     // Lado izquierdo
 
-
+        
         // Dibujar flecha de salida
+        g.setColor(Color.GREEN);
         g.drawLine(x2 + desvio, y1, x2 + desvio - 10, y1 + 5);              // Linea de
         g.drawLine(x2 + desvio, y1, x2 + desvio + 10, y1 - 5);              // Flecha
 
@@ -46,6 +87,7 @@ public class DibujoEntrada extends PanelPersonalizado{
         g.drawLine( x2 + desvio - 10, y1 + 5, x2 + desvio - 6, y1 + 5);  // Flecha
 
         // Dibujar flujo
+        g.setColor(Color.BLACK);
         g.drawLine(centro_x, 0, centro_x, y1);               // Linea superior
         g.drawLine(centro_x, y2, centro_x, panelHeight);         // Linea inferior
 

@@ -29,7 +29,7 @@ public class DibujoInicio extends PanelPersonalizado{
         int arcWidth = 100;
         int arcHeight = 100;
 
-        g.setColor(Color.BLUE);
+        g.setColor(Color.BLACK);
         int centro_x = panelWidth / 2;
         Graphics2D g2d = (Graphics2D) g;
 

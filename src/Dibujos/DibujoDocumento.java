@@ -1,13 +1,52 @@
 package Dibujos;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.QuadCurve2D;
 
 public class DibujoDocumento extends PanelPersonalizado{
+    private int ultimoEjeY;
+    private boolean moviendo;
+    private int ejeYMouse;
     public DibujoDocumento(String texto) {
 
         super(texto);
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                ultimoEjeY = e.getYOnScreen();
+                moviendo = true;
+                //System.out.println("Moviendo "+"Documento"+" "); //Para verificar el movimiento sostenido
+            }
 
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                moviendo = false;
+                //System.out.println("Soltado "+"Documento"+" "); //Para verificar el termino del movimiento sostenido
+            }
+        });
+
+        addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            //Aqui se implementa la toma de un panel y arrastre
+            public void mouseDragged(MouseEvent e) {
+                if(moviendo){
+                    int cambioPosicionY = e.getYOnScreen() - ultimoEjeY;
+                    setLocation(getX(), getY() + cambioPosicionY);
+                    ultimoEjeY = e.getYOnScreen();
+                }
+            }
+
+            @Override
+            //Detectamos la posicion del mouse dentro de un panel
+            public void mouseMoved(MouseEvent e) {
+                ejeYMouse = e.getY();
+                setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
+                repaint(); //Volvemos a dibujar el panel
+            }
+        });
     }
 
     @Override
@@ -45,6 +84,8 @@ public class DibujoDocumento extends PanelPersonalizado{
         g2d.draw(new QuadCurve2D.Double(x3, y2, ctrl2x, ctrl2y, x2, y2));
 
         // Dibujar flujo
+        g2d.setStroke(new BasicStroke(1));
+        g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);        // Linea superior
         g.drawLine(centro_x,y2,centro_x,panelHeight);  // Linea inferior
         g.drawLine(centro_x,y1,centro_x+10,y1-10);

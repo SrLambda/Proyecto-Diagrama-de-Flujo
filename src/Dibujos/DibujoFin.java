@@ -1,13 +1,10 @@
 package Dibujos;
 
 import java.awt.*;
-import java.awt.geom.QuadCurve2D;
 
 public class DibujoFin extends PanelPersonalizado{
     public DibujoFin(String texto) {
-
         super(texto);
-
     }
 
     @Override
