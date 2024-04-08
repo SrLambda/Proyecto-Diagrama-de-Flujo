@@ -1,8 +1,11 @@
+import Dibujos.PanelPersonalizado;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.QuadCurve2D;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Front extends JFrame {
 
@@ -17,6 +20,7 @@ public class Front extends JFrame {
     private JButton limpiarButton;
     private JButton FinButton;
     private JPanel columna;
+    private List <PanelPersonalizado> listaPaneles;
 
 
     public Front(Controlador controlador)
@@ -27,10 +31,9 @@ public class Front extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Graficador Interactivo de Diagramas de flujo");
         setVisible(true);
-
-
+        listaPaneles = new ArrayList<>();
         this.columna = new JPanel();
-        controlador.initFront(Front.this);
+        controlador.initFront(Front.this,listaPaneles, panel);
 
 
 
@@ -132,7 +135,11 @@ public class Front extends JFrame {
             {
 
                 controlador.crearImpresion(Front.this);
-
+                int bandera = 0;
+                while(bandera < listaPaneles.size()){
+                    System.out.println("Posicion"+bandera+": Eje Y:"+listaPaneles.get(bandera).getY());
+                    bandera++;
+                }
             }
 
         });

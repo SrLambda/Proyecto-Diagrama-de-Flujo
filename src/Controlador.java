@@ -2,13 +2,16 @@ import Dibujos.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controlador {
 
 
     private static Controlador instancia;
     private final Graficador graficador;
-
+    private List <PanelPersonalizado> listaFiguras;
+    private JPanel contenedor;
 
 
     // Instanciar Singleton
@@ -16,7 +19,6 @@ public class Controlador {
     {
 
         this.graficador = new Graficador();
-
     }
 
     public static Controlador getInstancia()
@@ -36,9 +38,10 @@ public class Controlador {
 
     //Metodos
 
-    public void initFront(Front front)
+    public void initFront(Front front, List <PanelPersonalizado> _listaFiguras, JPanel _contenedor)
     {
-
+        contenedor = _contenedor;
+        listaFiguras = _listaFiguras;
         front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
         front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -47,9 +50,11 @@ public class Controlador {
 
     public void crearProceso(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoProceso(entradaDeTexto());
+        PanelPersonalizado nuevo = new DibujoProceso(entradaDeTexto(),listaFiguras,contenedor);
+        listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
+        timer(nuevo);
 
     }
 
@@ -57,16 +62,18 @@ public class Controlador {
     public void crearImpresion(Front front)
     {
 
-        PanelPersonalizado nuevo = new DibujoDocumento(entradaDeTexto());
+        PanelPersonalizado nuevo = new DibujoDocumento(entradaDeTexto(),listaFiguras,contenedor);
+        listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
+        timer(nuevo);
     }
 
 
     public void crearInicio(Front front)
     {
-
-        PanelPersonalizado nuevo = new DibujoInicio("Inicio");
+        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor);
+        listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
 
@@ -74,8 +81,8 @@ public class Controlador {
 
     public void crearFin(Front front)
     {
-
-        PanelPersonalizado nuevo = new DibujoFin("Fin");
+        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor);
+        listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
 
@@ -83,9 +90,10 @@ public class Controlador {
 
     public void crearDecision(Front front)
     {
-
-        PanelPersonalizado nuevo = new DibujarDecision(entradaDeTexto());
-        PanelPersonalizado aux = new DibujoDecisionFin("");
+        PanelPersonalizado nuevo = new DibujarDecision(entradaDeTexto(),listaFiguras,contenedor);
+        PanelPersonalizado aux = new DibujoDecisionFin("",listaFiguras,contenedor);
+        listaFiguras.add(nuevo);
+        listaFiguras.add(aux);
         front.getPanel1().add(nuevo);
         front.getPanel1().add(aux);
         front.getPanel1().revalidate();
@@ -93,8 +101,8 @@ public class Controlador {
 
     public void crearSalida(Front front)
     {
-
-        PanelPersonalizado nuevo = new DibujoSalida(entradaDeTexto());
+         PanelPersonalizado nuevo = new DibujoSalida(entradaDeTexto(),listaFiguras,contenedor);
+        listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
 
@@ -102,8 +110,8 @@ public class Controlador {
 
     public void crearEntreda(Front front)
     {
-
-        PanelPersonalizado nuevo = new DibujoEntrada(entradaDeTexto());
+        PanelPersonalizado nuevo = new DibujoEntrada(entradaDeTexto(),listaFiguras,contenedor);
+        listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
 
@@ -260,5 +268,17 @@ public class Controlador {
             return "----";
 
         }
+    }
+
+    public void timer(PanelPersonalizado nuevo){
+        Timer timer = new Timer(100, e -> {
+            nuevo.actualizarUbicacion();
+
+            for (PanelPersonalizado figura : listaFiguras) {
+                figura.actualizarUbicacion();
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
     }
 }

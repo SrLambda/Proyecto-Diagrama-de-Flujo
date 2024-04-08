@@ -1,27 +1,33 @@
 package Dibujos;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.List;
 
 public class DibujoProceso extends PanelPersonalizado {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
-    public DibujoProceso(String texto) {
-        super(texto);
+    public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor) {
+        super(texto,lista,_contenedor);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 ultimoEjeY = e.getYOnScreen();
                 moviendo = true;
                 //System.out.println("Moviendo "+"Proceso"+" "); //Para verificar el movimiento sostenido
+
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 moviendo = false;
-                //System.out.println("Soltado "+"Proceso"+" "); //Para verificar el termino del movimiento sostenido
+                int indice = colisiones();
+                if(indice != -1){
+                    intercambiarPosiciones();
+                }
             }
         });
 
@@ -33,6 +39,7 @@ public class DibujoProceso extends PanelPersonalizado {
                     int cambioPosicionY = e.getYOnScreen() - ultimoEjeY;
                     setLocation(getX(), getY() + cambioPosicionY);
                     ultimoEjeY = e.getYOnScreen();
+                    colisionesVisual();
                 }
             }
 
@@ -67,7 +74,7 @@ public class DibujoProceso extends PanelPersonalizado {
 
         // Dibujar las líneas que forman el rectángulo
 
-        g.setColor(Color.CYAN);
+        g.setColor(Color.MAGENTA);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
         g.drawLine(x2, y1, x2, y2);     // Lado derecho
         g.drawLine(x2, y2, x1, y2);     // Lado inferior
@@ -87,4 +94,28 @@ public class DibujoProceso extends PanelPersonalizado {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
+
+    public void intercambiarPosiciones(){
+        int indice = colisiones();
+        if (indice != -1) {
+            PanelPersonalizado panelActual = listaFiguras.get(indice);
+            int indiceAnterior = indice - 1;
+
+            if (indiceAnterior >= 0) {
+                PanelPersonalizado panelAnterior = listaFiguras.get(indiceAnterior);
+                listaFiguras.set(indice, panelAnterior);
+                listaFiguras.set(indiceAnterior, panelActual);
+                actualizarPosicionesVisuales();
+            }
+        }
+    }
+
+    private void actualizarPosicionesVisuales() {
+        for (int i = 0; i < listaFiguras.size(); i++) {
+            PanelPersonalizado panel = listaFiguras.get(i);
+            panel.setLocation(0, i * panel.getHeight());
+        }
+        contenedor.repaint();
+    }
+
 }

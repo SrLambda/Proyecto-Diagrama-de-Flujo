@@ -1,13 +1,15 @@
 package Dibujos;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
+import java.util.List;
 
 public class DibujoInicio extends PanelPersonalizado{
-    public DibujoInicio(String texto)
+    public DibujoInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
     {
 
-        super(texto);
+        super(texto,lista,_contenedor);
 
     }
 

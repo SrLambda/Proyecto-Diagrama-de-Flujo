@@ -1,17 +1,19 @@
 package Dibujos;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.List;
 
 public class DibujoSalida extends PanelPersonalizado{
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
-    public DibujoSalida(String texto)
+    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
     {
 
-        super(texto);
+        super(texto,lista,_contenedor);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -23,7 +25,10 @@ public class DibujoSalida extends PanelPersonalizado{
             @Override
             public void mouseReleased(MouseEvent e) {
                 moviendo = false;
-                //System.out.println("Soltado "+"Salida"+" "); //Para verificar el termino del movimiento sostenido
+                int indice = colisiones();
+                if(indice != -1){
+                    intercambiarPosiciones();
+                }
             }
         });
 
@@ -35,6 +40,7 @@ public class DibujoSalida extends PanelPersonalizado{
                     int cambioPosicionY = e.getYOnScreen() - ultimoEjeY;
                     setLocation(getX(), getY() + cambioPosicionY);
                     ultimoEjeY = e.getYOnScreen();
+                    colisionesVisual();
                 }
             }
 
@@ -100,4 +106,28 @@ public class DibujoSalida extends PanelPersonalizado{
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
+
+    public void intercambiarPosiciones(){
+        int indice = colisiones();
+        if (indice != -1) {
+            PanelPersonalizado panelActual = listaFiguras.get(indice);
+            int indiceAnterior = indice - 1;
+
+            if (indiceAnterior >= 0) {
+                PanelPersonalizado panelAnterior = listaFiguras.get(indiceAnterior);
+                listaFiguras.set(indice, panelAnterior);
+                listaFiguras.set(indiceAnterior, panelActual);
+                actualizarPosicionesVisuales();
+            }
+        }
+    }
+
+    private void actualizarPosicionesVisuales() {
+        for (int i = 0; i < listaFiguras.size(); i++) {
+            PanelPersonalizado panel = listaFiguras.get(i);
+            panel.setLocation(0, i * panel.getHeight());
+        }
+        contenedor.repaint();
+    }
+
 }

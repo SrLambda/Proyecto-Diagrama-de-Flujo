@@ -7,6 +7,7 @@
     <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" afterDir="false" />
@@ -16,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Front.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +60,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="clase-controladora" />
+        <entry key="$PROJECT_DIR$" value="testing" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -110,6 +112,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -164,6 +167,8 @@
       <workItem from="1712364788791" duration="3062000" />
       <workItem from="1712415021566" duration="789000" />
       <workItem from="1712431091306" duration="5510000" />
+      <workItem from="1712500818533" duration="28960000" />
+      <workItem from="1712579678706" duration="568000" />
     </task>
     <servers />
   </component>
