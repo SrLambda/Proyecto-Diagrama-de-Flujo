@@ -1,10 +1,12 @@
 package Dibujos;
 
+import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class DibujoFin extends PanelPersonalizado{
-    public DibujoFin(String texto) {
-        super(texto);
+    public DibujoFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+        super(texto,lista,_contenedor);
     }
 
     @Override
@@ -25,7 +27,7 @@ public class DibujoFin extends PanelPersonalizado{
         int arcWidth = 100;
         int arcHeight = 100;
 
-        g.setColor(Color.BLUE);
+        g.setColor(Color.BLACK);
         int centro_x = panelWidth / 2;
         Graphics2D g2d = (Graphics2D) g;
 
@@ -33,6 +35,7 @@ public class DibujoFin extends PanelPersonalizado{
         g2d.drawRoundRect(x1, y1, x2 - x1, y2 - y1, arcWidth, arcHeight);
 
         // Dibujar flujo
+        g.setColor(Color.BLACK);
         g.drawLine(centro_x, 0, centro_x, y1);               // Linea superior
 
         g.drawLine(centro_x, y1, centro_x + 10, y1 - 10);    //  Flecha
