@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoEntrada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
-    </list>
+    <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
