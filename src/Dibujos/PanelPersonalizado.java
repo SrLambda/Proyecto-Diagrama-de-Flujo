@@ -34,52 +34,86 @@ public class PanelPersonalizado extends JPanel
             altura = this.getHeight();
             posOriginal = nuevaUbicacion;
             listaFiguras.get(indice).setLocation(0, nuevaUbicacion);
-            //System.out.println("Eje Y dentro de la lista: "+listaFiguras.get(indice).getY());
+            System.out.println("Eje Y dentro de la lista: "+listaFiguras.get(indice).getY());
 
         }
 
     }
 
-    public void colisionesVisual() {
-    int i=0;
-    while(i < listaFiguras.size()){
-        PanelPersonalizado panelSiguiente = listaFiguras.get(i);
-        if(panelSiguiente != this){
-            int ejeY = getY();
-            int altura = getHeight();
-            int ejeYSiguiente = panelSiguiente.getY();
-            int alturaSiguiente = panelSiguiente.getHeight();
-            if(ejeY < ejeYSiguiente + alturaSiguiente && ejeY + altura > ejeYSiguiente){
+    public void colisionesVisual()
+    {
+        int i=0;
+        while(i < listaFiguras.size())
+        {
+
+            PanelPersonalizado panelSiguiente = listaFiguras.get(i);
+
+            if(panelSiguiente != this)
+            {
+
+                int ejeY = getY();
+                int altura = getHeight();
+                int ejeYSiguiente = panelSiguiente.getY();
+                int alturaSiguiente = panelSiguiente.getHeight();
+
+                if(ejeY < ejeYSiguiente + alturaSiguiente && ejeY + altura > ejeYSiguiente)
+                {
+                }
+
             }
+
+            i++;
+
         }
-        i++;
-    }
     }
 
-    public int colisiones() {
+    public int colisiones()
+    {
         int i=0;
         int x = 0;
         int num = listaFiguras.indexOf(this);
-        while(i < listaFiguras.size()){
+
+        while(i < listaFiguras.size())
+        {
             PanelPersonalizado panelColision = listaFiguras.get(i);
-            if(panelColision != this){
+
+            if(panelColision != this)
+            {
                 int ejeY = this.getY();
                 int altura = this.getHeight();
                 int ejeYSiguiente = panelColision.getY();
                 int alturaSiguiente = panelColision.getHeight();
-                if ((ejeY+altura) > ejeYSiguiente && (ejeY+altura) < (ejeYSiguiente + alturaSiguiente)){
-                    if(listaFiguras.get(num+1).habilitado){
+
+                if ((ejeY+altura) > ejeYSiguiente && (ejeY+altura) < (ejeYSiguiente + alturaSiguiente))
+                {
+
+                    if(listaFiguras.get(num+1).habilitado)
+                    {
+
                         this.posicion = num;
                         return i;
+
                     }
-                }else{
-                    if(ejeY < (ejeYSiguiente+alturaSiguiente) && ejeY > ejeYSiguiente){
-                        if(listaFiguras.get(num-1).habilitado){
+
+                }
+                else
+
+                {
+                    if(ejeY < (ejeYSiguiente+alturaSiguiente) && ejeY > ejeYSiguiente)
+                    {
+
+                        if(listaFiguras.get(num-1).habilitado)
+                        {
+
                             this.posicion = num;
                             return i;
+
                         }
+
                     }
+
                 }
+
             }
             i++;
         }

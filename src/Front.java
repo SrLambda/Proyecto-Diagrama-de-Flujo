@@ -33,6 +33,7 @@ public class Front extends JFrame {
         setVisible(true);
         listaPaneles = new ArrayList<>();
         this.columna = new JPanel();
+
         controlador.initFront(Front.this,listaPaneles, panel);
 
 
@@ -77,7 +78,6 @@ public class Front extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
 
                 controlador.limpiarPantalla(Front.this);
                 listaPaneles = new ArrayList<>();

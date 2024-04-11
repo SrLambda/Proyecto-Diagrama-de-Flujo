@@ -1,4 +1,5 @@
 package Dibujos;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -6,20 +7,18 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-public class DibujoSalida extends PanelPersonalizado{
+public class DibujoDecisionInicio extends PanelPersonalizado{
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
-    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
-    {
-
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 ultimoEjeY = e.getYOnScreen();
                 moviendo = true;
-                //System.out.println("Moviendo "+"Salida"+" "); //Para verificar el movimiento sostenido
+                //System.out.println("Moviendo "+"Desicion"+" "); //Para verificar el movimiento sostenido
             }
 
             @Override
@@ -57,47 +56,44 @@ public class DibujoSalida extends PanelPersonalizado{
 
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
+
 
 
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
-        // Coordenadas del Paralelogramo
-        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del paralelogramo
-        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del paralelogramo
-        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del paralelogramo
-        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del paralelogramo
-        int desvio = (int) ((x2-x1)*0.1);                                    // Inclinación horizontal del paralelogramo
+        // Coordenadas del rectángulo
+        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del rectángulo
+        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del rectángulo
+        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del rectángulo
+        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del rectángulo
+
+        int centro_x = panelWidth/2;                                         // Centro horizontal
+        int centro_y = panelHeight/2;                                        // Centro vertical
+
+        int cuarto = panelWidth/4;
 
 
-        int centro_x = panelWidth/2;
+        // Dibujar las líneas que forman el rombo
 
-
-        // Dibujar las líneas que forman el paralelogramo
-
-        g.setColor(Color.ORANGE);
-        g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
-        g.drawLine(x2+desvio, y1, x2-desvio, y2);     // Lado derecho
-        g.drawLine(x2-desvio, y2, x1-desvio, y2);     // Lado inferior
-        g.drawLine(x1-desvio, y2, x1+desvio, y1);     // Lado izquierdo
-
-
-        // Dibujar flecha de salida
-        g.setColor(Color.RED);
-        g.drawLine(x2+desvio, y1, x2+desvio - 10, y1 + 5);
-        g.drawLine(x2+desvio, y1, x2+desvio + 10, y1 - 5);
-        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 7,y1 - 1);
-        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 6,y1 - 5);
+        g.setColor(Color.YELLOW);
+        g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
+        g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
+        g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
+        g.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
 
         // Dibujar flujo
         g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,y1);               // Linea superior
-        g.drawLine(centro_x,y2,centro_x,panelHeight);         // Linea inferior
+        g.drawLine(centro_x,0,centro_x,y1);              // Linea superior
 
-        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
-        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
+        g.drawLine(centro_x,y1,centro_x+10,y1-10);   // Flecha
+        g.drawLine(centro_x,y1,centro_x-10,y1-10);   // de flujo
+
+        g.drawLine(x1,centro_y,cuarto,centro_y);
+        g.drawLine(x2,centro_y,cuarto*3,centro_y);
+        g.drawLine(cuarto,centro_y,cuarto,panelHeight);
+        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
 
 
         // Dibuja el texto centrado

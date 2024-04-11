@@ -1,8 +1,14 @@
 import Dibujos.*;
+import Dibujos.PanelesMovibles.DibujoDocumento;
+import Dibujos.PanelesMovibles.DibujoEntrada;
+import Dibujos.PanelesMovibles.DibujoProceso;
+import Dibujos.PanelesMovibles.DibujoSalida;
+import Dibujos.PanelesNoMovibles.DibujoFin;
+import Dibujos.PanelesNoMovibles.DibujoInicio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Controlador {
@@ -90,7 +96,7 @@ public class Controlador {
 
     public void crearDecision(Front front)
     {
-        PanelPersonalizado nuevo = new DibujarDecision(entradaDeTexto(),listaFiguras,contenedor);
+        PanelPersonalizado nuevo = new DibujoDecisionInicio(entradaDeTexto(),listaFiguras,contenedor);
         PanelPersonalizado aux = new DibujoDecisionFin("",listaFiguras,contenedor);
         listaFiguras.add(nuevo);
         listaFiguras.add(aux);
