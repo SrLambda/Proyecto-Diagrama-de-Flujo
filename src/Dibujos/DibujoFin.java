@@ -7,6 +7,7 @@ import java.util.List;
 public class DibujoFin extends PanelPersonalizado{
     public DibujoFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
+        this.habilitado = false;
     }
 
     @Override

@@ -135,11 +135,6 @@ public class Front extends JFrame {
             {
 
                 controlador.crearImpresion(Front.this);
-                int bandera = 0;
-                while(bandera < listaPaneles.size()){
-                    System.out.println("Posicion"+bandera+": Eje Y:"+listaPaneles.get(bandera).getY());
-                    bandera++;
-                }
             }
 
         });

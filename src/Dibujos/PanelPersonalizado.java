@@ -13,6 +13,8 @@ public class PanelPersonalizado extends JPanel
     protected int altura;
     protected int posOriginal = -1;
     protected JPanel contenedor;
+    protected boolean habilitado = true;
+    protected int posicion = -1;
 
     public PanelPersonalizado(String texto, List <PanelPersonalizado> lista, JPanel _contenedor) {
         this.texto = texto;
@@ -47,7 +49,6 @@ public class PanelPersonalizado extends JPanel
             int altura = getHeight();
             int ejeYSiguiente = panelSiguiente.getY();
             int alturaSiguiente = panelSiguiente.getHeight();
-
             if(ejeY < ejeYSiguiente + alturaSiguiente && ejeY + altura > ejeYSiguiente){
             }
         }
@@ -57,35 +58,31 @@ public class PanelPersonalizado extends JPanel
 
     public int colisiones() {
         int i=0;
+        int x = 0;
+        int num = listaFiguras.indexOf(this);
         while(i < listaFiguras.size()){
-            PanelPersonalizado panelSiguiente = listaFiguras.get(i);
-            if(panelSiguiente != this){
-                int ejeY = getY();
-                int altura = getHeight();
-                int ejeYSiguiente = panelSiguiente.getY();
-                int alturaSiguiente = panelSiguiente.getHeight();
-
-                if(ejeY < ejeYSiguiente + alturaSiguiente && ejeY + altura > ejeYSiguiente){
-                    return i;
+            PanelPersonalizado panelColision = listaFiguras.get(i);
+            if(panelColision != this){
+                int ejeY = this.getY();
+                int altura = this.getHeight();
+                int ejeYSiguiente = panelColision.getY();
+                int alturaSiguiente = panelColision.getHeight();
+                if ((ejeY+altura) > ejeYSiguiente && (ejeY+altura) < (ejeYSiguiente + alturaSiguiente)){
+                    if(listaFiguras.get(num+1).habilitado){
+                        this.posicion = num;
+                        return i;
+                    }
+                }else{
+                    if(ejeY < (ejeYSiguiente+alturaSiguiente) && ejeY > ejeYSiguiente){
+                        if(listaFiguras.get(num-1).habilitado){
+                            this.posicion = num;
+                            return i;
+                        }
+                    }
                 }
             }
             i++;
         }
         return -1;
     }
-
-
-    public void guardarPosicion(int _posOriginal){
-        this.posOriginal = _posOriginal;
-        System.out.println("Posicion guardada: "+posOriginal);
-    }
-
-    public int posicionOriginal(){
-        return this.posOriginal;
-    }
-
-    public void actualizarPosicion(){
-        this.posOriginal = getY();
-    }
-
 }
