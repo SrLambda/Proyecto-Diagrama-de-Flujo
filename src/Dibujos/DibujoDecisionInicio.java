@@ -7,11 +7,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-public class DibujarDecision extends PanelPersonalizado{
+public class DibujoDecisionInicio extends PanelPersonalizado{
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
-    public DibujarDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
         addMouseListener(new MouseAdapter() {
             @Override

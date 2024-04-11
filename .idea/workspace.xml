@@ -3,19 +3,12 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="ChangeListManager">git git 
+  <component name="ChangeListManager">
     <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionInterno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoEntrada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoProceso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoSalida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/DibujarDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/DibujoDecisionInicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Front.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.java" afterDir="false" />
     </list>
@@ -81,7 +74,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "266",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging Edgar",
+    "git-widget-placeholder": "decision",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/javafx-sdk-21.0.2/lib/javafx.web.jar",
@@ -197,6 +190,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Controlador.java</url>
+          <line>243</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

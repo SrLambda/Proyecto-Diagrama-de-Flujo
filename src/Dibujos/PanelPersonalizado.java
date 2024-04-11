@@ -32,7 +32,7 @@ public class PanelPersonalizado extends JPanel
             altura = this.getHeight();
             posOriginal = nuevaUbicacion;
             listaFiguras.get(indice).setLocation(0, nuevaUbicacion);
-            //System.out.println("Eje Y dentro de la lista: "+listaFiguras.get(indice).getY());
+            System.out.println("Eje Y dentro de la lista: "+listaFiguras.get(indice).getY());
 
         }
 
