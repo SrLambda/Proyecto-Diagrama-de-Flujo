@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-public class PanelMovible extends PanelPersonalizado{
+public abstract class PanelMovible extends PanelPersonalizado{
 
     protected int ultimoEjeY;
     protected boolean moviendo;

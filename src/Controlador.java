@@ -1,4 +1,6 @@
 import Dibujos.*;
+import Dibujos.PanelesMovibles.Decision.DibujoDecisionFin;
+import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
 import Dibujos.PanelesMovibles.DibujoDocumento;
 import Dibujos.PanelesMovibles.DibujoEntrada;
 import Dibujos.PanelesMovibles.DibujoProceso;
@@ -44,12 +46,16 @@ public class Controlador {
 
     //Metodos
 
-    public void initFront(Front front, List <PanelPersonalizado> _listaFiguras, JPanel _contenedor)
+    public void initFront(Front front, List <PanelPersonalizado> _listaFiguras,JScrollPane scroll, JPanel _contenedor)
     {
         contenedor = _contenedor;
         listaFiguras = _listaFiguras;
         front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
         front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Barra de desplazamiento vertical siempre visible
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Sin barra de desplazamiento horizontal
+        scroll.setBorder(BorderFactory.createEmptyBorder());
 
     }
 

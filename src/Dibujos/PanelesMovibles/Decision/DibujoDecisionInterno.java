@@ -1,4 +1,7 @@
-package Dibujos;
+package Dibujos.PanelesMovibles.Decision;
+
+import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoDecision;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,16 +12,18 @@ public class DibujoDecisionInterno extends JPanel {
 
     private JPanel verdadero,falso;
 
-    DibujoDecisionInterno()
+    public DibujoDecisionInterno()
     {
 
-        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        this.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.verdadero = new DesicionInterna();
+        this.falso = new DesicionInterna();
 
-        this.verdadero.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.verdadero.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.Y_AXIS));
         this.verdadero.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        this.falso.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.falso.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.add(verdadero);

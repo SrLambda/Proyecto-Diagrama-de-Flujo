@@ -19,6 +19,7 @@ public class Front extends JFrame {
     private JButton documentoButton;
     private JButton limpiarButton;
     private JButton FinButton;
+    private JScrollPane scroll;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
 
@@ -34,7 +35,7 @@ public class Front extends JFrame {
         listaPaneles = new ArrayList<>();
         this.columna = new JPanel();
 
-        controlador.initFront(Front.this,listaPaneles, panel);
+        controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel);
 
 
 
@@ -81,7 +82,7 @@ public class Front extends JFrame {
 
                 controlador.limpiarPantalla(Front.this);
                 listaPaneles = new ArrayList<>();
-                controlador.initFront(Front.this,listaPaneles, panel);
+                controlador.initFront(Front.this,listaPaneles,scroll,panel);
 
             }
 

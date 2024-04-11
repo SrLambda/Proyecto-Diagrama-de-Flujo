@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class PanelPersonalizado extends JPanel
+public abstract class PanelPersonalizado extends JPanel
 {
 
     protected String texto;
@@ -13,14 +13,15 @@ public class PanelPersonalizado extends JPanel
     protected int altura;
     protected int posOriginal = -1;
     protected JPanel contenedor;
-    protected boolean habilitado = true;
+    public boolean habilitado = true;
     protected int posicion = -1;
+
 
     public PanelPersonalizado(String texto, List <PanelPersonalizado> lista, JPanel _contenedor) {
         this.texto = texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
-        setPreferredSize(new Dimension(100, 50));
+        setPreferredSize(new Dimension(250, 100));
 
     }
 
