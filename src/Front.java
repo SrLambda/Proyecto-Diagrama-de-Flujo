@@ -11,14 +11,12 @@ public class Front extends JFrame {
 
     private JPanel panel1;
     private JPanel panel;
-    private JButton inicioButton;
     private JButton etapaDelProcesoButton;
     private JButton decisionButton;
     private JButton entradaButton;
     private JButton salidaButton;
     private JButton documentoButton;
     private JButton limpiarButton;
-    private JButton FinButton;
     private JScrollPane scroll;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
@@ -144,31 +142,6 @@ public class Front extends JFrame {
 
         });
 
-
-        //Dibujar Rectangulo curvo (__)
-        inicioButton.addActionListener(new ActionListener()
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.crearInicio(Front.this);
-            }
-
-        });
-
-        FinButton.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.crearFin(Front.this);
-
-            }
-
-        });
 
     }
 

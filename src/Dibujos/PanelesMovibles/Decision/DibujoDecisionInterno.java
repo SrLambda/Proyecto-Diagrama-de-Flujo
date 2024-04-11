@@ -17,13 +17,14 @@ public class DibujoDecisionInterno extends JPanel {
 
         this.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         this.verdadero = new DesicionInterna();
         this.falso = new DesicionInterna();
 
-        this.verdadero.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.Y_AXIS));
+        this.verdadero.setLayout(new BoxLayout(this.verdadero, BoxLayout.Y_AXIS));
         this.verdadero.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        this.falso.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.Y_AXIS));
+        this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.add(verdadero);

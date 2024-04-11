@@ -20,7 +20,6 @@ public class DibujoDecision extends PanelMovible {
 
         this.setLayout(new BoxLayout(DibujoDecision.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
         this.lista = new ArrayList<>();
 
 

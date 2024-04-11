@@ -16,8 +16,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         super(texto,lista,_contenedor);
 
     }
-
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
