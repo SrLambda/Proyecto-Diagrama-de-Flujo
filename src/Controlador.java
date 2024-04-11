@@ -1,4 +1,11 @@
 import Dibujos.*;
+import Dibujos.PanelesMovibles.DibujoDocumento;
+import Dibujos.PanelesMovibles.DibujoEntrada;
+import Dibujos.PanelesMovibles.DibujoProceso;
+import Dibujos.PanelesMovibles.DibujoSalida;
+import Dibujos.PanelesNoMovibles.DibujoFin;
+import Dibujos.PanelesNoMovibles.DibujoInicio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
