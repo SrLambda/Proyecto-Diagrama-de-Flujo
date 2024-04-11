@@ -10,6 +10,7 @@ public class DibujoInicio extends PanelPersonalizado{
     {
 
         super(texto,lista,_contenedor);
+        this.habilitado = false;
 
     }
 
