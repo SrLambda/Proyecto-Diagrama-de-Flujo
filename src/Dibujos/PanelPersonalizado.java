@@ -1,8 +1,7 @@
 package Dibujos;
-import org.w3c.dom.ls.LSOutput;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.util.List;
 
 public class PanelPersonalizado extends JPanel
@@ -19,9 +18,7 @@ public class PanelPersonalizado extends JPanel
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
         setPreferredSize(new Dimension(100, 50));
-
     }
-
 
 
     public void actualizarUbicacion(){
@@ -88,4 +85,17 @@ public class PanelPersonalizado extends JPanel
         this.posOriginal = getY();
     }
 
+    public void cambiarTexto(String nuevoTexto) {
+        texto = nuevoTexto;
+        repaint(); // Redibujar la figura con el nuevo texto
+    }
+
+    // Para eliminar una figura seleccionada
+    public void eliminarFigura() {
+        // Eliminar la figura de la lista y del contenedor
+        listaFiguras.remove(this);
+        contenedor.remove(this);
+        contenedor.revalidate();
+        contenedor.repaint();
+    }
 }

@@ -133,7 +133,5 @@ public class DibujoDocumento extends PanelPersonalizado{
         }
         contenedor.repaint();
     }
-
-
 }
 

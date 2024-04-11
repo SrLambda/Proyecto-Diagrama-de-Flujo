@@ -1,18 +1,16 @@
 package Dibujos;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.List;
-
 public class DibujarDecision extends PanelPersonalizado{
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
+
     public DibujarDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+        super(texto, lista, _contenedor);
+        this.contenedor = _contenedor;
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -51,14 +49,34 @@ public class DibujarDecision extends PanelPersonalizado{
                 repaint(); //Volvemos a dibujar el panel
             }
         });
+
+        // Para editar texto ya ingresado
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2) { // Doble clic para editar el texto
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
+                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                    }
+                }
+
+                // Verificar si se hizo clic derecho
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
+                    if (option == JOptionPane.YES_OPTION) {
+                        eliminarFigura();
+                    }
+                }
+            }
+        });
     }
 
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-
 
         int panelWidth = getWidth();
         int panelHeight = getHeight();
@@ -74,9 +92,7 @@ public class DibujarDecision extends PanelPersonalizado{
 
         int cuarto = panelWidth/4;
 
-
         // Dibujar las líneas que forman el rombo
-
         g.setColor(Color.YELLOW);
         g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
         g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
@@ -94,7 +110,6 @@ public class DibujarDecision extends PanelPersonalizado{
         g.drawLine(x2,centro_y,cuarto*3,centro_y);
         g.drawLine(cuarto,centro_y,cuarto,panelHeight);
         g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
-
 
         // Dibuja el texto centrado
         FontMetrics metrics = g.getFontMetrics();
@@ -126,4 +141,14 @@ public class DibujarDecision extends PanelPersonalizado{
         contenedor.repaint();
     }
 
+    // Para eliminar una figura seleccionada
+    /*public void eliminarFigura(PanelPersonalizado figura) {
+        System.out.println("Eliminando figura...");
+        listaFiguras.remove(figura);
+        contenedor.remove(figura);
+        System.out.println("Figura eliminada de la lista y del contenedor.");
+        contenedor.revalidate();
+        contenedor.repaint();
+        System.out.println("Contenedor revalidado y repintado.");
+    }*/
 }

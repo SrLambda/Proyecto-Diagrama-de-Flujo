@@ -52,6 +52,19 @@ public class DibujoSalida extends PanelPersonalizado{
                 repaint(); //Volvemos a dibujar el panel
             }
         });
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2) { // Doble clic para editar el texto
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
+                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                    }
+                }
+            }
+        });
     }
 
 

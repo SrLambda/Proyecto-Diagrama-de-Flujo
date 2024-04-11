@@ -51,6 +51,16 @@ public class DibujoDecisionFin extends PanelPersonalizado{
                 repaint(); //Volvemos a dibujar el panel
             }
         });
+
+        /*// Agregar MouseListener para detectar clic derecho
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isRightMouseButton(e)) {
+                    eliminarFigura(); // Llama al método para eliminar la figura si es clic derecho
+                }
+            }
+        });*/
     }
 
 
@@ -103,5 +113,4 @@ public class DibujoDecisionFin extends PanelPersonalizado{
         }
         contenedor.repaint();
     }
-
 }
