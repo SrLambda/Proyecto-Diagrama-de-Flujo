@@ -81,18 +81,14 @@ public class DibujoDecisionFin extends PanelPersonalizado{
 
     }
 
-    public void intercambiarPosiciones(){
+    public void intercambiarPosiciones() {
         int indice = colisiones();
-        if (indice != -1) {
-            PanelPersonalizado panelActual = listaFiguras.get(indice);
-            int indiceAnterior = indice - 1;
-
-            if (indiceAnterior >= 0) {
-                PanelPersonalizado panelAnterior = listaFiguras.get(indiceAnterior);
-                listaFiguras.set(indice, panelAnterior);
-                listaFiguras.set(indiceAnterior, panelActual);
-                actualizarPosicionesVisuales();
-            }
+        if (indice != -1 && listaFiguras.get(indice).habilitado) {
+            PanelPersonalizado tempPosicion = listaFiguras.get(posicion);
+            PanelPersonalizado tempColision = listaFiguras.get(indice);
+            listaFiguras.set(this.posicion, tempColision);
+            listaFiguras.set(indice, tempPosicion);
+            actualizarPosicionesVisuales();
         }
     }
 

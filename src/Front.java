@@ -78,7 +78,11 @@ public class Front extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
                 controlador.limpiarPantalla(Front.this);
+                listaPaneles = new ArrayList<>();
+                controlador.initFront(Front.this,listaPaneles, panel);
+
             }
 
         });
@@ -135,11 +139,6 @@ public class Front extends JFrame {
             {
 
                 controlador.crearImpresion(Front.this);
-                int bandera = 0;
-                while(bandera < listaPaneles.size()){
-                    System.out.println("Posicion"+bandera+": Eje Y:"+listaPaneles.get(bandera).getY());
-                    bandera++;
-                }
             }
 
         });
