@@ -68,7 +68,7 @@ public class DibujoEntrada extends PanelPersonalizado{
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
                     if (option == JOptionPane.YES_OPTION) {
-                        //eliminarFigura();
+                        eliminarFigura();
                     }
                 }
             }
@@ -151,8 +151,8 @@ public class DibujoEntrada extends PanelPersonalizado{
         contenedor.repaint();
     }
 
-    // Para eliminar una figura seleccionada
-    /*public void eliminarFigura() {
-        super.eliminarFigura();
-    }*/
+    // Método para eliminar la figura y reorganizar las posiciones
+    private void eliminarFigura() {
+
+    }
 }

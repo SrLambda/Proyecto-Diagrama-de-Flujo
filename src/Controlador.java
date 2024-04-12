@@ -209,15 +209,4 @@ public class Controlador {
         timer.setRepeats(false);
         timer.start();
     }
-
-    //////////////////////
-    public void eliminarFiguraSeleccionada(PanelPersonalizado figuraSeleccionada, Front front) {
-        if (figuraSeleccionada != null) {
-            // Eliminar la figura de la lista y del panel
-            listaFiguras.remove(figuraSeleccionada);
-            front.getPanel1().remove(figuraSeleccionada);
-            front.getPanel1().revalidate();
-            front.getPanel1().repaint(); // Repintar el panel
-        }
-    }
 }

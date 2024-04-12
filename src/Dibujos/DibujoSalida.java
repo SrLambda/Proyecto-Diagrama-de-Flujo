@@ -63,6 +63,14 @@ public class DibujoSalida extends PanelPersonalizado{
                         cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
                     }
                 }
+
+                // Verificar si se hizo clic derecho
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
+                    if (option == JOptionPane.YES_OPTION) {
+                        eliminarFigura();
+                    }
+                }
             }
         });
     }
@@ -143,4 +151,8 @@ public class DibujoSalida extends PanelPersonalizado{
         contenedor.repaint();
     }
 
+    // Método para eliminar la figura y reorganizar las posiciones
+    private void eliminarFigura() {
+
+    }
 }

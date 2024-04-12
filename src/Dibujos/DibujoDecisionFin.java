@@ -52,15 +52,19 @@ public class DibujoDecisionFin extends PanelPersonalizado{
             }
         });
 
-        /*// Agregar MouseListener para detectar clic derecho
+        // Agregar MouseListener para detectar clic derecho
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if (SwingUtilities.isRightMouseButton(e)) {
-                    eliminarFigura(); // Llama al método para eliminar la figura si es clic derecho
+                // Verificar si se hizo clic derecho
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
+                    if (option == JOptionPane.YES_OPTION) {
+                        eliminarFigura();
+                    }
                 }
             }
-        });*/
+        });
     }
 
 
@@ -112,5 +116,10 @@ public class DibujoDecisionFin extends PanelPersonalizado{
             panel.setLocation(0, i * panel.getHeight());
         }
         contenedor.repaint();
+    }
+
+    // Método para eliminar la figura y reorganizar las posiciones
+    private void eliminarFigura() {
+
     }
 }

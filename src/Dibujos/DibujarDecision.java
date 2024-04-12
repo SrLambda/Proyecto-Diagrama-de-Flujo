@@ -141,14 +141,9 @@ public class DibujarDecision extends PanelPersonalizado{
         contenedor.repaint();
     }
 
-    // Para eliminar una figura seleccionada
-    /*public void eliminarFigura(PanelPersonalizado figura) {
-        System.out.println("Eliminando figura...");
-        listaFiguras.remove(figura);
-        contenedor.remove(figura);
-        System.out.println("Figura eliminada de la lista y del contenedor.");
-        contenedor.revalidate();
-        contenedor.repaint();
-        System.out.println("Contenedor revalidado y repintado.");
-    }*/
+
+    // Método para eliminar la figura y reorganizar las posiciones
+    private void eliminarFigura() {
+
+    }
 }

@@ -90,12 +90,19 @@ public class PanelPersonalizado extends JPanel
         repaint(); // Redibujar la figura con el nuevo texto
     }
 
-    // Para eliminar una figura seleccionada
-    public void eliminarFigura() {
-        // Eliminar la figura de la lista y del contenedor
-        listaFiguras.remove(this);
-        contenedor.remove(this);
-        contenedor.revalidate();
-        contenedor.repaint();
+    public void eliminar() {
+        contenedor.remove(this); // Elimina el panel del contenedor
+        listaFiguras.remove(this); // Elimina la figura de la lista de figuras
+        reorganizarPosiciones();
+        contenedor.revalidate(); // Revalida el contenedor para actualizar la interfaz gráfica
+        contenedor.repaint(); // Redibuja el contenedor para actualizar la interfaz gráfica
+    }
+
+    private void reorganizarPosiciones() {
+        int y = 0;
+        for (PanelPersonalizado panel : listaFiguras) {
+            panel.setLocation(0, y);
+            y += panel.getHeight();
+        }
     }
 }
