@@ -5,12 +5,16 @@ import Dibujos.PanelesMovibles.DibujoDecision;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoDecisionInterno extends JPanel {
 
-    private JPanel verdadero,falso;
+
+    private final DesicionInterna verdadero;
+    private final DesicionInterna falso;
 
     public DibujoDecisionInterno()
     {
@@ -31,10 +35,31 @@ public class DibujoDecisionInterno extends JPanel {
         this.add(falso);
     }
 
-    private class DesicionInterna extends JPanel{
-        private List<PanelPersonalizado> listaFiguras;
-        DesicionInterna(){
+    public JPanel getVerdadero() {
+        return verdadero;
+    }
+
+    public List<PanelPersonalizado> getListaVerdadera()
+    {
+        return verdadero.getListaFiguras();
+    }
+
+    public List<PanelPersonalizado> getListaFalsa()
+    {
+        return falso.getListaFiguras();
+    }
+
+    public JPanel getFalso() {
+        return falso;
+    }
+
+    public class DesicionInterna extends JPanel{
+        private final List<PanelPersonalizado> listaFiguras;
+        DesicionInterna()
+        {
+
             listaFiguras= new ArrayList<>();
+
         }
         @Override
         protected void paintComponent(Graphics g) {
@@ -47,6 +72,13 @@ public class DibujoDecisionInterno extends JPanel {
 
             g.drawLine(ancho/2,0,ancho/2,alto);
         }
+
+        public List<PanelPersonalizado> getListaFiguras()
+        {
+            return listaFiguras;
+        }
     }
+
+
 }
 

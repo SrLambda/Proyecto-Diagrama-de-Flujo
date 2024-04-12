@@ -37,12 +37,6 @@ public class Front extends JFrame {
 
 
 
-
-        //Point2D punto1 = new Point2D.Double(10, 10);
-        //Line2D linea1 = new Line2D.Double(50, 50, 150, 150);
-        //QuadCurve2D curvaCuadratica1 = new QuadCurve2D.Double(50, 50, 100, 150, 150, 50);
-
-
         //botón para dibujar un rectángulo
         etapaDelProcesoButton.addActionListener(new ActionListener()
         {
@@ -51,7 +45,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearProceso(Front.this);
+                controlador.crearPanel(Front.this,"proceso");
             }
 
         });
@@ -65,7 +59,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearDecision(Front.this);
+                controlador.crearPanel(Front.this,"decision");
 
             }
 
@@ -87,17 +81,6 @@ public class Front extends JFrame {
         });
 
 
-        /*entradaSalidaButton.addActionListener(new ActionListener()
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-            }
-
-        });*/
-
         //Dibujar Paralelogramo /__/
         entradaButton.addActionListener(new ActionListener()
         {
@@ -106,12 +89,11 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearEntreda(Front.this);
+                controlador.crearPanel(Front.this,"entrada");
 
             }
 
         });
-
 
 
         //Dibujar Paralelogramo /__/
@@ -122,7 +104,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearSalida(Front.this);
+                controlador.crearPanel(Front.this,"salida");
 
             }
 
@@ -137,7 +119,8 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearImpresion(Front.this);
+                controlador.crearPanel(Front.this,"documento");
+
             }
 
         });

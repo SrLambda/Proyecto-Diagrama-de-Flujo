@@ -12,10 +12,35 @@ import java.util.List;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
 
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+    private DibujoDecisionInterno interno;
+
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno) {
         super(texto,lista,_contenedor);
+        this.interno = _interno;
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                if (SwingUtilities.isRightMouseButton(e)) {
+
+                    //Verdad
+                    JPanel ver= interno.getVerdadero();
+                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera();
+
+
+                    //Falso
+                    JPanel fal= interno.getFalso();
+                    List<PanelPersonalizado> l_fal= interno.getListaFalsa();
+
+                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal);
+                }
+            }
+        });
 
     }
+
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -22,9 +22,9 @@ public class DibujoDecision extends PanelMovible {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.lista = new ArrayList<>();
 
-
-        this.condicion = new DibujoDecisionInicio(texto,lista,this);
         this.contenido = new DibujoDecisionInterno();
+
+        this.condicion = new DibujoDecisionInicio(texto,lista,this,(DibujoDecisionInterno) contenido);
         this.fin = new DibujoDecisionFin(texto,lista,this);
 
         this.add(condicion);
