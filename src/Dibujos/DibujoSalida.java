@@ -153,6 +153,6 @@ public class DibujoSalida extends PanelPersonalizado{
 
     // Método para eliminar la figura y reorganizar las posiciones
     private void eliminarFigura() {
-
+        super.eliminarFiguraaa();
     }
 }

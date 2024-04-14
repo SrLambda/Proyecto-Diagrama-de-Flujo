@@ -6,7 +6,6 @@ import java.util.List;
 
 public class PanelPersonalizado extends JPanel
 {
-
     protected String texto;
     protected List <PanelPersonalizado> listaFiguras;
     protected int altura;
@@ -18,6 +17,7 @@ public class PanelPersonalizado extends JPanel
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
         setPreferredSize(new Dimension(100, 50));
+        this.setBackground(Color.WHITE);
     }
 
 
@@ -90,19 +90,26 @@ public class PanelPersonalizado extends JPanel
         repaint(); // Redibujar la figura con el nuevo texto
     }
 
-    public void eliminar() {
-        contenedor.remove(this); // Elimina el panel del contenedor
-        listaFiguras.remove(this); // Elimina la figura de la lista de figuras
-        reorganizarPosiciones();
-        contenedor.revalidate(); // Revalida el contenedor para actualizar la interfaz gráfica
-        contenedor.repaint(); // Redibuja el contenedor para actualizar la interfaz gráfica
-    }
+    // Método para eliminar la figura y reorganizar las posiciones
+    public void eliminarFiguraaa() {
+        // Obtener el índice de esta figura en la lista
+        int indice = listaFiguras.indexOf(this);
+        if (indice != -1) {
+            // Eliminar esta figura del panel principal
+            Container parent = getParent();
+            if (parent instanceof JPanel) {
+                ((JPanel) parent).remove(this);
+            }
 
-    private void reorganizarPosiciones() {
-        int y = 0;
-        for (PanelPersonalizado panel : listaFiguras) {
-            panel.setLocation(0, y);
-            y += panel.getHeight();
+            // Eliminar esta figura de la lista de figuras
+            listaFiguras.remove(indice);
+
+            // Reorganizar las posiciones visuales de las figuras restantes en el panel principal
+            for (int i = indice; i < listaFiguras.size(); i++) {
+                PanelPersonalizado panel = listaFiguras.get(i);
+                panel.setLocation(0, i * panel.getHeight());
+            }
+            parent.repaint();
         }
     }
 }

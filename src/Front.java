@@ -21,7 +21,6 @@ public class Front extends JFrame {
     private JButton FinButton;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
-    private JButton EliminarFiguraButton;
 
     public Front(Controlador controlador)
     {
@@ -33,7 +32,6 @@ public class Front extends JFrame {
         listaPaneles = new ArrayList<>();
         this.columna = new JPanel();
         controlador.initFront(Front.this,listaPaneles, panel);
-
 
         //botón para dibujar un rectángulo
         etapaDelProcesoButton.addActionListener(new ActionListener()
