@@ -22,6 +22,13 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
             @Override
             public void mousePressed(MouseEvent e) {
 
+                if (e.getClickCount() == 2) { // Doble clic para editar el texto
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
+                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                    }
+                }
+
                 if (SwingUtilities.isRightMouseButton(e)) {
 
                     //Verdad
@@ -33,7 +40,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
                     JPanel fal= interno.getFalso();
                     List<PanelPersonalizado> l_fal= interno.getListaFalsa();
 
-                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal);
+                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
                 }
             }
         });
