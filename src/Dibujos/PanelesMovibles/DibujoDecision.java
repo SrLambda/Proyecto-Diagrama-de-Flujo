@@ -24,7 +24,7 @@ public class DibujoDecision extends PanelMovible {
 
         this.contenido = new DibujoDecisionInterno();
 
-        this.condicion = new DibujoDecisionInicio(texto,lista,this,(DibujoDecisionInterno) contenido);
+        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,(DibujoDecisionInterno) contenido);
         this.fin = new DibujoDecisionFin(texto,lista,this);
 
         this.add(condicion);

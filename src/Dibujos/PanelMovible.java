@@ -19,7 +19,28 @@ public abstract class PanelMovible extends PanelPersonalizado{
             this.posOriginal = getY();
         }
 
-        addMouseListener(new MouseAdapter() {
+        addMouseListener(new MouseAdapter()
+        {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2) { // Doble clic para editar el texto
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
+                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                    }
+                }
+
+                // Verificar si se hizo clic derecho
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
+                    if (option == JOptionPane.YES_OPTION) {
+                        eliminarFigura();
+                    }
+                }
+            }
+
 
 
             // Click de mouse
@@ -48,6 +69,10 @@ public abstract class PanelMovible extends PanelPersonalizado{
                 }
 
             }
+
+
+
+
         });
 
         addMouseMotionListener(new MouseMotionListener() {

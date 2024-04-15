@@ -15,7 +15,7 @@ public class VentanaEmergenteDecision {
     private boolean verdadero;
 
 
-    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso){
+    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso,PanelPersonalizado _contenedor){
         String[] opciones = {"","Entrada", "Salida", "Proceso", "Documento", "Decision"};
 
         // Crear un JComboBox con las opciones
@@ -36,8 +36,11 @@ public class VentanaEmergenteDecision {
         // Agregar un ActionListener al botón de cerrar
         botonCerrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-
+                int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    _contenedor.eliminarFigura();
+                }
+                seleccion = "";
                 ((Window) SwingUtilities.getRoot(panelBotones)).dispose();
             }
         });
@@ -73,6 +76,9 @@ public class VentanaEmergenteDecision {
             FactoryPanel factory = new FactoryPanel();
             if(verdadero)
             {
+                if(l_verdad.isEmpty()){
+                    verdad.removeAll();
+                }
                 PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad);
                 l_verdad.add(nuevo);
                 verdad.add(nuevo);
@@ -80,6 +86,9 @@ public class VentanaEmergenteDecision {
             }
             else
             {
+                if(l_falso.isEmpty()){
+                    falso.removeAll();
+                }
                 PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_falso,falso);
                 l_falso.add(nuevo);
                 falso.add(nuevo);
