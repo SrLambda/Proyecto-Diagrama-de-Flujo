@@ -11,14 +11,13 @@ public class Front extends JFrame {
 
     private JPanel panel1;
     private JPanel panel;
-    private JButton inicioButton;
     private JButton etapaDelProcesoButton;
     private JButton decisionButton;
     private JButton entradaButton;
     private JButton salidaButton;
     private JButton documentoButton;
     private JButton limpiarButton;
-    private JButton FinButton;
+    private JScrollPane scroll;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
 
@@ -34,14 +33,8 @@ public class Front extends JFrame {
         listaPaneles = new ArrayList<>();
         this.columna = new JPanel();
 
-        controlador.initFront(Front.this,listaPaneles, panel);
+        controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel);
 
-
-
-
-        //Point2D punto1 = new Point2D.Double(10, 10);
-        //Line2D linea1 = new Line2D.Double(50, 50, 150, 150);
-        //QuadCurve2D curvaCuadratica1 = new QuadCurve2D.Double(50, 50, 100, 150, 150, 50);
 
 
         //botón para dibujar un rectángulo
@@ -52,7 +45,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearProceso(Front.this);
+                controlador.crearPanel(Front.this,"proceso");
             }
 
         });
@@ -66,7 +59,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearDecision(Front.this);
+                controlador.crearPanel(Front.this,"decision");
 
             }
 
@@ -81,23 +74,12 @@ public class Front extends JFrame {
 
                 controlador.limpiarPantalla(Front.this);
                 listaPaneles = new ArrayList<>();
-                controlador.initFront(Front.this,listaPaneles, panel);
+                controlador.initFront(Front.this,listaPaneles,scroll,panel);
 
             }
 
         });
 
-
-        /*entradaSalidaButton.addActionListener(new ActionListener()
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-            }
-
-        });*/
 
         //Dibujar Paralelogramo /__/
         entradaButton.addActionListener(new ActionListener()
@@ -107,12 +89,11 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearEntreda(Front.this);
+                controlador.crearPanel(Front.this,"entrada");
 
             }
 
         });
-
 
 
         //Dibujar Paralelogramo /__/
@@ -123,7 +104,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearSalida(Front.this);
+                controlador.crearPanel(Front.this,"salida");
 
             }
 
@@ -138,36 +119,12 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearImpresion(Front.this);
-            }
-
-        });
-
-
-        //Dibujar Rectangulo curvo (__)
-        inicioButton.addActionListener(new ActionListener()
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.crearInicio(Front.this);
-            }
-
-        });
-
-        FinButton.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.crearFin(Front.this);
+                controlador.crearPanel(Front.this,"documento");
 
             }
 
         });
+
 
     }
 

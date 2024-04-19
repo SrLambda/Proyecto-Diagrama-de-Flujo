@@ -1,4 +1,7 @@
-package Dibujos;
+package Dibujos.PanelesMovibles.Decision;
+
+
+import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,57 +10,47 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-public class DibujoDecisionInicio extends PanelPersonalizado{
-    private int ultimoEjeY;
-    private boolean moviendo;
-    private int ejeYMouse;
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+public class DibujoDecisionInicio extends PanelPersonalizado {
+
+    private DibujoDecisionInterno interno;
+
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno) {
         super(texto,lista,_contenedor);
+        this.interno = _interno;
+
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                ultimoEjeY = e.getYOnScreen();
-                moviendo = true;
-                //System.out.println("Moviendo "+"Desicion"+" "); //Para verificar el movimiento sostenido
-            }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                moviendo = false;
-                int indice = colisiones();
-                if(indice != -1){
-                    intercambiarPosiciones();
+                if (e.getClickCount() == 2) { // Doble clic para editar el texto
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
+                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                    }
+                }
+
+                if (SwingUtilities.isRightMouseButton(e)) {
+
+                    //Verdad
+                    JPanel ver= interno.getVerdadero();
+                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera();
+
+
+                    //Falso
+                    JPanel fal= interno.getFalso();
+                    List<PanelPersonalizado> l_fal= interno.getListaFalsa();
+
+                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
                 }
             }
         });
 
-        addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            //Aqui se implementa la toma de un panel y arrastre
-            public void mouseDragged(MouseEvent e) {
-                if(moviendo){
-                    int cambioPosicionY = e.getYOnScreen() - ultimoEjeY;
-                    setLocation(getX(), getY() + cambioPosicionY);
-                    ultimoEjeY = e.getYOnScreen();
-                    colisionesVisual();
-                }
-            }
-
-            @Override
-            //Detectamos la posicion del mouse dentro de un panel
-            public void mouseMoved(MouseEvent e) {
-                ejeYMouse = e.getY();
-                setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
-                repaint(); //Volvemos a dibujar el panel
-            }
-        });
     }
 
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
 
 
         int panelWidth = getWidth();
@@ -101,25 +94,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado{
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
-    }
-
-    public void intercambiarPosiciones() {
-        int indice = colisiones();
-        if (indice != -1 && listaFiguras.get(indice).habilitado) {
-            PanelPersonalizado tempPosicion = listaFiguras.get(posicion);
-            PanelPersonalizado tempColision = listaFiguras.get(indice);
-            listaFiguras.set(this.posicion, tempColision);
-            listaFiguras.set(indice, tempPosicion);
-            actualizarPosicionesVisuales();
-        }
-    }
-
-    private void actualizarPosicionesVisuales() {
-        for (int i = 0; i < listaFiguras.size(); i++) {
-            PanelPersonalizado panel = listaFiguras.get(i);
-            panel.setLocation(0, i * panel.getHeight());
-        }
-        contenedor.repaint();
     }
 
 }
