@@ -39,7 +39,7 @@ public class DibujoProceso extends PanelMovible {
 
         // Dibujar las líneas que forman el rectángulo
 
-        g.setColor(Color.MAGENTA);
+        g.setColor(Color.BLACK);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
         g.drawLine(x2, y1, x2, y2);     // Lado derecho
         g.drawLine(x2, y2, x1, y2);     // Lado inferior
