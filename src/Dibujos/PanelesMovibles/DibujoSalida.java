@@ -38,12 +38,11 @@ public class DibujoSalida extends PanelMovible {
 
 
         // Dibujar las líneas que forman el paralelogramo
-
         g.setColor(Color.BLACK);
         g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
-        g.drawLine(x2+desvio, y1, x2-desvio, y2);     // Lado derecho
-        g.drawLine(x2-desvio, y2, x1-desvio, y2);     // Lado inferior
-        g.drawLine(x1-desvio, y2, x1+desvio, y1);     // Lado izquierdo
+        g.drawLine(x2+desvio, y1, x2-desvio, y2 + 30);     // Lado derecho
+        g.drawLine(x2-desvio, y2 + 30, x1-desvio, y2 + 30);     // Lado inferior
+        g.drawLine(x1-desvio, y2 + 30, x1+desvio, y1);     // Lado izquierdo
 
 
         // Dibujar flecha de salida
@@ -56,7 +55,7 @@ public class DibujoSalida extends PanelMovible {
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);               // Linea superior
-        g.drawLine(centro_x,y2,centro_x,panelHeight);         // Linea inferior
+        g.drawLine(centro_x,y2 + 30,centro_x,panelHeight + 30);         // Linea inferior
 
         g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
         g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo

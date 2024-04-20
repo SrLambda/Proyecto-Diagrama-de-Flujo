@@ -1,8 +1,6 @@
 package Dibujos.PanelesMovibles;
-
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
@@ -16,8 +14,8 @@ public class DibujoDocumento extends PanelMovible {
 
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
+
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
@@ -39,19 +37,18 @@ public class DibujoDocumento extends PanelMovible {
         // Dibujar las líneas que forman el rectángulo
         g.setColor(Color.BLACK);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
-        g.drawLine(x2, y1, x2, y2);     // Lado derecho
-        //g.drawLine(x2, y2, x1, y2);     // Lado inferior
-        g.drawLine(x1, y2, x1, y1);     // Lado izquierdo
+        g.drawLine(x2, y1, x2, y2 + 30);     // Lado derecho
+        g.drawLine(x1, y2 + 30, x1, y1);     // Lado izquierdo
         g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(2)); // Grosor de línea
-        g2d.draw(new QuadCurve2D.Double(x1, y2, ctrl1x, -ctrl1y, x3, y2));
-        g2d.draw(new QuadCurve2D.Double(x3, y2, ctrl2x, ctrl2y, x2, y2));
+        g2d.setStroke(new BasicStroke(1)); // Grosor de línea
+        g2d.draw(new QuadCurve2D.Double(x1, y2 + 30, ctrl1x, -ctrl1y + 30, x3, y2 + 30));
+        g2d.draw(new QuadCurve2D.Double(x3, y2 + 30, ctrl2x, ctrl2y + 30, x2, y2 + 30));
 
         // Dibujar flujo
         g2d.setStroke(new BasicStroke(1));
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);        // Linea superior
-        g.drawLine(centro_x,y2,centro_x,panelHeight);  // Linea inferior
+        g.drawLine(centro_x,y2 + 30,centro_x,panelHeight + 30);  // Linea inferior
         g.drawLine(centro_x,y1,centro_x+10,y1-10);
         g.drawLine(centro_x,y1,centro_x-10,y1-10);
 
@@ -62,6 +59,7 @@ public class DibujoDocumento extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
 }
+
+
 

@@ -39,10 +39,10 @@ public class DibujoInicio extends PanelPersonalizado {
         Graphics2D g2d = (Graphics2D) g;
 
         //Dibujar figura de entrada
-        g2d.drawRoundRect(x1, y1, x2 - x1, y2 - y1, arcWidth, arcHeight);
+        g2d.drawRoundRect(x1, y1, x2 - x1, y2 - y1 + 30, arcWidth, arcHeight);
 
         // Dibujar flujo
-        g.drawLine(centro_x, y2, centro_x, panelHeight);         // Linea inferior
+        g.drawLine(centro_x, y2 + 30, centro_x, panelHeight + 30);         // Linea inferior
         
         // Dibujar el texto centrado
         FontMetrics metrics = g.getFontMetrics();

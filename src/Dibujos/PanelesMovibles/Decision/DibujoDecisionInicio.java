@@ -69,7 +69,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
 
         // Dibujar las líneas que forman el rombo
-
         g.setColor(Color.BLACK);
         g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
         g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
@@ -95,5 +94,4 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
 }

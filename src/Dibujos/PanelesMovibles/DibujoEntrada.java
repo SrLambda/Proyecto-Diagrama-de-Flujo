@@ -35,16 +35,14 @@ public class DibujoEntrada extends PanelMovible {
         int y2 = (int) ((panelHeight - (panelHeight / 4)) - panelHeight * 0.15); // Coordenada y del lado inferior del paralelogramo
         int desvio = (int) ((x2 - x1) * 0.1);                                    // Inclinación horizontal del paralelogramo
 
-
         int centro_x = panelWidth / 2;
-
 
         // Dibujar las líneas que forman el paralelogramo
         g.setColor(Color.BLACK);
         g.drawLine(x1 + desvio, y1, x2 + desvio, y1);     // Lado superior
-        g.drawLine(x2 + desvio, y1, x2 - desvio, y2);     // Lado derecho
-        g.drawLine(x2 - desvio, y2, x1 - desvio, y2);     // Lado inferior
-        g.drawLine(x1 - desvio, y2, x1 + desvio, y1);     // Lado izquierdo
+        g.drawLine(x2 + desvio, y1, x2 - desvio, y2 + 30);     // Lado derecho
+        g.drawLine(x2 - desvio, y2 + 30, x1 - desvio, y2 + 30);     // Lado inferior
+        g.drawLine(x1 - desvio, y2 + 30, x1 + desvio, y1);     // Lado izquierdo
 
         
         // Dibujar flecha de salida
@@ -58,8 +56,7 @@ public class DibujoEntrada extends PanelMovible {
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x, 0, centro_x, y1);               // Linea superior
-        g.drawLine(centro_x, y2, centro_x, panelHeight);         // Linea inferior
-
+        g.drawLine(centro_x, y2 + 30, centro_x, panelHeight);         // Linea inferior aaaaaaaaaaa
         g.drawLine(centro_x, y1, centro_x + 10, y1 - 10);    //  Flecha
         g.drawLine(centro_x, y1, centro_x - 10, y1 - 10);    //  de flujo
 
