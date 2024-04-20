@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles;
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
+import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,13 +9,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoProceso extends PanelMovible {
-    private int ultimoEjeY;
-    private boolean moviendo;
-    private int ejeYMouse;
-    public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+    public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor, Mapa _mapa) {
+        super(texto,lista,_contenedor,_mapa);
 
     }
 
@@ -61,5 +60,8 @@ public class DibujoProceso extends PanelMovible {
 
     }
 
+    @Override
+    public void agregarValorAlMapa() {
+    }
 
 }

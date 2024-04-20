@@ -2,6 +2,7 @@ package Dibujos.PanelesMovibles;
 
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
+import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,11 +12,9 @@ import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoEntrada extends PanelMovible {
-    private int ultimoEjeY;
-    private boolean moviendo;
-    private int ejeYMouse;
-    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+
+    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, Mapa _mapa) {
+        super(texto,lista,_contenedor,_mapa);
     }
 
 
@@ -70,4 +69,9 @@ public class DibujoEntrada extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
+    @Override
+    public void agregarValorAlMapa(){
+        mapa.agregarVarYKey(mapa.obtenerVariable(this.texto),mapa.obtenerClave(this.texto));
+    }
+
 }

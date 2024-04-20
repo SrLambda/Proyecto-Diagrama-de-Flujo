@@ -1,7 +1,7 @@
 import Dibujos.PanelPersonalizado;
+import Mapa.Mapa;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ public class Front extends JFrame {
     private JScrollPane scroll;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
+    private Mapa mapa = new Mapa();
 
 
     public Front(Controlador controlador)
@@ -45,7 +46,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"proceso");
+                controlador.crearPanel(Front.this,"proceso",mapa);
             }
 
         });
@@ -59,7 +60,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"decision");
+                controlador.crearPanel(Front.this,"decision",mapa);
 
             }
 
@@ -89,7 +90,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"entrada");
+                controlador.crearPanel(Front.this,"entrada",mapa);
 
             }
 
@@ -104,7 +105,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"salida");
+                controlador.crearPanel(Front.this,"salida",mapa);
 
             }
 
@@ -119,7 +120,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"documento");
+                controlador.crearPanel(Front.this,"documento",mapa);
 
             }
 

@@ -1,13 +1,9 @@
 import Dibujos.*;
-import Dibujos.PanelesMovibles.*;
-import Dibujos.PanelesMovibles.Decision.DibujoDecisionFin;
-import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
+import Mapa.Mapa;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.QuadCurve2D;
 import java.util.List;
 
 public class Controlador {
@@ -78,18 +74,17 @@ public class Controlador {
     //===========================================================================================
 
 
-    public void crearPanel(Front front,String tipo)
+    public void crearPanel(Front front, String tipo, Mapa _mapa)
     {
         FactoryPanel factory = new FactoryPanel();
 
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor);
+        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor,_mapa);
 
         int posicion = listaFiguras.size()-1;
 
         listaFiguras.add(posicion, nuevo);
         front.getPanel1().add(nuevo,posicion);
         front.getPanel1().revalidate();
-
     }
 
 

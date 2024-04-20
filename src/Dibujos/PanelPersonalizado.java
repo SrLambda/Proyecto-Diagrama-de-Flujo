@@ -1,5 +1,4 @@
 package Dibujos;
-import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +9,6 @@ public abstract class PanelPersonalizado extends JPanel
 
     protected String texto;
     protected List <PanelPersonalizado> listaFiguras;
-    protected int altura;
     protected int posOriginal = -1;
     protected JPanel contenedor;
     public boolean habilitado = true;
@@ -24,22 +22,6 @@ public abstract class PanelPersonalizado extends JPanel
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
         setPreferredSize(new Dimension(250, 100));
-
-    }
-
-
-
-    public void actualizarUbicacion(){
-        int indice = listaFiguras.indexOf(this);
-
-        if(indice != -1){
-            int nuevaUbicacion = this.getY();
-            altura = this.getHeight();
-            posOriginal = nuevaUbicacion;
-            listaFiguras.get(indice).setLocation(0, nuevaUbicacion);
-            System.out.println("Eje Y dentro de la lista: "+listaFiguras.get(indice).getY());
-
-        }
 
     }
 
@@ -126,19 +108,6 @@ public abstract class PanelPersonalizado extends JPanel
     public void cambiarTexto(String nuevoTexto) {
         texto = nuevoTexto;
         repaint(); // Redibujar la figura con el nuevo texto
-    }
-
-    public void guardarPosicion(int _posOriginal){
-        this.posOriginal = _posOriginal;
-        System.out.println("Posicion guardada: "+posOriginal);
-    }
-
-    public int posicionOriginal(){
-        return this.posOriginal;
-    }
-
-    public void actualizarPosicion(){
-        this.posOriginal = getY();
     }
 
     // Método para eliminar la figura y reorganizar las posiciones
