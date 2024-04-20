@@ -1,5 +1,7 @@
 package Dibujos;
 
+import Mapa.Mapa;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -12,12 +14,15 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected int ultimoEjeY;
     protected boolean moviendo;
     protected int ejeYMouse;
+    protected Mapa mapa;
 
-    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, Mapa _mapa) {
         super(texto, lista, _contenedor);
+        this.mapa = _mapa;
         if(this.posOriginal == -1){
             this.posOriginal = getY();
         }
+        agregarValorAlMapa();
 
         addMouseListener(new MouseAdapter()
         {
@@ -138,4 +143,7 @@ public abstract class PanelMovible extends PanelPersonalizado{
         contenedor.repaint();
 
     }
+
+    public abstract void agregarValorAlMapa();
+
 }

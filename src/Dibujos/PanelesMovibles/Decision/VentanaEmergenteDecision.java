@@ -2,6 +2,7 @@ package Dibujos.PanelesMovibles.Decision;
 
 import Dibujos.FactoryPanel;
 import Dibujos.PanelPersonalizado;
+import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,7 @@ public class VentanaEmergenteDecision {
     private boolean verdadero;
 
 
-    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso,PanelPersonalizado _contenedor){
+    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso, PanelPersonalizado _contenedor, Mapa _mapa){
         String[] opciones = {"","Entrada", "Salida", "Proceso", "Documento", "Decision"};
 
         // Crear un JComboBox con las opciones
@@ -79,7 +80,7 @@ public class VentanaEmergenteDecision {
                 if(l_verdad.isEmpty()){
                     verdad.removeAll();
                 }
-                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad);
+                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad,_mapa);
                 l_verdad.add(nuevo);
                 verdad.add(nuevo);
                 verdad.revalidate();
@@ -89,7 +90,7 @@ public class VentanaEmergenteDecision {
                 if(l_falso.isEmpty()){
                     falso.removeAll();
                 }
-                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_falso,falso);
+                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_falso,falso,_mapa);
                 l_falso.add(nuevo);
                 falso.add(nuevo);
                 falso.revalidate();

@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.Decision;
 
 import Dibujos.PanelPersonalizado;
+import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
