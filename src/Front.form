@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Front">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="5" left="5" bottom="5" right="5"/>
+    <constraints>
+      <xy x="20" y="20" width="743" height="318"/>
+    </constraints>
+    <properties>
+      <background color="-2502445"/>
+      <foreground color="-4478029"/>
+    </properties>
+    <border type="empty">
+      <size top="2" left="2" bottom="2" right="2"/>
+    </border>
+    <children>
+      <component id="11dab" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14" style="1"/>
+          <foreground color="-12828863"/>
+          <text value="Comandos"/>
+        </properties>
+      </component>
+      <component id="8c37a" class="javax.swing.JButton" binding="etapaDelProcesoButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Etapa del proceso"/>
+        </properties>
+      </component>
+      <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Decision"/>
+        </properties>
+      </component>
+      <component id="11435" class="javax.swing.JButton" binding="entradaButton">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Entrada"/>
+        </properties>
+      </component>
+      <component id="3bb5" class="javax.swing.JButton" binding="salidaButton">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Salida"/>
+        </properties>
+      </component>
+      <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Documento"/>
+        </properties>
+      </component>
+      <component id="a6daa" class="javax.swing.JButton" binding="limpiarButton" default-binding="true">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16772298"/>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-2765617"/>
+          <text value="Limpiar"/>
+        </properties>
+      </component>
+      <hspacer id="d0adc">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="48da" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <text value="Ayuda"/>
+          <verticalAlignment value="1"/>
+        </properties>
+      </component>
+      <scrollpane id="4b1d" binding="scroll">
+        <constraints>
+          <grid row="1" column="0" row-span="6" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="fceb0" binding="panel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>
