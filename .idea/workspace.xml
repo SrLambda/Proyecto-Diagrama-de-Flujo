@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
+    <list default="true" id="73fbc03c-0472-4458-ace0-a4376c684e6f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/cody_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cody_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/FactoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/FactoryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoFin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoInicio.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,38 +65,41 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
+    &quot;associatedIndex&quot;: 4
+    }</component>
   <component name="ProjectId" id="2dirlefD5DxljA0N9gwNVNUnaIU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "512",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "testing",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/javafx-sdk-21.0.2/lib/javafx.web.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;512&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ramafeliz&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/aaaaaaaaaaa/Proyecto-Diagrama-de-Flujo-e21562460f1d072dae58cb401a4ff4a41fdd1229&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.file-colors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="LogicaFiguras" />
@@ -166,10 +175,11 @@
       <workItem from="1712581071997" duration="372000" />
       <workItem from="1712597557775" duration="1778000" />
       <workItem from="1712796861319" duration="12579000" />
-      <workItem from="1713146491385" duration="420000" />
-      <workItem from="1713146941087" duration="218000" />
-      <workItem from="1713147237113" duration="43000" />
-      <workItem from="1713147364454" duration="123000" />
+      <workItem from="1713219468370" duration="536000" />
+      <workItem from="1713584580104" duration="11000" />
+      <workItem from="1713630594804" duration="9000" />
+      <workItem from="1713630790695" duration="10247000" />
+      <workItem from="1713811912060" duration="470000" />
     </task>
     <task id="LOCAL-00001" summary="Intercambio de figuras parcial">
       <option name="closed" value="true" />

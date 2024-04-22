@@ -70,8 +70,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
 
         // Dibujar las líneas que forman el rombo
-
-        g.setColor(Color.YELLOW);
+        g.setColor(Color.BLACK);
         g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
         g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
         g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
@@ -81,8 +80,8 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);              // Linea superior
 
-        g.drawLine(centro_x,y1,centro_x+10,y1-10);   // Flecha
-        g.drawLine(centro_x,y1,centro_x-10,y1-10);   // de flujo
+        g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
+        g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
 
         g.drawLine(x1,centro_y,cuarto,centro_y);
         g.drawLine(x2,centro_y,cuarto*3,centro_y);
@@ -96,5 +95,4 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
 }
