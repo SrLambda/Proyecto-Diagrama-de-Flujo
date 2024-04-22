@@ -77,15 +77,15 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
         // Dibujar flujo
         g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,y1 + 30);              // Linea superior
+        g.drawLine(centro_x,0,centro_x,y1);              // Linea superior
 
-        g.drawLine(centro_x,y1 + 30,centro_x+10,y1 + 20);   // Flecha
-        g.drawLine(centro_x,y1 + 30,centro_x-10,y1 + 20);   // de flujo
+        g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
+        g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
 
-        g.drawLine(x1,centro_y + 30,cuarto,centro_y + 30);
-        g.drawLine(x2,centro_y + 30,cuarto*3,centro_y + 30);
-        g.drawLine(cuarto,centro_y + 30,cuarto,panelHeight + 30);
-        g.drawLine(cuarto*3,centro_y + 30,cuarto*3,panelHeight + 30);
+        g.drawLine(x1,centro_y,cuarto,centro_y);
+        g.drawLine(x2,centro_y,cuarto*3,centro_y);
+        g.drawLine(cuarto,centro_y,cuarto,panelHeight);
+        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
 
 
         // Dibuja el texto centrado
