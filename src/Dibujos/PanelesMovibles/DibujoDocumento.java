@@ -68,5 +68,9 @@ public class DibujoDocumento extends PanelMovible {
     public void agregarValorAlMapa() {
     }
 
+    @Override
+    protected void cambiarValor() {
+
+    }
 }
 

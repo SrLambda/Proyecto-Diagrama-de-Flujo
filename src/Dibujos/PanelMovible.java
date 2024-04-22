@@ -34,9 +34,9 @@ public abstract class PanelMovible extends PanelPersonalizado{
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
                         cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                        cambiarValor();
                     }
                 }
-
                 // Verificar si se hizo clic derecho
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
@@ -144,6 +144,9 @@ public abstract class PanelMovible extends PanelPersonalizado{
 
     }
 
-    public abstract void agregarValorAlMapa();
+    protected abstract void agregarValorAlMapa();
+
+    protected abstract void cambiarValor();
+
 
 }

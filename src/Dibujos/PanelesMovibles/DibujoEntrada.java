@@ -71,7 +71,11 @@ public class DibujoEntrada extends PanelMovible {
     }
     @Override
     public void agregarValorAlMapa(){
-        mapa.agregarVarYKey(mapa.obtenerVariable(this.texto),mapa.obtenerClave(this.texto));
+        mapa.agregarClaveValor(mapa.obtenerClave(this.texto),mapa.obtenerValor(this.texto));
     }
 
+    @Override
+    protected void cambiarValor() {
+        mapa.cambiarValor(mapa.obtenerClave(this.texto),mapa.obtenerValor(this.texto));
+    }
 }
