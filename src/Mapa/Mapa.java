@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Mapa {
     java.util.Map<Object,Object> mapa = new HashMap<>();
 
-    public String obtenerVariable(String _cadena){
+    public String obtenerClave(String _cadena){
         String _variable = "";
         int i = 0;
         while(i < _cadena.length() && _cadena.charAt(i) != ' '){
@@ -15,7 +15,7 @@ public class Mapa {
         return _variable;
     }
 
-    public String obtenerClave(String _cadena){
+    public String obtenerValor(String _cadena){
         int i = 0;
         int contarEspacios = 0;
         boolean leyendoClave = false;
@@ -34,9 +34,15 @@ public class Mapa {
         return _clave;
     }
 
-    public <T,K> void agregarVarYKey(T _variable,K _clave){
-        mapa.put(_variable,_clave);
-        System.out.println("Agregado:"+_variable+"/"+_clave);
+    public <T,K> void agregarClaveValor(T _clave,K _valor){
+        mapa.put(_clave,_valor);
+        System.out.println("Agregado:"+_clave+"/"+_valor);
+        System.out.println(":"+mapa);
+    }
+
+    public <T,K> void cambiarValor(T _clave, K _valor){
+        mapa.put(_clave,_valor);
+        System.out.println("Editado:"+_clave+"/"+_valor);
         System.out.println(":"+mapa);
     }
 }

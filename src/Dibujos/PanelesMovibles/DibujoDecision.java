@@ -38,4 +38,8 @@ public class DibujoDecision extends PanelMovible {
     public void agregarValorAlMapa() {
     }
 
+    @Override
+    protected void cambiarValor() {
+
+    }
 }

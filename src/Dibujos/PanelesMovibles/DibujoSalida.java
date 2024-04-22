@@ -74,4 +74,7 @@ public class DibujoSalida extends PanelMovible {
     public void agregarValorAlMapa() {
     }
 
+    @Override
+    protected void cambiarValor() {
+    }
 }
