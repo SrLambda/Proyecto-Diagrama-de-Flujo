@@ -2,6 +2,7 @@ package Dibujos.PanelesMovibles.Decision;
 
 import Dibujos.FactoryPanel;
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoDecision;
 import Mapa.Mapa;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class VentanaEmergenteDecision {
     private boolean verdadero;
 
 
-    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso, PanelPersonalizado _contenedor, Mapa _mapa){
+    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso, PanelPersonalizado _contenedor, Mapa _mapa,Integer _alto) {
         String[] opciones = {"","Entrada", "Salida", "Proceso", "Documento", "Decision"};
 
         // Crear un JComboBox con las opciones
@@ -83,6 +84,7 @@ public class VentanaEmergenteDecision {
                 PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad,_mapa);
                 l_verdad.add(nuevo);
                 verdad.add(nuevo);
+                ajustarAlto(_alto,l_verdad,seleccion.equalsIgnoreCase("Decision"),nuevo);
                 verdad.revalidate();
             }
             else
@@ -93,6 +95,7 @@ public class VentanaEmergenteDecision {
                 PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_falso,falso,_mapa);
                 l_falso.add(nuevo);
                 falso.add(nuevo);
+                ajustarAlto(_alto,l_falso,seleccion.equalsIgnoreCase("Decision"),nuevo);
                 falso.revalidate();
             }
         }
@@ -118,6 +121,20 @@ public class VentanaEmergenteDecision {
         {
             return "----";
 
+        }
+    }
+
+    private void ajustarAlto(Integer alto,List lista,boolean decision,PanelPersonalizado nuevo) {
+        if(decision){
+            if(alto < 300 +((lista.size()-1) * 150) + 300 ){
+                DibujoDecision aux1= (DibujoDecision) nuevo;
+                Integer aux2 = aux1.getAlto();
+                alto = 300 +((lista.size()) * 150) + aux2;
+            }
+        }else{
+            if(alto < 300 +(lista.size() * 150)) {
+                alto = 300 +(lista.size() * 150);
+            }
         }
     }
 }

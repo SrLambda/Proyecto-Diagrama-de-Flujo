@@ -2,6 +2,7 @@ package Dibujos.PanelesMovibles.Decision;
 
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoDecision;
 import Mapa.Mapa;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
     private DibujoDecisionInterno interno;
 
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno, Mapa _mapa) {
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno, Mapa _mapa,Integer _alto) {
         super(texto,lista,_contenedor);
         this.interno = _interno;
 
@@ -41,7 +42,8 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
                     JPanel fal= interno.getFalso();
                     List<PanelPersonalizado> l_fal= interno.getListaFalsa();
 
-                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor,_mapa);
+
+                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor,_mapa,_alto);
                 }
             }
         });
