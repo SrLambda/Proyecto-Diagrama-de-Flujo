@@ -47,7 +47,7 @@ public class DibujoFin extends PanelPersonalizado {
         // Dibujar el texto centrado
         FontMetrics metrics = g.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
-        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
+        int y = ((getHeight() + 30 - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
 }
