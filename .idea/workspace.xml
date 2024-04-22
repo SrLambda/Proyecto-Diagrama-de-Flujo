@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d011937a-d03c-4e27-a502-a575753ae30f" name="Changes" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/.idea/cody_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DesicionVacia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/VentanaEmergenteDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/VentanaEmergenteDecision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDecision.java" afterDir="false" />
->>>>>>> e21562460f1d072dae58cb401a4ff4a41fdd1229
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/FactoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/FactoryPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,25 +70,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-<<<<<<< HEAD
-    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
-    "RunOnceActivity.CodyHistoryLlmMigration": "true",
-    "RunOnceActivity.CodyProjectSettingsMigration": "true",
-=======
->>>>>>> e21562460f1d072dae58cb401a4ff4a41fdd1229
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "512",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "testing",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-<<<<<<< HEAD
-    "last_opened_file_path": "C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/PDP/U1/GraficadorInteractivo/GraficadorInteractivo",
-=======
     "last_opened_file_path": "C:/Users/catah/OneDrive - Universidad de Talca/Escritorio/javafx-sdk-21.0.2/lib/javafx.web.jar",
->>>>>>> e21562460f1d072dae58cb401a4ff4a41fdd1229
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -109,11 +87,7 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-<<<<<<< HEAD
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-=======
     "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors",
->>>>>>> e21562460f1d072dae58cb401a4ff4a41fdd1229
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
