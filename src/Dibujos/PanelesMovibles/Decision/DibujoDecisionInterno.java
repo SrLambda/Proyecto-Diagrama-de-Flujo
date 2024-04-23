@@ -13,13 +13,12 @@ import java.util.List;
 
 public class DibujoDecisionInterno extends JPanel {
 
-
     private final DesicionInterna verdadero;
     private final DesicionInterna falso;
 
     public DibujoDecisionInterno()
     {
-
+        setPreferredSize(new Dimension(200, 400));
         this.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -29,8 +28,6 @@ public class DibujoDecisionInterno extends JPanel {
         this.verdadero.setLayout(new BoxLayout(this.verdadero, BoxLayout.Y_AXIS));
         this.verdadero.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.verdadero.add(new DesicionVacia(null,null,null));
-
-
 
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
@@ -87,7 +84,6 @@ public class DibujoDecisionInterno extends JPanel {
             return listaFiguras;
         }
     }
-
 
 }
 

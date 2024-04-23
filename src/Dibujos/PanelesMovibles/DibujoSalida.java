@@ -14,6 +14,7 @@ public class DibujoSalida extends PanelMovible {
     public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
     {
         super(texto,lista,_contenedor);
+        setPreferredSize(new Dimension(200, 200));
     }
 
 

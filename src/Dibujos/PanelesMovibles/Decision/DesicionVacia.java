@@ -10,6 +10,7 @@ public class DesicionVacia extends PanelPersonalizado {
 
     public DesicionVacia(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(_texto, lista, _contenedor);
+        setPreferredSize(new Dimension(200, 400));
     }
 
     @Override

@@ -1,6 +1,5 @@
 package Dibujos.PanelesMovibles.Decision;
 
-
 import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
@@ -17,6 +16,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
     public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno) {
         super(texto,lista,_contenedor);
         this.interno = _interno;
+        setPreferredSize(new Dimension(200, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -86,7 +86,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         g.drawLine(x2,centro_y,cuarto*3,centro_y);
         g.drawLine(cuarto,centro_y,cuarto,panelHeight);
         g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
-
 
         // Dibuja el texto centrado
         FontMetrics metrics = g.getFontMetrics();

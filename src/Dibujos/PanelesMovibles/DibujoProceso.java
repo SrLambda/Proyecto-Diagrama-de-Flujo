@@ -15,7 +15,7 @@ public class DibujoProceso extends PanelMovible {
     private int ejeYMouse;
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
-
+        setPreferredSize(new Dimension(200, 400));
     }
 
     @Override
@@ -40,14 +40,14 @@ public class DibujoProceso extends PanelMovible {
         // Dibujar las líneas que forman el rectángulo
         g.setColor(Color.BLACK);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
-        g.drawLine(x2, y1, x2, y2 + 30);     // Lado derecho
-        g.drawLine(x2, y2 + 30, x1, y2 + 30);     // Lado inferior
-        g.drawLine(x1, y2 + 30, x1, y1);     // Lado izquierdo
+        g.drawLine(x2, y1, x2, y2);     // Lado derecho
+        g.drawLine(x2, y2, x1, y2);     // Lado inferior
+        g.drawLine(x1, y2, x1, y1);     // Lado izquierdo
 
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);            // Linea superior
-        g.drawLine(centro_x,y2 + 30,centro_x,panelHeight +30);     // Linea inferior
+        g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
         g.drawLine(centro_x,y1,centro_x+10,y1-10);
         g.drawLine(centro_x,y1,centro_x-10,y1-10);
 
@@ -59,6 +59,4 @@ public class DibujoProceso extends PanelMovible {
         g.drawString(texto, x, y);
 
     }
-
-
 }

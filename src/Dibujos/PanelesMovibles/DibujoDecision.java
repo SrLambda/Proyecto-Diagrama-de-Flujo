@@ -7,6 +7,7 @@ import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInterno;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class DibujoDecision extends PanelMovible {
 
     public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto, lista, _contenedor);
+        setPreferredSize(new Dimension(200, 500));
 
         this.setLayout(new BoxLayout(DibujoDecision.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
