@@ -8,6 +8,7 @@ import Dibujos.PanelesMovibles.Decision.DibujoDecisionInterno;
 import Mapa.Mapa;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,12 @@ public class DibujoDecision extends PanelMovible {
     private JPanel condicion, contenido, fin;
     private List<PanelPersonalizado> lista;
 
+    private Integer alto;
+
     public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, Mapa _mapa) {
         super(texto, lista, _contenedor,_mapa);
+        this.alto = 300;
+        setPreferredSize(new Dimension(250, alto));
 
         this.setLayout(new BoxLayout(DibujoDecision.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -25,7 +30,7 @@ public class DibujoDecision extends PanelMovible {
 
         this.contenido = new DibujoDecisionInterno();
 
-        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,(DibujoDecisionInterno) contenido,_mapa);
+        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,(DibujoDecisionInterno) contenido,_mapa,alto);
         this.fin = new DibujoDecisionFin(texto,lista,this);
 
         this.add(condicion);
@@ -41,5 +46,9 @@ public class DibujoDecision extends PanelMovible {
     @Override
     protected void cambiarValor() {
 
+    }
+
+    public Integer getAlto() {
+        return alto;
     }
 }
