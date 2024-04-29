@@ -37,12 +37,12 @@ public class DibujoDocumento extends PanelMovible {
         int centro_x = panelWidth/2;
 
         // Dibujar las líneas que forman el rectángulo
-        g.setColor(Color.BLUE);
+        g.setColor(Color.BLACK);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
         g.drawLine(x2, y1, x2, y2);     // Lado derecho
         //g.drawLine(x2, y2, x1, y2);     // Lado inferior
         g.drawLine(x1, y2, x1, y1);     // Lado izquierdo
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(Color.BLACK);
         g2d.setStroke(new BasicStroke(2)); // Grosor de línea
         g2d.draw(new QuadCurve2D.Double(x1, y2, ctrl1x, -ctrl1y, x3, y2));
         g2d.draw(new QuadCurve2D.Double(x3, y2, ctrl2x, ctrl2y, x2, y2));

@@ -40,7 +40,7 @@ public class DibujoEntrada extends PanelMovible {
 
 
         // Dibujar las líneas que forman el paralelogramo
-        g.setColor(Color.ORANGE);
+        g.setColor(Color.BLACK);
         g.drawLine(x1 + desvio, y1, x2 + desvio, y1);     // Lado superior
         g.drawLine(x2 + desvio, y1, x2 - desvio, y2);     // Lado derecho
         g.drawLine(x2 - desvio, y2, x1 - desvio, y2);     // Lado inferior
@@ -48,7 +48,7 @@ public class DibujoEntrada extends PanelMovible {
 
         
         // Dibujar flecha de salida
-        g.setColor(Color.GREEN);
+        g.setColor(Color.RED);
         g.drawLine(x2 + desvio, y1, x2 + desvio - 10, y1 + 5);              // Linea de
         g.drawLine(x2 + desvio, y1, x2 + desvio + 10, y1 - 5);              // Flecha
 
