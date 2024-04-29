@@ -79,7 +79,7 @@ public class DibujoDecisionInterno extends JPanel {
 
             g.drawLine(ancho / 2, 0, ancho / 2, alto);
         }
-        
+
 
 
         public List<PanelPersonalizado> getListaFiguras()
