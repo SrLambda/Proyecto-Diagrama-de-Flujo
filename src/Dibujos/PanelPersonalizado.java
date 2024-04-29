@@ -163,4 +163,8 @@ public abstract class PanelPersonalizado extends JPanel
             parent.repaint();
         }
     }
+
+    public String getTexto() {
+        return texto;
+    }
 }

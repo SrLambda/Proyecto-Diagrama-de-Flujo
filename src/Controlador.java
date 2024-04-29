@@ -17,6 +17,8 @@ public class Controlador {
     private List <PanelPersonalizado> listaFiguras;
     private JPanel contenedor;
 
+    private Parseador parseador;
+
 
     // Instanciar Singleton
     private Controlador()
@@ -45,6 +47,8 @@ public class Controlador {
     {
         contenedor = _contenedor;
         listaFiguras = _listaFiguras;
+        this.parseador = new Parseador(_listaFiguras);
+
         front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
         front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -63,6 +67,7 @@ public class Controlador {
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo);
         front.getPanel1().revalidate();
+
 
     }
 
@@ -87,6 +92,8 @@ public class Controlador {
         int posicion = listaFiguras.size()-1;
 
         listaFiguras.add(posicion, nuevo);
+        parseador.actualizar();
+
         front.getPanel1().add(nuevo,posicion);
         front.getPanel1().revalidate();
 
@@ -101,6 +108,11 @@ public class Controlador {
         lienzo.removeAll();
         lienzo.repaint();
 
+    }
+
+    public void pseudoCodigo(Front front)
+    {
+        System.out.println(parseador.getPseuddoCodigo());
     }
 
 

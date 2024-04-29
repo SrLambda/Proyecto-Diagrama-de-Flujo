@@ -41,6 +41,8 @@ public class DibujoDecisionInterno extends JPanel {
         this.add(falso);
     }
 
+
+
     public JPanel getVerdadero() {
         return verdadero;
     }
@@ -50,6 +52,10 @@ public class DibujoDecisionInterno extends JPanel {
         return verdadero.getListaFiguras();
     }
 
+
+
+
+
     public List<PanelPersonalizado> getListaFalsa()
     {
         return falso.getListaFiguras();
@@ -58,6 +64,10 @@ public class DibujoDecisionInterno extends JPanel {
     public JPanel getFalso() {
         return falso;
     }
+
+
+
+
 
     public class DesicionInterna extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;

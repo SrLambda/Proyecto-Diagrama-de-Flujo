@@ -1,7 +1,6 @@
 import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ public class Front extends JFrame {
     private JButton documentoButton;
     private JButton limpiarButton;
     private JScrollPane scroll;
+    private JButton pseudoCodigoButton;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
 
@@ -120,6 +120,17 @@ public class Front extends JFrame {
             {
 
                 controlador.crearPanel(Front.this,"documento");
+
+            }
+
+        });
+
+        pseudoCodigoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+                controlador.pseudoCodigo(Front.this);
 
             }
 
