@@ -83,7 +83,8 @@ public abstract class PanelPersonalizado extends JPanel
     public void cambiarTexto(String nuevoTexto)
     {
         texto = nuevoTexto;
-        repaint(); // Redibujar la figura con el nuevo texto
+        repaint();// Redibujar la figura con el nuevo texto
+        revalidate();
 
     }
 

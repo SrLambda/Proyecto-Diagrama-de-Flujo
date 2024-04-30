@@ -34,10 +34,11 @@ public class Front extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Graficador Interactivo de Diagramas de flujo");
         setVisible(true);
+
         listaPaneles = new ArrayList<>();
         this.columna = new JPanel();
 
-        controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel);
+        controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
 
 
 
@@ -78,7 +79,7 @@ public class Front extends JFrame {
 
                 controlador.limpiarPantalla(Front.this);
                 listaPaneles = new ArrayList<>();
-                controlador.initFront(Front.this,listaPaneles,scroll,panel);
+                controlador.initFront(Front.this,listaPaneles,scroll,panel1);
 
             }
 
@@ -132,7 +133,10 @@ public class Front extends JFrame {
 
         pruebas.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
+
+                controlador.prueba();
 
             }
         });

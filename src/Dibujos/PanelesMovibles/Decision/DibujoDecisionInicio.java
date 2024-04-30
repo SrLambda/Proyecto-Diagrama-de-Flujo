@@ -12,16 +12,15 @@ import java.util.List;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
 
-    private DibujoDecisionInterno interno;
-
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno) {
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
-        this.interno = _interno;
 
-        addMouseListener(new MouseAdapter() {
+        addMouseListener(new MouseAdapter()
+        {
+
             @Override
-            public void mousePressed(MouseEvent e) {
-
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
@@ -29,23 +28,11 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
                     }
                 }
 
-                if (SwingUtilities.isRightMouseButton(e)) {
-
-                    //Verdad
-                    JPanel ver= interno.getVerdadero();
-                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera();
-
-
-                    //Falso
-                    JPanel fal= interno.getFalso();
-                    List<PanelPersonalizado> l_fal= interno.getListaFalsa();
-
-                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
-                }
             }
         });
-
     }
+
+
 
 
     @Override

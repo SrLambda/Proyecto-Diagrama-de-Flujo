@@ -1,13 +1,9 @@
 import Dibujos.*;
-import Dibujos.PanelesMovibles.*;
-import Dibujos.PanelesMovibles.Decision.DibujoDecisionFin;
-import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.QuadCurve2D;
+
 import java.util.List;
 
 public class Controlador {
@@ -19,12 +15,12 @@ public class Controlador {
 
     private Parseador parseador;
 
+    private VentanaEmergente ventanaEmergente;
+
 
     // Instanciar Singleton
-    private Controlador()
-    {
+    private Controlador() {}
 
-    }
 
     public static Controlador getInstancia()
     {
@@ -45,8 +41,8 @@ public class Controlador {
 
     public void initFront(Front front, List <PanelPersonalizado> _listaFiguras,JScrollPane scroll, JPanel _contenedor)
     {
-        contenedor = _contenedor;
-        listaFiguras = _listaFiguras;
+        this.contenedor = _contenedor;
+        this.listaFiguras = _listaFiguras;
         this.parseador = new Parseador(_listaFiguras);
 
         front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
@@ -58,6 +54,8 @@ public class Controlador {
 
         crearInicio(front);
         crearFin(front);
+
+        this.ventanaEmergente = new VentanaEmergente(_listaFiguras,_contenedor);
 
     }
 
@@ -85,16 +83,24 @@ public class Controlador {
 
     public void crearPanel(Front front,String tipo)
     {
+        // Clase Factory
         FactoryPanel factory = new FactoryPanel();
 
+
+        // Crea el panel                                   __   cambio   __
         PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor);
 
-        int posicion = listaFiguras.size()-1;
 
-        listaFiguras.add(posicion, nuevo);
+
+        //---------------cambios-----------------
+        //posicion
+        this.ventanaEmergente.agregar(nuevo);
+        //---------------------------------------
+
+
+        // Actualizan los cambios
         parseador.actualizar();
-
-        front.getPanel1().add(nuevo,posicion);
+        this.ventanaEmergente.actualizarCompnentes();
         front.getPanel1().revalidate();
 
     }
@@ -113,6 +119,10 @@ public class Controlador {
     public void pseudoCodigo(Front front)
     {
         System.out.println(parseador.getPseuddoCodigo());
+    }
+
+    public void prueba(){
+        this.ventanaEmergente.mostrar();
     }
 
 

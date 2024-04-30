@@ -24,8 +24,8 @@ public class DibujoDecision extends PanelMovible {
 
         this.contenido = new DibujoDecisionInterno();
 
-        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,(DibujoDecisionInterno) contenido);
-        this.fin = new DibujoDecisionFin(texto,lista,this);
+        this.condicion = new DibujoDecisionInicio(this.texto,lista,this);
+        this.fin = new DibujoDecisionFin(this.texto,lista,this);
 
         this.add(condicion);
         this.add(contenido);
@@ -39,8 +39,18 @@ public class DibujoDecision extends PanelMovible {
         return aux.getListaVerdadera();
     }
 
+    public JPanel getContVerdad(){
+        DibujoDecisionInterno aux = (DibujoDecisionInterno) this.contenido;
+        return aux.getVerdadero();
+    }
+
     public List<PanelPersonalizado> getFalso(){
         DibujoDecisionInterno aux = (DibujoDecisionInterno) this.contenido;
         return aux.getListaFalsa();
+    }
+
+    public JPanel getContFalso(){
+        DibujoDecisionInterno aux = (DibujoDecisionInterno) this.contenido;
+        return aux.getFalso();
     }
 }

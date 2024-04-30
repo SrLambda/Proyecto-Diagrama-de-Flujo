@@ -1,0 +1,268 @@
+import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.*;
+import Dibujos.PanelesNoMovibles.DibujoInicio;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class VentanaEmergente {
+
+    private List<PanelPersonalizado> lista;
+    private List<String> compnentes;
+    private JPanel contenedor;
+    private boolean esPrincipal;
+
+    VentanaEmergente(List<PanelPersonalizado> _lista, JPanel _contenedor)
+    {
+        this.lista       =  _lista;
+        this.contenedor  =  _contenedor;
+        this.compnentes  =  new ArrayList<>();
+        this.esPrincipal =  !_lista.isEmpty();
+
+        this.actualizarCompnentes();
+    }
+
+    public void actualizarCompnentes()
+    {
+
+        this.compnentes.clear();
+        this.compnentes.add("AGREGAR FINAL");
+
+        StringBuilder opcion;
+        String         texto;
+        int           indice;
+
+
+        for (int i=0 ; i < this.lista.size() ; i++ ) {
+
+            if(this.esPrincipal)
+            {
+                indice = i;
+            }
+            else
+            {
+                indice = i+1;
+            }
+
+
+
+            opcion = new StringBuilder();
+            texto  = this.lista.get(i).getTexto();
+
+
+
+
+           if(this.lista.get(i) instanceof DibujoProceso)
+           {
+
+
+               opcion.append(indice).append(" | PROCESO ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+
+
+           }
+           else if(this.lista.get(i) instanceof DibujoEntrada)
+           {
+
+
+               opcion.append(indice).append(" | ENTRADA ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+
+           }
+           else if (this.lista.get(i) instanceof DibujoSalida)
+           {
+
+
+               opcion.append(indice).append(" | SALIDA ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+
+           }
+           else if (this.lista.get(i) instanceof DibujoDocumento)
+           {
+
+
+               opcion.append(indice).append(" | DOCUMENTO ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+
+           }
+           else if (this.lista.get(i) instanceof DibujoDecision)
+           {
+
+
+               opcion.append(indice).append(" | DECICION ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE VERDAD | --");
+               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE FALSO  | --");
+
+
+           }
+
+
+        }
+
+    }
+
+    public void agregar(PanelPersonalizado nuevo)
+    {
+        String seleccion = new String();
+
+        String[] componentes_aux = new String[this.compnentes.size()];
+        componentes_aux = this.compnentes.toArray(componentes_aux);
+
+        JComboBox<String> comboBox = new JComboBox<>(componentes_aux);
+
+        JButton botonAgregar = new JButton("Agregar");
+
+        JPanel panelBotones = new JPanel();
+        panelBotones.setLayout(new FlowLayout(FlowLayout.RIGHT)); // Alinear los botones a la derecha
+        panelBotones.add(botonAgregar);
+
+        botonAgregar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                ((Window) SwingUtilities.getRoot(panelBotones)).dispose();
+                agregarElemento((String) comboBox.getSelectedItem(),nuevo);
+
+            }
+
+        });
+
+        // Crear un panel para el contenido de la ventana emergente
+        JPanel panelContenido = new JPanel();
+        panelContenido.setLayout(new BorderLayout());
+        panelContenido.add(comboBox, BorderLayout.CENTER);
+        panelContenido.add(panelBotones, BorderLayout.SOUTH);
+
+        // Mostrar la ventana emergente
+        int resultado = JOptionPane.showOptionDialog(null, panelContenido, "Agregar en lugar en especifico",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
+
+    }
+
+    private void agregarElemento(String seleccion, PanelPersonalizado nuevo)
+    {
+        int posicion;
+
+
+        if(seleccion.equals("AGREGAR FINAL"))
+        {
+
+            if(this.lista.isEmpty())
+            {
+                this.lista.add(nuevo);
+                this.contenedor.add(nuevo);
+            }
+            else
+            {
+                posicion = this.lista.size()-1;
+
+                this.lista.add(posicion, nuevo);
+                this.contenedor.add(nuevo,posicion);
+            }
+
+
+
+        }
+        else
+        {
+
+
+            String[] sel_desarmada = seleccion.split(" ");
+            posicion = Integer.parseInt(sel_desarmada[0]);
+
+
+
+            if(sel_desarmada[1].equals("--"))
+            {
+
+                DibujoDecision aux = (DibujoDecision) lista.get(posicion);
+
+                if(sel_desarmada[6].equals("VERDAD"))
+                {
+
+
+                    List<PanelPersonalizado> lista_aux = aux.getVerdad();
+                    JPanel                    cont_aux = aux.getContVerdad();
+
+                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux);
+
+                    vent_aux.agregar(nuevo);
+
+                }
+                else
+                {
+
+                    List<PanelPersonalizado> lista_aux = aux.getFalso();
+                    JPanel                    cont_aux = aux.getContFalso();
+
+                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux);
+
+                    vent_aux.agregar(nuevo);
+
+                }
+
+
+            }
+            else
+            {
+
+                if(!this.esPrincipal)
+                {
+                    posicion--;
+                }
+
+                this.lista.add(posicion, nuevo);
+                this.contenedor.add(nuevo,posicion);
+
+            }
+        }
+
+    }
+
+    public void mostrar(){
+        for (String opcion: this.compnentes) {
+            System.out.println(opcion);
+        }
+    }
+}
