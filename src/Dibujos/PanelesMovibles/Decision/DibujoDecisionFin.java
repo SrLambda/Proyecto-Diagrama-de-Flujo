@@ -28,7 +28,7 @@ public class DibujoDecisionFin extends PanelPersonalizado {
 
         int cuarto = panelWidth/4;
 
-        // Dibujar las líneas que forman el rectángulo
+        // Dibujar las líneas que forman el rombo
         g.setColor(Color.BLACK);
         g.drawLine(cuarto,0,cuarto, centro_y);                // Linea derecha
         g.drawLine(cuarto*3, 0,cuarto*3, centro_y);   // Linea izquierda

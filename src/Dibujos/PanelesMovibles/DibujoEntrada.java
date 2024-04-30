@@ -14,17 +14,15 @@ public class DibujoEntrada extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
         setPreferredSize(new Dimension(200, 200));
     }
 
-
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
-
 
         int panelWidth = getWidth();
         int panelHeight = getHeight();
@@ -45,7 +43,7 @@ public class DibujoEntrada extends PanelMovible {
         g.drawLine(x2-desvio, y2 + 30, x1-desvio, y2 + 30);     // Lado inferior
         g.drawLine(x1-desvio, y2 + 30, x1+desvio, y1);     // Lado izquierdo
 
-        
+
         // Dibujar flecha de entrada
         g.setColor(Color.RED);
         g.drawLine(x2 + desvio, y1, x2 + desvio - 10, y1 + 5);              // Linea de
@@ -62,6 +60,8 @@ public class DibujoEntrada extends PanelMovible {
         g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
         g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
 
         // Dibuja el texto centrado
         FontMetrics metrics = g.getFontMetrics();

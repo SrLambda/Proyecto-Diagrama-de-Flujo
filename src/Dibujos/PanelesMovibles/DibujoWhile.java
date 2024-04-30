@@ -1,52 +1,21 @@
-package Dibujos.PanelesMovibles.Decision;
+package Dibujos.PanelesMovibles;
 
+import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-public class DibujoDecisionInicio extends PanelPersonalizado {
-    private DibujoDecisionInterno interno;
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+public class DibujoWhile extends PanelMovible {
+    private List<PanelPersonalizado> panelesCiclo;
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20); // Puedes ajustar el tamaño aquí
 
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno) {
-        super(texto,lista,_contenedor);
-        this.interno = _interno;
-        setPreferredSize(new Dimension(200, 400));
-
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-                if (e.getClickCount() == 2) { // Doble clic para editar el texto
-                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
-                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
-                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
-                    }
-                }
-
-                if (SwingUtilities.isRightMouseButton(e)) {
-
-                    //Verdad
-                    JPanel ver= interno.getVerdadero();
-                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera();
-
-
-                    //Falso
-                    JPanel fal= interno.getFalso();
-                    List<PanelPersonalizado> l_fal= interno.getListaFalsa();
-
-                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
-                }
-            }
-        });
-
+    public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+        super(texto, lista, _contenedor);
+        setPreferredSize(new Dimension(200, 200));
+        panelesCiclo = lista;
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -78,6 +47,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
 
+
         g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
         g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
 
@@ -94,5 +64,9 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
+    }
+
+    public List<PanelPersonalizado> getPanelesCiclo() {
+        return panelesCiclo;
     }
 }

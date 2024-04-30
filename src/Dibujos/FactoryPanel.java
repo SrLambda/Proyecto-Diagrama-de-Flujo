@@ -28,10 +28,13 @@ public class FactoryPanel {
         {
             return new DibujoProceso(texto,lista,_contenedor);
         }
+        else if(tipo.equalsIgnoreCase("while"))
+        {
+            return new DibujoWhile(texto, lista, _contenedor);
+        }
         else
         {
             throw new IllegalArgumentException("Tipo de vehículo desconocido.");
         }
-
     }
 }

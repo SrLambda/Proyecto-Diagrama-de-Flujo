@@ -2,7 +2,6 @@ package Dibujos.PanelesMovibles.Decision;
 
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoDecision;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -60,9 +59,7 @@ public class DibujoDecisionInterno extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
 
         DesicionInterna() {
-
             listaFiguras = new ArrayList<>();
-
         }
 
         @Override
@@ -76,7 +73,7 @@ public class DibujoDecisionInterno extends JPanel {
 
             g.drawLine(ancho / 2, 0, ancho / 2, alto);
         }
-        
+
 
 
         public List<PanelPersonalizado> getListaFiguras()
