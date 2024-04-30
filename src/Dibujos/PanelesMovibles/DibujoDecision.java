@@ -32,4 +32,15 @@ public class DibujoDecision extends PanelMovible {
         this.add(fin);
 
     }
+
+    public List<PanelPersonalizado> getVerdad(){
+
+        DibujoDecisionInterno aux = (DibujoDecisionInterno) this.contenido;
+        return aux.getListaVerdadera();
+    }
+
+    public List<PanelPersonalizado> getFalso(){
+        DibujoDecisionInterno aux = (DibujoDecisionInterno) this.contenido;
+        return aux.getListaFalsa();
+    }
 }
