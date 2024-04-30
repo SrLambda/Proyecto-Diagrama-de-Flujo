@@ -89,7 +89,6 @@ public abstract class PanelMovible extends PanelPersonalizado{
                     int cambioPosicionY = e.getYOnScreen() - ultimoEjeY;
                     setLocation(getX(), getY() + cambioPosicionY);
                     ultimoEjeY = e.getYOnScreen();
-                    colisionesVisual();
 
                 }
             }

@@ -18,6 +18,7 @@ public class Front extends JFrame {
     private JButton documentoButton;
     private JButton limpiarButton;
     private JScrollPane scroll;
+    private JButton pruebas;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
 
@@ -123,6 +124,13 @@ public class Front extends JFrame {
 
             }
 
+        });
+
+        pruebas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
         });
 
 
