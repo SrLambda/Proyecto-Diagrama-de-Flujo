@@ -32,8 +32,8 @@ public class DibujoWhileInicio extends PanelPersonalizado {
                 if (SwingUtilities.isRightMouseButton(e)) {
 
                     //Verdad
-                    JPanel ver= interno.getVerdadero();
-                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera();
+                    JPanel ver= interno.getVerdadero2();
+                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera2();
 
 
                     //Falso
