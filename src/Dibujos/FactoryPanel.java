@@ -21,6 +21,10 @@ public class FactoryPanel {
         {
             return new DibujoEntrada(texto,lista,_contenedor,_mapa);
         }
+        else if(tipo.equalsIgnoreCase("for"))
+        {
+            return new InstruccionFor(texto,lista,_contenedor,_mapa);
+        }
         else if (tipo.equalsIgnoreCase("salida"))
         {
             return new DibujoSalida(texto,lista,_contenedor,_mapa);

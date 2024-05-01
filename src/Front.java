@@ -18,6 +18,7 @@ public class Front extends JFrame {
     private JButton documentoButton;
     private JButton limpiarButton;
     private JScrollPane scroll;
+    private JButton forButton;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
     private Mapa mapa = new Mapa();
@@ -79,6 +80,20 @@ public class Front extends JFrame {
 
             }
 
+        });
+
+
+        //Dibujar For
+        forButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+                controlador.crearPanel(Front.this,"for",mapa);
+
+            }
         });
 
 
