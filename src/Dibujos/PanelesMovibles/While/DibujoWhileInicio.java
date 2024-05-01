@@ -1,20 +1,21 @@
-package Dibujos.PanelesMovibles.Decision;
-
+package Dibujos.PanelesMovibles.While;
 import Dibujos.PanelPersonalizado;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-public class DibujoDecisionInicio extends PanelPersonalizado {
-    private DibujoDecisionInterno interno;
+public class DibujoWhileInicio extends PanelPersonalizado {
+    private DibujoWhileInterno interno;
+    private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno) {
-        super(texto,lista,_contenedor);
+    public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno) {
+        super(texto, lista, _contenedor);
+        //setPreferredSize(new Dimension(200, 200));
         this.interno = _interno;
+        panelesCiclo = lista;
         setPreferredSize(new Dimension(200, 400));
 
         addMouseListener(new MouseAdapter() {
@@ -39,14 +40,12 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
                     JPanel fal= interno.getFalso();
                     List<PanelPersonalizado> l_fal= interno.getListaFalsa();
 
-                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
+                    new VentanaEmergenteWhile(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
                 }
             }
         });
 
     }
-
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -65,7 +64,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
         int cuarto = panelWidth/4;
 
-
         // Dibujar las líneas que forman el rombo
         g.setColor(Color.BLACK);
         g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
@@ -76,14 +74,20 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
+        g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
+        g.drawLine(x2,centro_y,cuarto*3,centro_y); //  Linea horizontal derecha
+        g.drawLine(cuarto,(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
+
+        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight); //  Linea vertical derecha
+        g.drawLine(cuarto,(int) (panelHeight*0.25),cuarto,panelHeight); //  Linea vertical izquierda
 
         g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
         g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
 
-        g.drawLine(x1,centro_y,cuarto,centro_y);
+        /*g.drawLine(x1,centro_y,cuarto,centro_y);
         g.drawLine(x2,centro_y,cuarto*3,centro_y);
         g.drawLine(cuarto,centro_y,cuarto,panelHeight);
-        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
+        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);*/
 
         // fuente con el tamaño especificado
         g.setFont(textoFont);
@@ -94,56 +98,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
-    //alternativa 2 del paintComponent
-    /*@Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        int panelWidth = getWidth();
-        int panelHeight = getHeight();
-
-        // Coordenadas para el ciclo While
-        int x = (int) (panelWidth * 0.1);
-        int y = (int) (panelHeight * 0.1);
-        int width = (int) (panelWidth * 0.8);
-        int height = (int) (panelHeight * 0.8);
-
-        // Dibujar el rectángulo para el ciclo While
-        g.setColor(Color.BLACK);
-        g.drawRect(x, y, width, height);
-
-        // Dibujar la línea de separación
-        int yLine = y + height / 2;
-        g.drawLine(x, yLine, x + width, yLine);
-
-        // Dibujar las flechas del ciclo
-        int arrowSize = 10; // Tamaño de la punta de la flecha
-        int xArrow = x + width / 2;
-        int yArrowUp = y - arrowSize;
-        int yArrowDown = y + height + arrowSize;
-
-        // Flecha hacia arriba
-        g.drawLine(xArrow, y, xArrow, yArrowUp);
-        g.drawLine(xArrow, yArrowUp, xArrow - arrowSize, yArrowUp + arrowSize);
-        g.drawLine(xArrow, yArrowUp, xArrow + arrowSize, yArrowUp + arrowSize);
-
-        // Flecha hacia abajo
-        g.drawLine(xArrow, yLine, xArrow, yArrowDown);
-        g.drawLine(xArrow, yArrowDown, xArrow - arrowSize, yArrowDown - arrowSize);
-        g.drawLine(xArrow, yArrowDown, xArrow + arrowSize, yArrowDown - arrowSize);
-
-        // Dibujar el texto "While Condición" y "Acción(es)"
-        g.setFont(textoFont);
-        FontMetrics metrics = g.getFontMetrics();
-        String textoCondicion = "While Condición";
-        String textoAccion = "Acción(es)";
-        int xTextoCondicion = (getWidth() - metrics.stringWidth(textoCondicion)) / 2;
-        int yTextoCondicion = y + metrics.getAscent();
-        int xTextoAccion = (getWidth() - metrics.stringWidth(textoAccion)) / 2;
-        int yTextoAccion = yLine + metrics.getAscent();
-
-        g.drawString(textoCondicion, xTextoCondicion, yTextoCondicion);
-        g.drawString(textoAccion, xTextoAccion, yTextoAccion);
-    }*/
+    public List<PanelPersonalizado> getPanelesCiclo() {
+        return panelesCiclo;
+    }
 }

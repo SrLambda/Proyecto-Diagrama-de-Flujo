@@ -6,13 +6,9 @@ import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.QuadCurve2D;
 import java.util.List;
 
 public class Controlador {
-
-
     private static Controlador instancia;
     private List <PanelPersonalizado> listaFiguras;
     private JPanel contenedor;

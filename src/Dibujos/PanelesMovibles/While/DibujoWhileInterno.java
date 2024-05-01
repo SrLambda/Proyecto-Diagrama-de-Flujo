@@ -1,37 +1,33 @@
-package Dibujos.PanelesMovibles.Decision;
+package Dibujos.PanelesMovibles.While;
 
 import Dibujos.PanelPersonalizado;
-import Dibujos.PanelesMovibles.DibujoDecision;
+import Dibujos.PanelesMovibles.DibujoWhile;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DibujoDecisionInterno extends JPanel {
+public class DibujoWhileInterno extends JPanel {
+    private final WhileInterna verdadero;
+    private final WhileInterna falso;
 
-    private final DesicionInterna verdadero;
-    private final DesicionInterna falso;
-
-    public DibujoDecisionInterno()
+    public DibujoWhileInterno()
     {
         setPreferredSize(new Dimension(200, 400));
-        this.setLayout(new BoxLayout(DibujoDecisionInterno.this, BoxLayout.X_AXIS));
+        this.setLayout(new BoxLayout(DibujoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        this.verdadero = new DesicionInterna();
-        this.falso = new DesicionInterna();
+        this.verdadero = new WhileInterna();
+        this.falso = new WhileInterna();
 
         this.verdadero.setLayout(new BoxLayout(this.verdadero, BoxLayout.Y_AXIS));
         this.verdadero.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero.add(new DesicionVacia(null,null,null));
+        this.verdadero.add(new WhileVacio(null,null,null));
 
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new DesicionVacia(null,null,null));
+        this.falso.add(new WhileVacio(null,null,null));
 
         this.add(verdadero);
         this.add(falso);
@@ -55,10 +51,10 @@ public class DibujoDecisionInterno extends JPanel {
         return falso;
     }
 
-    public class DesicionInterna extends JPanel {
+    public class WhileInterna extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
 
-        DesicionInterna() {
+        WhileInterna() {
             listaFiguras = new ArrayList<>();
         }
 
@@ -68,10 +64,13 @@ public class DibujoDecisionInterno extends JPanel {
 
             g.setColor(Color.BLACK);
 
-            int ancho = this.getWidth();
-            int alto = this.getHeight();
+            int panelWidth = getWidth();
+            int panelHeight = getHeight();
 
-            g.drawLine(ancho / 2, 0, ancho / 2, alto);
+            int centro_x = panelWidth/2;        // Centro horizontal
+            int centro_y = panelHeight/2;     // Centro vertical
+
+            g.drawLine(centro_x,panelHeight,centro_x,0);    // Linea vertical central intermedia
         }
 
         public List<PanelPersonalizado> getListaFiguras()
@@ -79,6 +78,4 @@ public class DibujoDecisionInterno extends JPanel {
             return listaFiguras;
         }
     }
-
 }
-
