@@ -31,10 +31,10 @@ public class DibujoWhileFin extends PanelPersonalizado {
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,panelHeight/2);    // Linea vertical central inferior
-        g.drawLine(cuarto,0,cuarto, centro_y);     // Linea vertical izquierda --------------
-        g.drawLine(cuarto*3, 0,cuarto*3, (int) (centro_y+centro_y*0.5));   // Linea vertical derecha
-        g.drawLine(cuarto, centro_y,centro_x, centro_y); // Linea horizontal izquierda
-        g.drawLine(centro_x, (int) (panelHeight*0.75),cuarto*3, (int) (panelHeight*0.75)); // Linea horizontal derecha
+        g.drawLine((int) (panelWidth*0.1665),0,(int) (panelWidth*0.1665), centro_y);     // Linea vertical izquierda --------------
+        g.drawLine((int) (cuarto*3.33), 0,(int) (cuarto*3.33), (int) (centro_y+centro_y*0.5));   // Linea vertical derecha
+        g.drawLine((int) (panelWidth*0.1665), centro_y,centro_x, centro_y); // Linea horizontal izquierda
+        g.drawLine(centro_x, (int) (panelHeight*0.75),(int) (cuarto*3.33), (int) (panelHeight*0.75)); // Linea horizontal derecha
         g.drawLine(centro_x, (int) (panelHeight*0.75),centro_x,panelHeight); // Linea inferior
 
 

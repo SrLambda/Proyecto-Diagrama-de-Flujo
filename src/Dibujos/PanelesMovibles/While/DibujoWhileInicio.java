@@ -75,11 +75,11 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
         g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
-        g.drawLine(x2,centro_y,cuarto*3,centro_y); //  Linea horizontal derecha
-        g.drawLine(cuarto,(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
+        g.drawLine(x2,centro_y, (int) (cuarto*3.33),centro_y); //  Linea horizontal derecha
+        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
 
-        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight); //  Linea vertical derecha
-        g.drawLine(cuarto,(int) (panelHeight*0.25),cuarto,panelHeight); //  Linea vertical izquierda
+        g.drawLine((int) (cuarto*3.33),centro_y,(int) (cuarto*3.33),panelHeight); //  Linea vertical derecha
+        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),(int) (panelWidth*0.1665),panelHeight); //  Linea vertical izquierda
 
         g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
         g.drawLine(centro_x,y1,centro_x,y1);   // de flujo

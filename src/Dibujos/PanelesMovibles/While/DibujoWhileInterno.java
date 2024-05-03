@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.While;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.Decision.DibujoDecisionInterno;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +19,7 @@ public class DibujoWhileInterno extends JPanel {
         this.verdadero2 = verdadero2;
         this.falso = falso;
         setPreferredSize(new Dimension(200, 400));
+        //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios 01
         this.setLayout(new BoxLayout(DibujoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -83,11 +85,22 @@ public class DibujoWhileInterno extends JPanel {
             int panelWidth = getWidth();
             int panelHeight = getHeight();
 
-            int centro_x = panelWidth/2;        // Centro horizontal
-            int centro_y = panelHeight/2;     // Centro vertical
+            int centro_x = panelWidth / 2; // Centro horizontal
 
             g.setColor(Color.BLACK);
-            g.drawLine(centro_x,panelHeight,centro_x,0);    // Linea vertical central intermedia
+
+            // Para verdadero1: dibujar línea horizontal que conecta con el panel superior
+            g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);
+
+            // Para verdadero2: dibujar línea vertical en el centro del panel
+            if (this == verdadero2) {
+                g.drawLine(centro_x, 0, centro_x, panelHeight);
+            }
+
+            // Para falso: dibujar línea horizontal que conecta con el panel inferior
+            if (this == falso) {
+                g.drawLine(centro_x, panelHeight / 2, panelWidth, panelHeight / 2);
+            }
         }
 
         public List<PanelPersonalizado> getListaFiguras()
