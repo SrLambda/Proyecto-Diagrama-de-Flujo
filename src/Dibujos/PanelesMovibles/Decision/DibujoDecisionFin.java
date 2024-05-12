@@ -1,13 +1,9 @@
 package Dibujos.PanelesMovibles.Decision;
 
 import Dibujos.PanelPersonalizado;
-import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoDecisionFin extends PanelPersonalizado {

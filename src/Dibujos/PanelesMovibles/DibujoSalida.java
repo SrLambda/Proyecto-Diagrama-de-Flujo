@@ -1,20 +1,16 @@
 package Dibujos.PanelesMovibles;
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
-import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoSalida extends PanelMovible {
 
-    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, Mapa _mapa)
+    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
     {
-        super(texto,lista,_contenedor,_mapa);
+        super(texto,lista,_contenedor);
     }
 
 
@@ -67,13 +63,5 @@ public class DibujoSalida extends PanelMovible {
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
-    }
-
-    @Override
-    public void agregarValorAlMapa() {
-    }
-
-    @Override
-    protected void cambiarValor() {
     }
 }
