@@ -89,17 +89,17 @@ public class DibujoWhileInterno extends JPanel {
 
             g.setColor(Color.BLACK);
 
-            // Para verdadero1: dibujar línea horizontal que conecta con el panel superior
-            g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);
+            /* Para verdadero1: dibujar línea horizontal que conecta con el panel superior
+            g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);*/
 
             // Para verdadero2: dibujar línea vertical en el centro del panel
             if (this == verdadero2) {
                 g.drawLine(centro_x, 0, centro_x, panelHeight);
             }
 
-            // Para falso: dibujar línea horizontal que conecta con el panel inferior
+            //Para falso: dibujar línea vertical que conecta con el panel inferior
             if (this == falso) {
-                g.drawLine(centro_x, panelHeight / 2, panelWidth, panelHeight / 2);
+                g.drawLine(centro_x, 0, centro_x, panelHeight);
             }
         }
 

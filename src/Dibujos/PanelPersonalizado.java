@@ -162,9 +162,4 @@ public abstract class PanelPersonalizado extends JPanel
             parent.repaint();
         }
     }
-
-    // Método para ajustar el tamaño de la figura según el texto
-    public void ajustarTamanio() {
-        ////
-    }
 }
