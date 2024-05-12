@@ -11,7 +11,7 @@ import java.util.List;
 
 public class VentanaEmergenteWhile {
 
-    private String seleccion;
+    private String seleccion = "";
     private boolean verdadero;
 
     VentanaEmergenteWhile(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso,PanelPersonalizado _contenedor){
