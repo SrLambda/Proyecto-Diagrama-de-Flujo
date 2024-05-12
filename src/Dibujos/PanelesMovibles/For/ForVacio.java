@@ -14,12 +14,13 @@ public class ForVacio extends PanelPersonalizado {
     @Override
     protected void printComponent(Graphics g) {
         super.printComponent(g);
-        g.setColor(Color.BLACK);
-
-        int ancho = this.getWidth();
-        int alto = this.getHeight();
-
-        g.drawLine(ancho/2,0,ancho/2,alto);
+        int anchoPanel = getWidth();
+        int altoPanel = getHeight();
+        int x1 = (int) (anchoPanel*0.171);
+        int x2 = (int) (anchoPanel*0.828);
+        int y1 = (int) ((altoPanel / 4)+altoPanel*0.15);
+        g.setColor(Color.RED);
+        g.drawLine(x1,y1,x1,y1+60);
 
     }
 }

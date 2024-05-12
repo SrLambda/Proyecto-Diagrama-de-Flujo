@@ -16,20 +16,23 @@ public class DibujoForFin extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int panelWidth = getWidth();
-        int panelHeight = getHeight();
-
-        int centro_x = panelWidth/2;
-        int centro_y = panelHeight/2;
-        int cuarto = panelWidth/4;
+        int anchoPanel = getWidth();
+        int altoPanel = getHeight();
+        int x1 = (int) (anchoPanel*0.171);
+        int x2 = (int) (anchoPanel*0.828);
+        int centro_x = anchoPanel/2;
+        int centro_y = altoPanel/2;
+        int cuarto = anchoPanel/4;
 
         //Dibujamos el flujo
-        g.drawLine(centro_x,0,centro_x,panelHeight/2);    // Linea vertical central inferior
-        g.drawLine((int) (panelWidth*0.1665),0,(int) (panelWidth*0.1665), centro_y);     // Linea vertical izquierda --------------
-        g.drawLine((int) (cuarto*3.33), 0,(int) (cuarto*3.33), (int) (centro_y+centro_y*0.5));   // Linea vertical derecha
-        g.drawLine((int) (panelWidth*0.1665), centro_y,centro_x, centro_y); // Linea horizontal izquierda
-        g.drawLine(centro_x, (int) (panelHeight*0.75),(int) (cuarto*3.33), (int) (panelHeight*0.75)); // Linea horizontal derecha
-        g.drawLine(centro_x, (int) (panelHeight*0.75),centro_x,panelHeight); // Linea inferior
-
+        g.setColor(Color.BLACK);
+        g.drawLine(x1, 0, x1, centro_y);  //Linea vertical izquierda
+        g.drawLine(x1,0,x1+10,+10);
+        g.drawLine(x1,0,x1-10,+10);
+        g.drawLine(x2, 0, x2, centro_y);  //Linea vertical derecha
+        g.drawLine((int)(centro_x*1.5)-40,centro_y,(int)(centro_x*1.5)-30,centro_y+10);
+        g.drawLine((int)(centro_x*1.5)-40,centro_y,(int)(centro_x*1.5)-30,centro_y-10);
+        g.drawLine(x1,centro_y,x2,centro_y);  //Linea horizontal
+        g.drawLine(centro_x,centro_y,centro_x,altoPanel);
     }
 }

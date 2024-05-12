@@ -18,13 +18,14 @@ public class DibujoForInicio extends PanelPersonalizado {
         super(_texto, _lista, _contenedor);
         this.interno = _interno;
         this.panelesFor = _lista;
+        setPreferredSize(new Dimension(200, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
 
                 if(e.getClickCount() == 2){
-                    String textoNuevo = JOptionPane.showInputDialog(null,"Ediiasd:",_texto);
+                    String textoNuevo = JOptionPane.showInputDialog(null,"Editar texto:",_texto);
                     if(textoNuevo != null && !textoNuevo.isEmpty()){
                         cambiarTexto(textoNuevo);
                     }
@@ -51,15 +52,13 @@ public class DibujoForInicio extends PanelPersonalizado {
         int x1 = (int) (anchoPanel*0.171);
         int x2 = (int) (anchoPanel*0.828);
         int y1 = (int) ((altoPanel / 4)+altoPanel*0.15);
-
-        int centro_x = anchoPanel/2;                                         // Centro horizontal
-        int centro_y = altoPanel/2;                                        // Centro vertical
-
-        int cuarto = anchoPanel/4;
+        int centro_x = anchoPanel/2;
 
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);  //Anclaje superior
+        g.drawLine((int)(centro_x/2)+40,y1,(int)(centro_x/2)+30,y1+10);
+        g.drawLine((int)(centro_x/2)+40,y1,(int)(centro_x/2)+30,y1-10);
         g.drawLine(centro_x,y1,centro_x+10,y1-10);
         g.drawLine(centro_x,y1,centro_x-10,y1-10);
         g.drawLine(x1,y1,x2,y1);
@@ -67,9 +66,6 @@ public class DibujoForInicio extends PanelPersonalizado {
         g.drawLine(x2,altoPanel,x2+10,altoPanel-10); //Flujo derecho
         g.drawLine(x2,altoPanel,x2-10,altoPanel-10);
         g.drawLine(x1,y1,x1,altoPanel); //Linea vertical izquierda
-        g.drawLine(x1,y1,x1+10,y1+10); //Flujo izquierdo
-        g.drawLine(x1,y1,x1-10,y1+10);
-
         // fuente con el tamaño especificado
         g.setFont(textoFont);
 
