@@ -16,13 +16,15 @@ public class VentanaEmergente {
     private List<String> compnentes;
     private JPanel contenedor;
     private boolean esPrincipal;
+    private GridBagConstraints restricciones;
 
-    VentanaEmergente(List<PanelPersonalizado> _lista, JPanel _contenedor)
+    VentanaEmergente(List<PanelPersonalizado> _lista, JPanel _contenedor,GridBagConstraints _restricciones)
     {
-        this.lista       =  _lista;
-        this.contenedor  =  _contenedor;
-        this.compnentes  =  new ArrayList<>();
-        this.esPrincipal =  !_lista.isEmpty();
+        this.lista         =  _lista;
+        this.contenedor    =  _contenedor;
+        this.compnentes    =  new ArrayList<>();
+        this.esPrincipal   =  !_lista.isEmpty();
+        this.restricciones = _restricciones;
 
         this.actualizarCompnentes();
     }
@@ -191,14 +193,14 @@ public class VentanaEmergente {
             if(this.lista.isEmpty())
             {
                 this.lista.add(nuevo);
-                this.contenedor.add(nuevo);
+                this.contenedor.add(nuevo,this.restricciones);
             }
             else
             {
                 posicion = this.lista.size()-1;
 
                 this.lista.add(posicion, nuevo);
-                this.contenedor.add(nuevo,posicion);
+                this.contenedor.add(nuevo,this.restricciones,posicion);
             }
 
 
@@ -225,7 +227,7 @@ public class VentanaEmergente {
                     List<PanelPersonalizado> lista_aux = aux.getVerdad();
                     JPanel                    cont_aux = aux.getContVerdad();
 
-                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux);
+                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
                     vent_aux.agregar(nuevo);
 
@@ -236,7 +238,7 @@ public class VentanaEmergente {
                     List<PanelPersonalizado> lista_aux = aux.getFalso();
                     JPanel                    cont_aux = aux.getContFalso();
 
-                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux);
+                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
                     vent_aux.agregar(nuevo);
 
@@ -253,7 +255,7 @@ public class VentanaEmergente {
                 }
 
                 this.lista.add(posicion, nuevo);
-                this.contenedor.add(nuevo,posicion);
+                this.contenedor.add(nuevo,this.restricciones,posicion);
 
             }
         }

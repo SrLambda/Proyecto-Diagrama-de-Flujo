@@ -1,6 +1,7 @@
 import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,10 +20,8 @@ public class Front extends JFrame {
     private JButton limpiarButton;
     private JScrollPane scroll;
     private JButton pruebas;
-
     private JButton pseudoCodigoButton;
 
-    private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
 
 
@@ -36,7 +35,6 @@ public class Front extends JFrame {
         setVisible(true);
 
         listaPaneles = new ArrayList<>();
-        this.columna = new JPanel();
 
         controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
 

@@ -4,22 +4,31 @@ import Dibujos.PanelesNoMovibles.DibujoInicio;
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.util.List;
 
 public class Controlador {
 
 
     private static Controlador instancia;
-    private List <PanelPersonalizado> listaFiguras;
+    private List<PanelPersonalizado> listaFiguras;
     private JPanel contenedor;
-
     private Parseador parseador;
-
     private VentanaEmergente ventanaEmergente;
+    private GridBagConstraints restriciones;
 
 
     // Instanciar Singleton
-    private Controlador() {}
+    private Controlador() {
+
+        this.restriciones         = new GridBagConstraints();
+        this.restriciones.gridx   = 0;
+        this.restriciones.gridy   = GridBagConstraints.RELATIVE; // Se inicia en la siguiente fila
+        this.restriciones.anchor  = GridBagConstraints.CENTER; // Alineación vertical superior
+        this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
+        this.restriciones.weighty = 0; // No expandir en dirección vertical
+        this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
+    }
 
 
     public static Controlador getInstancia()
@@ -41,13 +50,15 @@ public class Controlador {
 
     public void initFront(Front front, List <PanelPersonalizado> _listaFiguras,JScrollPane scroll, JPanel _contenedor)
     {
-        this.contenedor = _contenedor;
+        this.contenedor   = _contenedor;
         this.listaFiguras = _listaFiguras;
-        this.parseador = new Parseador(_listaFiguras);
+        this.parseador    = new Parseador(_listaFiguras);
 
+
+        /*
         front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
         front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
+        */
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Barra de desplazamiento vertical siempre visible
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Sin barra de desplazamiento horizontal
         scroll.setBorder(BorderFactory.createEmptyBorder());
@@ -55,15 +66,16 @@ public class Controlador {
         crearInicio(front);
         crearFin(front);
 
-        this.ventanaEmergente = new VentanaEmergente(_listaFiguras,_contenedor);
+        this.ventanaEmergente = new VentanaEmergente(_listaFiguras,_contenedor,this.restriciones);
 
     }
 
     private void crearInicio(Front front)
     {
         PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor);
+
         listaFiguras.add(nuevo);
-        front.getPanel1().add(nuevo);
+        front.getPanel1().add(nuevo,this.restriciones);
         front.getPanel1().revalidate();
 
 
@@ -73,7 +85,7 @@ public class Controlador {
     {
         PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor);
         listaFiguras.add(nuevo);
-        front.getPanel1().add(nuevo);
+        front.getPanel1().add(nuevo,this.restriciones);
         front.getPanel1().revalidate();
 
     }
