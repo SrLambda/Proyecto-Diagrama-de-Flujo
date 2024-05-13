@@ -18,7 +18,6 @@ public class DibujoForInterno extends JPanel {
         this.verdadero2 = verdadero2;
         this.falso = falso;
         setPreferredSize(new Dimension(200, 400));
-        //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios 01
         this.setLayout(new BoxLayout(DibujoForInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -86,10 +85,23 @@ public class DibujoForInterno extends JPanel {
             int x2 = (int) (anchoPanel*0.828);
             int centro_x = anchoPanel / 2; // Centro horizontal
             int y1 = (int) ((altoPanel / 4)+altoPanel*0.15);
-            g.setColor(Color.BLACK);
+            g.setColor(Color.GREEN);
+
             g.drawLine(0, altoPanel / 2, centro_x, altoPanel / 2);
 
-            g.drawLine(centro_x, altoPanel / 2, anchoPanel, altoPanel / 2);
+            // Para verdadero2: dibujar línea vertical en el centro del panel
+            if (this == verdadero2) {
+                g.drawLine(centro_x, 0, centro_x, altoPanel);
+            }
+
+            // Para falso: dibujar línea horizontal que conecta con el panel inferior
+            if (this == falso) {
+                g.drawLine(centro_x, altoPanel / 2, anchoPanel, altoPanel / 2);
+            }
+
+            //g.drawLine(0, altoPanel / 2, centro_x, altoPanel / 2);
+            //g.drawLine(centro_x, 0, centro_x, altoPanel);
+            //g.drawLine(centro_x, altoPanel / 2, anchoPanel, altoPanel / 2);
         }
         public List<PanelPersonalizado> getListaFiguras()
         {

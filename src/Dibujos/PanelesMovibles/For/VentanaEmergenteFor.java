@@ -16,16 +16,16 @@ public class VentanaEmergenteFor {
 
         JComboBox<String> comboBox = new JComboBox<>(opciones);
 
-        JButton botonVerdadero = new JButton("Añadir");
-        JButton botonCerrar = new JButton("Eliminar");
+        JButton botonAnadir = new JButton("Añadir");
+        JButton botonEliminar = new JButton("Eliminar");
 
         // Crear el panel para los botones
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout(FlowLayout.RIGHT)); // Alinear los botones a la derecha
-        panelBotones.add(botonVerdadero);
-        panelBotones.add(botonCerrar);
+        panelBotones.add(botonAnadir);
+        panelBotones.add(botonEliminar);
 
-        botonCerrar.addActionListener(new ActionListener() {
+        botonEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int opcion = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
@@ -37,7 +37,7 @@ public class VentanaEmergenteFor {
             }
         });
 
-        botonVerdadero.addActionListener(new ActionListener() {
+        botonAnadir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 seleccion = (String) comboBox.getSelectedItem();

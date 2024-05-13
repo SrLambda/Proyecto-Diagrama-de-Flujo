@@ -16,11 +16,8 @@ public class ForVacio extends PanelPersonalizado {
         super.printComponent(g);
         int anchoPanel = getWidth();
         int altoPanel = getHeight();
-        int x1 = (int) (anchoPanel*0.171);
-        int x2 = (int) (anchoPanel*0.828);
-        int y1 = (int) ((altoPanel / 4)+altoPanel*0.15);
         g.setColor(Color.RED);
-        g.drawLine(x1,y1,x1,y1+60);
+        g.drawLine(anchoPanel/2,0,anchoPanel/2,altoPanel    );
 
     }
 }
