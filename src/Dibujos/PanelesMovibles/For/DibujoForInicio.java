@@ -11,32 +11,27 @@ import java.util.List;
 public class DibujoForInicio extends PanelPersonalizado {
 
     private DibujoForInterno interno;
-    private List<PanelPersonalizado> panelesFor;
+    private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoForInicio(String _texto, List<PanelPersonalizado> _lista, JPanel _contenedor, DibujoForInterno _interno){
-        super(_texto, _lista, _contenedor);
+    public DibujoForInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoForInterno _interno) {
+        super(texto, lista, _contenedor);
         this.interno = _interno;
-        this.panelesFor = _lista;
+        panelesCiclo = lista;
         setPreferredSize(new Dimension(200, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
 
-                if(e.getClickCount() == 2){
-                    String textoNuevo = JOptionPane.showInputDialog(null,"Editar texto:",_texto);
-                    if(textoNuevo != null && !textoNuevo.isEmpty()){
-                        cambiarTexto(textoNuevo);
-                    }
-                }
+                if (SwingUtilities.isRightMouseButton(e)) {
 
-                if(SwingUtilities.isRightMouseButton(e)){
-                    JPanel ver = interno.getFalso();
-                    List<PanelPersonalizado> l_ver= interno.getListaFalsa();
+                    //Verdad
+                    JPanel ver= interno.getIzquierda();
+                    List<PanelPersonalizado> l_ver= interno.getListaIzquierda();
+
                     new VentanaEmergenteFor(ver,l_ver,(PanelPersonalizado) _contenedor);
                 }
-
             }
         });
 
@@ -45,40 +40,36 @@ public class DibujoForInicio extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        int panelWidth = getWidth();
+        int panelHeight = getHeight();
 
-        int anchoPanel = getWidth();
-        int altoPanel = getHeight();
+        // Coordenadas del rectángulo
+        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del rectángulo
+        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del rectángulo
+        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del rectángulo
+        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del rectángulo
 
-        int x1 = (int) (anchoPanel*0.171);
-        int x2 = (int) (anchoPanel*0.828);
-        int y1 = (int) ((altoPanel / 4)+altoPanel*0.15);
-        int centro_x = anchoPanel/2;
+        int centro_x = panelWidth/2;                                         // Centro horizontal
+        int centro_y = panelHeight/2;                                        // Centro vertical
+
+        int cuarto = panelWidth/4;
 
         // Dibujar flujo
         g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,y1);  //Anclaje superior
-        g.drawLine((int)(centro_x/2)+40,y1,(int)(centro_x/2)+30,y1+10);
-        g.drawLine((int)(centro_x/2)+40,y1,(int)(centro_x/2)+30,y1-10);
-        g.drawLine(centro_x,y1,centro_x+10,y1-10);
-        g.drawLine(centro_x,y1,centro_x-10,y1-10);
-        g.drawLine(x1,y1,x2,y1);
-        g.drawLine(x2,y1,x2,altoPanel); //Linea vertical derecha
-        g.drawLine(x2,altoPanel,x2+10,altoPanel-10); //Flujo derecho
-        g.drawLine(x2,altoPanel,x2-10,altoPanel-10);
-        g.drawLine(x1,y1,x1,altoPanel); //Linea vertical izquierda
-        // fuente con el tamaño especificado
-        g.setFont(textoFont);
-
-        // Dibuja el texto centrado
-        FontMetrics metrics = g.getFontMetrics();
-        int x = (getWidth() - metrics.stringWidth(texto)) / 2;
-        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, y);
+        g.drawLine(centro_x,0,centro_x,centro_y);
+        g.drawLine(centro_x-50,centro_y,centro_x-60,centro_y+10);   //Flecha
+        g.drawLine(centro_x-50,centro_y,centro_x-60,centro_y-10);
+        g.setColor(Color.BLACK);
+        g.drawLine(cuarto,centro_y,cuarto*3,centro_y); //Linea completa
+        g.drawLine(cuarto,centro_y,cuarto,panelHeight);
+        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
+        g.drawLine(cuarto*3,panelHeight,cuarto*3-10,panelHeight-10); //Flecha
+        g.drawLine(cuarto*3,panelHeight,cuarto*3+10,panelHeight-10);
 
     }
 
-    public List<PanelPersonalizado> getPanelesFor() {
-        return panelesFor;
+    public List<PanelPersonalizado> getPanelesCiclo() {
+        return panelesCiclo;
     }
 
 }

@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DibujoForFin extends PanelPersonalizado {
 
-    public DibujoForFin(String _texto, List<PanelPersonalizado> _lista, JPanel _contenedor){
-        super(_texto, _lista, _contenedor);
+    public DibujoForFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+        super(texto,lista,_contenedor);
         setPreferredSize(new Dimension(200, 400));
     }
 
@@ -26,13 +26,13 @@ public class DibujoForFin extends PanelPersonalizado {
 
         //Dibujamos el flujo
         g.setColor(Color.BLACK);
-        g.drawLine(x1, 0, x1, centro_y);  //Linea vertical izquierda
-        g.drawLine(x1,0,x1+10,+10);
-        g.drawLine(x1,0,x1-10,+10);
-        g.drawLine(x2, 0, x2, centro_y);  //Linea vertical derecha
-        g.drawLine((int)(centro_x*1.5)-40,centro_y,(int)(centro_x*1.5)-30,centro_y+10);
-        g.drawLine((int)(centro_x*1.5)-40,centro_y,(int)(centro_x*1.5)-30,centro_y-10);
-        g.drawLine(x1,centro_y,x2,centro_y);  //Linea horizontal
+        g.drawLine(cuarto, 0, cuarto, centro_y);  //Linea vertical izquierda
+        g.drawLine(cuarto,0,cuarto+10,+10);
+        g.drawLine(cuarto,0,cuarto-10,+10);
+        g.drawLine(cuarto*3, 0, cuarto*3, centro_y);  //Linea vertical derecha
+        g.drawLine(centro_x+50,centro_y,centro_x+60,centro_y+10);
+        g.drawLine(centro_x+50,centro_y,centro_x+60,centro_y-10);
+        g.drawLine(cuarto,centro_y,cuarto*3,centro_y);  //Linea horizontal
         g.drawLine(centro_x,centro_y,centro_x,altoPanel);
     }
 }

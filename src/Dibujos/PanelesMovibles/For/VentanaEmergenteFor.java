@@ -11,7 +11,7 @@ public class VentanaEmergenteFor {
     private String seleccion;
     private boolean verdadero;
 
-    VentanaEmergenteFor(JPanel verdad, List<PanelPersonalizado> l_verdad, PanelPersonalizado _contenedor){
+    VentanaEmergenteFor(JPanel verdad, List<PanelPersonalizado> l_verdad,PanelPersonalizado _contenedor){
         String[] opciones = {"","Entrada", "Salida", "Proceso", "Documento", "Decision"};
 
         JComboBox<String> comboBox = new JComboBox<>(opciones);

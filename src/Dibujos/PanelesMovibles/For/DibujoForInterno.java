@@ -9,65 +9,58 @@ import java.util.List;
 
 public class DibujoForInterno extends JPanel {
 
-    private ForInterno verdadero1;
-    private ForInterno verdadero2;
-    private ForInterno falso;
+    private ForInterno derecha;
+    private ForInterno izquierda;
+    private String texto;
 
-    public DibujoForInterno(){
-        this.verdadero1 = verdadero1;
-        this.verdadero2 = verdadero2;
-        this.falso = falso;
+
+
+    public DibujoForInterno(String _texto,int _v_inicial, int _v_final, int _incremento){
+        this.derecha = derecha;
+        this.izquierda = izquierda;
+        this.texto = _texto;
+
         setPreferredSize(new Dimension(200, 400));
         this.setLayout(new BoxLayout(DibujoForInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        this.verdadero1 = new ForInterno();
-        this.verdadero2 = new ForInterno();
-        this.falso = new ForInterno();
+        this.derecha = new ForInterno();
+        this.izquierda = new ForInterno();
 
-        this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
-        this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero1.add(new ForVacio(null,null,null));
 
-        this.verdadero2.setLayout(new BoxLayout(this.verdadero2, BoxLayout.Y_AXIS));
-        this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero2.add(new ForVacio(null,null,null));
+        this.derecha.setLayout(new BoxLayout(this.derecha, BoxLayout.Y_AXIS));
+        this.derecha.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.derecha.add(new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final));
 
-        this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
-        this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new ForVacio(null,null,null));
+        this.izquierda.setLayout(new BoxLayout(this.izquierda, BoxLayout.Y_AXIS));
+        this.izquierda.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.izquierda.add(new ForVacio(texto,null,null));
 
-        this.add(verdadero1);
-        this.add(verdadero2);
-        this.add(falso);
+
+        this.add(derecha);
+        this.add(izquierda);
+
     }
 
-    public JPanel getVerdadero1() {
-        return verdadero1;
+    public JPanel getDerecha() {
+        return derecha;
     }
 
     public List<PanelPersonalizado> getListaVerdadera1()
     {
-        return verdadero1.getListaFiguras();
+        return derecha.getListaFiguras();
     }
 
-    public JPanel getVerdadero2() {
-        return verdadero2;
+    public JPanel getIzquierda() {
+        return izquierda;
     }
 
-    public List<PanelPersonalizado> getListaVerdadera2()
+    public List<PanelPersonalizado> getListaIzquierda()
     {
-        return verdadero2.getListaFiguras();
+        return izquierda.getListaFiguras();
     }
 
-    public List<PanelPersonalizado> getListaFalsa()
-    {
-        return falso.getListaFiguras();
-    }
 
-    public JPanel getFalso() {
-        return falso;
-    }
 
     public class ForInterno extends JPanel{
         private final List<PanelPersonalizado> listaFiguras;
@@ -79,29 +72,20 @@ public class DibujoForInterno extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            int anchoPanel = getWidth();
-            int altoPanel = getHeight();
-            int x1 = (int) (anchoPanel*0.171);
-            int x2 = (int) (anchoPanel*0.828);
-            int centro_x = anchoPanel / 2; // Centro horizontal
-            int y1 = (int) ((altoPanel / 4)+altoPanel*0.15);
-            g.setColor(Color.GREEN);
 
-            g.drawLine(0, altoPanel / 2, centro_x, altoPanel / 2);
+            int panelWidth = getWidth();
+            int panelHeight = getHeight();
 
-            // Para verdadero2: dibujar línea vertical en el centro del panel
-            if (this == verdadero2) {
-                g.drawLine(centro_x, 0, centro_x, altoPanel);
+            int centro_x = panelWidth / 2; // Centro horizontal
+
+            g.setColor(Color.BLACK);
+
+            g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);
+
+            if (this == izquierda) {
+                g.drawLine(centro_x, 0, centro_x, panelHeight);
             }
 
-            // Para falso: dibujar línea horizontal que conecta con el panel inferior
-            if (this == falso) {
-                g.drawLine(centro_x, altoPanel / 2, anchoPanel, altoPanel / 2);
-            }
-
-            //g.drawLine(0, altoPanel / 2, centro_x, altoPanel / 2);
-            //g.drawLine(centro_x, 0, centro_x, altoPanel);
-            //g.drawLine(centro_x, altoPanel / 2, anchoPanel, altoPanel / 2);
         }
         public List<PanelPersonalizado> getListaFiguras()
         {

@@ -25,7 +25,7 @@ public class DibujoFor extends PanelMovible {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.lista = new ArrayList<>();
 
-        this.contenido = new DibujoForInterno();
+        this.contenido = new DibujoForInterno(texto,0,0,0);
 
         this.condicion = new DibujoForInicio(this.texto,lista,this,(DibujoForInterno) contenido);
         this.fin = new DibujoForFin(texto,lista,this);
