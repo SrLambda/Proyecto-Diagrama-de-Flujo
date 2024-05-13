@@ -2,9 +2,9 @@ package Dibujos.PanelesMovibles;
 
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
-import Dibujos.PanelesMovibles.While.DibujoWhileFin;
-import Dibujos.PanelesMovibles.While.DibujoWhileInicio;
-import Dibujos.PanelesMovibles.While.DibujoWhileInterno;
+import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileFin;
+import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileInicio;
+import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileInterno;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,13 +23,13 @@ public class DibujoDoWhile extends PanelMovible {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.lista = new ArrayList<>();
 
-        this.contenido = new DibujoWhileInterno();
+        this.contenido = new DibujoDoWhileInterno();
 
-        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido);
-        this.fin = new DibujoWhileFin(texto,lista,this);
+        this.condicion = new DibujoDoWhileInicio(this.texto,lista,this,(DibujoDoWhileInterno) contenido);
+        this.fin = new DibujoDoWhileFin(texto,lista,this);
 
-        this.add(condicion);
         this.add(contenido);
+        this.add(condicion);
         this.add(fin);
     }
 }

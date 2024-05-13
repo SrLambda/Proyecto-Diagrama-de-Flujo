@@ -1,6 +1,8 @@
 package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileInterno;
+import Dibujos.PanelesMovibles.DoWhile.DoWhileVacio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,12 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoDoWhileInterno extends JPanel {
-    private WhileInterna verdadero1;
-    private WhileInterna verdadero2;
-    private WhileInterna falso;
+    private DoWhileInterno verdadero1;
+    private DoWhileInterno verdadero2;
+    private DoWhileInterno falso;
 
-    public DibujoDoWhileInterno()
-    {
+    public DibujoDoWhileInterno() {
         this.verdadero1 = verdadero1;
         this.verdadero2 = verdadero2;
         this.falso = falso;
@@ -22,9 +23,9 @@ public class DibujoDoWhileInterno extends JPanel {
         this.setLayout(new BoxLayout(DibujoDoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        this.verdadero1 = new WhileInterna();
-        this.verdadero2 = new WhileInterna();
-        this.falso = new WhileInterna();
+        this.verdadero1 = new DoWhileInterno();
+        this.verdadero2 = new DoWhileInterno();
+        this.falso = new DoWhileInterno();
 
         this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
         this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -42,12 +43,11 @@ public class DibujoDoWhileInterno extends JPanel {
         this.add(verdadero2);
         this.add(falso);
     }
-
     public JPanel getVerdadero1() {
         return verdadero1;
     }
 
-    public List<PanelPersonalizado> getListaVerdadera1()
+    public java.util.List<PanelPersonalizado> getListaVerdadera1()
     {
         return verdadero1.getListaFiguras();
     }
@@ -56,12 +56,12 @@ public class DibujoDoWhileInterno extends JPanel {
         return verdadero2;
     }
 
-    public List<PanelPersonalizado> getListaVerdadera2()
+    public java.util.List<PanelPersonalizado> getListaVerdadera2()
     {
         return verdadero2.getListaFiguras();
     }
 
-    public List<PanelPersonalizado> getListaFalsa()
+    public java.util.List<PanelPersonalizado> getListaFalsa()
     {
         return falso.getListaFiguras();
     }
@@ -70,10 +70,9 @@ public class DibujoDoWhileInterno extends JPanel {
         return falso;
     }
 
-    public class WhileInterna extends JPanel {
+    public class DoWhileInterno extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
-
-        WhileInterna() {
+        DoWhileInterno() {
             listaFiguras = new ArrayList<>();
         }
 
@@ -93,18 +92,18 @@ public class DibujoDoWhileInterno extends JPanel {
 
             // Para verdadero2: dibujar línea vertical en el centro del panel
             if (this == verdadero2) {
-                g.drawLine(centro_x, 0, centro_x, panelHeight);
+                //g.drawLine(centro_x, 0, centro_x, panelHeight);
             }
 
             //Para falso: dibujar línea vertical que conecta con el panel inferior
             if (this == falso) {
-                g.drawLine(centro_x, 0, centro_x, panelHeight);
+                //g.drawLine(centro_x, 0, centro_x, panelHeight);
             }
         }
 
         public void agregarPanel(PanelPersonalizado panel, boolean verdadero) {
             JPanel destino = verdadero ? verdadero2 : falso;
-            List<PanelPersonalizado> listaDestino = verdadero ? verdadero2.getListaFiguras() : falso.getListaFiguras();
+            java.util.List<PanelPersonalizado> listaDestino = verdadero ? verdadero2.getListaFiguras() : falso.getListaFiguras();
 
             if (listaDestino.isEmpty()) {
                 destino.removeAll();
@@ -121,3 +120,4 @@ public class DibujoDoWhileInterno extends JPanel {
         }
     }
 }
+

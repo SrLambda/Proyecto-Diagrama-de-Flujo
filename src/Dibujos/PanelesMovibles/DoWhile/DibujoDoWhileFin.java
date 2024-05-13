@@ -1,19 +1,16 @@
 package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
-
+import java.util.List;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.util.List;
 
 public class DibujoDoWhileFin extends PanelPersonalizado {
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
     public DibujoDoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
-        setPreferredSize(new Dimension(200, 400));
+        super(texto, lista, _contenedor);
+        setPreferredSize(new Dimension(200, 200));
     }
 
     @Override
@@ -23,24 +20,30 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
-        int centro_x = panelWidth/2;        // Centro horizontal
-        int centro_y = panelHeight/2;     // Centro vertical
+        // Coordenadas del rombo
+        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del rectángulo
+        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del rectángulo
+        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del rectángulo
+        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del rectángulo
+
+        int centro_x = panelWidth/2;                                         // Centro horizontal
+        int centro_y = panelHeight/2;                                        // Centro vertical
 
         int cuarto = panelWidth/4;
 
-        // Dibujar flujo
+        // Dibujar las líneas que forman el rombo
         g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,panelHeight/2);    // Linea vertical central inferior
-        g.drawLine((int) (panelWidth*0.1665),0,(int) (panelWidth*0.1665), centro_y);     // Linea vertical izquierda --------------
-        g.drawLine((int) (cuarto*3.33), 0,(int) (cuarto*3.33), (int) (centro_y+centro_y*0.5));   // Linea vertical derecha
-        g.drawLine((int) (panelWidth*0.1665), centro_y,centro_x, centro_y); // Linea horizontal izquierda
-        g.drawLine(centro_x, (int) (panelHeight*0.75),(int) (cuarto*3.33), (int) (panelHeight*0.75)); // Linea horizontal derecha
-        g.drawLine(centro_x, (int) (panelHeight*0.75),centro_x,panelHeight); // Linea inferior
+        g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
+        g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
+        g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
+        g.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
 
-
-        /*g.drawLine(cuarto*3, 0,cuarto*3, centro_y);                 // Linea derecha
-        g.drawLine(cuarto,0,cuarto, centro_y);  // Linea izquierda
-        g.drawLine(cuarto, centro_y,cuarto*3, centro_y);     // Linea central
-        g.drawLine(centro_x, centro_y,centro_x, panelHeight);    // Linea baja*/
+        // Dibujar el texto centrado
+        g.setFont(textoFont);
+        FontMetrics metrics = g.getFontMetrics();
+        int x = (getWidth() - metrics.stringWidth(texto)) / 2;
+        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
+        g.drawString(texto, x, y);
     }
 }
+
