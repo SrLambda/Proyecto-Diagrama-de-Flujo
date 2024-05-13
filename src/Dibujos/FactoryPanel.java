@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.List;
 
 public class FactoryPanel {
-    public PanelMovible crearPanel(String tipo,String texto, List<PanelPersonalizado> lista, JPanel _contenedor){
+    public static PanelMovible crearPanel(String tipo, String texto, List<PanelPersonalizado> lista, JPanel _contenedor){
 
         if(tipo.equalsIgnoreCase("decision"))
         {
@@ -29,6 +29,10 @@ public class FactoryPanel {
             return new DibujoProceso(texto,lista,_contenedor);
         }
         else if(tipo.equalsIgnoreCase("while"))
+        {
+            return new DibujoWhile(texto, lista, _contenedor);
+        }
+        else if(tipo.equalsIgnoreCase("do-while"))
         {
             return new DibujoWhile(texto, lista, _contenedor);
         }

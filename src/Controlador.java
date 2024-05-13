@@ -2,6 +2,7 @@ import Dibujos.*;
 import Dibujos.PanelesMovibles.*;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionFin;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
+import Dibujos.PanelesMovibles.While.DibujoWhileInterno;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
 

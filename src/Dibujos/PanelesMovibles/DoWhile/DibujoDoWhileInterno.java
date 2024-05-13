@@ -1,4 +1,4 @@
-package Dibujos.PanelesMovibles.While;
+package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
 
@@ -7,19 +7,19 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DibujoWhileInterno extends JPanel {
+public class DibujoDoWhileInterno extends JPanel {
     private WhileInterna verdadero1;
     private WhileInterna verdadero2;
     private WhileInterna falso;
 
-    public DibujoWhileInterno()
+    public DibujoDoWhileInterno()
     {
         this.verdadero1 = verdadero1;
         this.verdadero2 = verdadero2;
         this.falso = falso;
         setPreferredSize(new Dimension(200, 400));
         //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios 01
-        this.setLayout(new BoxLayout(DibujoWhileInterno.this, BoxLayout.X_AXIS));
+        this.setLayout(new BoxLayout(DibujoDoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.verdadero1 = new WhileInterna();
@@ -28,15 +28,15 @@ public class DibujoWhileInterno extends JPanel {
 
         this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
         this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero1.add(new WhileVacio(null,null,null));
+        this.verdadero1.add(new DoWhileVacio(null,null,null));
 
         this.verdadero2.setLayout(new BoxLayout(this.verdadero2, BoxLayout.Y_AXIS));
         this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero2.add(new WhileVacio(null,null,null));
+        this.verdadero2.add(new DoWhileVacio(null,null,null));
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new WhileVacio(null,null,null));
+        this.falso.add(new DoWhileVacio(null,null,null));
 
         this.add(verdadero1);
         this.add(verdadero2);
