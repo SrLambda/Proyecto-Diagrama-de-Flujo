@@ -60,7 +60,7 @@ public class Controlador {
         front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         */
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Barra de desplazamiento vertical siempre visible
-        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Sin barra de desplazamiento horizontal
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); // Sin barra de desplazamiento horizontal
         scroll.setBorder(BorderFactory.createEmptyBorder());
 
         crearInicio(front);

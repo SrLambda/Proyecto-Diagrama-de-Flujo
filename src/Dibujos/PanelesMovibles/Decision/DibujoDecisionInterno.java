@@ -61,6 +61,56 @@ public class DibujoDecisionInterno extends JPanel {
         return falso;
     }
 
+    public void ajustarSize()
+    {
+
+        int alturaVer = 0;
+        int alturaFal = 0;
+
+        int anchoVer  = 0;
+        int anchoFal  = 0;
+
+        JPanel panelVer = this.getVerdadero();
+        JPanel panelFal = this.getFalso();
+
+
+
+        for (JPanel componete: this.getListaVerdadera())
+        {
+
+            alturaVer += (int) componete.getPreferredSize().getHeight();
+            anchoVer   = Math.max( anchoVer , (int) componete.getPreferredSize().getWidth() );
+
+        }
+
+
+        for (JPanel componete: this.getListaFalsa())
+        {
+
+            alturaFal += (int) componete.getPreferredSize().getHeight();
+            anchoFal   = Math.max( anchoFal , (int) componete.getPreferredSize().getWidth() );
+
+        }
+
+
+
+        int altura = Math.max(alturaVer, alturaFal);
+        int ancho = Math.max(anchoVer,anchoFal);
+
+        Dimension size = new Dimension(ancho,altura);
+
+        panelVer.setPreferredSize(size);
+        panelFal.setPreferredSize(size);
+
+        panelVer.revalidate();
+        panelFal.revalidate();
+
+
+        Dimension sizeG = new Dimension(ancho * 2 , altura );
+
+        this.setPreferredSize(sizeG);
+        this.revalidate();
+    }
 
 
 

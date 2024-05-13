@@ -24,7 +24,7 @@ public abstract class PanelPersonalizado extends JPanel
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
-        setPreferredSize(new Dimension(250, 100));
+        setPreferredSize(new Dimension(1000, 200));
 
     }
 

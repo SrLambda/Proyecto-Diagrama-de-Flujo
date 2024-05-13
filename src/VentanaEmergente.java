@@ -231,6 +231,10 @@ public class VentanaEmergente {
 
                     vent_aux.agregar(nuevo);
 
+                    aux.eliminarEspaciosEnBlanco();
+                    aux.ajustarSize();
+
+
                 }
                 else
                 {
@@ -242,7 +246,11 @@ public class VentanaEmergente {
 
                     vent_aux.agregar(nuevo);
 
+                    aux.eliminarEspaciosEnBlanco();
+                    aux.ajustarSize();
                 }
+
+
 
 
             }
