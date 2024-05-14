@@ -14,7 +14,7 @@ public class DibujoDoWhileInterno extends JPanel {
     private DoWhileInterno verdadero2;
     private DoWhileInterno falso;
 
-    public DibujoDoWhileInterno() {
+    public DibujoDoWhileInterno() { 
         this.verdadero1 = verdadero1;
         this.verdadero2 = verdadero2;
         this.falso = falso;
