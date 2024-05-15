@@ -12,16 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoDecision extends PanelMovible {
-
     private JPanel condicion, contenido, fin;
     private List<PanelPersonalizado> lista;
 
     private Integer alto;
 
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto, lista, _contenedor);
-        this.alto = 300;
-        setPreferredSize(new Dimension(250, alto));
+        setPreferredSize(new Dimension(200, 500));
 
         this.setLayout(new BoxLayout(DibujoDecision.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));

@@ -7,9 +7,11 @@ import java.awt.*;
 import java.util.List;
 
 public class DibujoFin extends PanelPersonalizado {
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
         this.habilitado = false;
+        setPreferredSize(new Dimension(200, 300));
     }
 
     @Override
@@ -35,7 +37,7 @@ public class DibujoFin extends PanelPersonalizado {
         Graphics2D g2d = (Graphics2D) g;
 
         //Dibujar figura de entrada
-        g2d.drawRoundRect(x1, y1, x2 - x1, y2 - y1 + 30, arcWidth, arcHeight);
+        g2d.drawRoundRect(x1, y1, x2 - x1, y2 - y1, arcWidth, arcHeight);
 
         // Dibujar flujo
         g.setColor(Color.BLACK);
@@ -44,10 +46,13 @@ public class DibujoFin extends PanelPersonalizado {
         g.drawLine(centro_x, y1, centro_x + 10, y1 - 10);    //  Flecha
         g.drawLine(centro_x, y1, centro_x - 10, y1 - 10);    //  de flujo
 
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
+
         // Dibujar el texto centrado
         FontMetrics metrics = g.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
-        int y = ((getHeight() + 30 - metrics.getHeight()) / 2) + metrics.getAscent();
+        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
 }

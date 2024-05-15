@@ -8,12 +8,11 @@ import java.awt.geom.QuadCurve2D;
 import java.util.List;
 
 public class DibujoInicio extends PanelPersonalizado {
-    public DibujoInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
-    {
-
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    public DibujoInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(texto,lista,_contenedor);
         this.habilitado = false;
-
+        setPreferredSize(new Dimension(200, 300));
     }
 
     @Override
@@ -39,15 +38,18 @@ public class DibujoInicio extends PanelPersonalizado {
         Graphics2D g2d = (Graphics2D) g;
 
         //Dibujar figura de entrada
-        g2d.drawRoundRect(x1, y1, x2 - x1, y2 - y1 + 30, arcWidth, arcHeight);
+        g2d.drawRoundRect(x1, y1, x2 - x1, y2 - y1, arcWidth, arcHeight);
 
         // Dibujar flujo
-        g.drawLine(centro_x, y2 + 30, centro_x, panelHeight + 30);         // Linea inferior
+        g.drawLine(centro_x, y2, centro_x, panelHeight);         // Linea inferior
+
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
         
         // Dibujar el texto centrado
         FontMetrics metrics = g.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
-        int y = ((getHeight() + 30 - metrics.getHeight()) / 2) + metrics.getAscent();
+        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
 }

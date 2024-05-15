@@ -16,6 +16,7 @@ public class Front extends JFrame {
     private JButton salidaButton;
     private JButton documentoButton;
     private JButton limpiarButton;
+    private JButton whileButton;
     private JScrollPane scroll;
     private JButton forButton;
     private JPanel columna;
@@ -139,7 +140,13 @@ public class Front extends JFrame {
 
         });
 
-
+        //Dibujar ciclo While
+        whileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.crearPanel(Front.this,"while");
+            }
+        });
     }
 
     public JPanel getPanel1()

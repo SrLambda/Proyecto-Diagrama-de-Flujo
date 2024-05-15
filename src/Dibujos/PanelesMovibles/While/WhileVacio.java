@@ -1,4 +1,4 @@
-package Dibujos.PanelesMovibles.Decision;
+package Dibujos.PanelesMovibles.While;
 
 import Dibujos.PanelPersonalizado;
 
@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class DesicionVacia extends PanelPersonalizado {
+public class WhileVacio extends PanelPersonalizado {
 
-    public DesicionVacia(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+    public WhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
         super(_texto, lista, _contenedor);
         setPreferredSize(new Dimension(200, 400));
     }
@@ -25,3 +25,4 @@ public class DesicionVacia extends PanelPersonalizado {
         g.drawLine(ancho/2,0,ancho/2,alto);
     }
 }
+

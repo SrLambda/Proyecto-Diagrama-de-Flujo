@@ -2,6 +2,9 @@ package Dibujos;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 public abstract class PanelPersonalizado extends JPanel
@@ -15,13 +18,25 @@ public abstract class PanelPersonalizado extends JPanel
     protected int posicion = -1;
 
 
-
-
     public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor) {
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
-        setPreferredSize(new Dimension(250, 100));
+        setPreferredSize(new Dimension(250, 50));
+    }
+
+
+    public void actualizarUbicacion(){
+        int indice = listaFiguras.indexOf(this);
+
+        if(indice != -1){
+            int nuevaUbicacion = this.getY();
+            altura = this.getHeight();
+            posOriginal = nuevaUbicacion;
+            listaFiguras.get(indice).setLocation(0, nuevaUbicacion);
+            System.out.println("Eje Y dentro de la lista: "+listaFiguras.get(indice).getY());
+
+        }
 
     }
 
@@ -131,5 +146,10 @@ public abstract class PanelPersonalizado extends JPanel
             }
             parent.repaint();
         }
+    }
+
+    // Método para ajustar el tamaño de la figura según el texto
+    public void ajustarTamanio() {
+        ////
     }
 }

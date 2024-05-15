@@ -7,10 +7,11 @@ import java.awt.*;
 import java.util.List;
 
 public class DibujoSalida extends PanelMovible {
-
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
     {
         super(texto,lista,_contenedor);
+        setPreferredSize(new Dimension(200, 200));
     }
 
 
@@ -57,6 +58,8 @@ public class DibujoSalida extends PanelMovible {
         g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
         g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
 
         // Dibuja el texto centrado
         FontMetrics metrics = g.getFontMetrics();
