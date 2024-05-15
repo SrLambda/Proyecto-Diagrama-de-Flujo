@@ -2,21 +2,18 @@ package Dibujos.PanelesMovibles.Decision;
 
 
 import Dibujos.PanelPersonalizado;
-import Dibujos.PanelesMovibles.DibujoDecision;
-import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
 
     private DibujoDecisionInterno interno;
 
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno, Mapa _mapa,Integer _alto) {
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDecisionInterno _interno,Integer _alto) {
         super(texto,lista,_contenedor);
         this.interno = _interno;
 
@@ -43,7 +40,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
                     List<PanelPersonalizado> l_fal= interno.getListaFalsa();
 
 
-                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor,_mapa,_alto);
+                    new VentanaEmergenteDecision(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor,_alto);
                 }
             }
         });

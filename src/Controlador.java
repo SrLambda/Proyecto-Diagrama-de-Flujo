@@ -1,7 +1,6 @@
 import Dibujos.*;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
-import Mapa.Mapa;
 
 import javax.swing.*;
 import java.util.List;
@@ -74,11 +73,11 @@ public class Controlador {
     //===========================================================================================
 
 
-    public void crearPanel(Front front, String tipo, Mapa _mapa)
+    public void crearPanel(Front front, String tipo)
     {
         FactoryPanel factory = new FactoryPanel();
 
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor,_mapa);
+        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor);
 
         int posicion = listaFiguras.size()-1;
 

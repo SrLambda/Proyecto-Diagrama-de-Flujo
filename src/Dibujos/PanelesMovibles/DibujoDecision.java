@@ -5,7 +5,6 @@ import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionFin;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInterno;
-import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +18,8 @@ public class DibujoDecision extends PanelMovible {
 
     private Integer alto;
 
-    public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, Mapa _mapa) {
-        super(texto, lista, _contenedor,_mapa);
+    public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
+        super(texto, lista, _contenedor);
         this.alto = 300;
         setPreferredSize(new Dimension(250, alto));
 
@@ -30,21 +29,12 @@ public class DibujoDecision extends PanelMovible {
 
         this.contenido = new DibujoDecisionInterno();
 
-        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,(DibujoDecisionInterno) contenido,_mapa,alto);
+        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,(DibujoDecisionInterno) contenido,alto);
         this.fin = new DibujoDecisionFin(texto,lista,this);
 
         this.add(condicion);
         this.add(contenido);
         this.add(fin);
-
-    }
-
-    @Override
-    public void agregarValorAlMapa() {
-    }
-
-    @Override
-    protected void cambiarValor() {
 
     }
 

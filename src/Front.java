@@ -1,5 +1,4 @@
 import Dibujos.PanelPersonalizado;
-import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,9 +17,9 @@ public class Front extends JFrame {
     private JButton documentoButton;
     private JButton limpiarButton;
     private JScrollPane scroll;
+    private JButton forButton;
     private JPanel columna;
     private List <PanelPersonalizado> listaPaneles;
-    private Mapa mapa = new Mapa();
 
 
     public Front(Controlador controlador)
@@ -46,7 +45,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"proceso",mapa);
+                controlador.crearPanel(Front.this,"proceso");
             }
 
         });
@@ -60,7 +59,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"decision",mapa);
+                controlador.crearPanel(Front.this,"decision");
 
             }
 
@@ -82,6 +81,20 @@ public class Front extends JFrame {
         });
 
 
+        //Dibujar For
+        forButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+                controlador.crearPanel(Front.this,"for");
+
+            }
+        });
+
+
         //Dibujar Paralelogramo /__/
         entradaButton.addActionListener(new ActionListener()
         {
@@ -90,7 +103,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"entrada",mapa);
+                controlador.crearPanel(Front.this,"entrada");
 
             }
 
@@ -105,7 +118,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"salida",mapa);
+                controlador.crearPanel(Front.this,"salida");
 
             }
 
@@ -120,7 +133,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"documento",mapa);
+                controlador.crearPanel(Front.this,"documento");
 
             }
 

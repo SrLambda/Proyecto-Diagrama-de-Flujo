@@ -3,7 +3,6 @@ package Dibujos.PanelesMovibles.Decision;
 import Dibujos.FactoryPanel;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoDecision;
-import Mapa.Mapa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +16,7 @@ public class VentanaEmergenteDecision {
     private boolean verdadero;
 
 
-    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso, PanelPersonalizado _contenedor, Mapa _mapa,Integer _alto) {
+    VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso, PanelPersonalizado _contenedor,Integer _alto) {
         String[] opciones = {"","Entrada", "Salida", "Proceso", "Documento", "Decision"};
 
         // Crear un JComboBox con las opciones
@@ -81,7 +80,7 @@ public class VentanaEmergenteDecision {
                 if(l_verdad.isEmpty()){
                     verdad.removeAll();
                 }
-                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad,_mapa);
+                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad);
                 l_verdad.add(nuevo);
                 verdad.add(nuevo);
                 ajustarAlto(_alto,l_verdad,seleccion.equalsIgnoreCase("Decision"),nuevo);
@@ -92,7 +91,7 @@ public class VentanaEmergenteDecision {
                 if(l_falso.isEmpty()){
                     falso.removeAll();
                 }
-                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_falso,falso,_mapa);
+                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_falso,falso);
                 l_falso.add(nuevo);
                 falso.add(nuevo);
                 ajustarAlto(_alto,l_falso,seleccion.equalsIgnoreCase("Decision"),nuevo);
