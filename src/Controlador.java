@@ -72,7 +72,7 @@ public class Controlador {
 
     private void crearInicio(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor);
+        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor,restriciones);
 
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
@@ -83,7 +83,7 @@ public class Controlador {
 
     private void crearFin(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor);
+        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones);
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
         front.getPanel1().revalidate();
@@ -100,7 +100,7 @@ public class Controlador {
 
 
         // Crea el panel                                   __   cambio   __
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor);
+        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor,restriciones);
 
 
 
@@ -111,7 +111,6 @@ public class Controlador {
 
 
         // Actualizan los cambios
-        parseador.actualizar();
         this.ventanaEmergente.actualizarCompnentes();
         front.getPanel1().revalidate();
 
@@ -130,6 +129,7 @@ public class Controlador {
 
     public void pseudoCodigo(Front front)
     {
+        parseador.actualizar();
         System.out.println(parseador.getPseuddoCodigo());
     }
 

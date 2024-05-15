@@ -11,9 +11,8 @@ import java.util.List;
 
 public class DibujoSalida extends PanelMovible {
 
-    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor)
-    {
-        super(texto,lista,_contenedor);
+    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
     }
 
 

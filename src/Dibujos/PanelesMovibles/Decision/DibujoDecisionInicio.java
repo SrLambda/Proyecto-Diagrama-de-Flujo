@@ -12,8 +12,8 @@ import java.util.List;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
 
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
 
         addMouseListener(new MouseAdapter()
         {

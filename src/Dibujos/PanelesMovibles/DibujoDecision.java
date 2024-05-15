@@ -20,8 +20,8 @@ public class DibujoDecision extends PanelMovible {
     private GridBagConstraints    restriciones;
 
 
-    public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto, lista, _contenedor);
+    public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
 
         this.restriciones         = new GridBagConstraints();
         this.restriciones.gridx   = 0;
@@ -31,14 +31,14 @@ public class DibujoDecision extends PanelMovible {
         this.restriciones.weighty = 0; // No expandir en dirección vertical
         this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
 
-        setPreferredSize(new Dimension(1000, 600));
+        setPreferredSize(new Dimension(750, 600));
         this.setLayout(new BoxLayout(DibujoDecision.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.contenido = new DibujoDecisionInterno();
 
-        this.condicion = new DibujoDecisionInicio(this.texto,lista,this);
-        this.fin = new DibujoDecisionFin(this.texto,lista,this);
+        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,this.restriciones);
+        this.fin = new DibujoDecisionFin(this.texto,lista,this,this.restriciones);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);

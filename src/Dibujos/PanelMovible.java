@@ -13,8 +13,8 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected boolean moviendo;
     protected int ejeYMouse;
 
-    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto, lista, _contenedor);
+    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
         if(this.posOriginal == -1){
             this.posOriginal = getY();
         }
@@ -126,15 +126,14 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected void actualizarPosicionesVisuales()
     {
 
-        int y = 0;
+        this.contenedor.removeAll();
         for (PanelPersonalizado panel : listaFiguras)
         {
 
-            panel.setLocation(0, y);
-            y += panel.getHeight();
-
+            this.contenedor.add(panel,restriciones);
         }
         contenedor.repaint();
+        contenedor.revalidate();
 
     }
 }

@@ -11,8 +11,8 @@ import java.util.List;
 
 public class DibujoDecisionFin extends PanelPersonalizado {
 
-    public DibujoDecisionFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+    public DibujoDecisionFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
 
     }
 

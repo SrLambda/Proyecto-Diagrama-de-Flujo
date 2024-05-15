@@ -9,8 +9,8 @@ import java.awt.geom.QuadCurve2D;
 import java.util.List;
 
 public class DibujoDocumento extends PanelMovible {
-    public DibujoDocumento(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+    public DibujoDocumento(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
 
     }
 

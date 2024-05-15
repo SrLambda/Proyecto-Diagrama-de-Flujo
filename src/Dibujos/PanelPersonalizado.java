@@ -16,15 +16,17 @@ public abstract class PanelPersonalizado extends JPanel
     public boolean habilitado = true;
     protected int posicion = -1;
 
+    protected GridBagConstraints restriciones;
 
 
 
-    public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor)
+    public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones)
     {
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
-        setPreferredSize(new Dimension(1000, 200));
+        this.restriciones = _restriciones;
+        setPreferredSize(new Dimension(750, 200));
 
     }
 

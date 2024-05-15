@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DesicionVacia extends PanelPersonalizado {
 
-    public DesicionVacia(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(_texto, lista, _contenedor);
+    public DesicionVacia(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(_texto, lista, _contenedor,_restriciones);
     }
 
     @Override
