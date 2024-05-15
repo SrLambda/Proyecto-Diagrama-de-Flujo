@@ -67,17 +67,6 @@
           <text value="Salida"/>
         </properties>
       </component>
-      <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
-        <constraints>
-          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-791314"/>
-          <font name="JetBrains Mono" size="14" style="3"/>
-          <foreground color="-16772298"/>
-          <text value="Documento"/>
-        </properties>
-      </component>
       <component id="a6daa" class="javax.swing.JButton" binding="limpiarButton" default-binding="true">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
@@ -121,18 +110,6 @@
           </grid>
         </children>
       </scrollpane>
-      <component id="a5619" class="javax.swing.JButton" default-binding="true">
-        <constraints>
-          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-791314"/>
-          <enabled value="false"/>
-          <font name="JetBrains Mono" size="14" style="3"/>
-          <foreground color="-16078562"/>
-          <text value="Ejecutar"/>
-        </properties>
-      </component>
       <component id="860b" class="javax.swing.JButton" binding="forButton">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
@@ -153,6 +130,17 @@
           <font name="JetBrains Mono" size="14" style="3"/>
           <foreground color="-16772298"/>
           <text value="While"/>
+        </properties>
+      </component>
+      <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Documento"/>
         </properties>
       </component>
     </children>
