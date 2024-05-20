@@ -15,10 +15,12 @@ public class DibujoFor extends PanelMovible {
 
     private JPanel condicion, contenido, fin;
     private List<PanelPersonalizado> lista;
+    private GridBagConstraints    restriciones;
+
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoFor(String texto, List<PanelPersonalizado> lista, JPanel _contenedor){
-        super(texto,lista,_contenedor);
+    public DibujoFor(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones){
+        super(texto,lista,_contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 500));
 
         this.setLayout(new BoxLayout(DibujoFor.this, BoxLayout.Y_AXIS));
@@ -27,8 +29,8 @@ public class DibujoFor extends PanelMovible {
 
         this.contenido = new DibujoForInterno(texto,0,0,0);
 
-        this.condicion = new DibujoForInicio(this.texto,lista,this,(DibujoForInterno) contenido);
-        this.fin = new DibujoForFin(texto,lista,this);
+        this.condicion = new DibujoForInicio(this.texto,lista,this,(DibujoForInterno) contenido,this.restriciones);
+        this.fin = new DibujoForFin(texto,lista,this,this.restriciones);
 
         this.add(condicion);
         this.add(contenido);

@@ -60,7 +60,7 @@ public class VentanaEmergenteFor {
                 if(l_verdad.isEmpty()){
                     verdad.removeAll();
                 }
-                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad);
+                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad,null);
                 l_verdad.add(nuevo);
                 verdad.add(nuevo);
                 verdad.revalidate();
@@ -70,7 +70,7 @@ public class VentanaEmergenteFor {
                     verdad.removeAll();
 
                 }
-                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad);
+                PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad,null);
                 l_verdad.add(nuevo);
                 verdad.add(nuevo);
                 verdad.revalidate();

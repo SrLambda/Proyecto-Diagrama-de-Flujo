@@ -29,6 +29,9 @@ public class FactoryPanel {
         {
             return new DibujoProceso(texto,lista,_contenedor,restricciones);
         }
+        else if (tipo.equalsIgnoreCase("for")){
+            return new DibujoFor(texto,lista,_contenedor,restricciones);
+        }
         else
         {
             throw new IllegalArgumentException("Tipo de vehículo desconocido.");

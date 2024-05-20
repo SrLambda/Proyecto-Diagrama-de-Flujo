@@ -30,11 +30,11 @@ public class DibujoForInterno extends JPanel {
 
         this.derecha.setLayout(new BoxLayout(this.derecha, BoxLayout.Y_AXIS));
         this.derecha.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.derecha.add(new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final));
+        this.derecha.add(new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final,null));
 
         this.izquierda.setLayout(new BoxLayout(this.izquierda, BoxLayout.Y_AXIS));
         this.izquierda.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.izquierda.add(new ForVacio(texto,null,null));
+        this.izquierda.add(new ForVacio(texto,null,null,null));
 
 
         this.add(derecha);

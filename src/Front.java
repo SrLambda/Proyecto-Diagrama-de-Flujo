@@ -1,11 +1,9 @@
 import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class Front extends JFrame {
@@ -21,6 +19,7 @@ public class Front extends JFrame {
     private JScrollPane scroll;
     private JButton pruebas;
     private JButton pseudoCodigoButton;
+    private JButton forButton;
 
     private List <PanelPersonalizado> listaPaneles;
 
@@ -152,6 +151,16 @@ public class Front extends JFrame {
 
 
         });
+
+        forButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                controlador.crearPanel(Front.this,"for");
+
+            }
+        });
+
     }
 
     public JPanel getPanel1()

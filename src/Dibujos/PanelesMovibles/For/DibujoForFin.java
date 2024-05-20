@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DibujoForFin extends PanelPersonalizado {
 
-    public DibujoForFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+    public DibujoForFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto,lista,_contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 400));
     }
 

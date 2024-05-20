@@ -12,8 +12,8 @@ public class ForVacio2 extends PanelPersonalizado {
     private int v_inicial;
     private int v_final;
     private int incremento;
-    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final) {
-        super(_texto, lista, _contenedor);
+    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,GridBagConstraints _restriciones) {
+        super(_texto, lista, _contenedor,_restriciones);
         this.v_inicial = _v_inicial;
         this.incremento = _incremento;
         this.v_final = _v_final;
