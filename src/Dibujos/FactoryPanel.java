@@ -38,7 +38,7 @@ public class FactoryPanel {
         }
         else
         {
-            throw new IllegalArgumentException("Tipo de vehículo desconocido.");
+            throw new IllegalArgumentException("Tipo de figura desconocida.");
         }
     }
 }

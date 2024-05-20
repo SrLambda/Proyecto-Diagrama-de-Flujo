@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles;
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
