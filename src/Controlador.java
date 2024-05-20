@@ -8,8 +8,6 @@ import java.awt.*;
 import java.util.List;
 
 public class Controlador {
-
-
     private static Controlador instancia;
     private List<PanelPersonalizado> listaFiguras;
     private JPanel contenedor;

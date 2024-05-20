@@ -16,6 +16,7 @@ public class Front extends JFrame {
     private JButton salidaButton;
     private JButton documentoButton;
     private JButton limpiarButton;
+    private JButton whileButton;
     private JScrollPane scroll;
     private JButton pruebas;
     private JButton pseudoCodigoButton;

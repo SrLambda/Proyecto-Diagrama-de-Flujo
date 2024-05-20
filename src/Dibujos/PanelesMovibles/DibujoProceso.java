@@ -38,7 +38,6 @@ public class DibujoProceso extends PanelMovible {
 
 
         // Dibujar las líneas que forman el rectángulo
-
         g.setColor(Color.BLACK);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
         g.drawLine(x2, y1, x2, y2);     // Lado derecho
@@ -53,13 +52,14 @@ public class DibujoProceso extends PanelMovible {
         g.drawLine(centro_x,y1,centro_x-10,y1-10);
 
 
-        // Dibuja el texto centrado
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
+
+        // Dibuja el texto en el centro del panel
         FontMetrics metrics = g.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
 
     }
-
-
 }

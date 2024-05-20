@@ -2,6 +2,9 @@ package Dibujos;
 import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 
