@@ -11,8 +11,8 @@ import java.util.List;
 
 public class DibujoWhileFin extends PanelPersonalizado {
 
-    public DibujoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto,lista,_contenedor);
+    public DibujoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto,lista,_contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 400));
     }
 

@@ -15,8 +15,8 @@ public class DibujoWhile extends PanelMovible {
     private JPanel condicion, contenido, fin;
     private List<PanelPersonalizado> lista;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
-    public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(texto, lista, _contenedor);
+    public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 500));
 
         this.setLayout(new BoxLayout(DibujoWhile.this, BoxLayout.Y_AXIS));
@@ -25,8 +25,8 @@ public class DibujoWhile extends PanelMovible {
 
         this.contenido = new DibujoWhileInterno();
 
-        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido);
-        this.fin = new DibujoWhileFin(texto,lista,this);
+        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones);
+        this.fin = new DibujoWhileFin(texto,lista,this,this.restriciones);
 
         this.add(condicion);
         this.add(contenido);

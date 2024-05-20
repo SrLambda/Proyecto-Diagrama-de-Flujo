@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.List;
 
 public class DibujoFin extends PanelPersonalizado {
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
         this.habilitado = false;

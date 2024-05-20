@@ -8,6 +8,7 @@ import java.awt.geom.QuadCurve2D;
 import java.util.List;
 
 public class DibujoInicio extends PanelPersonalizado {
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
         this.habilitado = false;
