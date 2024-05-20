@@ -13,6 +13,7 @@ public class DibujoProceso extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
 

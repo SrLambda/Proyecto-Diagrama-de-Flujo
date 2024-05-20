@@ -162,6 +162,13 @@ public class Front extends JFrame {
             }
         });
 
+        whileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.crearPanel(Front.this,"while");
+            }
+        });
+
     }
 
     public JPanel getPanel1()

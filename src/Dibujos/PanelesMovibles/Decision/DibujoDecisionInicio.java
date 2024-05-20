@@ -9,7 +9,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
-
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
 
@@ -80,56 +80,4 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
-    //alternativa 2 del paintComponent
-    /*@Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        int panelWidth = getWidth();
-        int panelHeight = getHeight();
-
-        // Coordenadas para el ciclo While
-        int x = (int) (panelWidth * 0.1);
-        int y = (int) (panelHeight * 0.1);
-        int width = (int) (panelWidth * 0.8);
-        int height = (int) (panelHeight * 0.8);
-
-        // Dibujar el rectángulo para el ciclo While
-        g.setColor(Color.BLACK);
-        g.drawRect(x, y, width, height);
-
-        // Dibujar la línea de separación
-        int yLine = y + height / 2;
-        g.drawLine(x, yLine, x + width, yLine);
-
-        // Dibujar las flechas del ciclo
-        int arrowSize = 10; // Tamaño de la punta de la flecha
-        int xArrow = x + width / 2;
-        int yArrowUp = y - arrowSize;
-        int yArrowDown = y + height + arrowSize;
-
-        // Flecha hacia arriba
-        g.drawLine(xArrow, y, xArrow, yArrowUp);
-        g.drawLine(xArrow, yArrowUp, xArrow - arrowSize, yArrowUp + arrowSize);
-        g.drawLine(xArrow, yArrowUp, xArrow + arrowSize, yArrowUp + arrowSize);
-
-        // Flecha hacia abajo
-        g.drawLine(xArrow, yLine, xArrow, yArrowDown);
-        g.drawLine(xArrow, yArrowDown, xArrow - arrowSize, yArrowDown - arrowSize);
-        g.drawLine(xArrow, yArrowDown, xArrow + arrowSize, yArrowDown - arrowSize);
-
-        // Dibujar el texto "While Condición" y "Acción(es)"
-        g.setFont(textoFont);
-        FontMetrics metrics = g.getFontMetrics();
-        String textoCondicion = "While Condición";
-        String textoAccion = "Acción(es)";
-        int xTextoCondicion = (getWidth() - metrics.stringWidth(textoCondicion)) / 2;
-        int yTextoCondicion = y + metrics.getAscent();
-        int xTextoAccion = (getWidth() - metrics.stringWidth(textoAccion)) / 2;
-        int yTextoAccion = yLine + metrics.getAscent();
-
-        g.drawString(textoCondicion, xTextoCondicion, yTextoCondicion);
-        g.drawString(textoAccion, xTextoAccion, yTextoAccion);
-    }*/
 }

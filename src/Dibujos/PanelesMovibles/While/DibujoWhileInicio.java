@@ -11,8 +11,8 @@ public class DibujoWhileInicio extends PanelPersonalizado {
     private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno) {
-        super(texto, lista, _contenedor);
+    public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor,_restriciones);
         //setPreferredSize(new Dimension(200, 200));
         this.interno = _interno;
         panelesCiclo = lista;
