@@ -21,6 +21,10 @@ public class FactoryPanel {
         {
             return new DibujoEntrada(texto,lista,_contenedor,restricciones);
         }
+        else if(tipo.equalsIgnoreCase("for"))
+        {
+            return new DibujoFor(texto,lista,_contenedor);
+        }
         else if (tipo.equalsIgnoreCase("salida"))
         {
             return new DibujoSalida(texto,lista,_contenedor,restricciones);
@@ -38,7 +42,7 @@ public class FactoryPanel {
         }
         else
         {
-            throw new IllegalArgumentException("Tipo de vehículo desconocido.");
+            throw new IllegalArgumentException("Tipo de figura desconocida.");
         }
     }
 }

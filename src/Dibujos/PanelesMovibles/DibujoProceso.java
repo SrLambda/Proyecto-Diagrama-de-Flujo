@@ -4,9 +4,6 @@ import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoProceso extends PanelMovible {

@@ -91,7 +91,7 @@ public class Controlador {
     //===========================================================================================
 
 
-    public void crearPanel(Front front,String tipo)
+    public void crearPanel(Front front, String tipo)
     {
         // Clase Factory
         FactoryPanel factory = new FactoryPanel();
@@ -111,7 +111,6 @@ public class Controlador {
         // Actualizan los cambios
         this.ventanaEmergente.actualizarCompnentes();
         front.getPanel1().revalidate();
-
     }
 
 

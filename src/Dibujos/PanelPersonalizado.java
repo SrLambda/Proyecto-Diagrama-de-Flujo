@@ -13,7 +13,6 @@ public abstract class PanelPersonalizado extends JPanel
 
     protected String texto;
     protected List <PanelPersonalizado> listaFiguras;
-    protected int altura;
     protected int posOriginal = -1;
     protected JPanel contenedor;
     public boolean habilitado = true;

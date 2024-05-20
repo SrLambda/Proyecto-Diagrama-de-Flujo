@@ -4,9 +4,6 @@ import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoSalida extends PanelMovible {
@@ -68,5 +65,4 @@ public class DibujoSalida extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
 }
