@@ -83,21 +83,6 @@ public class Front extends JFrame {
 
         });
 
-
-        //Dibujar For
-        forButton.addActionListener(new ActionListener()
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.crearPanel(Front.this,"for");
-
-            }
-        });
-
-
         //Dibujar Paralelogramo /__/
         entradaButton.addActionListener(new ActionListener()
         {

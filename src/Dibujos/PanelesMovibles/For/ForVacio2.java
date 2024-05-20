@@ -17,7 +17,6 @@ public class ForVacio2 extends PanelPersonalizado {
         this.v_inicial = _v_inicial;
         this.incremento = _incremento;
         this.v_final = _v_final;
-        setPreferredSize(new Dimension(200, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override

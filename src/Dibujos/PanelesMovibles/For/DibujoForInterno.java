@@ -20,7 +20,6 @@ public class DibujoForInterno extends JPanel {
         this.izquierda = izquierda;
         this.texto = _texto;
 
-        setPreferredSize(new Dimension(200, 400));
         this.setLayout(new BoxLayout(DibujoForInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 

@@ -18,7 +18,6 @@ public class DibujoForInicio extends PanelPersonalizado {
         super(texto, lista, _contenedor,_restriciones);
         this.interno = _interno;
         panelesCiclo = lista;
-        setPreferredSize(new Dimension(200, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override

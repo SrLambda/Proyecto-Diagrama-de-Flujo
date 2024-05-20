@@ -2,7 +2,6 @@ package Dibujos.PanelesMovibles.While;
 
 import Dibujos.FactoryPanel;
 import Dibujos.PanelPersonalizado;
-import Dibujos.PanelesMovibles.DibujoDecision;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,7 +81,6 @@ public class VentanaEmergenteWhile {
                 PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_verdad,verdad,null);
                 l_verdad.add(nuevo);
                 verdad.add(nuevo);
-                ajustarAlto(_alto,l_verdad,seleccion.equalsIgnoreCase("Decision"),nuevo);
                 verdad.revalidate();
             }
             else
@@ -93,7 +91,6 @@ public class VentanaEmergenteWhile {
                 PanelPersonalizado nuevo = factory.crearPanel(seleccion,entradaDeTexto(),l_falso,falso,null);
                 l_falso.add(nuevo);
                 falso.add(nuevo);
-                ajustarAlto(_alto,l_falso,seleccion.equalsIgnoreCase("Decision"),nuevo);
                 falso.revalidate();
             }
         }
@@ -119,20 +116,6 @@ public class VentanaEmergenteWhile {
         {
             return "----";
 
-        }
-    }
-
-    private void ajustarAlto(Integer alto,List lista,boolean decision,PanelPersonalizado nuevo) {
-        if(decision){
-            if(alto < 300 +((lista.size()-1) * 150) + 300 ){
-                DibujoDecision aux1= (DibujoDecision) nuevo;
-                Integer aux2 = aux1.getAlto();
-                alto = 300 +((lista.size()) * 150) + aux2;
-            }
-        }else{
-            if(alto < 300 +(lista.size() * 150)) {
-                alto = 300 +(lista.size() * 150);
-            }
         }
     }
 }
