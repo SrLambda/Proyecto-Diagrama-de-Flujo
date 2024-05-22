@@ -29,19 +29,6 @@ public class DibujoWhileInicio extends PanelPersonalizado {
                     }
                 }
 
-                if (SwingUtilities.isRightMouseButton(e)) {
-
-                    //Verdad
-                    JPanel ver= interno.getVerdadero2();
-                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera2();
-
-
-                    //Falso
-                    JPanel fal= interno.getFalso();
-                    List<PanelPersonalizado> l_fal= interno.getListaFalsa();
-
-                    new VentanaEmergenteWhile(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
-                }
             }
         });
 

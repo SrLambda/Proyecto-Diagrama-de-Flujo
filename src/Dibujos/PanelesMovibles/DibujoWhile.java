@@ -12,9 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoWhile extends PanelMovible {
-    private JPanel condicion, contenido, fin;
+
+    private JPanel condicion;
+    private JPanel contenido;
+    private JPanel fin;
+
     private List<PanelPersonalizado> lista;
+
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+
     public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 500));
@@ -31,5 +37,16 @@ public class DibujoWhile extends PanelMovible {
         this.add(condicion);
         this.add(contenido);
         this.add(fin);
+    }
+
+    public JPanel getContenido()
+    {
+        DibujoWhileInterno aux = (DibujoWhileInterno) this.contenido;
+        return aux.getVerdadero2();
+    }
+
+    public List<PanelPersonalizado> getLista() {
+        DibujoWhileInterno aux = (DibujoWhileInterno) this.contenido;
+        return aux.getListaVerdadera2();
     }
 }

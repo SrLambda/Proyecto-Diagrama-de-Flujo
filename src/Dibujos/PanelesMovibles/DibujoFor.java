@@ -37,4 +37,17 @@ public class DibujoFor extends PanelMovible {
         this.add(fin);
 
     }
+
+    public JPanel getContenido(){
+
+        DibujoForInterno aux = (DibujoForInterno) this.contenido;
+
+        return aux.getIzquierda();
+    }
+
+    public List<PanelPersonalizado> getLista() {
+
+        DibujoForInterno aux = (DibujoForInterno) this.contenido;
+        return aux.getListaIzquierda();
+    }
 }
