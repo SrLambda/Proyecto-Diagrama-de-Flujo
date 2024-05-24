@@ -23,4 +23,13 @@ public class ForVacio extends PanelPersonalizado {
 
         g.drawLine(ancho/2,0,ancho/2,alto);
     }
+
+    public void ajustarSize(int ancho,int altura)
+    {
+
+        Dimension size = new Dimension(ancho,altura);
+
+        this.setPreferredSize(size);
+
+    }
 }

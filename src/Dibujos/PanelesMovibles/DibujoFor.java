@@ -23,6 +23,14 @@ public class DibujoFor extends PanelMovible {
         super(texto,lista,_contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 500));
 
+        this.restriciones         = new GridBagConstraints();
+        this.restriciones.gridx   = 0;
+        this.restriciones.gridy   = GridBagConstraints.RELATIVE; // Se inicia en la siguiente fila
+        this.restriciones.anchor  = GridBagConstraints.CENTER; // Alineación vertical superior
+        this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
+        this.restriciones.weighty = 0; // No expandir en dirección vertical
+        this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
+
         this.setLayout(new BoxLayout(DibujoFor.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.lista = new ArrayList<>();
@@ -32,10 +40,16 @@ public class DibujoFor extends PanelMovible {
         this.condicion = new DibujoForInicio(this.texto,lista,this,(DibujoForInterno) contenido,this.restriciones);
         this.fin = new DibujoForFin(texto,lista,this,this.restriciones);
 
-        this.add(condicion);
-        this.add(contenido);
-        this.add(fin);
+        this.add(condicion,this.restriciones);
+        this.add(contenido,this.restriciones);
+        this.add(fin,this.restriciones);
 
+    }
+
+    public void modificarValores()
+    {
+        DibujoForInterno aux = (DibujoForInterno) this.contenido;
+        aux.modificarValores();
     }
 
     public JPanel getContenido(){
@@ -49,5 +63,25 @@ public class DibujoFor extends PanelMovible {
 
         DibujoForInterno aux = (DibujoForInterno) this.contenido;
         return aux.getListaIzquierda();
+    }
+
+    public void ajustarSize()
+    {
+        DibujoForInterno aux = (DibujoForInterno) this.contenido;
+
+        aux.ajustarSize();
+
+        int altura = 0;
+        int ancho  = 0;
+
+        altura += (int) this.condicion.getPreferredSize().getHeight();
+        altura += (int) this.contenido.getPreferredSize().getHeight();
+        altura += (int) this.fin.getPreferredSize().getHeight();
+
+        ancho  += (int) this.contenido.getPreferredSize().getWidth();
+
+        Dimension size = new Dimension(ancho,altura);
+        this.setPreferredSize(size);
+        this.revalidate();
     }
 }

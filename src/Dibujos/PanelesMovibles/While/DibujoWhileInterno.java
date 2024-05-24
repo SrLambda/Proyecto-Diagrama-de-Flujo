@@ -2,6 +2,7 @@ package Dibujos.PanelesMovibles.While;
 
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInterno;
+import Dibujos.PanelesMovibles.For.ForVacio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +19,7 @@ public class DibujoWhileInterno extends JPanel {
         this.verdadero1 = verdadero1;
         this.verdadero2 = verdadero2;
         this.falso = falso;
-        setPreferredSize(new Dimension(200, 400));
+        setPreferredSize(new Dimension(600, 400));
         //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios 01
         this.setLayout(new BoxLayout(DibujoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -44,15 +45,6 @@ public class DibujoWhileInterno extends JPanel {
         this.add(falso);
     }
 
-    public JPanel getVerdadero1() {
-        return verdadero1;
-    }
-
-    public List<PanelPersonalizado> getListaVerdadera1()
-    {
-        return verdadero1.getListaFiguras();
-    }
-
     public JPanel getVerdadero2() {
         return verdadero2;
     }
@@ -62,13 +54,41 @@ public class DibujoWhileInterno extends JPanel {
         return verdadero2.getListaFiguras();
     }
 
-    public List<PanelPersonalizado> getListaFalsa()
+    public void ajustarSize()
     {
-        return falso.getListaFiguras();
-    }
 
-    public JPanel getFalso() {
-        return falso;
+        int altura = 0;
+        int ancho  = 0;
+
+        JPanel panel = this.getVerdadero2();
+
+
+
+        for (JPanel componete: this.getListaVerdadera2())
+        {
+
+            altura += (int) componete.getPreferredSize().getHeight();
+            ancho   = Math.max( ancho , (int) componete.getPreferredSize().getWidth() );
+
+        }
+
+
+        Dimension size = new Dimension(ancho,altura);
+
+        panel.setPreferredSize(size);
+
+        panel.revalidate();
+
+        Dimension size_aux = new Dimension(200,altura);
+
+        this.verdadero1.setPreferredSize(size_aux);
+        this.falso.setPreferredSize(size_aux);
+
+
+        Dimension sizeG = new Dimension(ancho + 400 , altura );
+
+        this.setPreferredSize(sizeG);
+        this.revalidate();
     }
 
     public class WhileInterna extends JPanel {
@@ -106,6 +126,19 @@ public class DibujoWhileInterno extends JPanel {
         public List<PanelPersonalizado> getListaFiguras()
         {
             return listaFiguras;
+        }
+
+        public void ajustarSize(int ancho,int alto)
+        {
+            for (JPanel panel : listaFiguras) {
+
+                if(panel instanceof WhileVacio)
+                {
+                    WhileVacio aux = (WhileVacio) panel;
+                    aux.ajustarSize(alto);
+                    return;
+                }
+            }
         }
     }
 }

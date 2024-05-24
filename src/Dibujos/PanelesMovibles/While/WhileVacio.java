@@ -24,5 +24,14 @@ public class WhileVacio extends PanelPersonalizado {
 
         g.drawLine(ancho/2,0,ancho/2,alto);
     }
+
+    public void ajustarSize(int altura)
+    {
+
+        Dimension size = new Dimension(200,altura);
+
+        this.setPreferredSize(size);
+
+    }
 }
 

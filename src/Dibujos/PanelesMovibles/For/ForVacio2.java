@@ -8,15 +8,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class ForVacio2 extends PanelPersonalizado {
+public class ForVacio2 extends PanelPersonalizado{
+
     private int v_inicial;
     private int v_final;
     private int incremento;
+
+
     public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,GridBagConstraints _restriciones) {
         super(_texto, lista, _contenedor,_restriciones);
-        this.v_inicial = _v_inicial;
+
+        this.v_inicial  = _v_inicial;
         this.incremento = _incremento;
-        this.v_final = _v_final;
+        this.v_final    = _v_final;
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -24,39 +28,7 @@ public class ForVacio2 extends PanelPersonalizado {
 
                 if (e.getClickCount() == 2) {
 
-                    JPanel panel = new JPanel();
-                    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Establecer el layout vertical
-                    JTextField variable = new JTextField(10);
-                    JTextField _inicial = new JTextField(10);
-                    JTextField _incremento = new JTextField(10);
-                    JTextField _final = new JTextField(10);
-
-                    panel.add(new JLabel("Variable:"));
-                    panel.add(variable);
-                    panel.add(new JLabel("Valor inicial:"));
-                    panel.add(_inicial);
-                    panel.add(new JLabel("Incremento:"));
-                    panel.add(_incremento);
-                    panel.add(new JLabel("Valor final:"));
-                    panel.add(_final);
-
-                    int result = JOptionPane.showConfirmDialog(null, panel,
-                            "Editar ciclo", JOptionPane.OK_CANCEL_OPTION);
-
-                    if (result == JOptionPane.OK_OPTION) {
-                        // Obtener los datos ingresados por el usuario
-                        String dato1 = variable.getText();
-                        String dato2 = _inicial.getText();
-                        String dato3 = _incremento.getText();
-                        String dato4 = _final.getText();
-                        texto = dato1;
-                        incremento = Integer.parseInt(dato3);
-                        v_inicial = Integer.parseInt(dato2);
-                        v_final = Integer.parseInt(dato4);
-
-                    } else {
-                        System.out.println("Operación cancelada.");
-                    }
+                    modificarValores();
 
                 }
             }
@@ -89,5 +61,59 @@ public class ForVacio2 extends PanelPersonalizado {
         g.drawString(t_inicial, ancho/2-30, 60);
         g.drawString(t_incremento, ancho/2, 60);
         g.drawString(t_final, ancho/2+30, 60);
+    }
+
+    public void modificarValores()
+    {
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Establecer el layout vertical
+        JTextField variable = new JTextField(10);
+        JTextField _inicial = new JTextField(10);
+        JTextField _incremento = new JTextField(10);
+        JTextField _final = new JTextField(10);
+
+        panel.add(new JLabel("Variable:"));
+        panel.add(variable);
+        panel.add(new JLabel("Valor inicial:"));
+        panel.add(_inicial);
+        panel.add(new JLabel("Incremento:"));
+        panel.add(_incremento);
+        panel.add(new JLabel("Valor final:"));
+        panel.add(_final);
+
+        int result = JOptionPane.showConfirmDialog(null, panel,
+                "Editar ciclo", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            // Obtener los datos ingresados por el usuario
+            String dato1 = variable.getText();
+            String dato2 = _inicial.getText();
+            String dato3 = _incremento.getText();
+            String dato4 = _final.getText();
+            texto = dato1;
+            incremento = Integer.parseInt(dato3);
+            v_inicial = Integer.parseInt(dato2);
+            v_final = Integer.parseInt(dato4);
+
+        } else {
+            System.out.println("Operación cancelada.");
+        }
+
+    }
+
+    public int getValorInicial()
+    {
+        return this.v_inicial;
+    }
+
+    public int getIncremento()
+    {
+        return this.incremento;
+    }
+
+    public int getValorFinal()
+    {
+        return this.v_final;
     }
 }

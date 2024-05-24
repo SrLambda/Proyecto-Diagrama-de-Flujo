@@ -37,6 +37,7 @@ public abstract class PanelPersonalizado extends JPanel
         int i=0;
         int num = listaFiguras.indexOf(this);
 
+
         while(i < listaFiguras.size())
         {
             PanelPersonalizado panelColision = listaFiguras.get(i);
@@ -122,8 +123,15 @@ public abstract class PanelPersonalizado extends JPanel
             parent.repaint();
         }
     }
+
     public String getTexto() {
         return texto;
+    }
+
+    public void actualizarContenedor(List<PanelPersonalizado> list,JPanel cont)
+    {
+        this.listaFiguras = list;
+        this.contenedor = cont;
     }
 
 }

@@ -16,7 +16,7 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         //setPreferredSize(new Dimension(200, 200));
         this.interno = _interno;
         panelesCiclo = lista;
-        setPreferredSize(new Dimension(200, 400));
+        setPreferredSize(new Dimension(600, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override

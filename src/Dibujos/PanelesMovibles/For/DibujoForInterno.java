@@ -11,25 +11,23 @@ public class DibujoForInterno extends JPanel {
 
     private ForInterno derecha;
     private ForInterno izquierda;
-    private String texto;
-
+    private String     texto;
+    private ForVacio2  datos;
 
 
     public DibujoForInterno(String _texto,int _v_inicial, int _v_final, int _incremento){
-        this.derecha = derecha;
-        this.izquierda = izquierda;
-        this.texto = _texto;
+        this.texto     = _texto;
+        this.derecha   = new ForInterno();
+        this.izquierda = new ForInterno();
+        this.datos     = new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final,null);
 
         this.setLayout(new BoxLayout(DibujoForInterno.this, BoxLayout.X_AXIS));
+
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        this.derecha = new ForInterno();
-        this.izquierda = new ForInterno();
-
 
         this.derecha.setLayout(new BoxLayout(this.derecha, BoxLayout.Y_AXIS));
         this.derecha.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.derecha.add(new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final,null));
+        this.derecha.add(this.datos);
 
         this.izquierda.setLayout(new BoxLayout(this.izquierda, BoxLayout.Y_AXIS));
         this.izquierda.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -41,13 +39,43 @@ public class DibujoForInterno extends JPanel {
 
     }
 
-    public JPanel getDerecha() {
-        return derecha;
+    public void modificarValores()
+    {
+        this.datos.modificarValores();
     }
 
-    public List<PanelPersonalizado> getListaVerdadera1()
+    public void ajustarSize()
     {
-        return derecha.getListaFiguras();
+
+        int altura = 0;
+        int ancho  = 0;
+
+        JPanel panel = this.getIzquierda();
+
+
+
+        for (JPanel componete: this.getListaIzquierda())
+        {
+
+            altura += (int) componete.getPreferredSize().getHeight();
+            ancho   = Math.max( ancho , (int) componete.getPreferredSize().getWidth() );
+
+        }
+
+
+        Dimension size = new Dimension(ancho,altura);
+
+        panel.setPreferredSize(size);
+        panel.revalidate();
+
+        this.derecha.setPreferredSize(size);
+        this.derecha.ajustarSize(ancho,altura);
+
+
+        Dimension sizeG = new Dimension(ancho * 2 , altura );
+
+        this.setPreferredSize(sizeG);
+        this.revalidate();
     }
 
     public JPanel getIzquierda() {
@@ -58,7 +86,6 @@ public class DibujoForInterno extends JPanel {
     {
         return izquierda.getListaFiguras();
     }
-
 
 
     public class ForInterno extends JPanel{
@@ -86,9 +113,23 @@ public class DibujoForInterno extends JPanel {
             }
 
         }
+
         public List<PanelPersonalizado> getListaFiguras()
         {
             return listaFiguras;
+        }
+
+        public void ajustarSize(int ancho,int alto)
+        {
+            for (JPanel panel : listaFiguras) {
+
+                if(panel instanceof ForVacio)
+                {
+                    ForVacio aux = (ForVacio) panel;
+                    aux.ajustarSize(ancho,alto);
+                    return;
+                }
+            }
         }
     }
 }

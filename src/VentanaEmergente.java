@@ -259,6 +259,7 @@ public class VentanaEmergente {
 
                     VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
+                    nuevo.actualizarContenedor(lista_aux,cont_aux);
                     vent_aux.agregar(nuevo);
 
                     aux.eliminarEspaciosEnBlanco();
@@ -279,7 +280,9 @@ public class VentanaEmergente {
 
                         VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
+                        nuevo.actualizarContenedor(lista_aux,cont_aux);
                         vent_aux.agregar(nuevo);
+                        aux.ajustarSize();
 
                     }
                     else if (lista.get(posicion) instanceof DibujoFor)
@@ -292,7 +295,9 @@ public class VentanaEmergente {
 
                         VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
+                        nuevo.actualizarContenedor(lista_aux,cont_aux);
                         vent_aux.agregar(nuevo);
+                        aux.ajustarSize();
 
                     }
 
@@ -306,6 +311,7 @@ public class VentanaEmergente {
 
                     VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
+                    nuevo.actualizarContenedor(lista_aux,cont_aux);
                     vent_aux.agregar(nuevo);
 
                     aux.eliminarEspaciosEnBlanco();

@@ -1,4 +1,5 @@
 import Dibujos.*;
+import Dibujos.PanelesMovibles.DibujoFor;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
 
@@ -96,11 +97,21 @@ public class Controlador {
         // Clase Factory
         FactoryPanel factory = new FactoryPanel();
 
+        String texto = "---";
 
-        // Crea el panel                                   __   cambio   __
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor,restriciones);
+        if(!tipo.equals("for"))
+        {
+            texto = entradaDeTexto();
+        }
 
+        // Crea el panel
+        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones);
 
+        if(nuevo instanceof DibujoFor)
+        {
+            DibujoFor aux = (DibujoFor) nuevo;
+            aux.modificarValores();
+        }
 
         //---------------cambios-----------------
         //posicion
