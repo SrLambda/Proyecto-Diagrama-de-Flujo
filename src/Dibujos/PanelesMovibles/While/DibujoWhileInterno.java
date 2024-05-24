@@ -18,7 +18,7 @@ public class DibujoWhileInterno extends JPanel {
         this.verdadero2 = verdadero2;
         this.falso = falso;
         setPreferredSize(new Dimension(200, 400));
-        //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios 01
+        //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios
         this.setLayout(new BoxLayout(DibujoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -41,15 +41,6 @@ public class DibujoWhileInterno extends JPanel {
         this.add(verdadero1);
         this.add(verdadero2);
         this.add(falso);
-    }
-
-    public JPanel getVerdadero1() {
-        return verdadero1;
-    }
-
-    public List<PanelPersonalizado> getListaVerdadera1()
-    {
-        return verdadero1.getListaFiguras();
     }
 
     public JPanel getVerdadero2() {

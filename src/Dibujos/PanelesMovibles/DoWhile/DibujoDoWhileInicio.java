@@ -15,18 +15,6 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
         super(texto, lista, _contenedor);
         this.interno = _interno;
         setPreferredSize(new Dimension(200, 200));
-
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) { // Doble clic para editar el texto
-                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
-                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
-                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
-                    }
-                }
-            }
-        });
     }
 
     @Override
@@ -41,17 +29,9 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
 
         int cuarto = panelWidth / 4;
 
-        // Dibujar el rectángulo del inicio
-        /*g.setColor(Color.BLACK);
-        g.drawRect(cuarto, cuarto, panelWidth / 2, panelHeight / 2);
-
-        // Dibujar el texto centrado
-        g.setFont(textoFont);
-        FontMetrics metrics = g.getFontMetrics();
-        int x = (getWidth() - metrics.stringWidth(texto)) / 2;
-        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, y);*/
+        g.drawLine(centro_x/3,centro_y,centro_x/3, centro_y*3);     // Linea vertical izquierda
+        g.drawLine(centro_x,0,centro_x, panelHeight);     // Linea vertical central
+        g.drawLine(centro_x, centro_y,centro_x/3, centro_y); // Linea horizontal izquierda
     }
 }
-
 

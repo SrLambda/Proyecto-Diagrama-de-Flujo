@@ -24,7 +24,6 @@ public class DibujoWhile extends PanelMovible {
         this.lista = new ArrayList<>();
 
         this.contenido = new DibujoWhileInterno();
-
         this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido);
         this.fin = new DibujoWhileFin(texto,lista,this);
 

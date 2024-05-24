@@ -23,13 +23,12 @@ public class DibujoDoWhile extends PanelMovible {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.lista = new ArrayList<>();
 
-        this.contenido = new DibujoDoWhileInterno();
-
         this.condicion = new DibujoDoWhileInicio(this.texto,lista,this,(DibujoDoWhileInterno) contenido);
-        this.fin = new DibujoDoWhileFin(texto,lista,this);
+        this.contenido = new DibujoDoWhileInterno();
+        this.fin = new DibujoDoWhileFin(this.texto,lista,this,(DibujoDoWhileInterno) contenido);
 
-        this.add(contenido);
         this.add(condicion);
+        this.add(contenido);
         this.add(fin);
     }
 }

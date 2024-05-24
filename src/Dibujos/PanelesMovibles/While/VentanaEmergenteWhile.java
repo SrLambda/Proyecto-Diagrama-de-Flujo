@@ -14,7 +14,7 @@ public class VentanaEmergenteWhile {
     private String seleccion = "";
     private boolean verdadero;
 
-    VentanaEmergenteWhile(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso,PanelPersonalizado _contenedor){
+    VentanaEmergenteWhile(JPanel verdad, List<PanelPersonalizado> l_verdad,PanelPersonalizado _contenedor){
         String[] opciones = {"","Entrada", "Salida", "Proceso", "Documento", "Decision"};
 
         // Crear un JComboBox con las opciones
@@ -22,14 +22,14 @@ public class VentanaEmergenteWhile {
 
         // Crear los botones
         JButton botonVerdadero = new JButton("Verdadero");
-        JButton botonFalso = new JButton("Falso");
+        //JButton botonFalso = new JButton("Falso");
         JButton botonCerrar = new JButton("Eliminar");
 
         // Crear el panel para los botones
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout(FlowLayout.RIGHT)); // Alinear los botones a la derecha
         panelBotones.add(botonVerdadero);
-        panelBotones.add(botonFalso);
+        //panelBotones.add(botonFalso);
         panelBotones.add(botonCerrar);
 
         // Agregar un ActionListener al botón de cerrar
@@ -51,14 +51,14 @@ public class VentanaEmergenteWhile {
                 ((Window) SwingUtilities.getRoot(panelBotones)).dispose();
             }
         });
-        botonFalso.addActionListener(new ActionListener() {
+        /*botonFalso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 seleccion = (String) comboBox.getSelectedItem();
                 verdadero = false;
                 ((Window) SwingUtilities.getRoot(panelBotones)).dispose();
             }
-        });
+        });*/
 
         // Crear un panel para el contenido de la ventana emergente
         JPanel panelContenido = new JPanel();
@@ -83,7 +83,7 @@ public class VentanaEmergenteWhile {
                 verdad.add(nuevo);
                 verdad.revalidate();
             }
-            else
+            /*else
             {
                 if(l_falso.isEmpty()){
                     falso.removeAll();
@@ -92,7 +92,7 @@ public class VentanaEmergenteWhile {
                 l_falso.add(nuevo);
                 falso.add(nuevo);
                 falso.revalidate();
-            }
+            }*/
         }
 
     }

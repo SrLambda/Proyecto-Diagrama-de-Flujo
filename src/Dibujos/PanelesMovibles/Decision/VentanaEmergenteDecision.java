@@ -10,13 +10,12 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class VentanaEmergenteDecision {
-
     private String seleccion;
     private boolean verdadero;
 
-
     VentanaEmergenteDecision(JPanel verdad, JPanel falso, List<PanelPersonalizado> l_verdad, List<PanelPersonalizado> l_falso,PanelPersonalizado _contenedor){
         String[] opciones = {"","Entrada", "Salida", "Proceso", "Documento", "Decision"};
+        this.seleccion = "";
 
         // Crear un JComboBox con las opciones
         JComboBox<String> comboBox = new JComboBox<>(opciones);
