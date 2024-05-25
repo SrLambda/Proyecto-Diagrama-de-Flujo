@@ -129,7 +129,9 @@ public class Controlador {
     {
 
         JPanel lienzo = front.getPanel1();
+        JPanel pseudo = front.getPseudocodio();
 
+        pseudo.removeAll();
         lienzo.removeAll();
         lienzo.repaint();
 
@@ -138,7 +140,21 @@ public class Controlador {
     public void pseudoCodigo(Front front)
     {
         parseador.actualizar();
-        System.out.println(parseador.getPseuddoCodigo());
+
+        JPanel contenedor = front.getPseudocodio();
+
+        contenedor.removeAll();
+
+        contenedor.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        JTextArea pseudocodigo = new JTextArea(this.parseador.getPseuddoCodigo());
+        pseudocodigo.setLineWrap(true);
+        pseudocodigo.setWrapStyleWord(true);
+        pseudocodigo.setEditable(false);
+        contenedor.add(pseudocodigo);
+
+        contenedor.revalidate();
+        contenedor.repaint();
     }
 
     public void prueba(){

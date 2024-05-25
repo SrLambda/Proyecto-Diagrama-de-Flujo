@@ -21,6 +21,7 @@ public class Front extends JFrame {
     private JButton pruebas;
     private JButton pseudoCodigoButton;
     private JButton forButton;
+    private JPanel pseudocodio;
 
     private List <PanelPersonalizado> listaPaneles;
 
@@ -173,5 +174,10 @@ public class Front extends JFrame {
     public JPanel getPanel1()
     {
         return  this.panel1;
+    }
+
+    public JPanel getPseudocodio()
+    {
+        return this.pseudocodio;
     }
 }
