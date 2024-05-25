@@ -13,7 +13,9 @@ import java.util.List;
 
 public class DibujoFor extends PanelMovible {
 
-    private JPanel condicion, contenido, fin;
+    private JPanel condicion;
+    private JPanel contenido;
+    private JPanel fin;
     private List<PanelPersonalizado> lista;
     private GridBagConstraints    restriciones;
 
@@ -83,5 +85,20 @@ public class DibujoFor extends PanelMovible {
         Dimension size = new Dimension(ancho,altura);
         this.setPreferredSize(size);
         this.revalidate();
+    }
+
+    public int[] getIntervalo()
+    {
+        DibujoForInterno aux = (DibujoForInterno) this.contenido;
+
+        return  aux.getIntervalo();
+    }
+
+    @Override
+    public String getTexto()
+    {
+        DibujoForInterno aux = (DibujoForInterno) this.contenido;
+
+        return aux.getTexto();
     }
 }

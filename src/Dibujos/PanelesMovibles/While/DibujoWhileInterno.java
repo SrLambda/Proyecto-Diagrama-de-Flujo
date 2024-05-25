@@ -91,6 +91,11 @@ public class DibujoWhileInterno extends JPanel {
         this.revalidate();
     }
 
+
+
+
+
+
     public class WhileInterna extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
 

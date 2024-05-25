@@ -63,6 +63,14 @@ public class Parseador {
         {
             return "Decision";
         }
+        else if (componente instanceof DibujoWhile)
+        {
+            return "While";
+        }
+        else if (componente instanceof DibujoFor)
+        {
+            return "For";
+        }
         else
         {
             return "---" ;
@@ -164,11 +172,48 @@ public class Parseador {
 
                 this.pseudo_codigo.append(separacion).append("}\n");
                 break;
+
+            case "While":
+
+                DibujoWhile aux_w = (DibujoWhile) componente;
+
+                this.pseudo_codigo.append(separacion).append("MIENTRAS ( ");
+                this.pseudo_codigo.append(componente.getTexto());
+                this.pseudo_codigo.append(" )\n");
+
+                this.pseudo_codigo.append(separacion).append("{\n");
+
+                String ciclo_while = pseudoCodIntermedio(tab+1,aux_w.getLista());
+                this.pseudo_codigo.append(ciclo_while);
+
+                this.pseudo_codigo.append(separacion).append("}\n");
+
+                break;
+
+            case "For":
+
+                DibujoFor aux_f = (DibujoFor) componente;
+
+                int[]  aux_val = aux_f.getIntervalo();
+                String var     = aux_f.getTexto();
+
+                this.pseudo_codigo.append(separacion).append("POR ( ");
+                this.pseudo_codigo.append(var).append(" = ").append(aux_val[0]).append(" ; ");
+                this.pseudo_codigo.append(var).append(" += ").append(aux_val[1]).append(" ; ");
+                this.pseudo_codigo.append(var).append(" == ").append(aux_val[2]).append(" )\n");
+
+                this.pseudo_codigo.append(separacion).append("{\n");
+
+                String ciclo_for = pseudoCodIntermedio(tab+1,aux_f.getLista());
+                this.pseudo_codigo.append(ciclo_for);
+
+                this.pseudo_codigo.append(separacion).append("}\n");
+
+
+                break;
         }
 
     }
-
-
 
 
 

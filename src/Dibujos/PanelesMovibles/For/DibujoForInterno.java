@@ -87,6 +87,25 @@ public class DibujoForInterno extends JPanel {
         return izquierda.getListaFiguras();
     }
 
+    public int[] getIntervalo()
+    {
+
+        int[] inter = new int[3];
+        inter[0]    = this.datos.getValorInicial();
+        inter[1]    = this.datos.getIncremento();
+        inter[2]    = this.datos.getValorFinal();
+
+        return inter;
+
+    }
+
+
+    public String getTexto()
+    {
+        return this.datos.getTexto();
+    }
+
+
 
     public class ForInterno extends JPanel{
         private final List<PanelPersonalizado> listaFiguras;
