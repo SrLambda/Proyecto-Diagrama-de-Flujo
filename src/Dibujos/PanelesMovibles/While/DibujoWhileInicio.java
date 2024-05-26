@@ -13,7 +13,6 @@ public class DibujoWhileInicio extends PanelPersonalizado {
 
     public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
-        //setPreferredSize(new Dimension(200, 200));
         this.interno = _interno;
         panelesCiclo = lista;
         setPreferredSize(new Dimension(600, 400));
@@ -24,7 +23,7 @@ public class DibujoWhileInicio extends PanelPersonalizado {
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
-                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                        cambiarTexto(nuevoTexto);
                     }
                 }
 
@@ -68,11 +67,6 @@ public class DibujoWhileInicio extends PanelPersonalizado {
 
         g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
         g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
-
-        /*g.drawLine(x1,centro_y,cuarto,centro_y);
-        g.drawLine(x2,centro_y,cuarto*3,centro_y);
-        g.drawLine(cuarto,centro_y,cuarto,panelHeight);
-        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);*/
 
         // fuente con el tamaño especificado
         g.setFont(textoFont);

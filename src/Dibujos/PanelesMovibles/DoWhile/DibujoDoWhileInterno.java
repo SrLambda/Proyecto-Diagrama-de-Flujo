@@ -28,11 +28,11 @@ public class DibujoDoWhileInterno extends JPanel {
 
         this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
         this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        this.verdadero1.add(new DoWhileVacio(null,null,null));
+        this.verdadero1.add(new DoWhileVacio(null,null,null,null));
 
         this.verdadero2.setLayout(new BoxLayout(this.verdadero2, BoxLayout.Y_AXIS));
         this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 445));
-        this.verdadero2.add(new DoWhileVacio(null,null,null));
+        this.verdadero2.add(new DoWhileVacio(null,null,null,null));
 
         this.add(verdadero1);
         this.add(verdadero2);

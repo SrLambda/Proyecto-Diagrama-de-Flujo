@@ -1,14 +1,11 @@
 package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
-import Dibujos.PanelesMovibles.While.DibujoWhileInterno;
-import Dibujos.PanelesMovibles.While.VentanaEmergenteWhile;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoDoWhileFin extends PanelPersonalizado {
@@ -16,8 +13,8 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
     private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoDoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno) {
-        super(texto, lista, _contenedor);
+    public DibujoDoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,GridBagConstraints _restriciones) {
+        super(texto, lista, _contenedor, _restriciones);
         this.interno = _interno;
         panelesCiclo = lista;
         setPreferredSize(new Dimension(200, 400));
@@ -25,10 +22,10 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) { // Doble clic para editar el texto
+                if (e.getClickCount() == 2) {
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
-                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                        cambiarTexto(nuevoTexto);
                     }
                 }
 
@@ -38,46 +35,11 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
                     JPanel ver = interno.getVerdadero2();
                     List<PanelPersonalizado> l_ver= interno.getListaVerdadera2();
 
-                    new VentanaEmergenteDoWhile(ver,l_ver,(PanelPersonalizado) _contenedor);
-
-                    //Falso
-                    /*JPanel fal= interno.getFalso();
-                    List<PanelPersonalizado> l_fal= interno.getListaFalsa();
-                    new VentanaEmergenteDoWhile(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);*/
+                    //new VentanaEmergenteDoWhile(ver,l_ver,(PanelPersonalizado) _contenedor);
                 }
             }
         });
-        /*this.falso = falso;
-        setPreferredSize(new Dimension(200, 400));
-        //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios 01
-        this.setLayout(new BoxLayout(DibujoDoWhileFin.this, BoxLayout.X_AXIS));
-        this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        this.falso = new DibujoDoWhileFin.DoWhileFin();
-
-        this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
-        this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new DoWhileVacio(null,null,null));
-
-        this.add(falso);*/
     }
-
-    /*public java.util.List<PanelPersonalizado> getListaFalsa()
-    {
-        return falso.getListaFiguras();
-    }
-
-    public JPanel getFalso() {
-        return falso;
-    }*/
-
-    /*public class DoWhileFin extends JPanel {
-        private final List<PanelPersonalizado> listaFiguras;
-
-        DoWhileFin() {
-            listaFiguras = new ArrayList<>();
-        }*/
-
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);

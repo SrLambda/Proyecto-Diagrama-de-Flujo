@@ -20,7 +20,6 @@ public class DibujoWhileInterno extends JPanel {
         this.verdadero2 = verdadero2;
         this.falso = falso;
         setPreferredSize(new Dimension(600, 400));
-        //this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // FlowLayout con alineación centrada y espacios 01
         this.setLayout(new BoxLayout(DibujoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -113,9 +112,6 @@ public class DibujoWhileInterno extends JPanel {
             int centro_x = panelWidth / 2; // Centro horizontal
 
             g.setColor(Color.BLACK);
-
-            /* Para verdadero1: dibujar línea horizontal que conecta con el panel superior
-            g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);*/
 
             // Para verdadero2: dibujar línea vertical en el centro del panel
             if (this == verdadero2) {

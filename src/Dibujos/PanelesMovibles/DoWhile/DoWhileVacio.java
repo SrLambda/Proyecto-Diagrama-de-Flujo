@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DoWhileVacio extends PanelPersonalizado {
 
-    public DoWhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor) {
-        super(_texto, lista, _contenedor);
+    public DoWhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+        super(_texto, lista, _contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 400));
     }
 

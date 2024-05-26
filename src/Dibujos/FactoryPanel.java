@@ -38,7 +38,7 @@ public class FactoryPanel {
         }
         else if(tipo.equalsIgnoreCase("do-while"))
         {
-            return new DibujoDoWhile(texto, lista, _contenedor);
+            return new DibujoDoWhile(texto, lista, _contenedor,restricciones);
         }
         else
         {
