@@ -14,7 +14,6 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
     public DibujoDoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
         this.interno = _interno;
-        setPreferredSize(new Dimension(200, 200));
     }
 
     @Override

@@ -15,7 +15,6 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         super(texto, lista, _contenedor,_restriciones);
         this.interno = _interno;
         panelesCiclo = lista;
-        setPreferredSize(new Dimension(600, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -60,7 +59,7 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
         g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
         g.drawLine(x2,centro_y, (int) (cuarto*3.33),centro_y); //  Linea horizontal derecha
-        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
+   /* AQUI ES */    g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
 
         g.drawLine((int) (cuarto*3.33),centro_y,(int) (cuarto*3.33),panelHeight); //  Linea vertical derecha
         g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),(int) (panelWidth*0.1665),panelHeight); //  Linea vertical izquierda

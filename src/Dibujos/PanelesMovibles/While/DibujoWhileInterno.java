@@ -19,7 +19,6 @@ public class DibujoWhileInterno extends JPanel {
         this.verdadero1 = verdadero1;
         this.verdadero2 = verdadero2;
         this.falso = falso;
-        setPreferredSize(new Dimension(600, 400));
         this.setLayout(new BoxLayout(DibujoWhileInterno.this, BoxLayout.X_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -113,10 +112,7 @@ public class DibujoWhileInterno extends JPanel {
 
             g.setColor(Color.BLACK);
 
-            // Para verdadero2: dibujar línea vertical en el centro del panel
-            if (this == verdadero2) {
-                g.drawLine(centro_x, 0, centro_x, panelHeight);
-            }
+            g.drawLine(centro_x, 0, centro_x, panelHeight);
 
             //Para falso: dibujar línea vertical que conecta con el panel inferior
             if (this == falso) {
@@ -124,25 +120,12 @@ public class DibujoWhileInterno extends JPanel {
             }
         }
 
-        public void agregarPanel(PanelPersonalizado panel, boolean verdadero) {
-            JPanel destino = verdadero ? verdadero2 : falso;
-            List<PanelPersonalizado> listaDestino = verdadero ? verdadero2.getListaFiguras() : falso.getListaFiguras();
-
-            if (listaDestino.isEmpty()) {
-                destino.removeAll();
-            }
-
-            listaDestino.add(panel);
-            destino.add(panel);
-            destino.revalidate();
-        }
-
         public List<PanelPersonalizado> getListaFiguras()
         {
             return listaFiguras;
         }
 
-        public void ajustarSize(int ancho,int alto)
+        public void ajustarSize(int alto)
         {
             for (JPanel panel : listaFiguras) {
 

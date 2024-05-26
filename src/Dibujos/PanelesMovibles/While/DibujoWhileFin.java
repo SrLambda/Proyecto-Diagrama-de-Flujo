@@ -13,7 +13,6 @@ public class DibujoWhileFin extends PanelPersonalizado {
 
     public DibujoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto,lista,_contenedor,_restriciones);
-        setPreferredSize(new Dimension(600, 400));
     }
 
     @Override
