@@ -13,38 +13,21 @@ public class DibujoWhileInicio extends PanelPersonalizado {
 
     public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
-        //setPreferredSize(new Dimension(200, 200));
         this.interno = _interno;
         panelesCiclo = lista;
-        setPreferredSize(new Dimension(200, 400));
 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
-                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
+                        cambiarTexto(nuevoTexto);
                     }
                 }
 
-                if (SwingUtilities.isRightMouseButton(e)) {
-
-                    //Verdad
-                    JPanel ver= interno.getVerdadero2();
-                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera2();
-
-
-                    //Falso
-                    JPanel fal= interno.getFalso();
-                    List<PanelPersonalizado> l_fal= interno.getListaFalsa();
-
-                    new VentanaEmergenteWhile(ver,fal,l_ver,l_fal,(PanelPersonalizado) _contenedor);
-                }
             }
         });
-
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -76,18 +59,13 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
         g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
         g.drawLine(x2,centro_y, (int) (cuarto*3.33),centro_y); //  Linea horizontal derecha
-        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
+   /* AQUI ES */    g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
 
         g.drawLine((int) (cuarto*3.33),centro_y,(int) (cuarto*3.33),panelHeight); //  Linea vertical derecha
         g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),(int) (panelWidth*0.1665),panelHeight); //  Linea vertical izquierda
 
-        g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
-        g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
-
-        /*g.drawLine(x1,centro_y,cuarto,centro_y);
-        g.drawLine(x2,centro_y,cuarto*3,centro_y);
-        g.drawLine(cuarto,centro_y,cuarto,panelHeight);
-        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);*/
+        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
+        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
         // fuente con el tamaño especificado
         g.setFont(textoFont);

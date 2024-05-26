@@ -1,4 +1,4 @@
-package Dibujos.PanelesMovibles.For;
+package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
 
@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class ForVacio extends PanelPersonalizado {
+public class DoWhileVacio extends PanelPersonalizado {
 
-    public ForVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
+    public DoWhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(_texto, lista, _contenedor,_restriciones);
     }
 
@@ -22,14 +22,5 @@ public class ForVacio extends PanelPersonalizado {
         int alto = this.getHeight();
 
         g.drawLine(ancho/2,0,ancho/2,alto);
-    }
-
-    public void ajustarSize(int ancho,int altura)
-    {
-
-        Dimension size = new Dimension(ancho,altura);
-
-        this.setPreferredSize(size);
-
     }
 }

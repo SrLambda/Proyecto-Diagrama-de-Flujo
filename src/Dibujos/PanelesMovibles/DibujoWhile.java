@@ -2,6 +2,7 @@ package Dibujos.PanelesMovibles;
 
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.For.DibujoForInterno;
 import Dibujos.PanelesMovibles.While.DibujoWhileFin;
 import Dibujos.PanelesMovibles.While.DibujoWhileInicio;
 import Dibujos.PanelesMovibles.While.DibujoWhileInterno;
@@ -12,12 +13,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoWhile extends PanelMovible {
-    private JPanel condicion, contenido, fin;
+
+    private JPanel condicion;
+    private JPanel contenido;
+    private JPanel fin;
+
+    private GridBagConstraints restricciones;
+
     private List<PanelPersonalizado> lista;
+
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+
     public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
-        setPreferredSize(new Dimension(200, 500));
+        setPreferredSize(new Dimension(600, 500));
+
+        this.restriciones         = new GridBagConstraints();
+        this.restriciones.gridx   = 0;
+        this.restriciones.gridy   = GridBagConstraints.RELATIVE; // Se inicia en la siguiente fila
+        this.restriciones.anchor  = GridBagConstraints.CENTER; // Alineación vertical superior
+        this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
+        this.restriciones.weighty = 0; // No expandir en dirección vertical
+        this.restriciones.insets  = new Insets(0, 0, 0, 0);
 
         this.setLayout(new BoxLayout(DibujoWhile.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -28,8 +45,39 @@ public class DibujoWhile extends PanelMovible {
         this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones);
         this.fin = new DibujoWhileFin(texto,lista,this,this.restriciones);
 
-        this.add(condicion);
-        this.add(contenido);
-        this.add(fin);
+        this.add(condicion,this.restriciones);
+        this.add(contenido,this.restriciones);
+        this.add(fin,this.restriciones);
+    }
+
+    public JPanel getContenido()
+    {
+        DibujoWhileInterno aux = (DibujoWhileInterno) this.contenido;
+        return aux.getVerdadero2();
+    }
+
+    public List<PanelPersonalizado> getLista() {
+        DibujoWhileInterno aux = (DibujoWhileInterno) this.contenido;
+        return aux.getListaVerdadera2();
+    }
+
+    public void ajustarSize()
+    {
+        DibujoWhileInterno aux = (DibujoWhileInterno) this.contenido;
+
+        aux.ajustarSize();
+
+        int altura = 0;
+        int ancho  = 0;
+
+        altura += (int) this.condicion.getPreferredSize().getHeight();
+        altura += (int) this.contenido.getPreferredSize().getHeight();
+        altura += (int) this.fin.getPreferredSize().getHeight();
+
+        ancho  += (int) this.contenido.getPreferredSize().getWidth();
+
+        Dimension size = new Dimension(ancho,altura);
+        this.setPreferredSize(size);
+        this.revalidate();
     }
 }

@@ -13,7 +13,6 @@ public class DibujoWhileFin extends PanelPersonalizado {
 
     public DibujoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto,lista,_contenedor,_restriciones);
-        setPreferredSize(new Dimension(200, 400));
     }
 
     @Override
@@ -37,10 +36,5 @@ public class DibujoWhileFin extends PanelPersonalizado {
         g.drawLine(centro_x, (int) (panelHeight*0.75),(int) (cuarto*3.33), (int) (panelHeight*0.75)); // Linea horizontal derecha
         g.drawLine(centro_x, (int) (panelHeight*0.75),centro_x,panelHeight); // Linea inferior
 
-
-        /*g.drawLine(cuarto*3, 0,cuarto*3, centro_y);                 // Linea derecha
-        g.drawLine(cuarto,0,cuarto, centro_y);  // Linea izquierda
-        g.drawLine(cuarto, centro_y,cuarto*3, centro_y);     // Linea central
-        g.drawLine(centro_x, centro_y,centro_x, panelHeight);    // Linea baja*/
     }
 }

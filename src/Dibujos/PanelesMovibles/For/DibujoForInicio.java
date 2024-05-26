@@ -18,22 +18,7 @@ public class DibujoForInicio extends PanelPersonalizado {
         super(texto, lista, _contenedor,_restriciones);
         this.interno = _interno;
         panelesCiclo = lista;
-        setPreferredSize(new Dimension(200, 400));
 
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-                if (SwingUtilities.isRightMouseButton(e)) {
-
-                    //Verdad
-                    JPanel ver= interno.getIzquierda();
-                    List<PanelPersonalizado> l_ver= interno.getListaIzquierda();
-
-                    new VentanaEmergenteFor(ver,l_ver,(PanelPersonalizado) _contenedor);
-                }
-            }
-        });
 
     }
 
