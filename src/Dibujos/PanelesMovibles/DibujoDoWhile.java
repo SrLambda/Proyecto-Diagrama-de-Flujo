@@ -5,6 +5,7 @@ import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileFin;
 import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileInicio;
 import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileInterno;
+import Dibujos.PanelesMovibles.While.DibujoWhileInterno;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoDoWhile extends PanelMovible {
-    private JPanel condicion, contenido, fin;
+
+    private JPanel condicion;
+    private JPanel contenido;
+    private JPanel fin;
+
     private GridBagConstraints restriciones;
     private List<PanelPersonalizado> lista;
+
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+
     public DibujoDoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
         setPreferredSize(new Dimension(200, 500));
@@ -31,5 +38,36 @@ public class DibujoDoWhile extends PanelMovible {
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);
         this.add(fin,this.restriciones);
+    }
+
+    public JPanel getContenido()
+    {
+        DibujoDoWhileInterno aux = (DibujoDoWhileInterno) this.contenido;
+        return aux.getVerdadero2();
+    }
+
+    public List<PanelPersonalizado> getLista() {
+        DibujoDoWhileInterno aux = (DibujoDoWhileInterno) this.contenido;
+        return aux.getListaVerdadera2();
+    }
+
+    public void ajustarSize()
+    {
+        DibujoDoWhileInterno aux = (DibujoDoWhileInterno) this.contenido;
+
+        aux.ajustarSize();
+
+        int altura = 0;
+        int ancho  = 0;
+
+        altura += (int) this.condicion.getPreferredSize().getHeight();
+        altura += (int) this.contenido.getPreferredSize().getHeight();
+        altura += (int) this.fin.getPreferredSize().getHeight();
+
+        ancho  += (int) this.contenido.getPreferredSize().getWidth();
+
+        Dimension size = new Dimension(ancho,altura);
+        this.setPreferredSize(size);
+        this.revalidate();
     }
 }

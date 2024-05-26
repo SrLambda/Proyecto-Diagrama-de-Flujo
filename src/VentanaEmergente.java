@@ -168,6 +168,20 @@ public class VentanaEmergente {
                this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
 
            }
+           else if (this.lista.get(i) instanceof DibujoDoWhile)
+           {
+               opcion.append(indice).append(" | DO-WHILE ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+               this.compnentes.add(indice + " -- | INGRESAR DENTRO DEL CICLO | --");
+
+           }
 
 
         }
@@ -298,7 +312,20 @@ public class VentanaEmergente {
                         nuevo.actualizarContenedor(lista_aux,cont_aux);
                         vent_aux.agregar(nuevo);
                         aux.ajustarSize();
+                    }
+                    else if (lista.get(posicion) instanceof DibujoDoWhile)
+                    {
+                        /*
+                        DibujoDoWhile aux = (DibujoDoWhile) lista.get(posicion);
 
+                        List <PanelPersonalizado> lista_aux = aux.getLista();
+                        JPanel                     cont_aux = aux.getContenido();
+
+                        VentanaEmergente vent_aux = new VentanaEmergente(lista_aux, cont_aux, this.restricciones);
+
+                        nuevo.actualizarContenedor(lista_aux, cont_aux);
+                        vent_aux.agregar(nuevo);
+                        aux.ajustarSize();*/
                     }
 
                 }
