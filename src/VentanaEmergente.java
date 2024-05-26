@@ -315,7 +315,7 @@ public class VentanaEmergente {
                     }
                     else if (lista.get(posicion) instanceof DibujoDoWhile)
                     {
-                        /*
+
                         DibujoDoWhile aux = (DibujoDoWhile) lista.get(posicion);
 
                         List <PanelPersonalizado> lista_aux = aux.getLista();
@@ -325,7 +325,7 @@ public class VentanaEmergente {
 
                         nuevo.actualizarContenedor(lista_aux, cont_aux);
                         vent_aux.agregar(nuevo);
-                        aux.ajustarSize();*/
+                        aux.ajustarSize();
                     }
 
                 }
