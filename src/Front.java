@@ -150,14 +150,13 @@ public class Front extends JFrame {
             }
         });
 
-        forButton.addActionListener(new ActionListener() {
+        whileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controlador.crearPanel(Front.this,"for");
+                controlador.crearPanel(Front.this,"while");
             }
         });
 
-        
         doWhileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
