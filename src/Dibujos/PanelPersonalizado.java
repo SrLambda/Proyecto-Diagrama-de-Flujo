@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class PanelPersonalizado extends JPanel
 {
 
-    protected String texto;
+    public String texto;
     protected List <PanelPersonalizado> listaFiguras;
     protected int posOriginal = -1;
     protected JPanel contenedor;

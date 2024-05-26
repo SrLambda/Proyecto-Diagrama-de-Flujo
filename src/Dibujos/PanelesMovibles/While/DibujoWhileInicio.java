@@ -21,7 +21,6 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
@@ -31,7 +30,6 @@ public class DibujoWhileInicio extends PanelPersonalizado {
 
             }
         });
-
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -68,8 +66,8 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         g.drawLine((int) (cuarto*3.33),centro_y,(int) (cuarto*3.33),panelHeight); //  Linea vertical derecha
         g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),(int) (panelWidth*0.1665),panelHeight); //  Linea vertical izquierda
 
-        g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
-        g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
+        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
+        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
         /*g.drawLine(x1,centro_y,cuarto,centro_y);
         g.drawLine(x2,centro_y,cuarto*3,centro_y);

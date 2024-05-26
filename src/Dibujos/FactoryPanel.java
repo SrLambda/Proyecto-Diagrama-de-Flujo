@@ -36,6 +36,10 @@ public class FactoryPanel {
         {
             return new DibujoWhile(texto, lista, _contenedor,restricciones);
         }
+        else if(tipo.equalsIgnoreCase("do-while"))
+        {
+            return new DibujoDoWhile(texto, lista, _contenedor);
+        }
         else
         {
             throw new IllegalArgumentException("Tipo de figura desconocida.");

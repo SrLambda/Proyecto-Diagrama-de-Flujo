@@ -1,30 +1,22 @@
-import Dibujos.PanelPersonalizado;
-
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.geom.QuadCurve2D;
 
 public class Front extends JFrame {
 
     private JPanel panel1;
     private JPanel panel;
+    private JButton inicioButton;
     private JButton etapaDelProcesoButton;
     private JButton decisionButton;
     private JButton entradaButton;
     private JButton salidaButton;
     private JButton documentoButton;
     private JButton limpiarButton;
-    private JButton whileButton;
-    private JScrollPane scroll;
-    private JButton pruebas;
-    private JButton pseudoCodigoButton;
-    private JButton forButton;
-    private JPanel pseudocodio;
-
-    private JButton doWhileButton;
-    private List <PanelPersonalizado> listaPaneles;
+    private JButton FinButton;
+    private JPanel columna;
 
 
     public Front(Controlador controlador)
@@ -36,10 +28,16 @@ public class Front extends JFrame {
         setTitle("Graficador Interactivo de Diagramas de flujo");
         setVisible(true);
 
-        listaPaneles = new ArrayList<>();
 
-        controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
+        this.columna = new JPanel();
+        controlador.initFront(Front.this);
 
+
+
+
+        //Point2D punto1 = new Point2D.Double(10, 10);
+        //Line2D linea1 = new Line2D.Double(50, 50, 150, 150);
+        //QuadCurve2D curvaCuadratica1 = new QuadCurve2D.Double(50, 50, 100, 150, 150, 50);
 
 
         //botón para dibujar un rectángulo
@@ -50,7 +48,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"proceso");
+                controlador.crearProceso(Front.this);
             }
 
         });
@@ -64,7 +62,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"decision");
+                controlador.crearDecision(Front.this);
 
             }
 
@@ -78,12 +76,21 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 controlador.limpiarPantalla(Front.this);
-                listaPaneles = new ArrayList<>();
-                controlador.initFront(Front.this,listaPaneles,scroll,panel1);
-
             }
 
         });
+
+
+        /*entradaSalidaButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+
+        });*/
 
         //Dibujar Paralelogramo /__/
         entradaButton.addActionListener(new ActionListener()
@@ -93,11 +100,12 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"entrada");
+                controlador.crearEntreda(Front.this);
 
             }
 
         });
+
 
 
         //Dibujar Paralelogramo /__/
@@ -108,7 +116,7 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"salida");
+                controlador.crearSalida(Front.this);
 
             }
 
@@ -123,62 +131,51 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.crearPanel(Front.this,"documento");
+                controlador.crearImpresion(Front.this);
 
             }
 
         });
 
 
-        pruebas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.prueba();
-
-            }
-        });
-
-        pseudoCodigoButton.addActionListener(new ActionListener() {
-
+        //Dibujar Rectangulo curvo (__)
+        inicioButton.addActionListener(new ActionListener()
+        {
 
             @Override
             public void actionPerformed(ActionEvent e)
             {
 
-                controlador.pseudoCodigo(Front.this);
-
+                controlador.crearInicio(Front.this);
             }
-
 
         });
 
-        forButton.addActionListener(new ActionListener() {
+        FinButton.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
 
-                controlador.crearPanel(Front.this,"for");
+                controlador.crearFin(Front.this);
 
             }
-        });
 
-        whileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controlador.crearPanel(Front.this,"while");
-            }
         });
 
     }
 
     public JPanel getPanel1()
     {
-        return  this.panel1;
+
+        return panel1;
+
     }
 
-    public JPanel getPseudocodio()
+    public JPanel getColumna()
     {
-        return this.pseudocodio;
+
+        return columna;
+
     }
 }
