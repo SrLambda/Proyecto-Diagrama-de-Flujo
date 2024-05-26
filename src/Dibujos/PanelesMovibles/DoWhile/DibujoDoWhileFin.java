@@ -28,15 +28,6 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
                         cambiarTexto(nuevoTexto);
                     }
                 }
-
-                if (SwingUtilities.isRightMouseButton(e)) {
-
-                    //Verdad
-                    JPanel ver = interno.getVerdadero2();
-                    List<PanelPersonalizado> l_ver= interno.getListaVerdadera2();
-
-                    //new VentanaEmergenteDoWhile(ver,l_ver,(PanelPersonalizado) _contenedor);
-                }
             }
         });
     }
