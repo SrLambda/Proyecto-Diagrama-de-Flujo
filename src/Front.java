@@ -8,22 +8,21 @@ import java.util.List;
 
 public class Front extends JFrame {
 
-    private JPanel panel1;
-    private JPanel panel;
-    private JButton etapaDelProcesoButton;
-    private JButton decisionButton;
-    private JButton entradaButton;
-    private JButton salidaButton;
-    private JButton documentoButton;
-    private JButton limpiarButton;
-    private JButton whileButton;
+    private      JPanel panel1;
+    private      JPanel panel;
+    private      JPanel pseudocodio;
+    private     JButton etapaDelProcesoButton;
+    private     JButton decisionButton;
+    private     JButton entradaButton;
+    private     JButton salidaButton;
+    private     JButton documentoButton;
+    private     JButton limpiarButton;
+    private     JButton whileButton;
+    private     JButton pseudoCodigoButton;
+    private     JButton forButton;
+    private     JButton doWhileButton;
     private JScrollPane scroll;
-    private JButton pruebas;
-    private JButton pseudoCodigoButton;
-    private JButton forButton;
-    private JPanel pseudocodio;
 
-    private JButton doWhileButton;
     private List <PanelPersonalizado> listaPaneles;
 
 
@@ -129,16 +128,6 @@ public class Front extends JFrame {
 
         });
 
-
-        pruebas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.prueba();
-
-            }
-        });
 
         pseudoCodigoButton.addActionListener(new ActionListener() {
 

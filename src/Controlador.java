@@ -54,10 +54,10 @@ public class Controlador {
         this.parseador    = new Parseador(_listaFiguras);
 
 
-        /*
-        front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
-        front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        */
+
+        front.getPseudocodio().setLayout(new BoxLayout(front.getPseudocodio(), BoxLayout.Y_AXIS));
+        front.getPseudocodio().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Barra de desplazamiento vertical siempre visible
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); // Sin barra de desplazamiento horizontal
         scroll.setBorder(BorderFactory.createEmptyBorder());
@@ -133,7 +133,8 @@ public class Controlador {
 
         pseudo.removeAll();
         lienzo.removeAll();
-        lienzo.repaint();
+        lienzo.revalidate();
+        pseudo.revalidate();
 
     }
 
@@ -145,12 +146,12 @@ public class Controlador {
 
         contenedor.removeAll();
 
-        contenedor.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         JTextArea pseudocodigo = new JTextArea(this.parseador.getPseuddoCodigo());
         pseudocodigo.setLineWrap(true);
         pseudocodigo.setWrapStyleWord(true);
         pseudocodigo.setEditable(false);
+
         contenedor.add(pseudocodigo);
 
         contenedor.revalidate();

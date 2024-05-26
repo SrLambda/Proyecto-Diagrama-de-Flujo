@@ -119,7 +119,7 @@ public class Parseador {
         switch (tipo){
             case "Proceso":
 
-                this.pseudo_codigo.append(separacion).append("DECLARAR ==> ");
+                this.pseudo_codigo.append(separacion);
                 this.pseudo_codigo.append(componente.getTexto());
                 this.pseudo_codigo.append("\n");
 
@@ -154,9 +154,9 @@ public class Parseador {
                 DibujoDecision aux = (DibujoDecision) componente;
 
                 // Condicion
-                this.pseudo_codigo.append(separacion).append("SI (");
+                this.pseudo_codigo.append(separacion).append("SI ( ");
                 this.pseudo_codigo.append(componente.getTexto());
-                this.pseudo_codigo.append(")\n");
+                this.pseudo_codigo.append(" )\n");
 
                 // Verdad
                 this.pseudo_codigo.append(separacion).append("{\n");
@@ -220,9 +220,8 @@ public class Parseador {
 
                 DibujoDoWhile aux_dw = (DibujoDoWhile) componente;
 
-                this.pseudo_codigo.append(separacion).append("HACER MIENTRAS ( ");
-                this.pseudo_codigo.append(componente.getTexto());
-                this.pseudo_codigo.append(" )\n");
+                this.pseudo_codigo.append(separacion).append("HACER\n");
+
 
                 this.pseudo_codigo.append(separacion).append("{\n");
 
@@ -230,6 +229,10 @@ public class Parseador {
                 this.pseudo_codigo.append(ciclo_doWhile);
 
                 this.pseudo_codigo.append(separacion).append("}\n");
+
+                this.pseudo_codigo.append(separacion).append("MIENTRAS ( ");
+                this.pseudo_codigo.append(componente.getTexto());
+                this.pseudo_codigo.append(" )\n");
 
                 break;
         }
