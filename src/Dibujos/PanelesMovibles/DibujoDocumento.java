@@ -1,5 +1,4 @@
 package Dibujos.PanelesMovibles;
-
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 
@@ -9,6 +8,7 @@ import java.awt.geom.QuadCurve2D;
 import java.util.List;
 
 public class DibujoDocumento extends PanelMovible {
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoDocumento(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
 
@@ -16,8 +16,8 @@ public class DibujoDocumento extends PanelMovible {
 
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
+
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
@@ -40,10 +40,9 @@ public class DibujoDocumento extends PanelMovible {
         g.setColor(Color.BLACK);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
         g.drawLine(x2, y1, x2, y2);     // Lado derecho
-        //g.drawLine(x2, y2, x1, y2);     // Lado inferior
         g.drawLine(x1, y2, x1, y1);     // Lado izquierdo
         g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(2)); // Grosor de línea
+        g2d.setStroke(new BasicStroke(1)); // Grosor de línea
         g2d.draw(new QuadCurve2D.Double(x1, y2, ctrl1x, -ctrl1y, x3, y2));
         g2d.draw(new QuadCurve2D.Double(x3, y2, ctrl2x, ctrl2y, x2, y2));
 
@@ -55,6 +54,8 @@ public class DibujoDocumento extends PanelMovible {
         g.drawLine(centro_x,y1,centro_x+10,y1-10);
         g.drawLine(centro_x,y1,centro_x-10,y1-10);
 
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
 
         // Dibuja el texto centrado
         FontMetrics metrics = g.getFontMetrics();
@@ -62,6 +63,9 @@ public class DibujoDocumento extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
 }
+
+
+
+
 

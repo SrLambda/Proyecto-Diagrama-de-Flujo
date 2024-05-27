@@ -2,15 +2,17 @@ package Dibujos;
 import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 
 public abstract class PanelPersonalizado extends JPanel
 {
 
-    protected String texto;
+    public String texto;
     protected List <PanelPersonalizado> listaFiguras;
-    protected int altura;
     protected int posOriginal = -1;
     protected JPanel contenedor;
     public boolean habilitado = true;
@@ -34,6 +36,7 @@ public abstract class PanelPersonalizado extends JPanel
     {
         int i=0;
         int num = listaFiguras.indexOf(this);
+
 
         while(i < listaFiguras.size())
         {
@@ -121,8 +124,15 @@ public abstract class PanelPersonalizado extends JPanel
             parent.revalidate();
         }
     }
+
     public String getTexto() {
         return texto;
+    }
+
+    public void actualizarContenedor(List<PanelPersonalizado> list,JPanel cont)
+    {
+        this.listaFiguras = list;
+        this.contenedor = cont;
     }
 
 }

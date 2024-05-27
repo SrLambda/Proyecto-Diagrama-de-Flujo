@@ -4,13 +4,10 @@ import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoSalida extends PanelMovible {
-
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
     }
@@ -37,12 +34,11 @@ public class DibujoSalida extends PanelMovible {
 
 
         // Dibujar las líneas que forman el paralelogramo
-
         g.setColor(Color.BLACK);
         g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
-        g.drawLine(x2+desvio, y1, x2-desvio, y2);     // Lado derecho
-        g.drawLine(x2-desvio, y2, x1-desvio, y2);     // Lado inferior
-        g.drawLine(x1-desvio, y2, x1+desvio, y1);     // Lado izquierdo
+        g.drawLine(x2+desvio, y1, x2-desvio, y2 + 30);     // Lado derecho
+        g.drawLine(x2-desvio, y2 + 30, x1-desvio, y2 + 30);     // Lado inferior
+        g.drawLine(x1-desvio, y2 + 30, x1+desvio, y1);     // Lado izquierdo
 
 
         // Dibujar flecha de salida
@@ -55,11 +51,13 @@ public class DibujoSalida extends PanelMovible {
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);               // Linea superior
-        g.drawLine(centro_x,y2,centro_x,panelHeight);         // Linea inferior
+        g.drawLine(centro_x,y2 + 30,centro_x,panelHeight + 30);         // Linea inferior
 
         g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
         g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
 
         // Dibuja el texto centrado
         FontMetrics metrics = g.getFontMetrics();
@@ -67,5 +65,4 @@ public class DibujoSalida extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
 }

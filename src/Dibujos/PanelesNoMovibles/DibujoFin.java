@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.List;
 
 public class DibujoFin extends PanelPersonalizado {
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
         this.habilitado = false;
@@ -43,6 +44,9 @@ public class DibujoFin extends PanelPersonalizado {
 
         g.drawLine(centro_x, y1, centro_x + 10, y1 - 10);    //  Flecha
         g.drawLine(centro_x, y1, centro_x - 10, y1 - 10);    //  de flujo
+
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
 
         // Dibujar el texto centrado
         FontMetrics metrics = g.getFontMetrics();

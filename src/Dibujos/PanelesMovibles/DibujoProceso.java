@@ -4,15 +4,13 @@ import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 public class DibujoProceso extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
         super(texto, lista, _contenedor,_restriciones);
 
@@ -38,7 +36,6 @@ public class DibujoProceso extends PanelMovible {
 
 
         // Dibujar las líneas que forman el rectángulo
-
         g.setColor(Color.BLACK);
         g.drawLine(x1, y1, x2, y1);     // Lado superior
         g.drawLine(x2, y1, x2, y2);     // Lado derecho
@@ -53,13 +50,14 @@ public class DibujoProceso extends PanelMovible {
         g.drawLine(centro_x,y1,centro_x-10,y1-10);
 
 
-        // Dibuja el texto centrado
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
+
+        // Dibuja el texto en el centro del panel
         FontMetrics metrics = g.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
 
     }
-
-
 }

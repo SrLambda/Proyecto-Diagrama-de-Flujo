@@ -1,26 +1,27 @@
 import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class Front extends JFrame {
 
-    private JPanel panel1;
-    private JPanel panel;
-    private JButton etapaDelProcesoButton;
-    private JButton decisionButton;
-    private JButton entradaButton;
-    private JButton salidaButton;
-    private JButton documentoButton;
-    private JButton limpiarButton;
+    private      JPanel panel1;
+    private      JPanel panel;
+    private      JPanel pseudocodio;
+    private     JButton etapaDelProcesoButton;
+    private     JButton decisionButton;
+    private     JButton entradaButton;
+    private     JButton salidaButton;
+    private     JButton documentoButton;
+    private     JButton limpiarButton;
+    private     JButton whileButton;
+    private     JButton pseudoCodigoButton;
+    private     JButton forButton;
+    private     JButton doWhileButton;
     private JScrollPane scroll;
-    private JButton pruebas;
-    private JButton pseudoCodigoButton;
 
     private List <PanelPersonalizado> listaPaneles;
 
@@ -83,7 +84,6 @@ public class Front extends JFrame {
 
         });
 
-
         //Dibujar Paralelogramo /__/
         entradaButton.addActionListener(new ActionListener()
         {
@@ -129,16 +129,6 @@ public class Front extends JFrame {
         });
 
 
-        pruebas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-
-                controlador.prueba();
-
-            }
-        });
-
         pseudoCodigoButton.addActionListener(new ActionListener() {
 
 
@@ -152,10 +142,39 @@ public class Front extends JFrame {
 
 
         });
+
+        forButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                controlador.crearPanel(Front.this,"for");
+
+            }
+        });
+
+        whileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.crearPanel(Front.this,"while");
+            }
+        });
+
+        doWhileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.crearPanel(Front.this,"do-while");
+            }
+        });
+
     }
 
     public JPanel getPanel1()
     {
         return  this.panel1;
+    }
+
+    public JPanel getPseudocodio()
+    {
+        return this.pseudocodio;
     }
 }

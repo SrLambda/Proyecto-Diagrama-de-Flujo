@@ -1,4 +1,5 @@
 import Dibujos.*;
+import Dibujos.PanelesMovibles.DibujoFor;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
 
@@ -8,8 +9,6 @@ import java.awt.*;
 import java.util.List;
 
 public class Controlador {
-
-
     private static Controlador instancia;
     private List<PanelPersonalizado> listaFiguras;
     private JPanel contenedor;
@@ -55,10 +54,10 @@ public class Controlador {
         this.parseador    = new Parseador(_listaFiguras);
 
 
-        /*
-        front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));
-        front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        */
+
+        front.getPseudocodio().setLayout(new BoxLayout(front.getPseudocodio(), BoxLayout.Y_AXIS));
+        front.getPseudocodio().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // Barra de desplazamiento vertical siempre visible
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); // Sin barra de desplazamiento horizontal
         scroll.setBorder(BorderFactory.createEmptyBorder());
@@ -93,16 +92,26 @@ public class Controlador {
     //===========================================================================================
 
 
-    public void crearPanel(Front front,String tipo)
+    public void crearPanel(Front front, String tipo)
     {
         // Clase Factory
         FactoryPanel factory = new FactoryPanel();
 
+        String texto = "---";
 
-        // Crea el panel                                   __   cambio   __
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,entradaDeTexto(),listaFiguras,contenedor,restriciones);
+        if(!tipo.equals("for"))
+        {
+            texto = entradaDeTexto();
+        }
 
+        // Crea el panel
+        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones);
 
+        if(nuevo instanceof DibujoFor)
+        {
+            DibujoFor aux = (DibujoFor) nuevo;
+            aux.modificarValores();
+        }
 
         //---------------cambios-----------------
         //posicion
@@ -113,7 +122,6 @@ public class Controlador {
         // Actualizan los cambios
         this.ventanaEmergente.actualizarCompnentes();
         front.getPanel1().revalidate();
-
     }
 
 
@@ -121,16 +129,33 @@ public class Controlador {
     {
 
         JPanel lienzo = front.getPanel1();
+        JPanel pseudo = front.getPseudocodio();
 
+        pseudo.removeAll();
         lienzo.removeAll();
-        lienzo.repaint();
+        lienzo.revalidate();
+        pseudo.revalidate();
 
     }
 
     public void pseudoCodigo(Front front)
     {
         parseador.actualizar();
-        System.out.println(parseador.getPseuddoCodigo());
+
+        JPanel contenedor = front.getPseudocodio();
+
+        contenedor.removeAll();
+
+
+        JTextArea pseudocodigo = new JTextArea(this.parseador.getPseuddoCodigo());
+        pseudocodigo.setLineWrap(true);
+        pseudocodigo.setWrapStyleWord(true);
+        pseudocodigo.setEditable(false);
+
+        contenedor.add(pseudocodigo);
+
+        contenedor.revalidate();
+        contenedor.repaint();
     }
 
     public void prueba(){

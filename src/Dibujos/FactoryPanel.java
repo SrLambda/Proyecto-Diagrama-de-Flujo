@@ -29,10 +29,20 @@ public class FactoryPanel {
         {
             return new DibujoProceso(texto,lista,_contenedor,restricciones);
         }
+        else if (tipo.equalsIgnoreCase("for")){
+            return new DibujoFor(texto,lista,_contenedor,restricciones);
+        }
+        else if(tipo.equalsIgnoreCase("while"))
+        {
+            return new DibujoWhile(texto, lista, _contenedor,restricciones);
+        }
+        else if(tipo.equalsIgnoreCase("do-while"))
+        {
+            return new DibujoDoWhile(texto, lista, _contenedor,restricciones);
+        }
         else
         {
-            throw new IllegalArgumentException("Tipo de vehículo desconocido.");
+            throw new IllegalArgumentException("Tipo de figura desconocida.");
         }
-
     }
 }

@@ -138,6 +138,50 @@ public class VentanaEmergente {
 
 
            }
+           else if (this.lista.get(i) instanceof DibujoWhile)
+           {
+
+               opcion.append(indice).append(" | WHILE ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
+
+           }
+           else if (this.lista.get(i) instanceof DibujoFor)
+           {
+
+               opcion.append(indice).append(" | FOR ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
+
+           }
+           else if (this.lista.get(i) instanceof DibujoDoWhile)
+           {
+               opcion.append(indice).append(" | DO-WHILE ");
+
+               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+               {
+                   opcion.append(texto.charAt(j));
+               }
+
+               this.compnentes.add(opcion.toString());
+
+               this.compnentes.add(indice + " -- | INGRESAR DENTRO DEL CICLO | --");
+
+           }
 
 
         }
@@ -218,17 +262,18 @@ public class VentanaEmergente {
             if(sel_desarmada[1].equals("--"))
             {
 
-                DibujoDecision aux = (DibujoDecision) lista.get(posicion);
 
                 if(sel_desarmada[6].equals("VERDAD"))
                 {
 
+                    DibujoDecision aux = (DibujoDecision) lista.get(posicion);
 
                     List<PanelPersonalizado> lista_aux = aux.getVerdad();
                     JPanel                    cont_aux = aux.getContVerdad();
 
                     VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
+                    nuevo.actualizarContenedor(lista_aux,cont_aux);
                     vent_aux.agregar(nuevo);
 
                     aux.eliminarEspaciosEnBlanco();
@@ -236,14 +281,64 @@ public class VentanaEmergente {
 
 
                 }
+                else if(sel_desarmada[6].equals("CICLO"))
+                {
+
+                    if(lista.get(posicion) instanceof DibujoWhile)
+                    {
+
+                        DibujoWhile aux = (DibujoWhile) lista.get(posicion);
+
+                        List<PanelPersonalizado> lista_aux = aux.getLista();
+                        JPanel                    cont_aux = aux.getContenido();
+
+                        VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
+
+                        nuevo.actualizarContenedor(lista_aux,cont_aux);
+                        vent_aux.agregar(nuevo);
+                        aux.ajustarSize();
+
+                    }
+                    else if (lista.get(posicion) instanceof DibujoFor)
+                    {
+
+                        DibujoFor aux = (DibujoFor) lista.get(posicion);
+
+                        List<PanelPersonalizado> lista_aux = aux.getLista();
+                        JPanel                    cont_aux = aux.getContenido();
+
+                        VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
+
+                        nuevo.actualizarContenedor(lista_aux,cont_aux);
+                        vent_aux.agregar(nuevo);
+                        aux.ajustarSize();
+                    }
+                    else if (lista.get(posicion) instanceof DibujoDoWhile)
+                    {
+
+                        DibujoDoWhile aux = (DibujoDoWhile) lista.get(posicion);
+
+                        List <PanelPersonalizado> lista_aux = aux.getLista();
+                        JPanel                     cont_aux = aux.getContenido();
+
+                        VentanaEmergente vent_aux = new VentanaEmergente(lista_aux, cont_aux, this.restricciones);
+
+                        nuevo.actualizarContenedor(lista_aux, cont_aux);
+                        vent_aux.agregar(nuevo);
+                        aux.ajustarSize();
+                    }
+
+                }
                 else
                 {
+                    DibujoDecision aux = (DibujoDecision) lista.get(posicion);
 
                     List<PanelPersonalizado> lista_aux = aux.getFalso();
                     JPanel                    cont_aux = aux.getContFalso();
 
                     VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
 
+                    nuevo.actualizarContenedor(lista_aux,cont_aux);
                     vent_aux.agregar(nuevo);
 
                     aux.eliminarEspaciosEnBlanco();
