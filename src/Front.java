@@ -21,7 +21,7 @@ public class Front extends JFrame {
     private     JButton pseudoCodigoButton;
     private     JButton forButton;
     private     JButton doWhileButton;
-    private JScrollPane scroll;
+    private     JScrollPane scroll;
 
     private List <PanelPersonalizado> listaPaneles;
 
@@ -146,9 +146,7 @@ public class Front extends JFrame {
         forButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 controlador.crearPanel(Front.this,"for");
-
             }
         });
 
