@@ -55,38 +55,39 @@ public class DibujoDoWhileInterno extends JPanel {
     public void ajustarSize()
     {
 
-        int altura = 0;
-        int ancho  = 0;
+        int alturaVer = 0;
+        int alturaFal = 0;
 
-        JPanel panel = this.getVerdadero2();
+        int anchoVer  = 0;
+        int anchoFal  = 0;
 
-
+        JPanel panelVer = this.getVerdadero2();
 
         for (JPanel componete: this.getListaVerdadera2())
         {
 
-            altura += (int) componete.getPreferredSize().getHeight();
-            ancho   = Math.max( ancho , (int) componete.getPreferredSize().getWidth() );
+            alturaVer += (int) componete.getPreferredSize().getHeight();
+            anchoVer   = Math.max( anchoVer , (int) componete.getPreferredSize().getWidth() );
 
         }
 
 
+        int altura = Math.max(alturaVer, alturaFal);
+        int ancho = Math.max(anchoVer,anchoFal);
+
         Dimension size = new Dimension(ancho,altura);
 
-        panel.setPreferredSize(size);
+        panelVer.setPreferredSize(size);
 
-        panel.revalidate();
-
-        Dimension size_aux = new Dimension(200,altura);
-
-        this.verdadero1.setPreferredSize(size_aux);
+        panelVer.revalidate();
 
 
-        Dimension sizeG = new Dimension(ancho + 400 , altura );
+        Dimension sizeG = new Dimension(ancho * 2 , altura );
 
         this.setPreferredSize(sizeG);
         this.revalidate();
     }
+
 
     public class DoWhileInterno extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
