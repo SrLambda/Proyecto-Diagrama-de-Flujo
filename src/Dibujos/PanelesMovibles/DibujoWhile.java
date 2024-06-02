@@ -6,6 +6,7 @@ import Dibujos.PanelesMovibles.For.DibujoForInterno;
 import Dibujos.PanelesMovibles.While.DibujoWhileFin;
 import Dibujos.PanelesMovibles.While.DibujoWhileInicio;
 import Dibujos.PanelesMovibles.While.DibujoWhileInterno;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,8 +25,8 @@ public class DibujoWhile extends PanelMovible {
 
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
         setPreferredSize(new Dimension(600, 500));
 
         this.restriciones         = new GridBagConstraints();
@@ -42,8 +43,8 @@ public class DibujoWhile extends PanelMovible {
 
         this.contenido = new DibujoWhileInterno();
 
-        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones);
-        this.fin = new DibujoWhileFin(texto,lista,this,this.restriciones);
+        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones,null);
+        this.fin = new DibujoWhileFin(texto,lista,this,this.restriciones,null);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);

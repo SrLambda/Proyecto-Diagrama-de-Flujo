@@ -1,5 +1,7 @@
 package Dibujos;
 
+import Dibujos.Ventana.VentanaEmergente;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -13,8 +15,8 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected boolean moviendo;
     protected int ejeYMouse;
 
-    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
         if(this.posOriginal == -1){
             this.posOriginal = getY();
         }
