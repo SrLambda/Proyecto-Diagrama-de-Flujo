@@ -1,6 +1,8 @@
 package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -11,8 +13,8 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
     private DibujoDoWhileInterno interno;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoDoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public DibujoDoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
         this.interno = _interno;
     }
 

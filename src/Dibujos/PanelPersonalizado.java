@@ -1,12 +1,8 @@
 package Dibujos;
-import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.Rectangle2D;
 import java.util.List;
-
+import Dibujos.Ventana.VentanaEmergente;
 
 public abstract class PanelPersonalizado extends JPanel
 {
@@ -17,16 +13,18 @@ public abstract class PanelPersonalizado extends JPanel
     protected JPanel contenedor;
     public boolean habilitado = true;
     protected int posicion = -1;
+    protected VentanaEmergente ventanaEmergente;
 
     protected GridBagConstraints restriciones;
 
 
 
-    public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones)
+    public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente)
     {
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
+        this.ventanaEmergente = _ventanaEmergente;
         this.restriciones = _restriciones;
         setPreferredSize(new Dimension(750, 200));
 
@@ -121,7 +119,7 @@ public abstract class PanelPersonalizado extends JPanel
             }
 
             parent.repaint();
-            parent.revalidate();
+            ventanaEmergente.actualizarCompnentes();
         }
     }
 

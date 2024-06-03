@@ -2,6 +2,7 @@ import Dibujos.*;
 import Dibujos.PanelesMovibles.DibujoFor;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 
@@ -71,7 +72,7 @@ public class Controlador {
 
     private void crearInicio(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor,restriciones);
+        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor,restriciones,ventanaEmergente);
 
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
@@ -82,7 +83,7 @@ public class Controlador {
 
     private void crearFin(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones);
+        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones,ventanaEmergente);
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
         front.getPanel1().revalidate();
@@ -105,7 +106,7 @@ public class Controlador {
         }
 
         // Crea el panel
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones);
+        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente);
 
         if(nuevo instanceof DibujoFor)
         {

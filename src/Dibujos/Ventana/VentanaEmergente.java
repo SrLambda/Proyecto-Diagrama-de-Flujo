@@ -1,6 +1,7 @@
+package Dibujos.Ventana;
+
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.*;
-import Dibujos.PanelesNoMovibles.DibujoInicio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class VentanaEmergente {
 
@@ -18,7 +18,7 @@ public class VentanaEmergente {
     private boolean esPrincipal;
     private GridBagConstraints restricciones;
 
-    VentanaEmergente(List<PanelPersonalizado> _lista, JPanel _contenedor,GridBagConstraints _restricciones)
+    public VentanaEmergente(List<PanelPersonalizado> _lista, JPanel _contenedor,GridBagConstraints _restricciones)
     {
         this.lista         =  _lista;
         this.contenedor    =  _contenedor;
