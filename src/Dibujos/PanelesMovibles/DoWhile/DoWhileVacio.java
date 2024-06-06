@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class DoWhileVacio extends PanelPersonalizado {
 
-    public DoWhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
-        super(_texto, lista, _contenedor,_restriciones);
+    public DoWhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente);
     }
 
     @Override

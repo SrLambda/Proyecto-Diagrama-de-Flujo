@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.For;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +15,8 @@ public class DibujoForInicio extends PanelPersonalizado {
     private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoForInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoForInterno _interno,GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public DibujoForInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoForInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
         this.interno = _interno;
         panelesCiclo = lista;
 

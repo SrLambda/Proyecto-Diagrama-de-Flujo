@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.While;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class WhileVacio extends PanelPersonalizado {
 
-    public WhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
-        super(_texto, lista, _contenedor,_restriciones);
+    public WhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente);
     }
 
     @Override

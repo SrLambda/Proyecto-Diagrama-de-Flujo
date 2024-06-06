@@ -28,15 +28,15 @@ public class DibujoWhileInterno extends JPanel {
 
         this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
         this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero1.add(new WhileVacio(null,null,null,null));
+        this.verdadero1.add(new WhileVacio(null,null,null,null,null));
 
         this.verdadero2.setLayout(new BoxLayout(this.verdadero2, BoxLayout.Y_AXIS));
         this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero2.add(new WhileVacio(null,null,null,null));
+        this.verdadero2.add(new WhileVacio(null,null,null,null,null));
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new WhileVacio(null,null,null,null));
+        this.falso.add(new WhileVacio(null,null,null,null,null));
 
         this.add(verdadero1);
         this.add(verdadero2);
@@ -55,44 +55,38 @@ public class DibujoWhileInterno extends JPanel {
     public void ajustarSize()
     {
 
-        int altura = 0;
-        int ancho  = 0;
+        int alturaVer = 0;
+        int alturaFal = 0;
 
-        JPanel panel = this.getVerdadero2();
+        int anchoVer  = 0;
+        int anchoFal  = 0;
 
-
+        JPanel panelVer = this.getVerdadero2();
 
         for (JPanel componete: this.getListaVerdadera2())
         {
 
-            altura += (int) componete.getPreferredSize().getHeight();
-            ancho   = Math.max( ancho , (int) componete.getPreferredSize().getWidth() );
+            alturaVer += (int) componete.getPreferredSize().getHeight();
+            anchoVer   = Math.max( anchoVer , (int) componete.getPreferredSize().getWidth() );
 
         }
 
 
+        int altura = Math.max(alturaVer, alturaFal);
+        int ancho = Math.max(anchoVer,anchoFal);
+
         Dimension size = new Dimension(ancho,altura);
 
-        panel.setPreferredSize(size);
+        panelVer.setPreferredSize(size);
 
-        panel.revalidate();
-
-        Dimension size_aux = new Dimension(200,altura);
-
-        this.verdadero1.setPreferredSize(size_aux);
-        this.falso.setPreferredSize(size_aux);
+        panelVer.revalidate();
 
 
-        Dimension sizeG = new Dimension(ancho + 400 , altura );
+        Dimension sizeG = new Dimension(ancho * 2 , altura );
 
         this.setPreferredSize(sizeG);
         this.revalidate();
     }
-
-
-
-
-
 
     public class WhileInterna extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
