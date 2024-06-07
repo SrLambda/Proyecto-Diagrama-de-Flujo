@@ -1,6 +1,7 @@
 import Dibujos.PanelPersonalizado;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -22,7 +23,9 @@ public class Front extends JFrame {
     private     JButton forButton;
     private     JButton doWhileButton;
     private     JScrollPane scroll;
-
+    // Crear los botones
+    private     JButton zoomin;
+    private     JButton zoomout;
     private List <PanelPersonalizado> listaPaneles;
 
 
@@ -38,8 +41,6 @@ public class Front extends JFrame {
         listaPaneles = new ArrayList<>();
 
         controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
-
-
 
         //botón para dibujar un rectángulo
         etapaDelProcesoButton.addActionListener(new ActionListener()
@@ -164,6 +165,19 @@ public class Front extends JFrame {
             }
         });
 
+        zoomin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //
+            }
+        });
+
+        zoomout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
     }
 
     public JPanel getPanel1()

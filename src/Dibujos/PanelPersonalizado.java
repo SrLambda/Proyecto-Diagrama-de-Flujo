@@ -2,6 +2,8 @@ package Dibujos;
 import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
@@ -19,7 +21,7 @@ public abstract class PanelPersonalizado extends JPanel
     protected int posicion = -1;
 
     protected GridBagConstraints restriciones;
-
+    private double escala = 1.0; // Escala inicial
 
 
     public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones)
@@ -93,7 +95,30 @@ public abstract class PanelPersonalizado extends JPanel
 
     }
 
+    // Método para hacer zoom in
+    public void hacerZoomIn() {
+        escala *= 1.1; // Aumentar la escala en un 10%
+        actualizarZoom();
+    }
 
+    // Método para hacer zoom out
+    public void hacerZoomOut() {
+        escala /= 1.1; // Disminuir la escala en un 10%
+        actualizarZoom();
+    }
+
+    // Método para actualizar la representación gráfica con la nueva escala
+    private void actualizarZoom() {
+        // Iterar sobre todas las figuras y ajustar sus tamaños y posiciones según la nueva escala
+        for (PanelPersonalizado figura : listaFiguras) {
+            // Ejemplo de ajuste de tamaño
+            figura.setSize((int) (figura.getWidth() * escala), (int) (figura.getHeight() * escala));
+            // Ejemplo de ajuste de posición
+            figura.setLocation((int) (figura.getX() * escala), (int) (figura.getY() * escala));
+        }
+        // Repintar el panel para reflejar los cambios
+        repaint();
+    }
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
