@@ -9,6 +9,9 @@
       <background color="-2502445"/>
       <foreground color="-4478029"/>
     </properties>
+    <clientProperties>
+      <html.disable class="java.lang.Boolean" value="false"/>
+    </clientProperties>
     <border type="empty">
       <size top="2" left="2" bottom="2" right="2"/>
     </border>

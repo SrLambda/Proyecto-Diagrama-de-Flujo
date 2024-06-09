@@ -2,6 +2,11 @@ package Dibujos;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+
+import Dibujos.Validador.Validador;
+import Dibujos.Validador.ValidadorCadena;
+import Dibujos.Validador.ValidadorDouble;
+import Dibujos.Validador.ValidadorEntero;
 import Dibujos.Ventana.VentanaEmergente;
 
 public abstract class PanelPersonalizado extends JPanel
@@ -14,6 +19,9 @@ public abstract class PanelPersonalizado extends JPanel
     public boolean habilitado = true;
     protected int posicion = -1;
     protected VentanaEmergente ventanaEmergente;
+    protected Validador validarEntero;
+    protected Validador validarDouble;
+    protected Validador validarCadena;
 
     protected GridBagConstraints restriciones;
 
@@ -26,6 +34,9 @@ public abstract class PanelPersonalizado extends JPanel
         this.contenedor = _contenedor;
         this.ventanaEmergente = _ventanaEmergente;
         this.restriciones = _restriciones;
+        this.validarEntero = new ValidadorEntero();
+        this.validarDouble = new ValidadorDouble();
+        this.validarCadena = new ValidadorCadena();
         setPreferredSize(new Dimension(750, 200));
 
     }
@@ -85,7 +96,8 @@ public abstract class PanelPersonalizado extends JPanel
 
     public void cambiarTexto(String nuevoTexto)
     {
-        texto = nuevoTexto;
+
+        this.texto = nuevoTexto;
         repaint();// Redibujar la figura con el nuevo texto
         revalidate();
 
@@ -132,6 +144,24 @@ public abstract class PanelPersonalizado extends JPanel
         this.listaFiguras = list;
         this.contenedor = cont;
     }
+
+    public void validar(boolean evidencia, String opcion){
+        while(true){
+            if(evidencia){
+                return;
+            }else{
+                this.texto = JOptionPane.showInputDialog(null, "Variable invalida", texto);
+                if(opcion.equals("Cadena")){
+                    evidencia = validarCadena.validar(this.texto);
+                } else if (opcion.equals("Entero")){
+                    evidencia = validarEntero.validar(this.texto);
+                } else if (opcion.equals("Double")){
+                    evidencia = validarDouble.validar(this.texto);
+                }
+            }
+        }
+    }
+
 
 }
 
