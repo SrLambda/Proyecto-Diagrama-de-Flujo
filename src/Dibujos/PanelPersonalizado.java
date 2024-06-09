@@ -1,6 +1,7 @@
 package Dibujos;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import Dibujos.Validador.Validador;
@@ -22,8 +23,8 @@ public abstract class PanelPersonalizado extends JPanel
     protected Validador validarEntero;
     protected Validador validarDouble;
     protected Validador validarCadena;
-
     protected GridBagConstraints restriciones;
+    protected List <String> variables;
 
 
 
@@ -37,6 +38,7 @@ public abstract class PanelPersonalizado extends JPanel
         this.validarEntero = new ValidadorEntero();
         this.validarDouble = new ValidadorDouble();
         this.validarCadena = new ValidadorCadena();
+        this.variables = new ArrayList<>();
         setPreferredSize(new Dimension(750, 200));
 
     }
