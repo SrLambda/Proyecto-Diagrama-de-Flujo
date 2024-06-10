@@ -175,7 +175,7 @@ public class Front extends JFrame {
         zoomout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                //
             }
         });
     }
