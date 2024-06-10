@@ -13,7 +13,6 @@ public class DibujoForInicio extends PanelPersonalizado {
 
     private DibujoForInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
     public DibujoForInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoForInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);

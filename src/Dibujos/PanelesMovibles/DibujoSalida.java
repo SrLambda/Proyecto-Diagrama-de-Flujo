@@ -8,7 +8,6 @@ import java.awt.*;
 import java.util.List;
 
 public class DibujoSalida extends PanelMovible {
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
     }
