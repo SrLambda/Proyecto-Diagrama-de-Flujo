@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import Dibujos.Validador.Validador;
 import Dibujos.Validador.ValidadorCadena;
@@ -25,6 +26,7 @@ public abstract class PanelPersonalizado extends JPanel
     protected Validador validarCadena;
     protected GridBagConstraints restriciones;
     protected List <String> variables;
+    protected Map<String, Object> variables2;
 
 
 
@@ -147,18 +149,23 @@ public abstract class PanelPersonalizado extends JPanel
         this.contenedor = cont;
     }
 
-    public void validar(boolean evidencia, String opcion){
+    public String validar(boolean evidencia, String opcion, String entrada){
         while(true){
             if(evidencia){
-                return;
+                return entrada;
             }else{
-                this.texto = JOptionPane.showInputDialog(null, "Variable invalida", texto);
+                this.texto = entrada;
+                entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
+                this.texto = entrada;
                 if(opcion.equals("Cadena")){
-                    evidencia = validarCadena.validar(this.texto);
+                    evidencia = validarCadena.validar(entrada);
                 } else if (opcion.equals("Entero")){
-                    evidencia = validarEntero.validar(this.texto);
+                    evidencia = validarEntero.validar(entrada);
                 } else if (opcion.equals("Double")){
-                    evidencia = validarDouble.validar(this.texto);
+                    evidencia = validarDouble.validar(entrada);
+                }
+                if(evidencia){
+                    return entrada;
                 }
             }
         }

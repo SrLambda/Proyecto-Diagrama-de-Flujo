@@ -15,9 +15,8 @@ public class DibujoEntrada extends PanelMovible {
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
-        validar(validarCadena.validar(texto),"Cadena");
+        this.texto = validar(validarCadena.validar(texto),"Cadena",texto);
         this.variables.add(this.texto);
-        System.out.println("Variable agregada: "+this.variables.get(0));
     }
 
     @Override
@@ -69,52 +68,4 @@ public class DibujoEntrada extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-
-
-    /*
-
-    public void validar_Entradas(String entrada){
-        try{
-            int entero = Integer.parseInt(entrada);
-            //validar_Cadena(entrada);
-        }
-        catch (NumberFormatException ex1){
-            try{
-                double decimal = Double.parseDouble(entrada);
-                //validar_Cadena(entrada);
-            }
-            catch (NumberFormatException ex2){
-                validar_Cadena(entrada);
-            }
-        }
-    }
-
-    public void validar_Cadena(String entrada) {
-        int bandera = 1;
-        while (bandera == 1) {
-            if (entrada == null || entrada.isEmpty()) {
-                String nuevoTexto = JOptionPane.showInputDialog(null, "Variable invalida", texto);
-                entrada = nuevoTexto;
-                cambiarTexto(nuevoTexto);
-            } else {
-                boolean letras = true;
-                for (char caracter : entrada.toCharArray()) {
-                    if (!Character.isLetter(caracter)) {
-                        String nuevoTexto = JOptionPane.showInputDialog(null, "Variable invalida", texto);
-                        entrada = nuevoTexto;
-                        cambiarTexto(nuevoTexto);
-                        letras = false;
-                    }
-                }
-                if(letras) {
-                    bandera = 0;
-                }
-            }
-        }
-    }
-    */
-
-
-
-
 }
