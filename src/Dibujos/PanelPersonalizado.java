@@ -174,6 +174,9 @@ public abstract class PanelPersonalizado extends JPanel {
                         } catch (NumberFormatException ex2) {
                             System.out.println("STRING-------------");
                             evidencia = validarCadena.validar(entrada);
+                            if(evidencia){
+                                evidencia = validarVariableTrueFalse(entrada);
+                            }
                         }
                     }
                 }
@@ -201,6 +204,7 @@ public abstract class PanelPersonalizado extends JPanel {
         for (Map.Entry<String, Object> entry : variables.entrySet()) {
             String var = entry.getKey();
             if (_variable.equals(var)) {
+                System.out.println("->"+_variable+" = "+var+" ?");
                 return true;
             }
         }
