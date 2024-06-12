@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.For;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class DibujoForFin extends PanelPersonalizado {
 
-    public DibujoForFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
-        super(texto,lista,_contenedor,_restriciones);
+    public DibujoForFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto,lista,_contenedor,_restriciones,_ventanaEmergente);
     }
 
     @Override

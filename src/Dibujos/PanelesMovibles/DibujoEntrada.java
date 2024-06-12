@@ -2,6 +2,7 @@ package Dibujos.PanelesMovibles;
 
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,8 +13,10 @@ public class DibujoEntrada extends PanelMovible {
     private boolean moviendo;
     private int ejeYMouse;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
-    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+        this.texto = validar(validarCadena.validar(texto),"Cadena",texto);
+        this.variables.add(this.texto);
     }
 
     @Override

@@ -1,4 +1,5 @@
 import Dibujos.PanelPersonalizado;
+import Dibujos.Validador.Validador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +28,6 @@ public class Front extends JFrame {
     private     JButton zoomin;
     private     JButton zoomout;
     private List <PanelPersonalizado> listaPaneles;
-
 
     public Front(Controlador controlador)
     {

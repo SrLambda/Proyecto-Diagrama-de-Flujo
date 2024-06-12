@@ -5,6 +5,7 @@ import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.For.DibujoForFin;
 import Dibujos.PanelesMovibles.For.DibujoForInicio;
 import Dibujos.PanelesMovibles.For.DibujoForInterno;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +22,8 @@ public class DibujoFor extends PanelMovible {
 
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoFor(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones){
-        super(texto,lista,_contenedor,_restriciones);
+    public DibujoFor(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente){
+        super(texto,lista,_contenedor,_restriciones,_ventanaEmergente);
         setPreferredSize(new Dimension(200, 500));
 
         this.restriciones         = new GridBagConstraints();
@@ -39,8 +40,8 @@ public class DibujoFor extends PanelMovible {
 
         this.contenido = new DibujoForInterno(texto,0,0,0);
 
-        this.condicion = new DibujoForInicio(this.texto,lista,this,(DibujoForInterno) contenido,this.restriciones);
-        this.fin = new DibujoForFin(texto,lista,this,this.restriciones);
+        this.condicion = new DibujoForInicio(this.texto,lista,this,(DibujoForInterno) contenido,this.restriciones,this.ventanaEmergente);
+        this.fin = new DibujoForFin(texto,lista,this,this.restriciones,this.ventanaEmergente);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);

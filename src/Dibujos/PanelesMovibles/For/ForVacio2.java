@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.For;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +16,8 @@ public class ForVacio2 extends PanelPersonalizado{
     private int incremento;
 
 
-    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,GridBagConstraints _restriciones) {
-        super(_texto, lista, _contenedor,_restriciones);
+    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente);
 
         this.v_inicial  = _v_inicial;
         this.incremento = _incremento;

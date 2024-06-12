@@ -1,5 +1,4 @@
 package Dibujos;
-import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
@@ -7,8 +6,15 @@ import java.awt.event.MouseWheelListener;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import Dibujos.Validador.Validador;
+import Dibujos.Validador.ValidadorCadena;
+import Dibujos.Validador.ValidadorDouble;
+import Dibujos.Validador.ValidadorEntero;
+import Dibujos.Ventana.VentanaEmergente;
 
 public abstract class PanelPersonalizado extends JPanel
 {
@@ -19,17 +25,28 @@ public abstract class PanelPersonalizado extends JPanel
     protected JPanel contenedor;
     public boolean habilitado = true;
     protected int posicion = -1;
-
+    protected VentanaEmergente ventanaEmergente;
+    protected Validador validarEntero;
+    protected Validador validarDouble;
+    protected Validador validarCadena;
     protected GridBagConstraints restriciones;
+    protected List <String> variables;
+    protected Map<String, Object> variables2;
+
     private double escala = 1.0; // Escala inicial
 
 
-    public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones)
+    public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente)
     {
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
+        this.ventanaEmergente = _ventanaEmergente;
         this.restriciones = _restriciones;
+        this.validarEntero = new ValidadorEntero();
+        this.validarDouble = new ValidadorDouble();
+        this.validarCadena = new ValidadorCadena();
+        this.variables = new ArrayList<>();
         setPreferredSize(new Dimension(750, 200));
 
     }
@@ -89,7 +106,8 @@ public abstract class PanelPersonalizado extends JPanel
 
     public void cambiarTexto(String nuevoTexto)
     {
-        texto = nuevoTexto;
+
+        this.texto = nuevoTexto;
         repaint();// Redibujar la figura con el nuevo texto
         revalidate();
 
@@ -146,6 +164,7 @@ public abstract class PanelPersonalizado extends JPanel
             }
 
             parent.repaint();
+            ventanaEmergente.actualizarCompnentes();
         }
     }
 
@@ -158,6 +177,29 @@ public abstract class PanelPersonalizado extends JPanel
         this.listaFiguras = list;
         this.contenedor = cont;
     }
+
+    public String validar(boolean evidencia, String opcion, String entrada){
+        while(true){
+            if(evidencia){
+                return entrada;
+            }else{
+                this.texto = entrada;
+                entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
+                this.texto = entrada;
+                if(opcion.equals("Cadena")){
+                    evidencia = validarCadena.validar(entrada);
+                } else if (opcion.equals("Entero")){
+                    evidencia = validarEntero.validar(entrada);
+                } else if (opcion.equals("Double")){
+                    evidencia = validarDouble.validar(entrada);
+                }
+                if(evidencia){
+                    return entrada;
+                }
+            }
+        }
+    }
+
 
 }
 

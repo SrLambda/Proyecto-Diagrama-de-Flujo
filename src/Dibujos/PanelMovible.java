@@ -1,5 +1,9 @@
 package Dibujos;
 
+import Dibujos.PanelesMovibles.DibujoEntrada;
+import Dibujos.PanelesMovibles.DibujoProceso;
+import Dibujos.Ventana.VentanaEmergente;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -13,8 +17,8 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected boolean moviendo;
     protected int ejeYMouse;
 
-    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
         if(this.posOriginal == -1){
             this.posOriginal = getY();
         }
@@ -26,10 +30,18 @@ public abstract class PanelMovible extends PanelPersonalizado{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
-                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", PanelMovible.this.texto);
+                    if(PanelMovible.this instanceof DibujoEntrada){
+                        boolean evidencia = validarCadena.validar(nuevoTexto);
+                        String textoValido= validar(evidencia,"Cadena",nuevoTexto);
+                        cambiarTexto(textoValido);
+                    }
+                    /*
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
                         cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
                     }
+
+                     */
                 }
                 // Verificar si se hizo clic derecho
                 if (e.getButton() == MouseEvent.BUTTON3) {

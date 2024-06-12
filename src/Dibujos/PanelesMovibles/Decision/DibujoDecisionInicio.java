@@ -1,6 +1,8 @@
 package Dibujos.PanelesMovibles.Decision;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.Ventana.VentanaEmergente;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -9,8 +11,8 @@ import java.util.List;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
 
         addMouseListener(new MouseAdapter()
         {

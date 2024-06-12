@@ -6,6 +6,7 @@ import Dibujos.PanelesMovibles.Decision.DesicionVacia;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionFin;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInterno;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,8 +21,8 @@ public class DibujoDecision extends PanelMovible {
     private GridBagConstraints    restriciones;
 
 
-    public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones) {
-        super(texto, lista, _contenedor,_restriciones);
+    public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
 
         this.restriciones         = new GridBagConstraints();
         this.restriciones.gridx   = 0;
@@ -37,8 +38,8 @@ public class DibujoDecision extends PanelMovible {
 
         this.contenido = new DibujoDecisionInterno();
 
-        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,this.restriciones);
-        this.fin = new DibujoDecisionFin(this.texto,lista,this,this.restriciones);
+        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,this.restriciones,this.ventanaEmergente);
+        this.fin = new DibujoDecisionFin(this.texto,lista,this,this.restriciones,this.ventanaEmergente);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);
