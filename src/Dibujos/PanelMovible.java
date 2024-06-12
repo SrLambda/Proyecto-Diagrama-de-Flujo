@@ -41,7 +41,7 @@ public abstract class PanelMovible extends PanelPersonalizado{
                         cambiarTexto(textoValido);
                     }
                     if(PanelMovible.this instanceof DibujoProceso){
-                        cambiarTexto(nuevoTexto);
+                        ((DibujoProceso) PanelMovible.this).splitTexto(nuevoTexto);
                     }
                     if(PanelMovible.this instanceof DibujoDocumento){
                         cambiarTexto(nuevoTexto);
