@@ -1,4 +1,5 @@
 package Dibujos;
+<<<<<<< HEAD
 import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.*;
@@ -7,13 +8,22 @@ import java.awt.event.MouseWheelListener;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
+=======
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+>>>>>>> Edgar
 import java.util.List;
 
 
 public abstract class PanelPersonalizado extends JPanel
 {
+<<<<<<< HEAD
 
     public String texto;
+=======
+    protected String texto;
+>>>>>>> Edgar
     protected List <PanelPersonalizado> listaFiguras;
     protected int posOriginal = -1;
     protected JPanel contenedor;
@@ -29,6 +39,7 @@ public abstract class PanelPersonalizado extends JPanel
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
+<<<<<<< HEAD
         this.restriciones = _restriciones;
         setPreferredSize(new Dimension(750, 200));
 
@@ -36,6 +47,45 @@ public abstract class PanelPersonalizado extends JPanel
 
     public int colisiones()
     {
+=======
+        setPreferredSize(new Dimension(100, 50));
+        this.setBackground(Color.WHITE);
+    }
+
+
+    public void actualizarUbicacion(){
+        int indice = listaFiguras.indexOf(this);
+
+        if(indice != -1){
+            int nuevaUbicacion = this.getY();
+            altura = this.getHeight();
+            posOriginal = nuevaUbicacion;
+            listaFiguras.get(indice).setLocation(0, nuevaUbicacion);
+            //System.out.println("Eje Y dentro de la lista: "+listaFiguras.get(indice).getY());
+
+        }
+
+    }
+
+    public void colisionesVisual() {
+    int i=0;
+    while(i < listaFiguras.size()){
+        PanelPersonalizado panelSiguiente = listaFiguras.get(i);
+        if(panelSiguiente != this){
+            int ejeY = getY();
+            int altura = getHeight();
+            int ejeYSiguiente = panelSiguiente.getY();
+            int alturaSiguiente = panelSiguiente.getHeight();
+
+            if(ejeY < ejeYSiguiente + alturaSiguiente && ejeY + altura > ejeYSiguiente){
+            }
+        }
+        i++;
+    }
+    }
+
+    public int colisiones() {
+>>>>>>> Edgar
         int i=0;
         int num = listaFiguras.indexOf(this);
 
@@ -107,6 +157,7 @@ public abstract class PanelPersonalizado extends JPanel
         actualizarZoom();
     }
 
+<<<<<<< HEAD
     // Método para actualizar la representación gráfica con la nueva escala
     private void actualizarZoom() {
         // Iterar sobre todas las figuras y ajustar sus tamaños y posiciones según la nueva escala
@@ -132,6 +183,21 @@ public abstract class PanelPersonalizado extends JPanel
             Container parent = getParent();
             if (parent instanceof JPanel)
             {
+=======
+    public void cambiarTexto(String nuevoTexto) {
+        texto = nuevoTexto;
+        repaint(); // Redibujar la figura con el nuevo texto
+    }
+
+    // Método para eliminar la figura y reorganizar las posiciones
+    public void eliminarFiguraaa() {
+        // Obtener el índice de esta figura en la lista
+        int indice = listaFiguras.indexOf(this);
+        if (indice != -1) {
+            // Eliminar esta figura del panel principal
+            Container parent = getParent();
+            if (parent instanceof JPanel) {
+>>>>>>> Edgar
                 ((JPanel) parent).remove(this);
             }
 
@@ -139,6 +205,7 @@ public abstract class PanelPersonalizado extends JPanel
             listaFiguras.remove(indice);
 
             // Reorganizar las posiciones visuales de las figuras restantes en el panel principal
+<<<<<<< HEAD
             for (int i = indice; i < listaFiguras.size(); i++)
             {
                 PanelPersonalizado panel = listaFiguras.get(i);
@@ -179,3 +246,13 @@ public abstract class PanelPersonalizado extends JPanel
  */
 
 
+=======
+            for (int i = indice; i < listaFiguras.size(); i++) {
+                PanelPersonalizado panel = listaFiguras.get(i);
+                panel.setLocation(0, i * panel.getHeight());
+            }
+            parent.repaint();
+        }
+    }
+}
+>>>>>>> Edgar

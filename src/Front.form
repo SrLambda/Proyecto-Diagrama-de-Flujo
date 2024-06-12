@@ -13,6 +13,113 @@
       <size top="2" left="2" bottom="2" right="2"/>
     </border>
     <children>
+<<<<<<< HEAD
+=======
+      <component id="949d2" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Editar"/>
+        </properties>
+      </component>
+      <component id="9885b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Configurar"/>
+        </properties>
+      </component>
+      <component id="9440" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <text value="Ejecutar"/>
+        </properties>
+      </component>
+      <component id="48da" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <text value="Ayuda"/>
+          <verticalAlignment value="1"/>
+        </properties>
+      </component>
+      <hspacer id="d0adc">
+        <constraints>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="335f7" class="javax.swing.JButton" binding="inicioButton">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <horizontalAlignment value="0"/>
+          <text value="Inicio"/>
+        </properties>
+      </component>
+      <grid id="91c96" binding="panel1" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <grid row="1" column="0" row-span="11" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="500" height="502"/>
+            <preferred-size width="500" height="502"/>
+            <maximum-size width="500" height="502"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1798"/>
+          <foreground color="-16772298"/>
+        </properties>
+        <border type="line">
+          <title-color color="-16772298"/>
+          <color color="-16772298"/>
+        </border>
+        <children/>
+      </grid>
+      <component id="a6daa" class="javax.swing.JButton" binding="limpiarButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16772298"/>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-2765617"/>
+          <text value="Limpiar"/>
+        </properties>
+      </component>
+      <component id="b21d6" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4478029"/>
+          <font name="JetBrains Mono" size="12" style="1"/>
+          <foreground color="-12828863"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Archivo"/>
+        </properties>
+      </component>
+>>>>>>> Edgar
       <component id="11dab" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>

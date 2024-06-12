@@ -47,7 +47,7 @@ public class DibujoInicio extends PanelPersonalizado{
         FontMetrics metrics = g.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, y);
+        g.drawString("INICIO", x, y);
     }
 }
 
