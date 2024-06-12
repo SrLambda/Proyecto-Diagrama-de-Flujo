@@ -1,7 +1,9 @@
 package Dibujos;
 
+import Dibujos.PanelesMovibles.DibujoDocumento;
 import Dibujos.PanelesMovibles.DibujoEntrada;
 import Dibujos.PanelesMovibles.DibujoProceso;
+import Dibujos.PanelesMovibles.DibujoSalida;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -10,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
+import java.util.Map;
 
 public abstract class PanelMovible extends PanelPersonalizado{
 
@@ -17,8 +20,9 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected boolean moviendo;
     protected int ejeYMouse;
 
-    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                        VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         if(this.posOriginal == -1){
             this.posOriginal = getY();
         }
@@ -35,6 +39,15 @@ public abstract class PanelMovible extends PanelPersonalizado{
                         boolean evidencia = validarCadena.validar(nuevoTexto);
                         String textoValido= validar(evidencia,"Cadena",nuevoTexto);
                         cambiarTexto(textoValido);
+                    }
+                    if(PanelMovible.this instanceof DibujoProceso){
+                        cambiarTexto(nuevoTexto);
+                    }
+                    if(PanelMovible.this instanceof DibujoDocumento){
+                        cambiarTexto(nuevoTexto);
+                    }
+                    if(PanelMovible.this instanceof DibujoSalida){
+                        cambiarTexto(nuevoTexto);
                     }
                     /*
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {

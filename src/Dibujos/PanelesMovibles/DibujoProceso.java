@@ -5,16 +5,19 @@ import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoProceso extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
-    public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
-
+    public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones,
+                         VentanaEmergente _ventanaEmergente,Map<String, Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        splitTexto(texto);
     }
 
     @Override
@@ -61,4 +64,54 @@ public class DibujoProceso extends PanelMovible {
         g.drawString(texto, x, y);
 
     }
+
+    public void splitTexto(String texto){
+        String[] tokens = texto.split("\\s+|(?<==)|(?=[+\\-*/])");
+        int bandera = 0;
+        String key = null;
+        String temp = null;
+        for (String token : tokens) {
+            if(bandera >= 2 && !"+-*/".contains(token)){
+                System.out.println("TOKEN = "+token);
+                try{
+                    Integer.parseInt(token);
+                    System.out.println("Conversion entero");
+                    token = validarMixto(validarEntero.validar(token),token);
+                }catch (NumberFormatException ex1){
+                    try{
+                        Double.parseDouble(token);
+                        System.out.println("Conversion double");
+                        token = validarMixto(validarDouble.validar(token),token);
+                    }catch (NumberFormatException ex2){
+                        System.out.println("Conversion cadena");
+                        token = validarMixto(validarVariableTrueFalse(token),token);
+                    }
+                }
+            }
+            if(!token.isEmpty()){
+                if(bandera >= 2){
+                    if(key == null){
+                        key = token;
+                    }else{
+                        key += token;
+                    }
+                }else{
+                    if(bandera == 0){
+                        temp = token;
+                        temp = validarVariable(temp);
+                    }
+                }
+            }
+            bandera++;
+        }
+        System.out.println();
+        variables.put(temp,key);
+        this.texto = temp +" = "+key;
+        for(Map.Entry<String,Object> entry : variables.entrySet()){
+            String var = entry.getKey();
+            Object key2 = entry.getValue();
+            System.out.println(var+" = "+key2);
+        }
+    }
+
 }

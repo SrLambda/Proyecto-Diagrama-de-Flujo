@@ -7,16 +7,19 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoEntrada extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
-    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                         VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         this.texto = validar(validarCadena.validar(texto),"Cadena",texto);
-        this.variables.add(this.texto);
+        this.variables.put(this.texto,"");
+        System.out.println("Variable "+"'"+this.texto+"'"+" agregada");
     }
 
     @Override

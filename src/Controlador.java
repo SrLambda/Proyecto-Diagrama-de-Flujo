@@ -7,7 +7,9 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Controlador {
     private static Controlador instancia;
@@ -16,6 +18,7 @@ public class Controlador {
     private Parseador parseador;
     private VentanaEmergente ventanaEmergente;
     private GridBagConstraints restriciones;
+    private Map<String,Object> variables;
 
 
     // Instanciar Singleton
@@ -28,6 +31,7 @@ public class Controlador {
         this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
         this.restriciones.weighty = 0; // No expandir en dirección vertical
         this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
+        this.variables = new HashMap<>();
     }
 
 
@@ -72,7 +76,7 @@ public class Controlador {
 
     private void crearInicio(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor,restriciones,ventanaEmergente);
+        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
 
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
@@ -83,7 +87,7 @@ public class Controlador {
 
     private void crearFin(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones,ventanaEmergente);
+        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
         front.getPanel1().revalidate();
@@ -106,7 +110,7 @@ public class Controlador {
         }
 
         // Crea el panel
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente);
+        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
 
         if(nuevo instanceof DibujoFor)
         {

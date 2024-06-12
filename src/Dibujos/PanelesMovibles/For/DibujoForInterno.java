@@ -19,7 +19,7 @@ public class DibujoForInterno extends JPanel {
         this.texto     = _texto;
         this.derecha   = new ForInterno();
         this.izquierda = new ForInterno();
-        this.datos     = new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final,null,null);
+        this.datos     = new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final,null,null,null);
 
         this.setLayout(new BoxLayout(DibujoForInterno.this, BoxLayout.X_AXIS));
 
@@ -31,7 +31,7 @@ public class DibujoForInterno extends JPanel {
 
         this.izquierda.setLayout(new BoxLayout(this.izquierda, BoxLayout.Y_AXIS));
         this.izquierda.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.izquierda.add(new ForVacio(texto,null,null,null,null));
+        this.izquierda.add(new ForVacio(texto,null,null,null,null,null));
 
 
         this.add(derecha);
