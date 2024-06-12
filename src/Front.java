@@ -168,14 +168,14 @@ public class Front extends JFrame {
         zoomin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //
+                aumentarZoom(panel1);
             }
         });
 
         zoomout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //
+                reducirZoom(panel1);
             }
         });
     }
@@ -188,5 +188,33 @@ public class Front extends JFrame {
     public JPanel getPseudocodio()
     {
         return this.pseudocodio;
+    }
+
+    // Método para aumentar el zoom del panel
+    private void aumentarZoom(JPanel panel) {
+        double factor = 1.1; // Factor de incremento de zoom
+        aumentarZoom(panel, factor);
+    }
+
+    // Método para reducir el zoom del panel
+    private void reducirZoom(JPanel panel) {
+        double factor = 0.9; // Factor de decremento de zoom
+        aumentarZoom(panel, factor);
+    }
+
+    // Método para ajustar el zoom del panel según el factor dado
+    private void aumentarZoom(JPanel panel, double factor) {
+        if (panel != null) {
+            // Obtener el tamaño actual del panel
+            Dimension dimension = panel.getSize();
+            // Calcular el nuevo tamaño considerando el factor de zoom
+            int newWidth = (int) (dimension.width * factor);
+            int newHeight = (int) (dimension.height * factor);
+            // Establecer el nuevo tamaño del panel
+            panel.setPreferredSize(new Dimension(newWidth, newHeight));
+            // Repintar el panel para aplicar los cambios de tamaño
+            panel.revalidate();
+            panel.repaint();
+        }
     }
 }
