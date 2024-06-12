@@ -7,6 +7,8 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +28,11 @@ public abstract class PanelPersonalizado extends JPanel
     public boolean habilitado = true;
     protected int posicion = -1;
     protected VentanaEmergente ventanaEmergente;
+
+    protected static Font textoFont;
+    protected static Float zoom;
+
+
     protected Validador validarEntero;
     protected Validador validarDouble;
     protected Validador validarCadena;
@@ -48,6 +55,28 @@ public abstract class PanelPersonalizado extends JPanel
         this.validarCadena = new ValidadorCadena();
         this.variables = new ArrayList<>();
         setPreferredSize(new Dimension(750, 200));
+
+        if (null == zoom){
+            zoom = 1.0f;
+        }
+
+        try {
+
+            InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
+            assert is != null;
+            textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
+
+        }
+        catch (IOException | FontFormatException e)
+        {
+            e.printStackTrace();
+        }
+
+
+
+        int[] anchoAlto = this.getAnchoAlto();
+
+        setPreferredSize(new Dimension(200, 100));
 
     }
 
@@ -200,6 +229,30 @@ public abstract class PanelPersonalizado extends JPanel
         }
     }
 
+
+
+    private int[] getAnchoAlto(){
+
+        JLabel tempLabel = new JLabel();
+        FontMetrics metrics = tempLabel.getFontMetrics(this.textoFont);
+
+        int width  = metrics.stringWidth(this.texto);
+        int height = metrics.getHeight();
+
+        if(width < 105) //  ANCHO DE LA CADENA 'WWWWW'
+        {
+
+            width = 105;
+
+        }
+
+        int[] valores = new int[2];
+
+        valores[0] = width;
+        valores[1] = height;
+
+        return valores;
+    }
 
 }
 

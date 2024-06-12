@@ -23,12 +23,12 @@ public class DibujoDecisionInterno extends JPanel {
 
         this.verdadero.setLayout(new BoxLayout(this.verdadero, BoxLayout.Y_AXIS));
         this.verdadero.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero.add(new DesicionVacia(null,null,null,null,null));
+        this.verdadero.add(new DesicionVacia("null",null,null,null,null));
 
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new DesicionVacia(null,null,null,null,null));
+        this.falso.add(new DesicionVacia("null",null,null,null,null));
 
         this.add(verdadero);
         this.add(falso);

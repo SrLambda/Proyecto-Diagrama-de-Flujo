@@ -15,7 +15,7 @@ public class Controlador {
     private JPanel contenedor;
     private Parseador parseador;
     private VentanaEmergente ventanaEmergente;
-    private GridBagConstraints restriciones;
+    private final GridBagConstraints restriciones;
 
 
     // Instanciar Singleton
@@ -84,6 +84,7 @@ public class Controlador {
     private void crearFin(Front front)
     {
         PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones,ventanaEmergente);
+
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
         front.getPanel1().revalidate();
@@ -108,9 +109,8 @@ public class Controlador {
         // Crea el panel
         PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente);
 
-        if(nuevo instanceof DibujoFor)
+        if(nuevo instanceof DibujoFor aux)
         {
-            DibujoFor aux = (DibujoFor) nuevo;
             aux.modificarValores();
         }
 

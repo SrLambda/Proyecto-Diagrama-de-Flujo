@@ -12,7 +12,6 @@ import java.util.List;
 public class DibujoDoWhileFin extends PanelPersonalizado {
     private DibujoDoWhileInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
     public DibujoDoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor, _restriciones,_ventanaEmergente);

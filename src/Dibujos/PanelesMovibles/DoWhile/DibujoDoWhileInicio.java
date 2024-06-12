@@ -11,7 +11,6 @@ import java.util.List;
 
 public class DibujoDoWhileInicio extends PanelPersonalizado {
     private DibujoDoWhileInterno interno;
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
     public DibujoDoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
