@@ -29,9 +29,9 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
 
         int cuarto = panelWidth / 4;
 
-        g.drawLine(centro_x/3,centro_y,centro_x/3, centro_y*3);     // Linea vertical izquierda
+        g.drawLine(100,centro_y,100, centro_y*3);     // Linea vertical izquierda
         g.drawLine(centro_x,0,centro_x, panelHeight);     // Linea vertical central
-        g.drawLine(centro_x, centro_y,centro_x/3, centro_y); // Linea horizontal izquierda
+        g.drawLine(centro_x, centro_y,100, centro_y); // Linea horizontal izquierda
     }
 }
 

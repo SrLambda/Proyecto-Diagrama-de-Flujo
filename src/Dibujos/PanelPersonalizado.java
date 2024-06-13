@@ -17,6 +17,8 @@ public abstract class PanelPersonalizado extends JPanel
     protected int posicion = -1;
     protected VentanaEmergente ventanaEmergente;
 
+    protected int[] anchoAlto;
+
     protected static Font textoFont;
     protected static Float zoom;
 
@@ -51,7 +53,7 @@ public abstract class PanelPersonalizado extends JPanel
 
 
 
-        int[] anchoAlto = this.getAnchoAlto();
+        this.anchoAlto = this.getAnchoAlto();
 
         setPreferredSize(new Dimension(200, 100));
 

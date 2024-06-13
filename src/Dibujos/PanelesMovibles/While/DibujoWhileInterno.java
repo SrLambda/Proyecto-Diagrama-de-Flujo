@@ -16,6 +16,7 @@ public class DibujoWhileInterno extends JPanel {
 
     public DibujoWhileInterno()
     {
+        setPreferredSize(new Dimension(600, 500));
         this.verdadero1 = verdadero1;
         this.verdadero2 = verdadero2;
         this.falso = falso;
@@ -28,15 +29,15 @@ public class DibujoWhileInterno extends JPanel {
 
         this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
         this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero1.add(new WhileVacio("null",null,null,null,null));
+        this.verdadero1.add(new WhileVacio("izquierda",null,this.verdadero2,null,null));
 
         this.verdadero2.setLayout(new BoxLayout(this.verdadero2, BoxLayout.Y_AXIS));
         this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero2.add(new WhileVacio("null",null,null,null,null));
+        this.verdadero2.add(new WhileVacio("null",null,this,null,null));
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new WhileVacio("null",null,null,null,null));
+        this.falso.add(new WhileVacio("derecha",null,this.verdadero2,null,null));
 
         this.add(verdadero1);
         this.add(verdadero2);
