@@ -71,4 +71,12 @@ public class DibujoEntrada extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
+
+    public void cambiarVariable(Map<String, Object> mapa, String claveAntigua, String claveNueva) {
+        if (mapa.containsKey(claveAntigua)) {
+            Object valor = mapa.remove(claveAntigua);
+            mapa.put(claveNueva, valor);
+        }
+    }
+
 }

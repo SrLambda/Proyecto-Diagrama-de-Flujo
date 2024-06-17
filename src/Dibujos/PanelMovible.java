@@ -36,8 +36,10 @@ public abstract class PanelMovible extends PanelPersonalizado{
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", PanelMovible.this.texto);
                     if(PanelMovible.this instanceof DibujoEntrada){
+                        String claveAntigua = texto;
                         boolean evidencia = validarCadena.validar(nuevoTexto);
                         String textoValido= validar(evidencia,"Cadena",nuevoTexto);
+                        ((DibujoEntrada) PanelMovible.this).cambiarVariable(PanelMovible.this.variables,texto,textoValido);
                         cambiarTexto(textoValido);
                     }
                     if(PanelMovible.this instanceof DibujoProceso){
