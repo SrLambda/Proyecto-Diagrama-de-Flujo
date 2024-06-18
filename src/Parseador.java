@@ -1,7 +1,10 @@
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.*;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.List;
+
+
 
 public class Parseador {
 
@@ -158,10 +161,9 @@ public class Parseador {
                 // Condicion
                 this.pseudo_codigo.append(separacion).append("SI ( ");
                 this.pseudo_codigo.append(componente.getTexto());
-                this.pseudo_codigo.append(" )\n");
+                this.pseudo_codigo.append(" ){\n");
 
                 // Verdad
-                this.pseudo_codigo.append(separacion).append("{\n");
 
                 pseudoCodIntermedio(tab+1,aux.getVerdad());
 
@@ -170,8 +172,7 @@ public class Parseador {
 
 
                 // Falso
-                this.pseudo_codigo.append(separacion).append("ENTONCES\n");
-                this.pseudo_codigo.append(separacion).append("{\n");
+                this.pseudo_codigo.append(separacion).append("ENTONCES{\n");
 
                 pseudoCodIntermedio(tab+1,aux.getFalso());
 
@@ -184,9 +185,8 @@ public class Parseador {
 
                 this.pseudo_codigo.append(separacion).append("MIENTRAS ( ");
                 this.pseudo_codigo.append(componente.getTexto());
-                this.pseudo_codigo.append(" )\n");
+                this.pseudo_codigo.append(" ){\n");
 
-                this.pseudo_codigo.append(separacion).append("{\n");
 
                 pseudoCodIntermedio(tab+1,aux_w.getLista());
 
@@ -205,9 +205,7 @@ public class Parseador {
                 this.pseudo_codigo.append(separacion).append("PARA ( ");
                 this.pseudo_codigo.append(var).append(" = ").append(aux_val[0]).append(" ; ");
                 this.pseudo_codigo.append(var).append(" += ").append(aux_val[1]).append(" ; ");
-                this.pseudo_codigo.append(var).append(" == ").append(aux_val[2]).append(" )\n");
-
-                this.pseudo_codigo.append(separacion).append("{\n");
+                this.pseudo_codigo.append(var).append(" == ").append(aux_val[2]).append(" ){\n");
 
                 pseudoCodIntermedio(tab+1,aux_f.getLista());
 
@@ -220,10 +218,8 @@ public class Parseador {
 
                 DibujoDoWhile aux_dw = (DibujoDoWhile) componente;
 
-                this.pseudo_codigo.append(separacion).append("HACER\n");
+                this.pseudo_codigo.append(separacion).append("HACER{\n");
 
-
-                this.pseudo_codigo.append(separacion).append("{\n");
 
                 pseudoCodIntermedio(tab+1,aux_dw.getLista());
 
@@ -245,6 +241,8 @@ public class Parseador {
     public String generarEjecutable()
     {
         this.cod_phython   = new StringBuilder();
+
+        this.cod_phython.append("import funciones\n\n");
 
         this.codigo(0,this.componentes);
 
@@ -286,7 +284,23 @@ public class Parseador {
 
                 this.cod_phython.append(separacion);
                 //Hay que modificar
-                this.cod_phython.append(componente.getTexto());
+
+                String regex = ".*=.*"; // Coincide con cualquier cadena que contenga un '='
+
+                // Crear el patrón
+                Pattern pattern = Pattern.compile(regex);
+
+                if(pattern.matcher(componente.getTexto()).matches())
+                {
+
+                    this.cod_phython.append(componente.getTexto());
+
+                }
+                else
+                {
+                    this.cod_phython.append(componente.getTexto()).append(" = None");
+                }
+
 
                 this.cod_phython.append("\n");
 
@@ -326,15 +340,15 @@ public class Parseador {
                 this.cod_phython.append(" :\n");
 
                 //Verdad
-                this.cod_phython.append(separacion).append("\tprint(\"verdad\"\n");
-                pseudoCodIntermedio(tab+1,aux.getVerdad());
+                this.cod_phython.append(separacion).append("\tprint(\"verdad\")\n");
+                codigo(tab+1,aux.getVerdad());
 
 
                 // Falso
                 this.cod_phython.append(separacion).append("else:\n");
 
-                this.cod_phython.append(separacion).append("\tprint(\"falso\"\n");
-                pseudoCodIntermedio(tab+1,aux.getFalso());
+                this.cod_phython.append(separacion).append("\tprint(\"falso\")\n");
+                codigo(tab+1,aux.getFalso());
 
 
                 break;
@@ -343,16 +357,13 @@ public class Parseador {
 
                 DibujoWhile aux_w = (DibujoWhile) componente;
 
-                this.cod_phython.append(separacion).append("MIENTRAS ( ");
+                this.cod_phython.append(separacion).append("while ");
                 this.cod_phython.append(componente.getTexto());
-                this.cod_phython.append(" )\n");
+                this.cod_phython.append(" :\n");
 
-                this.cod_phython.append(separacion).append("{\n");
+                this.cod_phython.append(separacion).append("\tprint(\"\")\n");
 
-                pseudoCodIntermedio(tab+1,aux_w.getLista());
-
-
-                this.cod_phython.append(separacion).append("}\n");
+                codigo(tab+1,aux_w.getLista());
 
                 break;
 
@@ -363,16 +374,19 @@ public class Parseador {
                 int[]  aux_val = aux_f.getIntervalo();
                 String var     = aux_f.getTexto();
 
-                this.cod_phython.append(separacion).append("PARA ( ");
-                this.cod_phython.append(var).append(" = ").append(aux_val[0]).append(" ; ");
-                this.cod_phython.append(var).append(" += ").append(aux_val[1]).append(" ; ");
-                this.cod_phython.append(var).append(" == ").append(aux_val[2]).append(" )\n");
+                this.cod_phython.append(separacion);
+                this.cod_phython.append(var).append(" = ").append(aux_val[0]).append("\n");
 
-                this.cod_phython.append(separacion).append("{\n");
+                this.cod_phython.append(separacion).append("while ");
+                this.cod_phython.append(var).append(" <= ").append(aux_val[2]);
+                this.cod_phython.append(" :\n");
 
-                pseudoCodIntermedio(tab+1,aux_f.getLista());
+                this.cod_phython.append(separacion).append("\tprint(\"\")\n");
+                codigo(tab+1,aux_f.getLista());
 
-                this.cod_phython.append(separacion).append("}\n");
+                this.cod_phython.append(var).append(" = ").append(var);
+                this.cod_phython.append(" + ").append(aux_val[1]).append("\n");
+
 
 
                 break;
@@ -381,21 +395,19 @@ public class Parseador {
 
                 DibujoDoWhile aux_dw = (DibujoDoWhile) componente;
 
-                this.cod_phython.append(separacion).append("HACER\n");
+                codigo(tab,aux_dw.getLista());
 
-
-                this.cod_phython.append(separacion).append("{\n");
-
-                pseudoCodIntermedio(tab+1,aux_dw.getLista());
-
-
-                this.cod_phython.append(separacion).append("}\n");
-
-                this.cod_phython.append(separacion).append("MIENTRAS ( ");
+                this.cod_phython.append(separacion).append("while ");
                 this.cod_phython.append(componente.getTexto());
-                this.cod_phython.append(" )\n");
+                this.cod_phython.append(" :\n");
+
+                this.cod_phython.append(separacion).append("\tprint(\"\")\n");
+
+                codigo(tab+1,aux_dw.getLista());
+
 
                 break;
         }
     }
+
 }

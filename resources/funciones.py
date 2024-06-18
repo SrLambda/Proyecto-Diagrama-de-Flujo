@@ -58,4 +58,3 @@ def documento(val):
     root.withdraw()
 
     messagebox.showerror("Documento", f"{val}")
-    

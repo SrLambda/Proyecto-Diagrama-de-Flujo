@@ -159,8 +159,10 @@ public class Controlador {
         contenedor.repaint();
     }
 
+
+
     public void prueba(){
-        this.ventanaEmergente.mostrar();
+        System.out.printf(this.parseador.generarEjecutable());;
     }
 
 
