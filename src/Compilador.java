@@ -10,7 +10,23 @@ public class Compilador {
 
     Compilador()
     {
-        this.file = "resources/init.py";
+
+        String os = System.getProperty("os.name").toLowerCase();
+
+
+        if (os.contains("win"))
+        {
+            // Windows
+            this.file = "resources\\init.py";
+
+        }
+        else
+        {
+            // Linux o macOS
+            this.file = "resources/init.py";
+
+        }
+
     }
 
 
