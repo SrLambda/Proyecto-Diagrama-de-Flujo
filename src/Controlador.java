@@ -16,7 +16,7 @@ public class Controlador {
     private Parseador parseador;
     private VentanaEmergente ventanaEmergente;
     private final GridBagConstraints restriciones;
-
+    private Compilador compilador;
 
     // Instanciar Singleton
     private Controlador() {
@@ -28,6 +28,7 @@ public class Controlador {
         this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
         this.restriciones.weighty = 0; // No expandir en dirección vertical
         this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
+        this.compilador           = new Compilador();
     }
 
 
@@ -161,8 +162,12 @@ public class Controlador {
 
 
 
-    public void prueba(){
-        System.out.printf(this.parseador.generarEjecutable());;
+    public void prueba()
+    {
+        System.out.printf(this.parseador.generarEjecutable());
+
+        this.compilador.run(this.parseador.generarEjecutable());
+
     }
 
 
