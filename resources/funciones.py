@@ -12,7 +12,6 @@ def entrada():
 
     patron_entero   = r"^-?\d+$"
     patron_double   = r"^-?\d+(\.\d+)?$"
-    patron_caracter = r"^.$"
 
     if re.search(patron_entero, entrada):
 
@@ -21,10 +20,6 @@ def entrada():
     elif re.search(patron_double, entrada):
 
         return float(entrada)
-
-    elif re.search(patron_caracter, entrada):
-
-        return chr(entrada)
 
     else:
 
