@@ -22,6 +22,7 @@ public class Front extends JFrame {
     private     JButton forButton;
     private     JButton doWhileButton;
     private     JScrollPane scroll;
+    private     JButton ejecutar;
 
     private List <PanelPersonalizado> listaPaneles;
 
@@ -162,6 +163,18 @@ public class Front extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 controlador.crearPanel(Front.this,"do-while");
             }
+        });
+
+        ejecutar.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                controlador.prueba();
+
+            }
+
         });
 
     }

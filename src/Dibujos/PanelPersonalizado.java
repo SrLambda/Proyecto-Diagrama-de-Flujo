@@ -1,6 +1,8 @@
 package Dibujos;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import Dibujos.Ventana.VentanaEmergente;
 
@@ -15,6 +17,12 @@ public abstract class PanelPersonalizado extends JPanel
     protected int posicion = -1;
     protected VentanaEmergente ventanaEmergente;
 
+    protected int[] anchoAlto;
+
+    protected static Font textoFont;
+    protected static Float zoom;
+
+
     protected GridBagConstraints restriciones;
 
 
@@ -26,7 +34,28 @@ public abstract class PanelPersonalizado extends JPanel
         this.contenedor = _contenedor;
         this.ventanaEmergente = _ventanaEmergente;
         this.restriciones = _restriciones;
-        setPreferredSize(new Dimension(750, 200));
+
+        if (null == zoom){
+            zoom = 1.0f;
+        }
+
+        try {
+
+            InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
+            assert is != null;
+            textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
+
+        }
+        catch (IOException | FontFormatException e)
+        {
+            e.printStackTrace();
+        }
+
+
+
+        this.anchoAlto = this.getAnchoAlto();
+
+        setPreferredSize(new Dimension(200, 100));
 
     }
 
@@ -131,6 +160,30 @@ public abstract class PanelPersonalizado extends JPanel
     {
         this.listaFiguras = list;
         this.contenedor = cont;
+    }
+
+
+    private int[] getAnchoAlto(){
+
+        JLabel tempLabel = new JLabel();
+        FontMetrics metrics = tempLabel.getFontMetrics(this.textoFont);
+
+        int width  = metrics.stringWidth(this.texto);
+        int height = metrics.getHeight();
+
+        if(width < 105) //  ANCHO DE LA CADENA 'WWWWW'
+        {
+
+            width = 105;
+
+        }
+
+        int[] valores = new int[2];
+
+        valores[0] = width;
+        valores[1] = height;
+
+        return valores;
     }
 
 }

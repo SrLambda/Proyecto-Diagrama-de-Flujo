@@ -11,7 +11,6 @@ public class DibujoProceso extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
 
@@ -23,17 +22,22 @@ public class DibujoProceso extends PanelMovible {
         super.paintComponent(g);
 
 
-        int panelWidth = getWidth();
-        int panelHeight = getHeight();
+
+
+        int widthTx  = this.anchoAlto[0];
+        int heightTx = this.anchoAlto[1];
+
+        int centro_x = this.getWidth()  / 2;
+        int centro_y = this.getHeight() / 2;
+
+
 
         // Coordenadas del rectángulo
-        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del rectángulo
-        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del rectángulo
-        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del rectángulo
-        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del rectángulo
+        int x1 = centro_x - ( ( widthTx  / 2 ) + 10); // Coordenada x del lado izquierdo del rectángulo
+        int x2 = centro_x + ( ( widthTx  / 2 ) + 10); // Coordenada x del lado derecho del rectángulo
+        int y1 = centro_y - ( ( heightTx / 2 ) + 10); // Coordenada y del lado superior del rectángulo
+        int y2 = centro_y + ( ( heightTx / 2 ) + 10); // Coordenada y del lado inferior del rectángulo
 
-        // Coordenadas de Flujo
-        int centro_x = panelWidth/2;
 
 
         // Dibujar las líneas que forman el rectángulo
@@ -46,7 +50,7 @@ public class DibujoProceso extends PanelMovible {
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);            // Linea superior
-        g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
+        g.drawLine(centro_x,y2,centro_x,getHeight());     // Linea inferior
         g.drawLine(centro_x,y1,centro_x+10,y1-10);
         g.drawLine(centro_x,y1,centro_x-10,y1-10);
 

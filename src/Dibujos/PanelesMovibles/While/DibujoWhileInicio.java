@@ -11,12 +11,12 @@ import java.util.List;
 public class DibujoWhileInicio extends PanelPersonalizado {
     private DibujoWhileInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
     public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
         this.interno = _interno;
         panelesCiclo = lista;
+        setPreferredSize(new Dimension(600, 500));
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -35,19 +35,38 @@ public class DibujoWhileInicio extends PanelPersonalizado {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int panelWidth = getWidth();
+        int widthTx  = this.anchoAlto[0];
+        int heightTx = this.anchoAlto[1];
+
+        int panelWidth  = getWidth();
         int panelHeight = getHeight();
 
+
+        int centro_x = panelWidth/2;  // Centro horizontal
+        int centro_y = panelHeight/2; // Centro vertical
+
+
+        int cuarto_x = panelWidth/4;
+
+        double anguloY = Math.PI / 6;
+        double anguloX = Math.PI - anguloY;
+
+        double z1 = Math.sqrt( (widthTx*widthTx)   / (2 - (2 * Math.cos( anguloX ) ) ) );
+        double z2 = Math.sqrt( (heightTx*heightTx) / (2 - (2 * Math.cos( anguloY ) ) ) );
+
+        double z = z1+z2;
+
+        int deltX = (int) (z * Math.cos( anguloY / 2));
+        int deltY = (int) (z * Math.sin( anguloY / 2));
+
+
         // Coordenadas del rombo
-        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del rectángulo
-        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del rectángulo
-        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del rectángulo
-        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del rectángulo
+        int x1 = centro_x - deltX; // Coordenada x del lado izquierdo del rectángulo
+        int x2 = centro_x + deltX; // Coordenada x del lado derecho del rectángulo
+        int y1 = centro_y - deltY; // Coordenada y del lado superior del rectángulo
+        int y2 = centro_y + deltY; // Coordenada y del lado inferior del rectángulo
 
-        int centro_x = panelWidth/2;                                         // Centro horizontal
-        int centro_y = panelHeight/2;                                        // Centro vertical
 
-        int cuarto = panelWidth/4;
 
         // Dibujar las líneas que forman el rombo
         g.setColor(Color.BLACK);
@@ -60,11 +79,11 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
         g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
-        g.drawLine(x2,centro_y, (int) (cuarto*3.33),centro_y); //  Linea horizontal derecha
-   /* AQUI ES */    g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
+        g.drawLine(x2,centro_y, panelWidth - 100,centro_y); //  Linea horizontal derecha
+        g.drawLine(100,(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
 
-        g.drawLine((int) (cuarto*3.33),centro_y,(int) (cuarto*3.33),panelHeight); //  Linea vertical derecha
-        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),(int) (panelWidth*0.1665),panelHeight); //  Linea vertical izquierda
+        g.drawLine(panelWidth - 100,centro_y,panelWidth - 100,panelHeight); //  Linea vertical derecha
+        g.drawLine(100,(int) (panelHeight*0.25),100,panelHeight); //  Linea vertical izquierda
 
         g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
         g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
