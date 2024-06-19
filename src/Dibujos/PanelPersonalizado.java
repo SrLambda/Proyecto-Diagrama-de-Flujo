@@ -1,17 +1,11 @@
 package Dibujos;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
-
 import Dibujos.Validador.Validador;
 import Dibujos.Validador.ValidadorCadena;
 import Dibujos.Validador.ValidadorDouble;
@@ -42,8 +36,7 @@ public abstract class PanelPersonalizado extends JPanel
     protected List <String> variables;
     protected Map<String, Object> variables2;
 
-    private double escala = 1.0; // Escala inicial
-
+    public double zoomFactor = 1.0;
 
     public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente)
     {
@@ -63,11 +56,9 @@ public abstract class PanelPersonalizado extends JPanel
         }
 
         try {
-
             InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
             assert is != null;
             textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
-
         }
         catch (IOException | FontFormatException e)
         {
@@ -144,6 +135,13 @@ public abstract class PanelPersonalizado extends JPanel
 
     }
 
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
+        revalidate(); // Revalidar el layout
+        repaint();   // Repintar el panel con el nuevo zoom
+    }
+
+    /*
     // Método para hacer zoom in
     public void hacerZoomIn() {
         escala *= 1.1; // Aumentar la escala en un 10%
@@ -167,7 +165,7 @@ public abstract class PanelPersonalizado extends JPanel
         }
         // Repintar el panel para reflejar los cambios
         repaint();
-    }
+    }*/
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {

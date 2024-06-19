@@ -28,6 +28,7 @@ public class Front extends JFrame {
     private     JButton zoomin;
     private     JButton zoomout;
     private List <PanelPersonalizado> listaPaneles;
+    private double zoomFactor = 1.0;
 
     public Front(Controlador controlador)
     {
@@ -168,14 +169,14 @@ public class Front extends JFrame {
         zoomin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                aumentarZoom(panel1);
+                zoomIn();
             }
         });
 
         zoomout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                reducirZoom(panel1);
+                zoomOut();
             }
         });
     }
@@ -190,31 +191,19 @@ public class Front extends JFrame {
         return this.pseudocodio;
     }
 
-    // Método para aumentar el zoom del panel
-    private void aumentarZoom(JPanel panel) {
-        double factor = 1.1; // Factor de incremento de zoom
-        aumentarZoom(panel, factor);
+    private void zoomIn() {
+        zoomFactor *= 1.01; // Aumentar el zoom en un 10%
+        applyZoom();
     }
 
-    // Método para reducir el zoom del panel
-    private void reducirZoom(JPanel panel) {
-        double factor = 0.9; // Factor de decremento de zoom
-        aumentarZoom(panel, factor);
+    private void zoomOut() {
+        zoomFactor /= 1.01; // Reducir el zoom en un 10%
+        applyZoom();
     }
 
-    // Método para ajustar el zoom del panel según el factor dado
-    private void aumentarZoom(JPanel panel, double factor) {
-        if (panel != null) {
-            // Obtener el tamaño actual del panel
-            Dimension dimension = panel.getSize();
-            // Calcular el nuevo tamaño considerando el factor de zoom
-            int newWidth = (int) (dimension.width * factor);
-            int newHeight = (int) (dimension.height * factor);
-            // Establecer el nuevo tamaño del panel
-            panel.setPreferredSize(new Dimension(newWidth, newHeight));
-            // Repintar el panel para aplicar los cambios de tamaño
-            panel.revalidate();
-            panel.repaint();
+    private void applyZoom() {
+        for (PanelPersonalizado panel : listaPaneles) {
+            panel.setZoomFactor(zoomFactor); // Aplicar el factor de zoom a cada panel personalizado
         }
     }
 }
