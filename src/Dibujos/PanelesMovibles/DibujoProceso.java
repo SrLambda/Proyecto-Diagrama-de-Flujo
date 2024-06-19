@@ -1,72 +1,68 @@
 package Dibujos.PanelesMovibles;
-
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.util.List;
 
-public class DibujoProceso extends PanelMovible implements MouseWheelListener {
-    private double zoomFactor = 1.0;
+public class DibujoProceso extends PanelMovible {
+    private int ultimoEjeY;
+    private boolean moviendo;
+    private int ejeYMouse;
+    public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
 
-    public DibujoProceso(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor, _restriciones, _ventanaEmergente);
-        addMouseWheelListener(this);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+
         super.paintComponent(g);
 
-        Graphics2D g2d = (Graphics2D) g.create();
 
-        int panelWidth = getWidth();
-        int panelHeight = getHeight();
 
-        g2d.scale(zoomFactor, zoomFactor);
 
-        int scaledWidth = (int) (panelWidth / zoomFactor);
-        int scaledHeight = (int) (panelHeight / zoomFactor);
+        int widthTx  = this.anchoAlto[0];
+        int heightTx = this.anchoAlto[1];
 
-        int x1 = (int) ((scaledWidth / 4) + scaledWidth * 0.1);
-        int x2 = (int) ((scaledWidth - (scaledWidth / 4)) - scaledWidth * 0.1);
-        int y1 = (int) ((scaledHeight / 4) + scaledHeight * 0.15);
-        int y2 = (int) ((scaledHeight - (scaledHeight / 4)) - scaledHeight * 0.15);
+        int centro_x = this.getWidth()  / 2;
+        int centro_y = this.getHeight() / 2;
 
-        int centro_x = scaledWidth / 2;
 
-        g2d.setColor(Color.BLACK);
 
-        g2d.drawLine(x1, y1, x2, y1);
-        g2d.drawLine(x2, y1, x2, y2);
-        g2d.drawLine(x2, y2, x1, y2);
-        g2d.drawLine(x1, y2, x1, y1);
+        // Coordenadas del rectángulo
+        int x1 = centro_x - ( ( widthTx  / 2 ) + 10); // Coordenada x del lado izquierdo del rectángulo
+        int x2 = centro_x + ( ( widthTx  / 2 ) + 10); // Coordenada x del lado derecho del rectángulo
+        int y1 = centro_y - ( ( heightTx / 2 ) + 10); // Coordenada y del lado superior del rectángulo
+        int y2 = centro_y + ( ( heightTx / 2 ) + 10); // Coordenada y del lado inferior del rectángulo
 
-        g2d.drawLine(centro_x, 0, centro_x, y1);
-        g2d.drawLine(centro_x, y2, centro_x, scaledHeight);
-        g2d.drawLine(centro_x, y1, centro_x + 10, y1 - 10);
-        g2d.drawLine(centro_x, y1, centro_x - 10, y1 - 10);
 
-        g2d.setFont(textoFont);
 
-        FontMetrics metrics = g2d.getFontMetrics();
-        int x = (scaledWidth - metrics.stringWidth(texto)) / 2;
-        int y = ((scaledHeight - metrics.getHeight()) / 2) + metrics.getAscent();
-        g2d.drawString(texto, x, y);
+        // Dibujar las líneas que forman el rectángulo
+        g.setColor(Color.BLACK);
+        g.drawLine(x1, y1, x2, y1);     // Lado superior
+        g.drawLine(x2, y1, x2, y2);     // Lado derecho
+        g.drawLine(x2, y2, x1, y2);     // Lado inferior
+        g.drawLine(x1, y2, x1, y1);     // Lado izquierdo
 
-        g2d.dispose();
-    }
+        // Dibujar flujo
+        g.setColor(Color.BLACK);
+        g.drawLine(centro_x,0,centro_x,y1);            // Linea superior
+        g.drawLine(centro_x,y2,centro_x,getHeight());     // Linea inferior
+        g.drawLine(centro_x,y1,centro_x+10,y1-10);
+        g.drawLine(centro_x,y1,centro_x-10,y1-10);
 
-    public void mouseWheelMoved(MouseWheelEvent e) {
-        if (e.getWheelRotation() < 0) {
-            zoomFactor *= 1.1;
-        } else {
-            zoomFactor /= 1.1;
-        }
-        repaint();
+
+        // fuente con el tamaño especificado
+        g.setFont(textoFont);
+
+        // Dibuja el texto en el centro del panel
+        FontMetrics metrics = g.getFontMetrics();
+        int x = (getWidth() - metrics.stringWidth(texto)) / 2;
+        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
+        g.drawString(texto, x, y);
+
     }
 }

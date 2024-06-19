@@ -25,7 +25,7 @@ public class DibujoDoWhile extends PanelMovible {
 
     public DibujoDoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
-        setPreferredSize(new Dimension(200, 500));
+        setPreferredSize(new Dimension(600, 500));
 
         this.setLayout(new BoxLayout(DibujoDoWhile.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
