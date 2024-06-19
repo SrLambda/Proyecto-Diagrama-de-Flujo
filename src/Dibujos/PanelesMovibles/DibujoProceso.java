@@ -15,7 +15,7 @@ public class DibujoProceso extends PanelMovible {
     private int ejeYMouse;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones,
-                         VentanaEmergente _ventanaEmergente,Map<String, Object> _variables) {
+                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         splitTexto(texto);
     }
@@ -104,6 +104,7 @@ public class DibujoProceso extends PanelMovible {
             }
             bandera++;
         }
+        /*
         System.out.println();
         variables.put(temp,key);
         this.texto = temp +" = "+key;
@@ -112,6 +113,8 @@ public class DibujoProceso extends PanelMovible {
             Object key2 = entry.getValue();
             System.out.println(var+" = "+key2);
         }
+
+         */
     }
 
 }

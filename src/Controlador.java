@@ -7,6 +7,7 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class Controlador {
     private Parseador parseador;
     private VentanaEmergente ventanaEmergente;
     private GridBagConstraints restriciones;
-    private Map<String,Object> variables;
+    private List <Object> variables;
 
 
     // Instanciar Singleton
@@ -31,7 +32,8 @@ public class Controlador {
         this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
         this.restriciones.weighty = 0; // No expandir en dirección vertical
         this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
-        this.variables = new HashMap<>();
+        this.variables = new ArrayList<>();
+        inicializarLista();
     }
 
 
@@ -192,4 +194,12 @@ public class Controlador {
 
         }
     }
+
+    public void inicializarLista(){
+        int j = 100;
+        for(int i=0; i<100; i++){
+            variables.add("Catacresis");
+        }
+    }
+
 }

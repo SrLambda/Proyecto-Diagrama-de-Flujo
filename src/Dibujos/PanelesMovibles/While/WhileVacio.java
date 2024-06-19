@@ -11,7 +11,7 @@ import java.util.Map;
 public class WhileVacio extends PanelPersonalizado {
 
     public WhileVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
-                      VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+                      VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
     }
 

@@ -23,11 +23,12 @@ public abstract class PanelPersonalizado extends JPanel {
     protected Validador validarDouble;
     protected Validador validarCadena;
     protected GridBagConstraints restriciones;
-    protected Map<String, Object> variables;
+    protected List <Object> variables;
+    protected static int indice = 0;
 
 
     public PanelPersonalizado(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
-                              VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+                              VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
@@ -131,6 +132,7 @@ public abstract class PanelPersonalizado extends JPanel {
 
     public String validar(boolean evidencia, String opcion, String entrada) {
         while (true) {
+            System.out.println("validando...");
             if (evidencia) {
                 return entrada;
             } else {
@@ -185,6 +187,7 @@ public abstract class PanelPersonalizado extends JPanel {
     }
 
     public String validarVariable(String _variable) {
+        /*
         boolean bandera = true;
         while(bandera){
             for (Map.Entry<String, Object> entry : variables.entrySet()) {
@@ -197,10 +200,12 @@ public abstract class PanelPersonalizado extends JPanel {
             _variable = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
             _variable = validarMixto(validarCadena.validar(_variable), _variable);
         }
+         */
         return _variable;
     }
 
     public boolean validarVariableTrueFalse(String _variable) {
+        /*
         for (Map.Entry<String, Object> entry : variables.entrySet()) {
             String var = entry.getKey();
             if (_variable.equals(var)) {
@@ -208,6 +213,7 @@ public abstract class PanelPersonalizado extends JPanel {
                 return true;
             }
         }
+         */
         return false;
     }
 

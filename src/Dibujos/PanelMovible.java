@@ -21,7 +21,7 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected int ejeYMouse;
 
     public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
-                        VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+                        VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         if(this.posOriginal == -1){
             this.posOriginal = getY();
@@ -40,7 +40,6 @@ public abstract class PanelMovible extends PanelPersonalizado{
                         boolean evidencia = validarCadena.validar(nuevoTexto);
                         String textoValido= validar(evidencia,"Cadena",nuevoTexto);
                         ((DibujoEntrada) PanelMovible.this).cambiarVariable(PanelMovible.this.variables,texto,textoValido);
-                        cambiarTexto(textoValido);
                     }
                     if(PanelMovible.this instanceof DibujoProceso){
                         ((DibujoProceso) PanelMovible.this).splitTexto(nuevoTexto);

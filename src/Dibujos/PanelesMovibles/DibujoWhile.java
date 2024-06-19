@@ -27,7 +27,7 @@ public class DibujoWhile extends PanelMovible {
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
     public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
-                       VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+                       VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         setPreferredSize(new Dimension(600, 500));
 

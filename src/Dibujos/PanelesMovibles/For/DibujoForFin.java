@@ -11,7 +11,7 @@ import java.util.Map;
 public class DibujoForFin extends PanelPersonalizado {
 
     public DibujoForFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
-                        VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+                        VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto,lista,_contenedor,_restriciones,_ventanaEmergente,_variables);
     }
 

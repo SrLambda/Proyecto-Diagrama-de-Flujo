@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class FactoryPanel {
     public PanelMovible crearPanel(String tipo, String texto, List<PanelPersonalizado> lista, JPanel _contenedor,
-                                   GridBagConstraints restricciones, VentanaEmergente _ventana, Map<String, Object> _variables){
+                                   GridBagConstraints restricciones, VentanaEmergente _ventana, List <Object> _variables){
 
         if(tipo.equalsIgnoreCase("decision"))
         {

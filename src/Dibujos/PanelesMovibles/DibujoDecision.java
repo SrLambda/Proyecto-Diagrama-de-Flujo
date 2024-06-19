@@ -23,7 +23,7 @@ public class DibujoDecision extends PanelMovible {
 
 
     public DibujoDecision(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
-                          VentanaEmergente _ventanaEmergente, Map<String, Object> _variables) {
+                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
 
         this.restriciones         = new GridBagConstraints();
