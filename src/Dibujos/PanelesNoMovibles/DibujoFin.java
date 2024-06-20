@@ -66,7 +66,7 @@ public class DibujoFin extends PanelPersonalizado {
         g2d.setFont(textoFont);
 
         // Dibujar el texto centrado
-        FontMetrics metrics = g.getFontMetrics();
+        FontMetrics metrics = g2d.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g2d.drawString(texto, x, y);

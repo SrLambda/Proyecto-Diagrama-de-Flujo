@@ -27,7 +27,8 @@ public abstract class PanelPersonalizado extends JPanel
 
     protected static Font textoFont;
     protected static Float zoom;
-
+    protected Integer witdh;
+    protected Integer height;
 
     protected Validador validarEntero;
     protected Validador validarDouble;
@@ -147,7 +148,7 @@ public abstract class PanelPersonalizado extends JPanel
         // Obtener el tamaño original del panel y aplicarle el factor de zoom
         int originalWidth = 200;  // Ancho original del panel
         int originalHeight = 100; // Alto original del panel
-        return new Dimension((int) (originalWidth * zoomFactor *2), (int) (originalHeight * zoomFactor));
+        return new Dimension((int) (originalWidth * zoomFactor * 4), (int) (originalHeight * zoomFactor));
     }
 
     // Método para eliminar la figura y reorganizar las posiciones
