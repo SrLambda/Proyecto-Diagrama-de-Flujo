@@ -141,31 +141,14 @@ public abstract class PanelPersonalizado extends JPanel
         repaint();   // Repintar el panel con el nuevo zoom
     }
 
-    /*
-    // Método para hacer zoom in
-    public void hacerZoomIn() {
-        escala *= 1.1; // Aumentar la escala en un 10%
-        actualizarZoom();
+    //para los paneles de las figuras
+    @Override
+    public Dimension getPreferredSize() {
+        // Obtener el tamaño original del panel y aplicarle el factor de zoom
+        int originalWidth = 200;  // Ancho original del panel
+        int originalHeight = 100; // Alto original del panel
+        return new Dimension((int) (originalWidth * zoomFactor *2), (int) (originalHeight * zoomFactor));
     }
-
-    // Método para hacer zoom out
-    public void hacerZoomOut() {
-        escala /= 1.1; // Disminuir la escala en un 10%
-        actualizarZoom();
-    }
-
-    // Método para actualizar la representación gráfica con la nueva escala
-    private void actualizarZoom() {
-        // Iterar sobre todas las figuras y ajustar sus tamaños y posiciones según la nueva escala
-        for (PanelPersonalizado figura : listaFiguras) {
-            // Ejemplo de ajuste de tamaño
-            figura.setSize((int) (figura.getWidth() * escala), (int) (figura.getHeight() * escala));
-            // Ejemplo de ajuste de posición
-            figura.setLocation((int) (figura.getX() * escala), (int) (figura.getY() * escala));
-        }
-        // Repintar el panel para reflejar los cambios
-        repaint();
-    }*/
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
