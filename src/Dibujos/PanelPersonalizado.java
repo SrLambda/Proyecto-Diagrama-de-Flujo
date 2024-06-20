@@ -69,7 +69,6 @@ public abstract class PanelPersonalizado extends JPanel
 
 
         this.anchoAlto = this.getAnchoAlto();
-
         setPreferredSize(new Dimension(200, 100));
 
     }
@@ -146,9 +145,9 @@ public abstract class PanelPersonalizado extends JPanel
     @Override
     public Dimension getPreferredSize() {
         // Obtener el tamaño original del panel y aplicarle el factor de zoom
-        int originalWidth = 200;  // Ancho original del panel
-        int originalHeight = 100; // Alto original del panel
-        return new Dimension((int) (originalWidth * zoomFactor * 4), (int) (originalHeight * zoomFactor));
+        Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
+        Integer Height = (int) (100 * zoomFactor); // Alto original del panel
+        return new Dimension((int) (Width * zoomFactor * 2.5), (int) (Height * zoomFactor));
     }
 
     // Método para eliminar la figura y reorganizar las posiciones
