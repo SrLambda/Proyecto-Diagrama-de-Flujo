@@ -18,6 +18,8 @@ public class DibujoInicio extends PanelPersonalizado {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
 
         int widthTx  = this.anchoAlto[0];
         int heightTx = this.anchoAlto[1];
@@ -36,13 +38,12 @@ public class DibujoInicio extends PanelPersonalizado {
         // Radio de los bordes redondeados
         double rx = ( ( heightTx / 2 ) + 10) * Math.cos(Math.PI/4);
 
-        g.setColor(Color.BLACK);
-        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.BLACK);
 
         //Dibujar figura de entrada
 
-        g.drawLine(x1, y1, x2, y1);     // Lado superior
-        g.drawLine(x2, y2, x1, y2);     // Lado inferior
+        g2d.drawLine(x1, y1, x2, y1);     // Lado superior
+        g2d.drawLine(x2, y2, x1, y2);     // Lado inferior
 
 
         // Radio = ( ( heightTx / 2 ) + 10)
@@ -56,16 +57,18 @@ public class DibujoInicio extends PanelPersonalizado {
         g2d.draw(new QuadCurve2D.Double(x2 + ( ( heightTx / 2 ) + 10), centro_y, x2+rx , centro_y+rx ,x2  ,y2 ));
 
         // Dibujar flujo
-        g.drawLine(centro_x, y2, centro_x, getHeight());         // Linea inferior
+        g2d.drawLine(centro_x, y2, centro_x, getHeight());         // Linea inferior
 
         // fuente con el tamaño especificado
-        g.setFont(textoFont);
+        g2d.setFont(textoFont);
         
         // Dibujar el texto centrado
-        FontMetrics metrics = g.getFontMetrics();
+        FontMetrics metrics = g2d.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, y);
+        g2d.drawString(texto, x, y);
+
+        g2d.dispose();
     }
 }
 

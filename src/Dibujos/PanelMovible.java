@@ -1,5 +1,7 @@
 package Dibujos;
 
+import Dibujos.PanelesMovibles.DibujoEntrada;
+import Dibujos.PanelesMovibles.DibujoProceso;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -28,10 +30,18 @@ public abstract class PanelMovible extends PanelPersonalizado{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
-                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", PanelMovible.this.texto);
+                    if(PanelMovible.this instanceof DibujoEntrada){
+                        boolean evidencia = validarCadena.validar(nuevoTexto);
+                        String textoValido= validar(evidencia,"Cadena",nuevoTexto);
+                        cambiarTexto(textoValido);
+                    }
+                    /*
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
                         cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
                     }
+
+                     */
                 }
                 // Verificar si se hizo clic derecho
                 if (e.getButton() == MouseEvent.BUTTON3) {

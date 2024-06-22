@@ -15,6 +15,8 @@ public class DibujoEntrada extends PanelMovible {
 
     public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+        this.texto = validar(validarCadena.validar(texto),"Cadena",texto);
+        this.variables.add(this.texto);
     }
 
     @Override

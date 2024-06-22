@@ -1,9 +1,15 @@
 package Dibujos;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
+import Dibujos.Validador.Validador;
+import Dibujos.Validador.ValidadorCadena;
+import Dibujos.Validador.ValidadorDouble;
+import Dibujos.Validador.ValidadorEntero;
 import Dibujos.Ventana.VentanaEmergente;
 
 public abstract class PanelPersonalizado extends JPanel
@@ -21,11 +27,17 @@ public abstract class PanelPersonalizado extends JPanel
 
     protected static Font textoFont;
     protected static Float zoom;
+    protected Integer witdh;
+    protected Integer height;
 
-
+    protected Validador validarEntero;
+    protected Validador validarDouble;
+    protected Validador validarCadena;
     protected GridBagConstraints restriciones;
+    protected List <String> variables;
+    protected Map<String, Object> variables2;
 
-
+    public double zoomFactor = 1.0;
 
     public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente)
     {
@@ -34,17 +46,20 @@ public abstract class PanelPersonalizado extends JPanel
         this.contenedor = _contenedor;
         this.ventanaEmergente = _ventanaEmergente;
         this.restriciones = _restriciones;
+        this.validarEntero = new ValidadorEntero();
+        this.validarDouble = new ValidadorDouble();
+        this.validarCadena = new ValidadorCadena();
+        this.variables = new ArrayList<>();
+        setPreferredSize(new Dimension(750, 200));
 
         if (null == zoom){
             zoom = 1.0f;
         }
 
         try {
-
             InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
             assert is != null;
             textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
-
         }
         catch (IOException | FontFormatException e)
         {
@@ -54,7 +69,6 @@ public abstract class PanelPersonalizado extends JPanel
 
 
         this.anchoAlto = this.getAnchoAlto();
-
         setPreferredSize(new Dimension(200, 100));
 
     }
@@ -114,13 +128,27 @@ public abstract class PanelPersonalizado extends JPanel
 
     public void cambiarTexto(String nuevoTexto)
     {
-        texto = nuevoTexto;
+
+        this.texto = nuevoTexto;
         repaint();// Redibujar la figura con el nuevo texto
         revalidate();
 
     }
 
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
+        revalidate(); // Revalidar el layout
+        repaint();   // Repintar el panel con el nuevo zoom
+    }
 
+    //para los paneles de las figuras
+    @Override
+    public Dimension getPreferredSize() {
+        // Obtener el tamaño original del panel y aplicarle el factor de zoom
+        Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
+        Integer Height = (int) (100 * zoomFactor); // Alto original del panel
+        return new Dimension((int) (Width * zoomFactor * 2.5), (int) (Height * zoomFactor));
+    }
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
@@ -161,6 +189,29 @@ public abstract class PanelPersonalizado extends JPanel
         this.listaFiguras = list;
         this.contenedor = cont;
     }
+
+    public String validar(boolean evidencia, String opcion, String entrada){
+        while(true){
+            if(evidencia){
+                return entrada;
+            }else{
+                this.texto = entrada;
+                entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
+                this.texto = entrada;
+                if(opcion.equals("Cadena")){
+                    evidencia = validarCadena.validar(entrada);
+                } else if (opcion.equals("Entero")){
+                    evidencia = validarEntero.validar(entrada);
+                } else if (opcion.equals("Double")){
+                    evidencia = validarDouble.validar(entrada);
+                }
+                if(evidencia){
+                    return entrada;
+                }
+            }
+        }
+    }
+
 
 
     private int[] getAnchoAlto(){
