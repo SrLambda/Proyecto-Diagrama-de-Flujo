@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Paths;
 
 public class Compilador {
@@ -10,7 +8,25 @@ public class Compilador {
 
     Compilador()
     {
-        this.file = "resources/init.py";
+
+        String os = System.getProperty("os.name").toLowerCase();
+
+
+
+        if (os.contains("win"))
+        {
+            // Windows
+            String currentPath = Paths.get("").toAbsolutePath().toString();
+            this.file = currentPath + "\\resources\\init.py";
+
+        }
+        else
+        {
+            // Linux o macOS
+            this.file = "resources/init.py";
+
+        }
+
     }
 
 
@@ -45,13 +61,13 @@ public class Compilador {
             ProcessBuilder processBuilder;
 
             String currentPath = Paths.get("").toAbsolutePath().toString();
-            System.out.println("Ruta actual del programa: " + currentPath);
+
 
             if (os.contains("win"))
             {
                 // Windows
-                String filePath = "resources\\init.bat";
-                processBuilder  = new ProcessBuilder(filePath);
+                String filePath = currentPath+"\\resources\\init.bat";
+                processBuilder  = new ProcessBuilder("cmd.exe", "/c",filePath);
 
             }
             else

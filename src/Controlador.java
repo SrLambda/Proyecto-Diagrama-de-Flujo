@@ -164,7 +164,6 @@ public class Controlador {
 
     public void prueba()
     {
-        System.out.printf(this.parseador.generarEjecutable());
 
         this.compilador.run(this.parseador.generarEjecutable());
 

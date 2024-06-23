@@ -10,6 +10,9 @@
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Front.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/init.bat" beforeDir="false" afterPath="$PROJECT_DIR$/resources/init.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compilador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,6 +222,7 @@
     <MESSAGE value="Intercambio de figuras parcial" />
     <MESSAGE value="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)" />
     <option name="LAST_COMMIT_MESSAGE" value="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -231,20 +235,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Compilador.java</url>
-          <line>41</line>
-          <properties class="Compilador" method="ejecutar">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Compilador.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
