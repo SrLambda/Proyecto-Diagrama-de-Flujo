@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compilador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Front.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +55,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="ramafeliz2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,33 +75,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "270",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "227",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "pollo__frito__trozado",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;227&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ramafeliz2&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }]]></component>
   <component name="RecentsManager">
