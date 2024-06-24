@@ -1,3 +1,4 @@
 import funciones
 
- = None
+x = funciones.entrada()
+funciones.salida(x)
