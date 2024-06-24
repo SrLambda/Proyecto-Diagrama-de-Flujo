@@ -7,17 +7,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoProceso extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
+    private String variableS;
+    private String procesoS;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones,
                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
-        splitTexto(texto);
+        String nuevoTxt = quitarEspacios(texto);
+        asignarVariable(nuevoTxt);
+        manejo();
+
     }
 
     @Override
@@ -65,56 +69,120 @@ public class DibujoProceso extends PanelMovible {
 
     }
 
-    public void splitTexto(String texto){
-        String[] tokens = texto.split("\\s+|(?<==)|(?=[+\\-*/])");
-        int bandera = 0;
-        String key = null;
-        String temp = null;
-        for (String token : tokens) {
-            if(bandera >= 2 && !"+-*/".contains(token)){
-                System.out.println("TOKEN = "+token);
-                try{
-                    Integer.parseInt(token);
-                    System.out.println("Conversion entero");
-                    token = validarMixto(validarEntero.validar(token),token);
-                }catch (NumberFormatException ex1){
-                    try{
-                        Double.parseDouble(token);
-                        System.out.println("Conversion double");
-                        token = validarMixto(validarDouble.validar(token),token);
-                    }catch (NumberFormatException ex2){
-                        System.out.println("Conversion cadena");
-                        token = validarMixto(validarVariableTrueFalse(token),token);
-                    }
-                }
+    public void asignarVariable(String _entrada){
+        int posicion = _entrada.indexOf('=');
+        while(posicion == -1 || _entrada.length() <3){
+            _entrada = JOptionPane.showInputDialog(null, "Proceso incorrecto", _entrada);
+            if(_entrada == null){
+                return;
             }
-            if(!token.isEmpty()){
-                if(bandera >= 2){
-                    if(key == null){
-                        key = token;
-                    }else{
-                        key += token;
-                    }
-                }else{
-                    if(bandera == 0){
-                        temp = token;
-                        temp = validarVariable(temp);
-                    }
-                }
-            }
-            bandera++;
+            _entrada = quitarEspacios(_entrada);
+            posicion = _entrada.indexOf('=');
         }
-        /*
-        System.out.println();
-        variables.put(temp,key);
-        this.texto = temp +" = "+key;
-        for(Map.Entry<String,Object> entry : variables.entrySet()){
-            String var = entry.getKey();
-            Object key2 = entry.getValue();
-            System.out.println(var+" = "+key2);
+        this.setVariableS(_entrada.substring(0, posicion));
+        this.texto = _entrada;
+    }
+
+    public void asignarProceso(String _entrada){
+        int posicion = _entrada.indexOf('=');
+        while(posicion == -1 || _entrada.length() <3){
+            _entrada = JOptionPane.showInputDialog(null, "Proceso incorrecto", _entrada);
+            if(_entrada == null){
+                return;
+            }
+            _entrada = quitarEspacios(_entrada);
+            posicion = _entrada.indexOf('=');
+        }
+        this.setProcesoS(_entrada.substring(posicion + 1));
+    }
+
+    public boolean verVariable(String _entrada) {
+        while(!validarVariableTrueFalse(_entrada)){
+            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+            if(_entrada == null){
+                return false;
+            }
+        }
+        this.setVariableS(_entrada);
+        return true;
+    }
+
+    public boolean verProceso(String _entrada){
+        List<String> partes = new ArrayList<>();
+        StringBuilder parte = new StringBuilder();
+        for (int i = 0; i < _entrada.length(); i++) {
+            char c = _entrada.charAt(i);
+            if (c == '+' || c == '-' || c == '*' || c == '/') {
+                if (parte.length() > 0) {
+                    partes.add(buscar(parte.toString()));
+                    parte.setLength(0);
+                }
+                partes.add(String.valueOf(c));
+            } else {
+                parte.append(c);
+            }
+        }
+        if (parte.length() > 0) {
+            partes.add(buscar(parte.toString()));
+        }
+        this.setProcesoS(String.join("",partes));
+        this.texto = this.getVariableS() +" = "+ this.getProcesoS();
+        return true;
+    }
+
+    public void asignarALista(String _variable, String _asignacion){
+        for(int i=0; i < variables.size()-1; i++){
+            if(variables.get(i).equals(_variable)){
+                variables.set(i+1,_asignacion);
+            }
+        }
+    }
+
+    public String getVariableS() {
+        return this.variableS;
+    }
+
+    public void setVariableS(String _variableS) {
+        this.variableS = _variableS;
+    }
+
+    public String getProcesoS() {
+        return this.procesoS;
+    }
+
+    public void setProcesoS(String _procesoS) {
+        this.procesoS = _procesoS;
+    }
+
+    public void manejo(){
+
+        if(this.getVariableS() == null){
+            this.texto = getVariableS();
+            return;
+        }
+        asignarProceso(this.texto);
+
+        if(this.getProcesoS() == null){
+            this.texto = getVariableS();
+            return;
         }
 
-         */
+        if(!verVariable(this.getVariableS())){
+            this.texto = null;
+            return;
+        }
+
+        if(!verProceso(this.getProcesoS())){
+            this.texto = null;
+            return;
+        }
+
+        if(this.getProcesoS().equals("null")){
+            this.texto = null;
+            return;
+        }
+
+        asignarALista(this.getVariableS(), this.getProcesoS());
     }
 
 }

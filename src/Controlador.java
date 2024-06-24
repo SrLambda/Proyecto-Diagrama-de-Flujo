@@ -111,24 +111,28 @@ public class Controlador {
             texto = entradaDeTexto();
         }
 
-        // Crea el panel
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
+        if(!texto.equals("null")){
+            // Crea el panel
+            PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
 
-        if(nuevo instanceof DibujoFor)
-        {
-            DibujoFor aux = (DibujoFor) nuevo;
-            aux.modificarValores();
+            if(nuevo instanceof DibujoFor)
+            {
+                DibujoFor aux = (DibujoFor) nuevo;
+                aux.modificarValores();
+            }
+
+            if(!(nuevo.texto == null)){
+                //---------------cambios-----------------
+                //posicion
+                this.ventanaEmergente.agregar(nuevo);
+                //---------------------------------------
+
+                // Actualizan los cambios
+                this.ventanaEmergente.actualizarCompnentes();
+                front.getPanel1().revalidate();
+            }
         }
 
-        //---------------cambios-----------------
-        //posicion
-        this.ventanaEmergente.agregar(nuevo);
-        //---------------------------------------
-
-
-        // Actualizan los cambios
-        this.ventanaEmergente.actualizarCompnentes();
-        front.getPanel1().revalidate();
     }
 
 
@@ -190,7 +194,7 @@ public class Controlador {
         }
         else
         {
-            return "----";
+            return "null";
 
         }
     }

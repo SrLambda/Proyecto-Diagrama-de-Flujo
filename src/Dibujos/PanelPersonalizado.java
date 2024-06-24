@@ -156,13 +156,20 @@ public abstract class PanelPersonalizado extends JPanel {
     public String validarMixto(boolean evidencia, String entrada) {
         while (true) {
             if (evidencia) {
+                System.out.println("Retorno: "+entrada);
                 return entrada;
             } else {
                 this.texto = entrada;
                 entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
+                if(entrada == null){
+                    return null;
+                }
                 this.texto = entrada;
                 if (entrada == null || entrada.isEmpty()) {
                     entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
+                    if(entrada == null){
+                        return null;
+                    }
                 } else {
                     try {
                         Integer.parseInt(entrada);
@@ -177,6 +184,9 @@ public abstract class PanelPersonalizado extends JPanel {
                             System.out.println("STRING-------------");
                             evidencia = validarCadena.validar(entrada);
                             if(evidencia){
+                                System.out.println("----------");
+                                mostrar();
+                                System.out.println("----------");
                                 evidencia = validarVariableTrueFalse(entrada);
                             }
                         }
@@ -187,34 +197,86 @@ public abstract class PanelPersonalizado extends JPanel {
     }
 
     public String validarVariable(String _variable) {
-        /*
         boolean bandera = true;
         while(bandera){
-            for (Map.Entry<String, Object> entry : variables.entrySet()) {
-                String var = entry.getKey();
-                if (_variable.equals(var)) {
+            for (int i=0; i < variables.size(); i++) {
+                if (variables.get(i).equals(_variable)) {
                     return _variable;
                 }
             }
-            this.texto = _variable;
-            _variable = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
+            _variable = JOptionPane.showInputDialog(null, "Variable invalida", _variable);
             _variable = validarMixto(validarCadena.validar(_variable), _variable);
         }
-         */
         return _variable;
     }
 
-    public boolean validarVariableTrueFalse(String _variable) {
-        /*
-        for (Map.Entry<String, Object> entry : variables.entrySet()) {
-            String var = entry.getKey();
-            if (_variable.equals(var)) {
-                System.out.println("->"+_variable+" = "+var+" ?");
-                return true;
+    public boolean validarVariableTrueFalse(String _entrada) {
+        for (int i=0; i < variables.size(); i++) {
+            if (variables.get(i).equals(_entrada)) {
+                if(i % 2 ==0){
+                    System.out.println("Indice: "+i);
+                    System.out.println("->"+variables.get(i)+" = "+_entrada+" ?");
+                    return true;
+                }
             }
         }
-         */
         return false;
+    }
+
+    public void mostrar(){
+        for(int i=0; i < variables.size(); i++){
+            if(!variables.get(i).equals("Catacresis"))
+            System.out.println("["+i+"] "+variables.get(i));
+        }
+    }
+
+    public String quitarEspacios(String texto){
+        if (texto == null || texto.equals("null")) {
+            return "null";
+        }
+        String sinEspacios = texto.replaceAll("\\s", "");
+        System.out.println("Cad sin espacios: |"+sinEspacios);
+        return sinEspacios;
+    }
+
+    public String buscar(String _entrada) {
+        try {
+            Integer.parseInt(_entrada);
+            _entrada = validarMixto(validarEntero.validar(_entrada), _entrada);
+            if(_entrada == null){
+                return null;
+            }
+            return _entrada;
+        } catch (NumberFormatException ex1) {
+            try {
+                Double.parseDouble(_entrada);
+                _entrada = validarMixto(validarDouble.validar(_entrada), _entrada);
+                if(_entrada == null){
+                    return null;
+                }
+                return _entrada;
+            } catch (NumberFormatException ex2) {
+                _entrada = validarMixto(validarVariableTrueFalse(_entrada), _entrada);
+                if(_entrada == null){
+                    return null;
+                }
+                boolean temp = false;
+                try{
+                    Integer.parseInt(_entrada);
+                    temp = true;
+                }catch (NumberFormatException ex3){
+                    try{
+                        Double.parseDouble(_entrada);
+                        temp = true;
+                    }catch (NumberFormatException ex4){
+                    }
+                }
+                if(!temp){
+                    validarVariable(_entrada);
+                }
+                return _entrada;
+            }
+        }
     }
 
 }

@@ -46,7 +46,6 @@ public class DibujoDecision extends PanelMovible {
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);
         this.add(fin,this.restriciones);
-
     }
 
 

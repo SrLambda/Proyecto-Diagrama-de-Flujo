@@ -75,13 +75,15 @@ public class DibujoEntrada extends PanelMovible {
         g.drawString(texto, x, y);
     }
 
-    public void cambiarVariable(List <Object> _variables, String varAntigua, String varNueva) {
+    public void cambiarVariable(String varAntigua, String varNueva) {
         System.out.println("-----VarNueva: "+varNueva);
         System.out.println("-----VarAntigua: "+varAntigua);
-        varNueva = buscarYValidarEntrada(varAntigua);
-        for(int i=0; i<_variables.size(); i++){
-            if(_variables.get(i).equals(varNueva)){
-                _variables.set(i,varNueva);
+        for(int i=0; i < variables.size(); i++){
+            if(variables.get(i).equals(varAntigua)){
+                varNueva = buscarYValidarEntrada(varNueva);
+                variables.set(i,varNueva);
+                this.texto = varNueva;
+                return;
             }
         }
     }
@@ -114,7 +116,7 @@ public class DibujoEntrada extends PanelMovible {
                     }else{
                         _entrada = nuevaEntrada;
                         _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
-                    }
+                        }
                 }else{
                     _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
                 }
@@ -122,5 +124,4 @@ public class DibujoEntrada extends PanelMovible {
         }
         return _entrada;
     }
-
 }

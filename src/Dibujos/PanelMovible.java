@@ -1,9 +1,6 @@
 package Dibujos;
 
-import Dibujos.PanelesMovibles.DibujoDocumento;
-import Dibujos.PanelesMovibles.DibujoEntrada;
-import Dibujos.PanelesMovibles.DibujoProceso;
-import Dibujos.PanelesMovibles.DibujoSalida;
+import Dibujos.PanelesMovibles.*;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -36,19 +33,26 @@ public abstract class PanelMovible extends PanelPersonalizado{
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
                     String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", PanelMovible.this.texto);
                     if(PanelMovible.this instanceof DibujoEntrada){
-                        String claveAntigua = texto;
                         boolean evidencia = validarCadena.validar(nuevoTexto);
                         String textoValido= validar(evidencia,"Cadena",nuevoTexto);
-                        ((DibujoEntrada) PanelMovible.this).cambiarVariable(PanelMovible.this.variables,texto,textoValido);
+                        ((DibujoEntrada) PanelMovible.this).cambiarVariable(PanelMovible.this.texto,textoValido);
                     }
                     if(PanelMovible.this instanceof DibujoProceso){
-                        ((DibujoProceso) PanelMovible.this).splitTexto(nuevoTexto);
+                        ((DibujoProceso) PanelMovible.this).asignarVariable(quitarEspacios(nuevoTexto));
+                        ((DibujoProceso) PanelMovible.this).asignarProceso(PanelMovible.this.texto);
+                        ((DibujoProceso) PanelMovible.this).verVariable(((DibujoProceso) PanelMovible.this).getVariableS());
+                        ((DibujoProceso) PanelMovible.this).verProceso(((DibujoProceso) PanelMovible.this).getProcesoS());
+                        ((DibujoProceso) PanelMovible.this).asignarALista(((DibujoProceso) PanelMovible.this).getVariableS(),
+                                ((DibujoProceso) PanelMovible.this).getProcesoS());
                     }
                     if(PanelMovible.this instanceof DibujoDocumento){
-                        cambiarTexto(nuevoTexto);
+                        //cambiarTexto(nuevoTexto);
                     }
                     if(PanelMovible.this instanceof DibujoSalida){
-                        cambiarTexto(nuevoTexto);
+                        //cambiarTexto(nuevoTexto);
+                    }
+                    if(PanelMovible.this instanceof DibujoDecision){
+                        //cambiarTexto(nuevoTexto);
                     }
                     /*
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
