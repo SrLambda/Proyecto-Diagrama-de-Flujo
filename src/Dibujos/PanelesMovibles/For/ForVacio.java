@@ -6,11 +6,13 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 public class ForVacio extends PanelPersonalizado {
 
-    public ForVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public ForVacio(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                    VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
     }
 
     @Override

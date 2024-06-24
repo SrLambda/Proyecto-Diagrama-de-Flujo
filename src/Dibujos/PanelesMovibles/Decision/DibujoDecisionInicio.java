@@ -7,11 +7,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
-    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                                VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        String nuevoTxt = quitarEspacios(texto);
 
         addMouseListener(new MouseAdapter()
         {
@@ -98,4 +103,34 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
+
+    public void verCondicion(String _entrada) {
+        List<String> partes = new ArrayList<>();
+        StringBuilder parte = new StringBuilder();
+        char[] operadores = {'+', '-', '*', '/', '<', '>', '=', '!'};
+
+        for (int i = 0; i < _entrada.length(); i++) {
+            char c = _entrada.charAt(i);
+        }
+    }
+
+    public boolean condicion(char c, char[] operadores) {
+        for (int i = 0; i < operadores.length; i++) {
+            if (c == operadores[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean condicionCompuesta(String operador) {
+        String[] operadoresCompuestos = {">=", "<=", "==", "!="};
+        for (int i = 0; i < operadoresCompuestos.length; i++) {
+            if (operador.equals(operadoresCompuestos[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

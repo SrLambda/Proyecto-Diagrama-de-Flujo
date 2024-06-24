@@ -8,13 +8,15 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoDoWhileFin extends PanelPersonalizado {
     private DibujoDoWhileInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
 
-    public DibujoDoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor, _restriciones,_ventanaEmergente);
+    public DibujoDoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,
+                            GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor, _restriciones,_ventanaEmergente,_variables);
         this.interno = _interno;
         panelesCiclo = lista;
 

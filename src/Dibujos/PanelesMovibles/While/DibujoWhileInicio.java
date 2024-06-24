@@ -7,13 +7,15 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoWhileInicio extends PanelPersonalizado {
     private DibujoWhileInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
 
-    public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno,
+                             GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         this.interno = _interno;
         panelesCiclo = lista;
         setPreferredSize(new Dimension(600, 500));

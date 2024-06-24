@@ -7,16 +7,22 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoEntrada extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
-
-    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
-        this.texto = validar(validarCadena.validar(texto),"Cadena",texto);
-        this.variables.add(this.texto);
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        this.texto = buscarYValidarEntrada(texto);
+        this.variables.add(this.indice,this.texto);
+        System.out.println("Indice actual: "+indice);
+        System.out.println("Variable "+"'"+this.texto+"'"+" agregada");
+        this.indice += 2;
+        System.out.println("Indice siguiente variable: "+this.indice);
     }
 
     @Override
@@ -70,5 +76,55 @@ public class DibujoEntrada extends PanelMovible {
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g2d.drawString(texto, x, y);
+    }
+
+    public void cambiarVariable(String varAntigua, String varNueva) {
+        System.out.println("-----VarNueva: "+varNueva);
+        System.out.println("-----VarAntigua: "+varAntigua);
+        for(int i=0; i < variables.size(); i++){
+            if(variables.get(i).equals(varAntigua)){
+                varNueva = buscarYValidarEntrada(varNueva);
+                variables.set(i,varNueva);
+                this.texto = varNueva;
+                return;
+            }
+        }
+    }
+
+    public String buscarYValidarEntrada(String _entrada){
+        boolean encontrado;
+        boolean entradaValida = false;
+        while(!entradaValida){
+            encontrado = false;
+            for(int i=0; i<variables.size(); i++){
+                if(variables.get(i).equals(_entrada)){
+                    _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
+                    encontrado = true;
+                    break;
+                }
+            }
+            if(!encontrado){
+                String nuevaEntrada = validar(validarCadena.validar(_entrada),"Cadena",_entrada);
+                if(nuevaEntrada != null && !nuevaEntrada.isEmpty()){
+                    boolean duplicados = false;
+                    for(Object var : variables){
+                        if(var.equals(nuevaEntrada)){
+                            duplicados = true;
+                            break;
+                        }
+                    }
+                    if(!duplicados){
+                        _entrada = nuevaEntrada;
+                        entradaValida = true;
+                    }else{
+                        _entrada = nuevaEntrada;
+                        _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
+                        }
+                }else{
+                    _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
+                }
+            }
+        }
+        return _entrada;
     }
 }

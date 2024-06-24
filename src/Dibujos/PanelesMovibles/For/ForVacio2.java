@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Map;
 
 public class ForVacio2 extends PanelPersonalizado{
 
@@ -16,8 +17,9 @@ public class ForVacio2 extends PanelPersonalizado{
     private int incremento;
 
 
-    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,
+                     GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
 
         this.v_inicial  = _v_inicial;
         this.incremento = _incremento;

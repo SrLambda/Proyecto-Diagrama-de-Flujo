@@ -9,11 +9,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoWhileFin extends PanelPersonalizado {
 
-    public DibujoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto,lista,_contenedor,_restriciones,_ventanaEmergente);
+    public DibujoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto,lista,_contenedor,_restriciones,_ventanaEmergente,_variables);
         setPreferredSize(new Dimension(600, 500));
     }
 

@@ -6,10 +6,14 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoSalida extends PanelMovible {
-    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    String variableS;
+    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                        VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
     }
 
 
@@ -66,4 +70,12 @@ public class DibujoSalida extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g2d.drawString(texto, x, y);
     }
+
+    public void verVariable(String _entrada) {
+        while(!validarVariableTrueFalse(_entrada)){
+            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+        }
+        this.variableS = _entrada;
+    }
+
 }

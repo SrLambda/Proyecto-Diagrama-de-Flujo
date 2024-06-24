@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoWhile extends PanelMovible {
 
@@ -24,8 +25,9 @@ public class DibujoWhile extends PanelMovible {
     private List<PanelPersonalizado> lista;
 
 
-    public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                       VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         setPreferredSize(new Dimension(600, 500));
 
         this.restriciones         = new GridBagConstraints();
@@ -42,8 +44,8 @@ public class DibujoWhile extends PanelMovible {
 
         this.contenido = new DibujoWhileInterno();
 
-        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones,null);
-        this.fin = new DibujoWhileFin(texto,lista,this,this.restriciones,null);
+        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones,null,this.variables);
+        this.fin = new DibujoWhileFin(texto,lista,this,this.restriciones,null,this.variables);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);
