@@ -78,7 +78,8 @@ public class DibujoForInterno extends JPanel {
         this.revalidate();
     }
 
-    public JPanel getIzquierda() {
+    public JPanel getIzquierda()
+    {
         return izquierda;
     }
 

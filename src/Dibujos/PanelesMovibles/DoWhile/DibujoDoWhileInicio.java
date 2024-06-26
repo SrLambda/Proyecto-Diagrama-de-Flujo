@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoDoWhileInicio extends PanelPersonalizado {
+
     private DibujoDoWhileInterno interno;
 
     public DibujoDoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoSalida extends PanelMovible {
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+
     String variableS;
     public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {

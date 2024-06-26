@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+
     public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                                 VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
