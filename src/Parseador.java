@@ -148,7 +148,7 @@ public class Parseador {
 
             case "Documento":
 
-                this.pseudo_codigo.append(separacion).append("IMPRIMIR ==> ");
+                this.pseudo_codigo.append(separacion).append("DOCUMENTO ==> ");
                 this.pseudo_codigo.append(componente.getTexto());
                 this.pseudo_codigo.append("\n");
 

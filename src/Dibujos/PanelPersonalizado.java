@@ -168,6 +168,9 @@ public abstract class PanelPersonalizado extends JPanel {
     public String getTexto() {
         return texto;
     }
+    public void setTexto(String _tx){
+        this.texto = _tx;
+    }
 
     public void actualizarContenedor(List<PanelPersonalizado> list, JPanel cont) {
         this.listaFiguras = list;
