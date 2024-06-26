@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Front extends JFrame {
 
@@ -25,12 +26,13 @@ public class Front extends JFrame {
     private     JButton doWhileButton;
     private     JScrollPane scroll;
     private     JButton ejecutar;
-
-    // Crear los botones
     private     JButton zoomin;
     private     JButton zoomout;
+    private     JButton undoButton;
+    private     JButton redoButton;
     private List <PanelPersonalizado> listaPaneles;
     private double zoomFactor = 1.0;
+
 
     public Front(Controlador controlador)
     {
@@ -191,6 +193,21 @@ public class Front extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 zoomOut();
+            }
+        });
+
+
+        undoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        redoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

@@ -1,3 +1,3 @@
 import funciones
 
- = None
+funciones.salida("piito")

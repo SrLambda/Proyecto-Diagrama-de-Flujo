@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Front">
-  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="12" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="12" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="5" left="5" bottom="5" right="5"/>
     <constraints>
       <xy x="20" y="20" width="743" height="638"/>
@@ -29,7 +29,7 @@
       </component>
       <scrollpane id="4b1d" binding="scroll">
         <constraints>
-          <grid row="1" column="0" row-span="9" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="9" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <minimum-size width="-1" height="500"/>
             <preferred-size width="-1" height="500"/>
             <maximum-size width="-1" height="500"/>
@@ -53,7 +53,7 @@
       </hspacer>
       <scrollpane id="dc074">
         <constraints>
-          <grid row="11" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="0" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -68,7 +68,7 @@
       </scrollpane>
       <component id="11dab" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="JetBrains Mono" size="14" style="1"/>
@@ -78,7 +78,7 @@
       </component>
       <component id="8c37a" class="javax.swing.JButton" binding="etapaDelProcesoButton" default-binding="true">
         <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -89,7 +89,7 @@
       </component>
       <component id="11435" class="javax.swing.JButton" binding="entradaButton">
         <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -100,7 +100,7 @@
       </component>
       <component id="f8908" class="javax.swing.JButton" binding="doWhileButton">
         <constraints>
-          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -111,7 +111,7 @@
       </component>
       <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
         <constraints>
-          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -122,7 +122,7 @@
       </component>
       <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
         <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -133,7 +133,7 @@
       </component>
       <component id="e7935" class="javax.swing.JButton" binding="whileButton">
         <constraints>
-          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -144,7 +144,7 @@
       </component>
       <component id="7cfc1" class="javax.swing.JButton" binding="ejecutar">
         <constraints>
-          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -155,7 +155,7 @@
       </component>
       <component id="c6b6c" class="javax.swing.JButton" binding="zoomin">
         <constraints>
-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -166,7 +166,7 @@
       </component>
       <component id="3bb5" class="javax.swing.JButton" binding="salidaButton">
         <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -177,7 +177,7 @@
       </component>
       <component id="649d2" class="javax.swing.JButton" binding="forButton">
         <constraints>
-          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -188,7 +188,7 @@
       </component>
       <component id="ca7cb" class="javax.swing.JButton" binding="zoomout">
         <constraints>
-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -199,7 +199,7 @@
       </component>
       <component id="74aeb" class="javax.swing.JButton" binding="pseudoCodigoButton">
         <constraints>
-          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-791314"/>
@@ -207,6 +207,28 @@
           <foreground color="-16772298"/>
           <horizontalTextPosition value="0"/>
           <text value="Pseudo-Codigo"/>
+        </properties>
+      </component>
+      <component id="8aba9" class="javax.swing.JButton" binding="undoButton">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Undo"/>
+        </properties>
+      </component>
+      <component id="8f873" class="javax.swing.JButton" binding="redoButton">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-791314"/>
+          <font name="JetBrains Mono" size="14" style="3"/>
+          <foreground color="-16772298"/>
+          <text value="Redo"/>
         </properties>
       </component>
     </children>
