@@ -16,8 +16,10 @@ public class DoWhileVacio extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
 
-        g.setColor(Color.BLACK);
+        g2d.setColor(Color.BLACK);
 
         int ancho = this.getWidth();
         int alto  = this.getHeight();
@@ -34,7 +36,7 @@ public class DoWhileVacio extends PanelPersonalizado {
         {
             x = ancho / 2;
         }
-        g.drawLine(x,0,x ,alto);
+        g2d.drawLine(x,0,x ,alto);
 
     }
 }

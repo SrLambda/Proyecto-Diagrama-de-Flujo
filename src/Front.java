@@ -1,5 +1,6 @@
 import Dibujos.PanelPersonalizado;
 import Dibujos.Validador.Validador;
+import Dibujos.Zoomable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -185,14 +186,17 @@ public class Front extends JFrame {
         zoomin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                zoomIn();
+                zoomFactor += 0.03;
+                ajustarZoom();
             }
         });
 
         zoomout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                zoomOut();
+                //zoomFactor = Math.max(0.1, zoomFactor - 0.1);
+                zoomFactor -= 0.03;
+                ajustarZoom();
             }
         });
 
@@ -222,39 +226,13 @@ public class Front extends JFrame {
         return this.pseudocodio;
     }
 
-    private void zoomIn() {
-        zoomFactor *= 1.025; // Aumentar el zoom en un 10%
-        applyZoom();
-    }
 
-    private void zoomOut() {
-        zoomFactor /= 1.025; // Reducir el zoom en un 10%
-        applyZoom();
-    }
-
-    private void applyZoom() {
+    private void ajustarZoom() {
         for (PanelPersonalizado panel : listaPaneles) {
-            panel.setZoomFactor(zoomFactor); // Aplicar el factor de zoom a cada panel personalizado
-
-            // Ajustar tamaño y posición de cada panel
-            int originalWidth = 200;
-            int originalHeight = 100;
-
-            int newWidth = (int) (originalWidth * zoomFactor);
-            int newHeight = (int) (originalHeight * zoomFactor);
-
-            // Obtener la posición actual y recalcular según el zoom
-            int currentX = panel.getX();
-            int currentY = panel.getY();
-
-            // Centrar el panel ajustado en la misma posición relativa
-            int newX = (int) (currentX * zoomFactor);
-            int newY = (int) (currentY * zoomFactor);
-
-            panel.setBounds(newX, newY, newWidth, newHeight);
+            panel.setZoomFactor(zoomFactor);
         }
-        panel1.revalidate(); // Revalidar el layout del panel contenedor
-        panel1.repaint();    // Repintar el panel contenedor con los nuevos tamaños
+        panel1.revalidate();
+        panel1.repaint();
     }
 }
 

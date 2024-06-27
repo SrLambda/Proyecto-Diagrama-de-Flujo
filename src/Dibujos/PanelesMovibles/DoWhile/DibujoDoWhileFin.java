@@ -33,6 +33,8 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.scale(zoomFactor, zoomFactor);
 
             int widthTx  = this.anchoAlto[0];
             int heightTx = this.anchoAlto[1];
@@ -66,26 +68,26 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
 
 
             // Dibujar las líneas que forman el rombo
-            g.setColor(Color.BLACK);
-            g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
-            g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
-            g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
-            g.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
+            g2d.setColor(Color.BLACK);
+            g2d.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
+            g2d.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
+            g2d.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
+            g2d.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
 
             // Dibujar flujo
-            g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
-            g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
-            g.drawLine(x1, centro_y,100, centro_y); // Linea horizontal izquierda
-            g.drawLine(100,0,100, centro_y);     // Linea vertical izquierda
-            g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
-            g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
+            g2d.drawLine(centro_x,0,centro_x,y1);  // Linea superior
+            g2d.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
+            g2d.drawLine(x1, centro_y,100, centro_y); // Linea horizontal izquierda
+            g2d.drawLine(100,0,100, centro_y);     // Linea vertical izquierda
+            g2d.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
+            g2d.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
             // Dibujar el texto centrado
-            g.setFont(textoFont);
-            FontMetrics metrics = g.getFontMetrics();
+            g2d.setFont(textoFont);
+            FontMetrics metrics = g2d.getFontMetrics();
             int x = (getWidth() - metrics.stringWidth(texto)) / 2;
             int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-            g.drawString(texto, x, y);
+            g2d.drawString(texto, x, y);
         }
 
         public List<PanelPersonalizado> getListaFiguras() {

@@ -16,13 +16,15 @@ public class ForVacio extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
 
-        g.setColor(Color.BLACK);
+        g2d.setColor(Color.BLACK);
 
         int ancho = this.getWidth();
         int alto = this.getHeight();
 
-        g.drawLine(ancho/2,0,ancho/2,alto);
+        g2d.drawLine(ancho/2,0,ancho/2,alto);
     }
 
     public void ajustarSize(int ancho,int altura)

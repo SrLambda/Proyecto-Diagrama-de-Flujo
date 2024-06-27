@@ -40,28 +40,29 @@ public class ForVacio2 extends PanelPersonalizado{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
 
-        g.setColor(Color.BLACK);
+        g2d.setColor(Color.BLACK);
         int arcWidth = 100;
         int arcHeight = 100;
         int ancho = this.getWidth();
         int alto = this.getHeight();
-        Graphics2D g2d = (Graphics2D) g;
         g2d.drawRoundRect(ancho/4, 0, ancho/2, alto/2, arcWidth, arcHeight);
 
-        g.setColor(Color.BLACK);
-        g.drawLine(ancho/2,alto/2,ancho/2,alto);
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(ancho/2,alto/2,ancho/2,alto);
 
-        FontMetrics metrics = g.getFontMetrics();
+        FontMetrics metrics = g2d.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, 30);
+        g2d.drawString(texto, x, 30);
         String t_incremento = String.valueOf(incremento);
         String t_inicial = String.valueOf(v_inicial);
         String t_final = String.valueOf(v_final);
-        g.drawString(t_inicial, ancho/2-30, 60);
-        g.drawString(t_incremento, ancho/2, 60);
-        g.drawString(t_final, ancho/2+30, 60);
+        g2d.drawString(t_inicial, ancho/2-30, 60);
+        g2d.drawString(t_incremento, ancho/2, 60);
+        g2d.drawString(t_final, ancho/2+30, 60);
     }
 
     public void modificarValores()

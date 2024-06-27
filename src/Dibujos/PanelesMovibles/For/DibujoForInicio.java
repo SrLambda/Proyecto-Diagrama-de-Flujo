@@ -25,6 +25,9 @@ public class DibujoForInicio extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
+
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
@@ -40,17 +43,16 @@ public class DibujoForInicio extends PanelPersonalizado {
         int cuarto = panelWidth/4;
 
         // Dibujar flujo
-        g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,centro_y);
-        g.drawLine(centro_x-50,centro_y,centro_x-60,centro_y+10);   //Flecha
-        g.drawLine(centro_x-50,centro_y,centro_x-60,centro_y-10);
-        g.setColor(Color.BLACK);
-        g.drawLine(cuarto,centro_y,cuarto*3,centro_y); //Linea completa
-        g.drawLine(cuarto,centro_y,cuarto,panelHeight);
-        g.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
-        g.drawLine(cuarto*3,panelHeight,cuarto*3-10,panelHeight-10); //Flecha
-        g.drawLine(cuarto*3,panelHeight,cuarto*3+10,panelHeight-10);
-
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(centro_x,0,centro_x,centro_y);
+        g2d.drawLine(centro_x-50,centro_y,centro_x-60,centro_y+10);   //Flecha
+        g2d.drawLine(centro_x-50,centro_y,centro_x-60,centro_y-10);
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(cuarto,centro_y,cuarto*3,centro_y); //Linea completa
+        g2d.drawLine(cuarto,centro_y,cuarto,panelHeight);
+        g2d.drawLine(cuarto*3,centro_y,cuarto*3,panelHeight);
+        g2d.drawLine(cuarto*3,panelHeight,cuarto*3-10,panelHeight-10); //Flecha
+        g2d.drawLine(cuarto*3,panelHeight,cuarto*3+10,panelHeight-10);
     }
 
     public List<PanelPersonalizado> getPanelesCiclo() {

@@ -12,11 +12,10 @@ import Dibujos.Validador.ValidadorDouble;
 import Dibujos.Validador.ValidadorEntero;
 import Dibujos.Ventana.VentanaEmergente;
 
-public abstract class PanelPersonalizado extends JPanel
-{
+public abstract class PanelPersonalizado extends JPanel{
 
     public String texto;
-    protected List <PanelPersonalizado> listaFiguras;
+    protected List<PanelPersonalizado> listaFiguras;
     protected int posOriginal = -1;
     protected JPanel contenedor;
     public boolean habilitado = true;
@@ -34,13 +33,13 @@ public abstract class PanelPersonalizado extends JPanel
     protected Validador validarDouble;
     protected Validador validarCadena;
     protected GridBagConstraints restriciones;
-    protected List <String> variables;
+    protected List<String> variables;
     protected Map<String, Object> variables2;
 
     public double zoomFactor = 1.0;
 
-    public PanelPersonalizado(String _texto, List <PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente)
-    {
+
+    public PanelPersonalizado(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         this.texto = _texto;
         this.listaFiguras = lista;
         this.contenedor = _contenedor;
@@ -52,7 +51,7 @@ public abstract class PanelPersonalizado extends JPanel
         this.variables = new ArrayList<>();
         setPreferredSize(new Dimension(750, 200));
 
-        if (null == zoom){
+        if (null == zoom) {
             zoom = 1.0f;
         }
 
@@ -60,12 +59,9 @@ public abstract class PanelPersonalizado extends JPanel
             InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
             assert is != null;
             textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
-        }
-        catch (IOException | FontFormatException e)
-        {
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
-
 
 
         this.anchoAlto = this.getAnchoAlto();
@@ -73,43 +69,33 @@ public abstract class PanelPersonalizado extends JPanel
 
     }
 
-    public int colisiones()
-    {
-        int i=0;
+    public int colisiones() {
+        int i = 0;
         int num = listaFiguras.indexOf(this);
 
 
-        while(i < listaFiguras.size())
-        {
+        while (i < listaFiguras.size()) {
             PanelPersonalizado panelColision = listaFiguras.get(i);
 
-            if(panelColision != this)
-            {
+            if (panelColision != this) {
                 int ejeY = this.getY();
                 int altura = this.getHeight();
                 int ejeYSiguiente = panelColision.getY();
                 int alturaSiguiente = panelColision.getHeight();
 
-                if ((ejeY+altura) > ejeYSiguiente && (ejeY+altura) < (ejeYSiguiente + alturaSiguiente))
-                {
+                if ((ejeY + altura) > ejeYSiguiente && (ejeY + altura) < (ejeYSiguiente + alturaSiguiente)) {
 
-                    if(listaFiguras.get(num+1).habilitado)
-                    {
+                    if (listaFiguras.get(num + 1).habilitado) {
 
                         this.posicion = num;
                         return i;
 
                     }
 
-                }
-                else
+                } else {
+                    if (ejeY < (ejeYSiguiente + alturaSiguiente) && ejeY > ejeYSiguiente) {
 
-                {
-                    if(ejeY < (ejeYSiguiente+alturaSiguiente) && ejeY > ejeYSiguiente)
-                    {
-
-                        if(listaFiguras.get(num-1).habilitado)
-                        {
+                        if (listaFiguras.get(num - 1).habilitado) {
 
                             this.posicion = num;
                             return i;
@@ -126,8 +112,7 @@ public abstract class PanelPersonalizado extends JPanel
         return -1;
     }
 
-    public void cambiarTexto(String nuevoTexto)
-    {
+    public void cambiarTexto(String nuevoTexto) {
 
         this.texto = nuevoTexto;
         repaint();// Redibujar la figura con el nuevo texto
@@ -135,6 +120,25 @@ public abstract class PanelPersonalizado extends JPanel
 
     }
 
+
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
+        revalidate();
+        repaint();
+    }
+
+    public double getZoomFactor() {
+        return zoomFactor;
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        Dimension originalSize = super.getPreferredSize();
+        return new Dimension((int) (originalSize.width * zoomFactor), (int) (originalSize.height * zoomFactor));
+    }
+
+
+    /*
     public void setZoomFactor(double zoomFactor) {
         this.zoomFactor = zoomFactor;
         revalidate(); // Revalidar el layout
@@ -148,7 +152,7 @@ public abstract class PanelPersonalizado extends JPanel
         Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
         Integer Height = (int) (100 * zoomFactor); // Alto original del panel
         return new Dimension((int) (Width * zoomFactor * 2.4), (int) (Height * zoomFactor));
-    }
+    }*/
 
 
     // Método para eliminar la figura y reorganizar las posiciones
@@ -237,7 +241,6 @@ public abstract class PanelPersonalizado extends JPanel
 
         return valores;
     }
-
 }
 
 /*

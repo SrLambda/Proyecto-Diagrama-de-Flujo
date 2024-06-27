@@ -109,6 +109,7 @@ public class DibujoForInterno extends JPanel {
 
     public class ForInterno extends JPanel{
         private final List<PanelPersonalizado> listaFiguras;
+        public double zoomFactor = 1.0;
 
         ForInterno(){
             listaFiguras = new ArrayList<>();
@@ -117,20 +118,21 @@ public class DibujoForInterno extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.scale(zoomFactor, zoomFactor);
 
             int panelWidth = getWidth();
             int panelHeight = getHeight();
 
             int centro_x = panelWidth / 2; // Centro horizontal
 
-            g.setColor(Color.BLACK);
+            g2d.setColor(Color.BLACK);
 
-            g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);
+            g2d.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);
 
             if (this == izquierda) {
-                g.drawLine(centro_x, 0, centro_x, panelHeight);
+                g2d.drawLine(centro_x, 0, centro_x, panelHeight);
             }
-
         }
 
         public List<PanelPersonalizado> getListaFiguras()
