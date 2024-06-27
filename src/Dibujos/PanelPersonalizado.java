@@ -138,6 +138,12 @@ public abstract class PanelPersonalizado extends JPanel {
             } else {
                 this.texto = entrada;
                 entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
+                if(entrada == null){
+                    System.out.println("Texto antes ->: "+this.texto);
+                    this.texto = null;
+                    System.out.println("Texto a null ->: "+this.texto);
+                    return null;
+                }
                 this.texto = entrada;
                 if (opcion.equals("Cadena")) {
                     evidencia = validarCadena.validar(entrada);

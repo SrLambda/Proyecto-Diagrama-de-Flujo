@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
-    private DibujoDecision dibujoDecision;
+
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     private String var1;
     private String condicion;
@@ -137,6 +137,45 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         System.out.println("Operador: "+ this.getCondicion());
     }
 
+    public void manejoSalidas() {
+
+        if (this.getVar1() == null) {
+            System.out.println("Var1 null");
+
+            return;
+        }
+
+        if (this.getCondicion() == null) {
+            System.out.println("Condicion null");
+
+            return;
+        }
+
+        if (this.getVar2() == null) {
+            System.out.println("Var2 null");
+
+            return;
+        }
+
+        this.setVar1(buscar(this.getVar1()));
+
+        if(this.getVar1() == null){
+            return;
+        }
+
+        this.setVar2(buscar(this.getVar2()));
+
+        if(this.getVar2() == null){
+            return;
+        }
+
+        this.texto = getVar1() + getCondicion() + getVar2();
+        this.variables.set(this.indice, "Decision");
+        this.variables.set(this.indice + 1, this.texto);
+        this.indice += 2;
+
+    }
+
 
     public String getVar1() {
         return var1;
@@ -160,54 +199,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
     public void setCondicion(String condicion) {
         this.condicion = condicion;
-    }
-
-    public void manejoSalidas() {
-
-        if (this.getVar1() == null) {
-            System.out.println("Var1 null");
-            actualizarTexto(null);
-            return;
-        }
-
-        if (this.getCondicion() == null) {
-            System.out.println("Condicion null");
-            actualizarTexto(null);
-            return;
-        }
-
-        if (this.getVar2() == null) {
-            System.out.println("Var2 null");
-            actualizarTexto(null);
-            return;
-        }
-
-
-        if (!verVariable(this.getVar1(), "var1")) {
-            actualizarTexto(null);
-            return;
-        }
-
-        if (!verVariable(this.getVar2(), "var2")) {
-            actualizarTexto(null);
-            return;
-        }
-
-        this.texto = getVar1() + getCondicion() + getVar2();
-        this.variables.set(this.indice, "Decision");
-        this.variables.set(this.indice + 1, this.texto);
-        this.indice += 2;
-
-
-    }
-
-    public void setDibujoDecision(DibujoDecision dibujoDecision) {
-        this.dibujoDecision = dibujoDecision;
-    }
-
-    public void actualizarTexto(String nuevoTexto) {
-        System.out.println("Cambiando texto: "+nuevoTexto);
-        cambiarTexto(nuevoTexto);
     }
 
 }

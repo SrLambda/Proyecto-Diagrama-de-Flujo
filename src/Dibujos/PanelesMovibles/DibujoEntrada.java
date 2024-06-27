@@ -17,12 +17,7 @@ public class DibujoEntrada extends PanelMovible {
     public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
-        this.texto = buscarYValidarEntrada(texto);
-        this.variables.add(this.indice,this.texto);
-        System.out.println("Indice actual: "+indice);
-        System.out.println("Variable "+"'"+this.texto+"'"+" agregada");
-        this.indice += 2;
-        System.out.println("Indice siguiente variable: "+this.indice);
+        manejarSalidas();
     }
 
     @Override
@@ -86,40 +81,63 @@ public class DibujoEntrada extends PanelMovible {
         }
     }
 
-    public String buscarYValidarEntrada(String _entrada){
-        boolean encontrado;
+    public String buscarYValidarEntrada(String _entrada) {
+        if (_entrada == null) {
+            return null;
+        }
         boolean entradaValida = false;
-        while(!entradaValida){
-            encontrado = false;
-            for(int i=0; i<variables.size(); i++){
-                if(variables.get(i).equals(_entrada)){
+        while (!entradaValida) {
+            boolean encontrado = false;
+            for (int i = 0; i < variables.size(); i++) {
+                if (variables.get(i).equals(_entrada)) {
                     _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
+                    if (_entrada == null) {
+                        return null;
+                    }
                     encontrado = true;
                     break;
                 }
             }
-            if(!encontrado){
-                String nuevaEntrada = validar(validarCadena.validar(_entrada),"Cadena",_entrada);
-                if(nuevaEntrada != null && !nuevaEntrada.isEmpty()){
+            if (!encontrado) {
+                boolean esValida = validarCadena.validar(_entrada);
+                if (!esValida) {
+                    _entrada = JOptionPane.showInputDialog(null, "Formato incorrecto", _entrada);
+                    if (_entrada == null) {
+                        return null;
+                    }
+                } else {
                     boolean duplicados = false;
-                    for(Object var : variables){
-                        if(var.equals(nuevaEntrada)){
+                    for (Object var : variables) {
+                        if (var.equals(_entrada)) {
                             duplicados = true;
                             break;
                         }
                     }
-                    if(!duplicados){
-                        _entrada = nuevaEntrada;
+                    if (!duplicados) {
                         entradaValida = true;
-                    }else{
-                        _entrada = nuevaEntrada;
+                    } else {
                         _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
+                        if (_entrada == null) {
+                            return null;
                         }
-                }else{
-                    _entrada = JOptionPane.showInputDialog(null, "La variable ya existe", _entrada);
+                    }
                 }
             }
         }
+
         return _entrada;
     }
+
+    public void manejarSalidas(){
+        this.texto = buscarYValidarEntrada(texto);
+        if(this.texto == null){
+            return;
+        }
+        this.variables.add(this.indice,this.texto);
+        System.out.println("Indice actual: "+indice);
+        //System.out.println("Variable "+"'"+this.texto+"'"+" agregada");
+        this.indice += 2;
+        System.out.println("Indice siguiente variable: "+this.indice);
+    }
+
 }
