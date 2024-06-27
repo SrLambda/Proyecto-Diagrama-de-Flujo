@@ -10,12 +10,9 @@ import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoDecision extends PanelMovible {
-
     private DibujoDecisionInicio  condicion;
     private DibujoDecisionInterno contenido;
     private DibujoDecisionFin     fin;
@@ -39,9 +36,10 @@ public class DibujoDecision extends PanelMovible {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         this.contenido = new DibujoDecisionInterno();
-
-        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,this.restriciones,this.ventanaEmergente,this.variables);
         this.fin = new DibujoDecisionFin(this.texto,lista,this,this.restriciones,this.ventanaEmergente,this.variables);
+        this.condicion = new DibujoDecisionInicio(this.texto,lista,this,this.restriciones,this.ventanaEmergente,this.variables);
+
+        this.condicion.setDibujoDecision(this);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);
@@ -122,6 +120,11 @@ public class DibujoDecision extends PanelMovible {
             }
 
         }
+    }
+
+    public void actualizarTexto(String nuevoTexto) {
+        this.texto = nuevoTexto;
+        //repaint();
     }
 
 }

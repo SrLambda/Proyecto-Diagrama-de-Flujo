@@ -1,22 +1,29 @@
 package Dibujos.PanelesMovibles.Decision;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoDecision;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DibujoDecisionInicio extends PanelPersonalizado {
+    private DibujoDecision dibujoDecision;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    private String var1;
+    private String condicion;
+    private String var2;
     public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                                 VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         String nuevoTxt = quitarEspacios(texto);
+        asignarVariable(nuevoTxt);
+        manejoSalidas();
 
         addMouseListener(new MouseAdapter()
         {
@@ -34,7 +41,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
             }
         });
     }
-
 
 
 
@@ -86,33 +92,122 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         g.drawString(texto, x, y);
     }
 
-    public void verCondicion(String _entrada) {
-        List<String> partes = new ArrayList<>();
-        StringBuilder parte = new StringBuilder();
-        char[] operadores = {'+', '-', '*', '/', '<', '>', '=', '!'};
 
-        for (int i = 0; i < _entrada.length(); i++) {
-            char c = _entrada.charAt(i);
+    public boolean verVariable(String _entrada, String seleccion) {
+        if(_entrada == null){
+            return false;
         }
-    }
-
-    public boolean condicion(char c, char[] operadores) {
-        for (int i = 0; i < operadores.length; i++) {
-            if (c == operadores[i]) {
-                return true;
+        while(!validarVariableTrueFalse(_entrada)){
+            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+            if(_entrada == null){
+                return false;
             }
         }
-        return false;
+        if(seleccion.equals("var1")){
+            this.setVar1(_entrada);
+        }else{
+            this.setVar2(_entrada);
+        }
+        return true;
     }
 
-    private boolean condicionCompuesta(String operador) {
-        String[] operadoresCompuestos = {">=", "<=", "==", "!="};
-        for (int i = 0; i < operadoresCompuestos.length; i++) {
-            if (operador.equals(operadoresCompuestos[i])) {
-                return true;
+    public void asignarVariable(String _entrada){
+        String opRegex = "(<=|>=|<|>|=|!)";
+        Pattern pattern = Pattern.compile(opRegex);
+        Matcher matcher = pattern.matcher(_entrada);
+
+        while (!matcher.find() || _entrada.length() < 3) {
+            _entrada = JOptionPane.showInputDialog(null, "Operador incorrecto", _entrada);
+            if (_entrada == null) {
+                this.texto = null;
+                return;
             }
+            _entrada = quitarEspacios(_entrada);
+            matcher = pattern.matcher(_entrada);
         }
-        return false;
+
+        int posOperador = matcher.start();
+        this.setVar1(_entrada.substring(0, posOperador).trim());
+        this.setCondicion(_entrada.substring(posOperador, posOperador + matcher.group().length()).trim());
+        this.setVar2(_entrada.substring(posOperador + getCondicion().length()).trim());
+
+
+        System.out.println("Var1: "+ this.getVar1());
+        System.out.println("Var2: "+ this.getVar2());
+        System.out.println("Operador: "+ this.getCondicion());
+    }
+
+
+    public String getVar1() {
+        return var1;
+    }
+
+    public void setVar1(String var1) {
+        this.var1 = var1;
+    }
+
+    public String getVar2() {
+        return var2;
+    }
+
+    public void setVar2(String var2) {
+        this.var2 = var2;
+    }
+
+    public String getCondicion() {
+        return condicion;
+    }
+
+    public void setCondicion(String condicion) {
+        this.condicion = condicion;
+    }
+
+    public void manejoSalidas() {
+
+        if (this.getVar1() == null) {
+            System.out.println("Var1 null");
+            actualizarTexto(null);
+            return;
+        }
+
+        if (this.getCondicion() == null) {
+            System.out.println("Condicion null");
+            actualizarTexto(null);
+            return;
+        }
+
+        if (this.getVar2() == null) {
+            System.out.println("Var2 null");
+            actualizarTexto(null);
+            return;
+        }
+
+
+        if (!verVariable(this.getVar1(), "var1")) {
+            actualizarTexto(null);
+            return;
+        }
+
+        if (!verVariable(this.getVar2(), "var2")) {
+            actualizarTexto(null);
+            return;
+        }
+
+        this.texto = getVar1() + getCondicion() + getVar2();
+        this.variables.set(this.indice, "Decision");
+        this.variables.set(this.indice + 1, this.texto);
+        this.indice += 2;
+
+
+    }
+
+    public void setDibujoDecision(DibujoDecision dibujoDecision) {
+        this.dibujoDecision = dibujoDecision;
+    }
+
+    public void actualizarTexto(String nuevoTexto) {
+        System.out.println("Cambiando texto: "+nuevoTexto);
+        cambiarTexto(nuevoTexto);
     }
 
 }

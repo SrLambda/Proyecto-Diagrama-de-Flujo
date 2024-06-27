@@ -278,7 +278,6 @@ public abstract class PanelPersonalizado extends JPanel {
             }
         }
     }
-
 }
 
 /*

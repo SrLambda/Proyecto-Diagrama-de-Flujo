@@ -157,13 +157,13 @@ public class DibujoProceso extends PanelMovible {
     public void manejo(){
 
         if(this.getVariableS() == null){
-            this.texto = getVariableS();
+            this.texto = null;
             return;
         }
         asignarProceso(this.texto);
 
         if(this.getProcesoS() == null){
-            this.texto = getVariableS();
+            this.texto = null;
             return;
         }
 
@@ -181,7 +181,6 @@ public class DibujoProceso extends PanelMovible {
             this.texto = null;
             return;
         }
-
         asignarALista(this.getVariableS(), this.getProcesoS());
     }
 

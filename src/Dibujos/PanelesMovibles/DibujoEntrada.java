@@ -76,8 +76,6 @@ public class DibujoEntrada extends PanelMovible {
     }
 
     public void cambiarVariable(String varAntigua, String varNueva) {
-        System.out.println("-----VarNueva: "+varNueva);
-        System.out.println("-----VarAntigua: "+varAntigua);
         for(int i=0; i < variables.size(); i++){
             if(variables.get(i).equals(varAntigua)){
                 varNueva = buscarYValidarEntrada(varNueva);
