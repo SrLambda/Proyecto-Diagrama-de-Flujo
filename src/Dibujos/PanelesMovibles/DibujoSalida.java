@@ -103,7 +103,6 @@ public class DibujoSalida extends PanelMovible {
         this.variables.set(this.indice,"Salida");
         this.variables.set(this.indice+1,this.getSalidaS());
         this.indice += 2;
-        mostrar();
     }
 
 }

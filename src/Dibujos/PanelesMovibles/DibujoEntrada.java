@@ -134,10 +134,7 @@ public class DibujoEntrada extends PanelMovible {
             return;
         }
         this.variables.add(this.indice,this.texto);
-        System.out.println("Indice actual: "+indice);
-        //System.out.println("Variable "+"'"+this.texto+"'"+" agregada");
         this.indice += 2;
-        System.out.println("Indice siguiente variable: "+this.indice);
     }
 
 }

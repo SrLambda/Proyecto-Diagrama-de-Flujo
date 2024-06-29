@@ -19,7 +19,6 @@ public class DibujoDoWhile extends PanelMovible {
     private JPanel condicion;
     private JPanel contenido;
     private JPanel fin;
-
     private GridBagConstraints restriciones;
     private List<PanelPersonalizado> lista;
 
@@ -38,7 +37,7 @@ public class DibujoDoWhile extends PanelMovible {
                 this.ventanaEmergente,this.variables);
         this.contenido = new DibujoDoWhileInterno();
         this.fin = new DibujoDoWhileFin(this.texto,lista,this,(DibujoDoWhileInterno) contenido, this.restriciones,
-                this.ventanaEmergente,this.variables);
+                this.ventanaEmergente,this.variables,this);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);

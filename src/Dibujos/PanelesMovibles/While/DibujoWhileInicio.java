@@ -1,5 +1,6 @@
 package Dibujos.PanelesMovibles.While;
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoWhile;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -8,17 +9,28 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DibujoWhileInicio extends PanelPersonalizado {
     private DibujoWhileInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    private String var1;
+    private String condicion;
+    private String var2;
+    private DibujoWhile dibujoWhile;
 
     public DibujoWhileInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoWhileInterno _interno,
-                             GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+                             GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables,
+                             DibujoWhile _while) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         this.interno = _interno;
+        this.dibujoWhile = _while;
         panelesCiclo = lista;
+        String nuevoTxt = quitarEspacios(texto);
+        asignarVariable(nuevoTxt);
+        manejoSalidas();
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -33,6 +45,35 @@ public class DibujoWhileInicio extends PanelPersonalizado {
             }
         });
     }
+
+    public List<PanelPersonalizado> getPanelesCiclo() {
+        return panelesCiclo;
+    }
+
+    public String getVar1() {
+        return this.var1;
+    }
+
+    public void setVar1(String _var1) {
+        this.var1 = _var1;
+    }
+
+    public String getCondicion() {
+        return this.condicion;
+    }
+
+    public void setCondicion(String _condicion) {
+        this.condicion = _condicion;
+    }
+
+    public String getVar2() {
+        return this.var2;
+    }
+
+    public void setVar2(String _var2) {
+        this.var2 = _var2;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -63,7 +104,7 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
         g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
         g.drawLine(x2,centro_y, (int) (cuarto*3.33),centro_y); //  Linea horizontal derecha
-   /* AQUI ES */    g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
+        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
 
         g.drawLine((int) (cuarto*3.33),centro_y,(int) (cuarto*3.33),panelHeight); //  Linea vertical derecha
         g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),(int) (panelWidth*0.1665),panelHeight); //  Linea vertical izquierda
@@ -80,7 +121,72 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
-    public List<PanelPersonalizado> getPanelesCiclo() {
-        return panelesCiclo;
+
+    public void asignarVariable(String _entrada){
+        String opRegex = "(<=|>=|<|>|=|!)";
+        Pattern pattern = Pattern.compile(opRegex);
+        Matcher matcher = pattern.matcher(_entrada);
+
+        while (!matcher.find() || _entrada.length() < 3) {
+            _entrada = JOptionPane.showInputDialog(null, "Operador incorrecto", _entrada);
+            if (_entrada == null) {
+                this.texto = null;
+                return;
+            }
+            _entrada = quitarEspacios(_entrada);
+            matcher = pattern.matcher(_entrada);
+        }
+
+        int posOperador = matcher.start();
+        this.setVar1(_entrada.substring(0, posOperador).trim());
+        this.setCondicion(_entrada.substring(posOperador, posOperador + matcher.group().length()).trim());
+        this.setVar2(_entrada.substring(posOperador + getCondicion().length()).trim());
     }
+
+    public void manejoSalidas(){
+
+        if (this.getVar1() == null) {
+            dibujoWhile.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+
+
+        if (this.getCondicion() == null) {
+            dibujoWhile.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        if (this.getVar2() == null) {
+            dibujoWhile.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        this.setVar1(buscar(this.getVar1()));
+
+        if(this.getVar1() == null){
+            dibujoWhile.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        this.setVar2(buscar(this.getVar2()));
+
+        if(this.getVar2() == null){
+            dibujoWhile.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        this.texto = getVar1() + getCondicion() + getVar2();
+        this.variables.set(this.indice, "While");
+        this.variables.set(this.indice + 1, this.texto);
+        this.indice += 2;
+
+
+    }
+
 }

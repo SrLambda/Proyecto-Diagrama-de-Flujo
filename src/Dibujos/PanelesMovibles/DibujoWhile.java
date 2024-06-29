@@ -45,7 +45,7 @@ public class DibujoWhile extends PanelMovible {
 
         this.contenido = new DibujoWhileInterno();
 
-        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones,null,this.variables);
+        this.condicion = new DibujoWhileInicio(this.texto,lista,this,(DibujoWhileInterno) contenido,this.restriciones,null,this.variables,this);
         this.fin = new DibujoWhileFin(texto,lista,this,this.restriciones,null,this.variables);
 
         this.add(condicion,this.restriciones);
@@ -83,4 +83,12 @@ public class DibujoWhile extends PanelMovible {
         this.setPreferredSize(size);
         this.revalidate();
     }
+
+    @Override
+    public String getTexto() {
+        return super.getTexto();
+    }
+
+
+
 }

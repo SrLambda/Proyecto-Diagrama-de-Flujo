@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.DoWhile;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoDoWhile;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -8,18 +9,28 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DibujoDoWhileFin extends PanelPersonalizado {
     private DibujoDoWhileInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    private String var1;
+    private String condicion;
+    private String var2;
+    private DibujoDoWhile dibujoDoWhile;
 
     public DibujoDoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoDoWhileInterno _interno,
-                            GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+                            GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables,
+                            DibujoDoWhile _doWhile) {
         super(texto, lista, _contenedor, _restriciones,_ventanaEmergente,_variables);
         this.interno = _interno;
+        this.dibujoDoWhile = _doWhile;
         panelesCiclo = lista;
+        String nuevoTxt = quitarEspacios(texto);
+        asignarVariable(nuevoTxt);
+        manejoSalida();
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -33,6 +44,32 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
             }
         });
     }
+
+
+    public String getVar1() {
+        return var1;
+    }
+
+    public void setVar1(String var1) {
+        this.var1 = var1;
+    }
+
+    public String getCondicion() {
+        return condicion;
+    }
+
+    public void setCondicion(String condicion) {
+        this.condicion = condicion;
+    }
+
+    public String getVar2() {
+        return var2;
+    }
+
+    public void setVar2(String var2) {
+        this.var2 = var2;
+    }
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -76,6 +113,75 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
 
         public List<PanelPersonalizado> getListaFiguras() {
             return listaFiguras;
+        }
+
+    public void asignarVariable(String _entrada){
+        String opRegex = "(<=|>=|<|>|=|!)";
+        Pattern pattern = Pattern.compile(opRegex);
+        Matcher matcher = pattern.matcher(_entrada);
+
+        while (!matcher.find() || _entrada.length() < 3) {
+            _entrada = JOptionPane.showInputDialog(null, "Operador incorrecto", _entrada);
+            if (_entrada == null) {
+                this.texto = null;
+                return;
+            }
+            _entrada = quitarEspacios(_entrada);
+            matcher = pattern.matcher(_entrada);
+        }
+
+        int posOperador = matcher.start();
+        this.setVar1(_entrada.substring(0, posOperador).trim());
+        this.setCondicion(_entrada.substring(posOperador, posOperador + matcher.group().length()).trim());
+        this.setVar2(_entrada.substring(posOperador + getCondicion().length()).trim());
+
+
+        System.out.println("Var1: "+ this.getVar1());
+        System.out.println("Var2: "+ this.getVar2());
+        System.out.println("Operador: "+ this.getCondicion());
+    }
+
+        public void manejoSalida(){
+
+            if (this.getVar1() == null) {
+                dibujoDoWhile.setTexto(null);
+                this.texto = null;
+                return;
+            }
+
+            if (this.getCondicion() == null) {
+                dibujoDoWhile.setTexto(null);
+                this.texto = null;
+                return;
+            }
+
+            if (this.getVar2() == null) {
+                dibujoDoWhile.setTexto(null);
+                this.texto = null;
+                return;
+            }
+
+            this.setVar1(buscar(this.getVar1()));
+
+            if(this.getVar1() == null){
+                dibujoDoWhile.setTexto(null);
+                this.texto = null;
+                return;
+            }
+
+            this.setVar2(buscar(this.getVar2()));
+
+            if(this.getVar2() == null){
+                dibujoDoWhile.setTexto(null);
+                this.texto = null;
+                return;
+            }
+
+            this.texto = getVar1() + getCondicion() + getVar2();
+            this.variables.set(this.indice, "While");
+            this.variables.set(this.indice + 1, this.texto);
+            this.indice += 2;
+
         }
 }
 

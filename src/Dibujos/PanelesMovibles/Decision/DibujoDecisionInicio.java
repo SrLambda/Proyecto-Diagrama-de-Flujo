@@ -18,9 +18,11 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
     private String var1;
     private String condicion;
     private String var2;
+    private DibujoDecision dibujoDecision;
     public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
-                                VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+                                VentanaEmergente _ventanaEmergente, List <Object> _variables, DibujoDecision _dibujoDecision) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        this.dibujoDecision = _dibujoDecision;
         String nuevoTxt = quitarEspacios(texto);
         asignarVariable(nuevoTxt);
         manejoSalidas();
@@ -42,7 +44,29 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         });
     }
 
+    public String getVar1() {
+        return var1;
+    }
 
+    public void setVar1(String var1) {
+        this.var1 = var1;
+    }
+
+    public String getVar2() {
+        return var2;
+    }
+
+    public void setVar2(String var2) {
+        this.var2 = var2;
+    }
+
+    public String getCondicion() {
+        return condicion;
+    }
+
+    public void setCondicion(String condicion) {
+        this.condicion = condicion;
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -92,25 +116,6 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         g.drawString(texto, x, y);
     }
 
-
-    public boolean verVariable(String _entrada, String seleccion) {
-        if(_entrada == null){
-            return false;
-        }
-        while(!validarVariableTrueFalse(_entrada)){
-            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
-            if(_entrada == null){
-                return false;
-            }
-        }
-        if(seleccion.equals("var1")){
-            this.setVar1(_entrada);
-        }else{
-            this.setVar2(_entrada);
-        }
-        return true;
-    }
-
     public void asignarVariable(String _entrada){
         String opRegex = "(<=|>=|<|>|=|!)";
         Pattern pattern = Pattern.compile(opRegex);
@@ -131,41 +136,41 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         this.setCondicion(_entrada.substring(posOperador, posOperador + matcher.group().length()).trim());
         this.setVar2(_entrada.substring(posOperador + getCondicion().length()).trim());
 
-
-        System.out.println("Var1: "+ this.getVar1());
-        System.out.println("Var2: "+ this.getVar2());
-        System.out.println("Operador: "+ this.getCondicion());
     }
 
     public void manejoSalidas() {
 
         if (this.getVar1() == null) {
-            System.out.println("Var1 null");
-
+            dibujoDecision.setTexto(null);
+            this.texto = null;
             return;
         }
 
         if (this.getCondicion() == null) {
-            System.out.println("Condicion null");
-
+            dibujoDecision.setTexto(null);
+            this.texto = null;
             return;
         }
 
         if (this.getVar2() == null) {
-            System.out.println("Var2 null");
-
+            dibujoDecision.setTexto(null);
+            this.texto = null;
             return;
         }
 
         this.setVar1(buscar(this.getVar1()));
 
         if(this.getVar1() == null){
+            dibujoDecision.setTexto(null);
+            this.texto = null;
             return;
         }
 
         this.setVar2(buscar(this.getVar2()));
 
         if(this.getVar2() == null){
+            dibujoDecision.setTexto(null);
+            this.texto = null;
             return;
         }
 
@@ -175,30 +180,4 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         this.indice += 2;
 
     }
-
-
-    public String getVar1() {
-        return var1;
-    }
-
-    public void setVar1(String var1) {
-        this.var1 = var1;
-    }
-
-    public String getVar2() {
-        return var2;
-    }
-
-    public void setVar2(String var2) {
-        this.var2 = var2;
-    }
-
-    public String getCondicion() {
-        return condicion;
-    }
-
-    public void setCondicion(String condicion) {
-        this.condicion = condicion;
-    }
-
 }

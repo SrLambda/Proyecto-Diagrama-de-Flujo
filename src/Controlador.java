@@ -112,7 +112,6 @@ public class Controlador {
         }
 
         if(!texto.equals("null")){
-            System.out.println("Creando panel con texto: "+texto);
             PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
 
             if(nuevo instanceof DibujoFor)

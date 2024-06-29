@@ -16,7 +16,6 @@ public abstract class PanelMovible extends PanelPersonalizado{
     protected int ultimoEjeY;
     protected boolean moviendo;
     protected int ejeYMouse;
-
     public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);

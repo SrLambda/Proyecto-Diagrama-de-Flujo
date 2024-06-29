@@ -5,6 +5,7 @@ import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.For.DibujoForFin;
 import Dibujos.PanelesMovibles.For.DibujoForInicio;
 import Dibujos.PanelesMovibles.For.DibujoForInterno;
+import Dibujos.PanelesMovibles.For.ForVacio2;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class DibujoFor extends PanelMovible {
     private GridBagConstraints    restriciones;
 
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    private String txtAyuda;
 
     public DibujoFor(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                      VentanaEmergente _ventanaEmergente, List <Object> _variables){
@@ -40,7 +42,7 @@ public class DibujoFor extends PanelMovible {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.lista = new ArrayList<>();
 
-        this.contenido = new DibujoForInterno(texto,0,0,0);
+        this.contenido = new DibujoForInterno(texto,0,0,0,this.variables,this);
 
         this.condicion = new DibujoForInicio(this.texto,lista,this,(DibujoForInterno) contenido,this.restriciones,this.ventanaEmergente,this.variables);
         this.fin = new DibujoForFin(texto,lista,this,this.restriciones,this.ventanaEmergente,this.variables);
@@ -48,7 +50,6 @@ public class DibujoFor extends PanelMovible {
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);
         this.add(fin,this.restriciones);
-
     }
 
     public void modificarValores()
@@ -103,5 +104,13 @@ public class DibujoFor extends PanelMovible {
         DibujoForInterno aux = (DibujoForInterno) this.contenido;
 
         return aux.getTexto();
+    }
+
+    public String getTxtAyuda() {
+        return this.txtAyuda;
+    }
+
+    public void setTxtAyuda(String _txtAyuda) {
+        this.txtAyuda = _txtAyuda;
     }
 }

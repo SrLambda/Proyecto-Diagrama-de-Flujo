@@ -25,6 +25,7 @@ public abstract class PanelPersonalizado extends JPanel {
     protected GridBagConstraints restriciones;
     protected List <Object> variables;
     protected static int indice = 0;
+    public String txtAyuda;
 
 
     public PanelPersonalizado(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
@@ -125,6 +126,10 @@ public abstract class PanelPersonalizado extends JPanel {
         return texto;
     }
 
+    public void setTexto(String _texto){
+        this.texto = _texto;
+    }
+
     public void actualizarContenedor(List<PanelPersonalizado> list, JPanel cont) {
         this.listaFiguras = list;
         this.contenedor = cont;
@@ -132,7 +137,6 @@ public abstract class PanelPersonalizado extends JPanel {
 
     public String validar(boolean evidencia, String opcion, String entrada) {
         while (true) {
-            System.out.println("validando...");
             if (evidencia) {
                 return entrada;
             } else {
@@ -162,7 +166,6 @@ public abstract class PanelPersonalizado extends JPanel {
     public String validarMixto(boolean evidencia, String entrada) {
         while (true) {
             if (evidencia) {
-                System.out.println("Retorno: "+entrada);
                 return entrada;
             } else {
                 this.texto = entrada;
@@ -179,20 +182,14 @@ public abstract class PanelPersonalizado extends JPanel {
                 } else {
                     try {
                         Integer.parseInt(entrada);
-                        System.out.println("INT-------------");
                         evidencia = validarEntero.validar(entrada);
                     } catch (NumberFormatException ex1) {
                         try {
                             Double.parseDouble(entrada);
-                            System.out.println("DOUBLE-------------");
                             evidencia = validarDouble.validar(entrada);
                         } catch (NumberFormatException ex2) {
-                            System.out.println("STRING-------------");
                             evidencia = validarCadena.validar(entrada);
                             if(evidencia){
-                                System.out.println("----------");
-                                mostrar();
-                                System.out.println("----------");
                                 evidencia = validarVariableTrueFalse(entrada);
                             }
                         }
@@ -220,8 +217,6 @@ public abstract class PanelPersonalizado extends JPanel {
         for (int i=0; i < variables.size(); i++) {
             if (variables.get(i).equals(_entrada)) {
                 if(i % 2 ==0){
-                    System.out.println("Indice: "+i);
-                    System.out.println("->"+variables.get(i)+" = "+_entrada+" ?");
                     return true;
                 }
             }
@@ -229,19 +224,11 @@ public abstract class PanelPersonalizado extends JPanel {
         return false;
     }
 
-    public void mostrar(){
-        for(int i=0; i < variables.size(); i++){
-            if(!variables.get(i).equals("Catacresis"))
-            System.out.println("["+i+"] "+variables.get(i));
-        }
-    }
-
     public String quitarEspacios(String texto){
         if (texto == null || texto.equals("null")) {
             return "null";
         }
         String sinEspacios = texto.replaceAll("\\s", "");
-        System.out.println("Cad sin espacios: |"+sinEspacios);
         return sinEspacios;
     }
 
