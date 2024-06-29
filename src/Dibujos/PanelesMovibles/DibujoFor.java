@@ -96,6 +96,13 @@ public class DibujoFor extends PanelMovible {
         return  aux.getIntervalo();
     }
 
+    public void setIntervalo(int[] vals)
+    {
+        DibujoForInterno aux = (DibujoForInterno) this.contenido;
+
+        aux.setIntervalo(vals);
+    }
+
     @Override
     public String getTexto()
     {

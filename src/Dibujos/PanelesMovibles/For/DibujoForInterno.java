@@ -100,6 +100,13 @@ public class DibujoForInterno extends JPanel {
 
     }
 
+    public void setIntervalo(int[] vals)
+    {
+        this.datos.setValorinicial(vals[0]);
+        this.datos.setIncremento(vals[1]);
+        this.datos.setValorFinal(vals[2]);
+    }
+
 
     public String getTexto()
     {

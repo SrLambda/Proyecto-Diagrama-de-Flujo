@@ -110,14 +110,29 @@ public class ForVacio2 extends PanelPersonalizado{
         return this.v_inicial;
     }
 
+    public void setValorinicial(int val)
+    {
+        this.v_inicial = val;
+    }
+
+
     public int getIncremento()
     {
         return this.incremento;
     }
+
+    public void setIncremento(int val)
+    {
+        this.incremento = val;
+    }
+
 
     public int getValorFinal()
     {
         return this.v_final;
     }
 
+    public void setValorFinal(int val){
+        this.v_final = val;
+    }
 }

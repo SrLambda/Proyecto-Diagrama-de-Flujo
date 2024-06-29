@@ -1,5 +1,6 @@
 import Dibujos.FactoryPanel;
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoFor;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -27,7 +28,24 @@ public class Pseudocodigo {
         this.variables        = _variables;
     }
 
-    public String[] limpiarPC(String _pseudocodigo)
+
+
+    public void armarDiagrama(){
+
+        String[] lineas = this.limpiarPsCod(this.pseudocodigo);
+
+        
+
+        for (int i = 0; i < lineas.length; i++)
+        {
+
+        }
+
+    }
+
+
+
+    public String[] limpiarPsCod(String _pseudocodigo)
     {
 
         String psdc_sin_tab  = _pseudocodigo.replace("\t", "");
@@ -36,7 +54,7 @@ public class Pseudocodigo {
     }
 
 
-    public PanelPersonalizado identificarPanel(String psdc, List<PanelPersonalizado> _lista,JPanel _contenedor){
+    private PanelPersonalizado identificarPanel(String psdc, List<PanelPersonalizado> _lista,JPanel _contenedor){
 
         FactoryPanel factoryPanel = new FactoryPanel();
 
@@ -74,6 +92,17 @@ public class Pseudocodigo {
             }
             else
             {
+
+                String[] aux = psdc.split("PARA \\( | ; | \\)\\{| = | \\+= | == ");
+
+                String tx  = aux[0];
+                int[] vars = {Integer.parseInt(aux[1]),Integer.parseInt(aux[3]),Integer.parseInt(aux[5])};
+
+                panel = factoryPanel.crearPanel("for",tx,_lista,_contenedor,this.restricciones,this.ventanaEmergente,this.variables);
+
+                DibujoFor dbj_for = (DibujoFor) panel;
+
+                dbj_for.setIntervalo(vars);
 
             }
 
