@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.For;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoFor;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -14,14 +15,21 @@ public class ForVacio2 extends PanelPersonalizado{
     private int v_inicial;
     private int v_final;
     private int incremento;
+    private String var1S;
+    private String valorIniS;
+    private String valorFinS;
+    private String increS;
+    private DibujoFor dibujoFor;
 
 
-    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente);
-
+    public ForVacio2(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, int _incremento , int _v_inicial, int _v_final,
+                     GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables, DibujoFor _dibujoFor) {
+        super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        this.dibujoFor = _dibujoFor;
         this.v_inicial  = _v_inicial;
         this.incremento = _incremento;
         this.v_final    = _v_final;
+
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -35,6 +43,56 @@ public class ForVacio2 extends PanelPersonalizado{
             }
         });
 
+        //manejarSalidas();
+
+    }
+
+
+    public int getValorInicial()
+    {
+        return this.v_inicial;
+    }
+
+    public int getIncremento()
+    {
+        return this.incremento;
+    }
+
+    public int getValorFinal()
+    {
+        return this.v_final;
+    }
+
+    public String getVar1S() {
+        return var1S;
+    }
+
+    public void setVar1S(String var1S) {
+        this.var1S = var1S;
+    }
+
+    public String getValorIniS() {
+        return valorIniS;
+    }
+
+    public void setValorIniS(String valorIniS) {
+        this.valorIniS = valorIniS;
+    }
+
+    public String getValorFinS() {
+        return valorFinS;
+    }
+
+    public void setValorFinS(String valorFinS) {
+        this.valorFinS = valorFinS;
+    }
+
+    public String getIncreS() {
+        return increS;
+    }
+
+    public void setIncreS(String increS) {
+        this.increS = increS;
     }
 
     @Override
@@ -78,7 +136,7 @@ public class ForVacio2 extends PanelPersonalizado{
         panel.add(variable);
         panel.add(new JLabel("Valor inicial:"));
         panel.add(_inicial);
-        panel.add(new JLabel("Incremento:"));
+        panel.add(new JLabel("Incremento/Decremento:"));
         panel.add(_incremento);
         panel.add(new JLabel("Valor final:"));
         panel.add(_final);
@@ -93,9 +151,8 @@ public class ForVacio2 extends PanelPersonalizado{
             String dato3 = _incremento.getText();
             String dato4 = _final.getText();
             texto = dato1;
-            incremento = Integer.parseInt(dato3);
-            v_inicial = Integer.parseInt(dato2);
-            v_final = Integer.parseInt(dato4);
+            manejarSalidas(dato1, dato2, dato3, dato4);
+
 
         } else {
             System.out.println("Operación cancelada.");
@@ -103,19 +160,73 @@ public class ForVacio2 extends PanelPersonalizado{
 
     }
 
-    public int getValorInicial()
-    {
-        return this.v_inicial;
+    public void verVariable(String _entrada) {
+        if(_entrada == null){
+            return;
+        }
+        while(!validarVariableTrueFalse(_entrada)){
+            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+            if(_entrada == null){
+                return;
+            }
+        }
+        setVar1S(_entrada);
     }
 
-    public int getIncremento()
-    {
-        return this.incremento;
+    @Override
+    public String buscar(String _entrada) {
+        if(_entrada == null || _entrada == ""){
+            return null;
+        }
+        try {
+            Integer.parseInt(_entrada);
+            _entrada = validarMixto(validarEntero.validar(_entrada), _entrada);
+            if(_entrada == null){
+                return null;
+            }
+            return _entrada;
+        } catch (NumberFormatException ex1) {
+            return null;
+        }
     }
 
-    public int getValorFinal()
-    {
-        return this.v_final;
+    public void manejarSalidas(String dato1, String dato2, String dato3, String dato4){
+
+        verVariable(dato1);
+        if(this.getVar1S() == null){
+            dibujoFor.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        setValorIniS(buscar(dato2));
+        if(this.getValorIniS() == null){
+            dibujoFor.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        setIncreS(buscar(dato3));
+
+        if(this.getIncreS() == null){
+            dibujoFor.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        setValorFinS(buscar(dato4));
+
+        if(this.getValorFinS() == null){
+            dibujoFor.setTexto(null);
+            this.texto = null;
+            return;
+        }
+
+        String txtALter = getVar1S()+";"+getValorIniS()+";"+getValorFinS()+";"+getIncreS();
+        this.variables.set(this.indice, "For");
+        this.variables.set(this.indice + 1, txtALter);
+        System.out.println("Guardando FOR en pos: "+this.indice+" con valor: "+txtALter);
+        this.indice += 2;
     }
 
 }

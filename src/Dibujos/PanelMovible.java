@@ -1,5 +1,6 @@
 package Dibujos;
 
+import Dibujos.PanelesMovibles.*;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -8,15 +9,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
+import java.util.Map;
 
 public abstract class PanelMovible extends PanelPersonalizado{
 
     protected int ultimoEjeY;
     protected boolean moviendo;
     protected int ejeYMouse;
-
-    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public PanelMovible(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                        VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         if(this.posOriginal == -1){
             this.posOriginal = getY();
         }
@@ -28,10 +30,35 @@ public abstract class PanelMovible extends PanelPersonalizado{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2) { // Doble clic para editar el texto
-                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
+                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", PanelMovible.this.texto);
+                    if(PanelMovible.this instanceof DibujoEntrada){
+                        boolean evidencia = validarCadena.validar(nuevoTexto);
+                        String textoValido= validar(evidencia,"Cadena",nuevoTexto);
+                        ((DibujoEntrada) PanelMovible.this).cambiarVariable(PanelMovible.this.texto,textoValido);
+                    }
+                    if(PanelMovible.this instanceof DibujoProceso){
+                        ((DibujoProceso) PanelMovible.this).asignarVariable(quitarEspacios(nuevoTexto));
+                        ((DibujoProceso) PanelMovible.this).asignarProceso(PanelMovible.this.texto);
+                        ((DibujoProceso) PanelMovible.this).verVariable(((DibujoProceso) PanelMovible.this).getVariableS());
+                        ((DibujoProceso) PanelMovible.this).verProceso(((DibujoProceso) PanelMovible.this).getProcesoS());
+                        ((DibujoProceso) PanelMovible.this).asignarALista(((DibujoProceso) PanelMovible.this).getVariableS(),
+                                ((DibujoProceso) PanelMovible.this).getProcesoS());
+                    }
+                    if(PanelMovible.this instanceof DibujoDocumento){
+                        //cambiarTexto(nuevoTexto);
+                    }
+                    if(PanelMovible.this instanceof DibujoSalida){
+                        //cambiarTexto(nuevoTexto);
+                    }
+                    if(PanelMovible.this instanceof DibujoDecision){
+                        //cambiarTexto(nuevoTexto);
+                    }
+                    /*
                     if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
                         cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
                     }
+
+                     */
                 }
                 // Verificar si se hizo clic derecho
                 if (e.getButton() == MouseEvent.BUTTON3) {

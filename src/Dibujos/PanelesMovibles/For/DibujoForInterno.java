@@ -1,6 +1,7 @@
 package Dibujos.PanelesMovibles.For;
 
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoFor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,13 +14,15 @@ public class DibujoForInterno extends JPanel {
     private ForInterno izquierda;
     private String     texto;
     private ForVacio2  datos;
+    private DibujoFor dibujoFor;
 
 
-    public DibujoForInterno(String _texto,int _v_inicial, int _v_final, int _incremento){
+    public DibujoForInterno(String _texto, int _v_inicial, int _v_final, int _incremento, List <Object> _variables, DibujoFor _dibujoFor){
+        this.dibujoFor = _dibujoFor;
         this.texto     = _texto;
         this.derecha   = new ForInterno();
         this.izquierda = new ForInterno();
-        this.datos     = new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final,null,null);
+        this.datos     = new ForVacio2(_texto,null,null,_incremento,_v_inicial,_v_final,null,null,_variables,dibujoFor);
 
         this.setLayout(new BoxLayout(DibujoForInterno.this, BoxLayout.X_AXIS));
 
@@ -31,11 +34,13 @@ public class DibujoForInterno extends JPanel {
 
         this.izquierda.setLayout(new BoxLayout(this.izquierda, BoxLayout.Y_AXIS));
         this.izquierda.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.izquierda.add(new ForVacio(texto,null,null,null,null));
-
+        this.izquierda.add(new ForVacio(texto,null,null,null,null,null));
 
         this.add(derecha);
         this.add(izquierda);
+
+
+
 
     }
 
@@ -94,7 +99,7 @@ public class DibujoForInterno extends JPanel {
         inter[0]    = this.datos.getValorInicial();
         inter[1]    = this.datos.getIncremento();
         inter[2]    = this.datos.getValorFinal();
-
+        
         return inter;
 
     }

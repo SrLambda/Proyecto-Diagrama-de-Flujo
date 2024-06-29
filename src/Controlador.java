@@ -7,7 +7,10 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Controlador {
     private static Controlador instancia;
@@ -16,6 +19,7 @@ public class Controlador {
     private Parseador parseador;
     private VentanaEmergente ventanaEmergente;
     private GridBagConstraints restriciones;
+    private List <Object> variables;
 
 
     // Instanciar Singleton
@@ -28,6 +32,8 @@ public class Controlador {
         this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
         this.restriciones.weighty = 0; // No expandir en dirección vertical
         this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
+        this.variables = new ArrayList<>();
+        inicializarLista();
     }
 
 
@@ -72,7 +78,7 @@ public class Controlador {
 
     private void crearInicio(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor,restriciones,ventanaEmergente);
+        PanelPersonalizado nuevo = new DibujoInicio("Inicio",listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
 
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
@@ -83,7 +89,7 @@ public class Controlador {
 
     private void crearFin(Front front)
     {
-        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones,ventanaEmergente);
+        PanelPersonalizado nuevo = new DibujoFin("Fin",listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
         listaFiguras.add(nuevo);
         front.getPanel1().add(nuevo,this.restriciones);
         front.getPanel1().revalidate();
@@ -105,24 +111,26 @@ public class Controlador {
             texto = entradaDeTexto();
         }
 
-        // Crea el panel
-        PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente);
+        if(!texto.equals("null")){
+            PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
 
-        if(nuevo instanceof DibujoFor)
-        {
-            DibujoFor aux = (DibujoFor) nuevo;
-            aux.modificarValores();
+            if(nuevo instanceof DibujoFor)
+            {
+                DibujoFor aux = (DibujoFor) nuevo;
+                aux.modificarValores();
+            }
+            if(!(nuevo.texto == null)){
+                //---------------cambios-----------------
+                //posicion
+                this.ventanaEmergente.agregar(nuevo);
+                //---------------------------------------
+
+                // Actualizan los cambios
+                this.ventanaEmergente.actualizarCompnentes();
+                front.getPanel1().revalidate();
+            }
         }
 
-        //---------------cambios-----------------
-        //posicion
-        this.ventanaEmergente.agregar(nuevo);
-        //---------------------------------------
-
-
-        // Actualizan los cambios
-        this.ventanaEmergente.actualizarCompnentes();
-        front.getPanel1().revalidate();
     }
 
 
@@ -176,7 +184,6 @@ public class Controlador {
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Datos", JOptionPane.OK_CANCEL_OPTION);
-
         if (option == JOptionPane.OK_OPTION)
         {
             return textField.getText();
@@ -184,8 +191,15 @@ public class Controlador {
         }
         else
         {
-            return "----";
+            return "null";
 
         }
     }
+
+    public void inicializarLista(){
+        for(int i=0; i<100; i++){
+            variables.add("Catacresis");
+        }
+    }
+
 }

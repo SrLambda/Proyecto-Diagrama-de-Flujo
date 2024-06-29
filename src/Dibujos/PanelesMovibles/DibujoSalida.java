@@ -6,11 +6,17 @@ import Dibujos.Ventana.VentanaEmergente;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoSalida extends PanelMovible {
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
-    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    private String salidaS;
+    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                        VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        String nuevoTxt = quitarEspacios(texto);
+        verVariable(nuevoTxt);
+        manejoSalidas();
     }
 
 
@@ -66,4 +72,37 @@ public class DibujoSalida extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
+
+    public void verVariable(String _entrada) {
+        if(_entrada == null){
+            return;
+        }
+        while(!validarVariableTrueFalse(_entrada)){
+            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+            if(_entrada == null){
+                return;
+            }
+        }
+        this.setSalidaS(_entrada);
+    }
+
+
+    public String getSalidaS() {
+        return this.salidaS;
+    }
+
+    public void setSalidaS(String _salidaS) {
+        this.salidaS = _salidaS;
+    }
+
+    public void manejoSalidas(){
+        if(getSalidaS() == null){
+            this.texto = null;
+            return;
+        }
+        this.variables.set(this.indice,"Salida");
+        this.variables.set(this.indice+1,this.getSalidaS());
+        this.indice += 2;
+    }
+
 }

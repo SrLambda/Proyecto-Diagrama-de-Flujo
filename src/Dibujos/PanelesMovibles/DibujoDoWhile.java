@@ -12,29 +12,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoDoWhile extends PanelMovible {
 
     private JPanel condicion;
     private JPanel contenido;
     private JPanel fin;
-
     private GridBagConstraints restriciones;
     private List<PanelPersonalizado> lista;
 
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
-    public DibujoDoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    public DibujoDoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
+                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         setPreferredSize(new Dimension(200, 500));
 
         this.setLayout(new BoxLayout(DibujoDoWhile.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.lista = new ArrayList<>();
 
-        this.condicion = new DibujoDoWhileInicio(this.texto,lista,this,(DibujoDoWhileInterno) contenido, this.restriciones,this.ventanaEmergente);
+        this.condicion = new DibujoDoWhileInicio(this.texto,lista,this,(DibujoDoWhileInterno) contenido, this.restriciones,
+                this.ventanaEmergente,this.variables);
         this.contenido = new DibujoDoWhileInterno();
-        this.fin = new DibujoDoWhileFin(this.texto,lista,this,(DibujoDoWhileInterno) contenido, this.restriciones,this.ventanaEmergente);
+        this.fin = new DibujoDoWhileFin(this.texto,lista,this,(DibujoDoWhileInterno) contenido, this.restriciones,
+                this.ventanaEmergente,this.variables,this);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);

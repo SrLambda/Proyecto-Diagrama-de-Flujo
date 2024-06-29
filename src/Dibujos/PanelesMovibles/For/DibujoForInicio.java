@@ -8,19 +8,59 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Map;
 
 public class DibujoForInicio extends PanelPersonalizado {
 
     private DibujoForInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
-
-    public DibujoForInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoForInterno _interno,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
-        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+    private String variable;
+    private int valorInicial;
+    private int incremento;
+    private int valorFinal;
+    public DibujoForInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, DibujoForInterno _interno,
+                           GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente, List <Object> _variables) {
+        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         this.interno = _interno;
         panelesCiclo = lista;
 
+    }
 
+    public List<PanelPersonalizado> getPanelesCiclo() {
+        return panelesCiclo;
+    }
+
+    public String getVariable() {
+        return this.variable;
+    }
+
+    public void setVariable(String _variable) {
+        this.variable = _variable;
+    }
+
+    public int getValorInicial() {
+        return this.valorInicial;
+    }
+
+    public void setValorInicial(int _valorInicial) {
+        this.valorInicial = _valorInicial;
+    }
+
+    public int getIncremento() {
+        return this.incremento;
+    }
+
+    public void setIncremento(int _incremento) {
+        this.incremento = _incremento;
+    }
+
+    public int getValorFinal() {
+        return this.valorFinal;
+    }
+
+    public void setValorFinal(int _valorFinal) {
+        this.valorFinal = _valorFinal;
     }
 
     @Override
@@ -53,9 +93,4 @@ public class DibujoForInicio extends PanelPersonalizado {
         g.drawLine(cuarto*3,panelHeight,cuarto*3+10,panelHeight-10);
 
     }
-
-    public List<PanelPersonalizado> getPanelesCiclo() {
-        return panelesCiclo;
-    }
-
 }

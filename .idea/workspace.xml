@@ -6,64 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/libraries/javafx_swt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/shelf/Uncommitted_changes_before_Checkout_at_28-03-2024_14_25__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/Diagrama de Flujo/Diagrama de Flujo.drawio" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Controlador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoDecision.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoDocumento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoEntrada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoFin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoInicio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoProceso.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/DibujoSalida.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Dibujos/PanelPersonalizado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Front.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Front.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/EtapaProceso.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/Figura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/LogicaFiguras/InicioFin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto-Diagrama-de-Flujo/Proyecto-Diagrama-de-Flujo/src/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/FactoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/FactoryPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DesicionVacia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DesicionVacia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionFin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDecision.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDoWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDoWhile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoFor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoFor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoWhile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DoWhileVacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DoWhileVacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForFin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileFin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/WhileVacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/WhileVacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesNoMovibles/DibujoInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VentanaEmergente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Ventana/VentanaEmergente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorCadena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorCadena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorEntero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorEntero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +36,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -123,24 +84,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "154",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "testing",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;312&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Edgar&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\edgar\OneDrive\Desktop\Proyecto de programacion\Proyecto-Diagrama-de-Flujo\Diagrama de Flujo" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Dibujos.PanelesMovibles" />
       <recent name="LogicaFiguras" />
@@ -226,6 +190,31 @@
       <workItem from="1715615290791" duration="9503000" />
       <workItem from="1717203469550" duration="5000" />
       <workItem from="1717357044709" duration="3034000" />
+      <workItem from="1717781762007" duration="618000" />
+      <workItem from="1717873821604" duration="3212000" />
+      <workItem from="1717891828375" duration="8880000" />
+      <workItem from="1718066166262" duration="12589000" />
+      <workItem from="1718158602383" duration="7397000" />
+      <workItem from="1718201651243" duration="3435000" />
+      <workItem from="1718221361867" duration="681000" />
+      <workItem from="1718224467762" duration="2085000" />
+      <workItem from="1718235051495" duration="1062000" />
+      <workItem from="1718908714061" duration="3704000" />
+      <workItem from="1718983153533" duration="10151000" />
+      <workItem from="1719007667809" duration="2571000" />
+      <workItem from="1719015076546" duration="4840000" />
+      <workItem from="1719024523102" duration="610000" />
+      <workItem from="1719071293407" duration="645000" />
+      <workItem from="1719076340860" duration="6016000" />
+      <workItem from="1719106372877" duration="1210000" />
+      <workItem from="1719174774980" duration="16704000" />
+      <workItem from="1719437175105" duration="3550000" />
+      <workItem from="1719440762160" duration="6098000" />
+      <workItem from="1719458821048" duration="2442000" />
+      <workItem from="1719523179707" duration="599000" />
+      <workItem from="1719540199880" duration="648000" />
+      <workItem from="1719609232649" duration="1504000" />
+      <workItem from="1719686702615" duration="4426000" />
     </task>
     <task id="LOCAL-00001" summary="Intercambio de figuras parcial">
       <option name="closed" value="true" />
@@ -269,24 +258,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Intercambio de figuras parcial" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDecision.java</url>
-          <line>70</line>
-          <properties class="Dibujos.PanelesMovibles.DibujoDecision" method="ajustarSize">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="componete" />

@@ -1,4 +1,5 @@
 import Dibujos.PanelPersonalizado;
+import Dibujos.Validador.Validador;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,9 +23,7 @@ public class Front extends JFrame {
     private     JButton forButton;
     private     JButton doWhileButton;
     private     JScrollPane scroll;
-
     private List <PanelPersonalizado> listaPaneles;
-
 
     public Front(Controlador controlador)
     {
