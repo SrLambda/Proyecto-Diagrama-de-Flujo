@@ -29,6 +29,7 @@ public class Front extends JFrame {
     // Crear los botones
     private     JButton zoomin;
     private     JButton zoomout;
+    private JButton agregarPSDCButton;
     private List <PanelPersonalizado> listaPaneles;
     private double zoomFactor = 1.0;
 
@@ -145,6 +146,17 @@ public class Front extends JFrame {
             }
 
 
+        });
+
+        agregarPSDCButton.addActionListener(new ActionListener() {
+
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+                controlador.entradaPorPseudocodigo(Front.this);
+            }
         });
 
         forButton.addActionListener(new ActionListener() {

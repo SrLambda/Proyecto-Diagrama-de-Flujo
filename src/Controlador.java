@@ -21,6 +21,7 @@ public class Controlador {
     private List <Object> variables;
     private final GridBagConstraints restriciones;
     private Compilador compilador;
+    private Pseudocodigo pseudocodigo;
 
     // Instanciar Singleton
     private Controlador() {
@@ -74,6 +75,8 @@ public class Controlador {
         crearFin(front);
 
         this.ventanaEmergente = new VentanaEmergente(_listaFiguras,_contenedor,this.restriciones);
+
+        this.pseudocodigo = new Pseudocodigo(this.parseador.getPseuddoCodigo(),_contenedor,_listaFiguras,this.restriciones,this.ventanaEmergente,this.variables);
 
     }
 
@@ -176,6 +179,16 @@ public class Controlador {
     {
 
         this.compilador.run(this.parseador.generarEjecutable());
+
+    }
+
+
+    public void entradaPorPseudocodigo(Front front)
+    {
+
+        this.parseador.actualizar();
+
+        this.pseudocodigo.agregarMediantePseudocodigo(this.parseador.getPseuddoCodigo(),front);
 
     }
 

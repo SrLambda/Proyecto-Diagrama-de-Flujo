@@ -1,6 +1,8 @@
 import Dibujos.FactoryPanel;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoFor;
+import Dibujos.PanelesNoMovibles.DibujoFin;
+import Dibujos.PanelesNoMovibles.DibujoInicio;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -29,6 +31,25 @@ public class Pseudocodigo {
     }
 
 
+    public void agregarMediantePseudocodigo(String _pseudocodigoInicial,Frame _front)
+    {
+        //Mostrar Pseudocodigo en una ventana emergente
+
+
+
+
+        EntradaPseudocodigo ventana = new EntradaPseudocodigo(_front, "Pseudocodigo", _pseudocodigoInicial);
+        ventana.setVisible(true);
+
+
+        //Recojer texto editado de la ventana emergente
+
+        this.pseudocodigo = ventana.getPseudocodigo();
+        System.out.println(this.pseudocodigo);
+
+        //Transformar de texto a Diagrama
+
+    }
 
     public void armarDiagrama(){
 
@@ -121,6 +142,15 @@ public class Pseudocodigo {
         else if (psdc.contains("}"))
         {
             panel = null;
+        }
+        else if(psdc.contains("INICIO") && _contenedor == this.contenedor)
+        {
+            panel = new DibujoInicio("Inicio",this.lista,this.contenedor,this.restricciones,this.ventanaEmergente,this.variables);
+
+        }
+        else if (psdc.contains("FIN") && _contenedor == this.contenedor)
+        {
+            panel = new DibujoFin("Fin",this.lista,this.contenedor,this.restricciones,this.ventanaEmergente,this.variables);
         }
         else
         {
