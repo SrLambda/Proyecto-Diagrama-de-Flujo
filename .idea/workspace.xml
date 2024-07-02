@@ -10,20 +10,13 @@
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDecision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDoWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDoWhile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoFor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoFor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoWhile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInterno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorCadena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorCadena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorEntero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Validador/ValidadorEntero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +208,9 @@
       <workItem from="1719540199880" duration="648000" />
       <workItem from="1719609232649" duration="1504000" />
       <workItem from="1719686702615" duration="4426000" />
+      <workItem from="1719945047941" duration="7209000" />
+      <workItem from="1719952380577" duration="553000" />
+      <workItem from="1719953049377" duration="836000" />
     </task>
     <task id="LOCAL-00001" summary="Intercambio de figuras parcial">
       <option name="closed" value="true" />

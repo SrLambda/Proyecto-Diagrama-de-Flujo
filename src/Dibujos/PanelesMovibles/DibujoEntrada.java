@@ -133,8 +133,10 @@ public class DibujoEntrada extends PanelMovible {
         if(this.texto == null){
             return;
         }
-        this.variables.add(this.indice,this.texto);
-        this.indice += 2;
+        indice1 = indice1 + 1;
+        this.setTipo("Entrada"+indice1);
+        this.variables.add("Entrada"+indice1);
+        this.variables.add(this.texto);
     }
 
 }

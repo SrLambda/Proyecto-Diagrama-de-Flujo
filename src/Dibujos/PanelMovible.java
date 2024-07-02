@@ -41,8 +41,8 @@ public abstract class PanelMovible extends PanelPersonalizado{
                         ((DibujoProceso) PanelMovible.this).asignarProceso(PanelMovible.this.texto);
                         ((DibujoProceso) PanelMovible.this).verVariable(((DibujoProceso) PanelMovible.this).getVariableS());
                         ((DibujoProceso) PanelMovible.this).verProceso(((DibujoProceso) PanelMovible.this).getProcesoS());
-                        ((DibujoProceso) PanelMovible.this).asignarALista(((DibujoProceso) PanelMovible.this).getVariableS(),
-                                ((DibujoProceso) PanelMovible.this).getProcesoS());
+                        //((DibujoProceso) PanelMovible.this).asignarALista(((DibujoProceso) PanelMovible.this).getVariableS(),
+                               // ((DibujoProceso) PanelMovible.this).getProcesoS());
                     }
                     if(PanelMovible.this instanceof DibujoDocumento){
                         //cambiarTexto(nuevoTexto);
@@ -60,10 +60,17 @@ public abstract class PanelMovible extends PanelPersonalizado{
 
                      */
                 }
-                // Verificar si se hizo clic derecho
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     int option = JOptionPane.showConfirmDialog(null, "¿Eliminar esta figura?", "Eliminar Figura", JOptionPane.YES_NO_OPTION);
                     if (option == JOptionPane.YES_OPTION) {
+                        for(int i=0; i < variables.size(); i++){
+                            if(variables.get(i).equals(PanelMovible.this.getTipo())){
+                                System.out.println("Eliminando..."+variables.get(i)+" / "+variables.get(i+1));
+                                variables.remove(i);
+                                variables.remove(i);
+                                break;
+                            }
+                        }
                         eliminarFigura();
                     }
                 }
