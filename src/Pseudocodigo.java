@@ -1,6 +1,9 @@
 import Dibujos.FactoryPanel;
 import Dibujos.PanelPersonalizado;
+import Dibujos.PanelesMovibles.DibujoDecision;
+import Dibujos.PanelesMovibles.DibujoDoWhile;
 import Dibujos.PanelesMovibles.DibujoFor;
+import Dibujos.PanelesMovibles.DibujoWhile;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
 import Dibujos.Ventana.VentanaEmergente;
@@ -49,18 +52,39 @@ public class Pseudocodigo {
 
         //Transformar de texto a Diagrama
 
-    }
-
-    public void armarDiagrama(){
-
         String[] lineas = this.limpiarPsCod(this.pseudocodigo);
 
+        JPanel
+
+        armarDiagrama(lineas,this.contenedor,this.lista,0,lineas.length);
+
+    }
+
+    public void armarDiagrama(String[] lineas, JPanel _contenedor,List<PanelPersonalizado> _lista,int i, int fin){
+
+
+        PanelPersonalizado panel_act;
         
 
-        for (int i = 0; i < lineas.length; i++)
+        panel_act = this.identificarPanel(lineas[i],_lista,_contenedor);
+
+        if(panel_act instanceof DibujoDecision)
         {
 
         }
+        else if (panel_act instanceof DibujoWhile)
+        {
+
+        }
+        else if (panel_act instanceof DibujoFor)
+        {
+
+        }
+        else if ((panel_act instanceof DibujoDoWhile))
+        {
+
+        }else
+
 
     }
 
