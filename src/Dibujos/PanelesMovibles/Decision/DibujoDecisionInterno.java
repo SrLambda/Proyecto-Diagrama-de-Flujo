@@ -11,6 +11,8 @@ public class DibujoDecisionInterno extends JPanel {
 
     private final DesicionInterna verdadero;
     private final DesicionInterna falso;
+    public double zoomFactor = 1.0;
+
 
     public DibujoDecisionInterno()
     {
@@ -23,12 +25,12 @@ public class DibujoDecisionInterno extends JPanel {
 
         this.verdadero.setLayout(new BoxLayout(this.verdadero, BoxLayout.Y_AXIS));
         this.verdadero.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero.add(new DesicionVacia(null,null,null,null,null,null));
+        this.verdadero.add(new DesicionVacia("null",null,null,null,null,null));
 
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new DesicionVacia(null,null,null,null,null,null));
+        this.falso.add(new DesicionVacia("null",null,null,null,null,null));
 
         this.add(verdadero);
         this.add(falso);
@@ -105,8 +107,10 @@ public class DibujoDecisionInterno extends JPanel {
     }
 
 
+
     public class DesicionInterna extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
+        public double zoomFactor = 1.0;
 
         DesicionInterna() {
             listaFiguras = new ArrayList<>();
@@ -115,16 +119,16 @@ public class DibujoDecisionInterno extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.scale(zoomFactor, zoomFactor);
 
-            g.setColor(Color.BLACK);
+            g2d.setColor(Color.BLACK);
 
             int ancho = this.getWidth();
             int alto = this.getHeight();
 
-            g.drawLine(ancho / 2, 0, ancho / 2, alto);
+            g2d.drawLine(ancho / 2, 0, ancho / 2, alto);
         }
-
-
 
         public List<PanelPersonalizado> getListaFiguras()
         {

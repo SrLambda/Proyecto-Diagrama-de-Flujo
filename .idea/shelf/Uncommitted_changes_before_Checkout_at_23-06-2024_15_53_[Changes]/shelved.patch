@@ -1,0 +1,726 @@
+Index: src/Dibujos/PanelesNoMovibles/DibujoInicio.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dibujos.PanelesNoMovibles;\r\n\r\nimport Dibujos.PanelPersonalizado;\r\nimport Dibujos.Ventana.VentanaEmergente;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.geom.QuadCurve2D;\r\nimport java.util.List;\r\n\r\npublic class DibujoInicio extends PanelPersonalizado {\r\n    public DibujoInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {\r\n        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);\r\n        this.habilitado = false;\r\n    }\r\n\r\n    @Override\r\n    protected void paintComponent(Graphics g) {\r\n\r\n        super.paintComponent(g);\r\n        Graphics2D g2d = (Graphics2D) g.create();\r\n        g2d.scale(zoomFactor, zoomFactor);\r\n\r\n        int widthTx  = this.anchoAlto[0];\r\n        int heightTx = this.anchoAlto[1];\r\n\r\n        int centro_x = this.getWidth()  / 2;\r\n        int centro_y = this.getHeight() / 2;\r\n\r\n\r\n\r\n        // Coordenadas del rectángulo\r\n        int x1 = centro_x - ( ( widthTx  / 2 ) + 10); // Coordenada x del lado izquierdo del rectángulo\r\n        int x2 = centro_x + ( ( widthTx  / 2 ) + 10); // Coordenada x del lado derecho del rectángulo\r\n        int y1 = centro_y - ( ( heightTx / 2 ) + 10); // Coordenada y del lado superior del rectángulo\r\n        int y2 = centro_y + ( ( heightTx / 2 ) + 10); // Coordenada y del lado inferior del rectángulo\r\n\r\n        // Radio de los bordes redondeados\r\n        double rx = ( ( heightTx / 2 ) + 10) * Math.cos(Math.PI/4);\r\n\r\n        g2d.setColor(Color.BLACK);\r\n\r\n        //Dibujar figura de entrada\r\n\r\n        g2d.drawLine(x1, y1, x2, y1);     // Lado superior\r\n        g2d.drawLine(x2, y2, x1, y2);     // Lado inferior\r\n\r\n\r\n        // Radio = ( ( heightTx / 2 ) + 10)\r\n        g2d.setColor(Color.BLACK);\r\n        g2d.setStroke(new BasicStroke(1));\r\n        // Grosor de línea\r\n        g2d.draw(new QuadCurve2D.Double(x1, y1, x1-rx , centro_y-rx , x1 - ( ( heightTx / 2 ) + 10), centro_y));\r\n        g2d.draw(new QuadCurve2D.Double(x1 - ( ( heightTx / 2 ) + 10), centro_y, x1-rx , centro_y+rx ,x1  ,y2 ));\r\n\r\n        g2d.draw(new QuadCurve2D.Double(x2, y1, x2+rx , centro_y-rx , x2 + ( ( heightTx / 2 ) + 10), centro_y));\r\n        g2d.draw(new QuadCurve2D.Double(x2 + ( ( heightTx / 2 ) + 10), centro_y, x2+rx , centro_y+rx ,x2  ,y2 ));\r\n\r\n        // Dibujar flujo\r\n        g2d.drawLine(centro_x, y2, centro_x, getHeight());         // Linea inferior\r\n\r\n        // fuente con el tamaño especificado\r\n        g2d.setFont(textoFont);\r\n        \r\n        // Dibujar el texto centrado\r\n        FontMetrics metrics = g2d.getFontMetrics();\r\n        int x = (getWidth() - metrics.stringWidth(texto)) / 2;\r\n        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();\r\n        g2d.drawString(texto, x, y);\r\n\r\n        g2d.dispose();\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dibujos/PanelesNoMovibles/DibujoInicio.java b/src/Dibujos/PanelesNoMovibles/DibujoInicio.java
+--- a/src/Dibujos/PanelesNoMovibles/DibujoInicio.java	
++++ b/src/Dibujos/PanelesNoMovibles/DibujoInicio.java	
+@@ -18,8 +18,6 @@
+     protected void paintComponent(Graphics g) {
+ 
+         super.paintComponent(g);
+-        Graphics2D g2d = (Graphics2D) g.create();
+-        g2d.scale(zoomFactor, zoomFactor);
+ 
+         int widthTx  = this.anchoAlto[0];
+         int heightTx = this.anchoAlto[1];
+@@ -38,29 +36,29 @@
+         // Radio de los bordes redondeados
+         double rx = ( ( heightTx / 2 ) + 10) * Math.cos(Math.PI/4);
+ 
+-        g2d.setColor(Color.BLACK);
++        g.setColor(Color.BLACK);
+ 
+         //Dibujar figura de entrada
+ 
+-        g2d.drawLine(x1, y1, x2, y1);     // Lado superior
+-        g2d.drawLine(x2, y2, x1, y2);     // Lado inferior
++        g.drawLine(x1, y1, x2, y1);     // Lado superior
++        g.drawLine(x2, y2, x1, y2);     // Lado inferior
+ 
+ 
+         // Radio = ( ( heightTx / 2 ) + 10)
+-        g2d.setColor(Color.BLACK);
+-        g2d.setStroke(new BasicStroke(1));
++        g.setColor(Color.BLACK);
++        g.setStroke(new BasicStroke(1));
+         // Grosor de línea
+-        g2d.draw(new QuadCurve2D.Double(x1, y1, x1-rx , centro_y-rx , x1 - ( ( heightTx / 2 ) + 10), centro_y));
+-        g2d.draw(new QuadCurve2D.Double(x1 - ( ( heightTx / 2 ) + 10), centro_y, x1-rx , centro_y+rx ,x1  ,y2 ));
++        g.draw(new QuadCurve2D.Double(x1, y1, x1-rx , centro_y-rx , x1 - ( ( heightTx / 2 ) + 10), centro_y));
++        g.draw(new QuadCurve2D.Double(x1 - ( ( heightTx / 2 ) + 10), centro_y, x1-rx , centro_y+rx ,x1  ,y2 ));
+ 
+-        g2d.draw(new QuadCurve2D.Double(x2, y1, x2+rx , centro_y-rx , x2 + ( ( heightTx / 2 ) + 10), centro_y));
+-        g2d.draw(new QuadCurve2D.Double(x2 + ( ( heightTx / 2 ) + 10), centro_y, x2+rx , centro_y+rx ,x2  ,y2 ));
++        g.draw(new QuadCurve2D.Double(x2, y1, x2+rx , centro_y-rx , x2 + ( ( heightTx / 2 ) + 10), centro_y));
++        g.draw(new QuadCurve2D.Double(x2 + ( ( heightTx / 2 ) + 10), centro_y, x2+rx , centro_y+rx ,x2  ,y2 ));
+ 
+         // Dibujar flujo
+-        g2d.drawLine(centro_x, y2, centro_x, getHeight());         // Linea inferior
++        g.drawLine(centro_x, y2, centro_x, getHeight());         // Linea inferior
+ 
+         // fuente con el tamaño especificado
+-        g2d.setFont(textoFont);
++        g.setFont(textoFont);
+         
+         // Dibujar el texto centrado
+         FontMetrics metrics = g2d.getFontMetrics();
+Index: src/Dibujos/PanelesMovibles/DibujoSalida.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dibujos.PanelesMovibles;\r\nimport Dibujos.PanelMovible;\r\nimport Dibujos.PanelPersonalizado;\r\nimport Dibujos.Ventana.VentanaEmergente;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.util.List;\r\n\r\npublic class DibujoSalida extends PanelMovible {\r\n    public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {\r\n        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);\r\n    }\r\n\r\n\r\n    @Override\r\n    protected void paintComponent(Graphics g) {\r\n\r\n        super.paintComponent(g);\r\n\r\n\r\n        int widthTx  = this.anchoAlto[0];\r\n        int heightTx = this.anchoAlto[1];\r\n\r\n        int centro_x = getWidth()  / 2;\r\n        int centro_y = getHeight() / 2;\r\n\r\n        // Coordenadas del Paralelogramo\r\n\r\n        int x1 = centro_x - ( ( widthTx  / 2 ) +10);                    // Coordenada x del lado izquierdo del rectángulo\r\n        int x2 = centro_x + ( ( widthTx  / 2 ) +10);     // Coordenada x del lado derecho del rectángulo\r\n        int y1 = centro_y - ( ( heightTx / 2 ) +10);                 // Coordenada y del lado superior del rectángulo\r\n        int y2 = centro_y + ( ( heightTx / 2 ) +10);\r\n        int desvio = (int) ((x2-x1)*0.1);                                    // Inclinación horizontal del paralelogramo\r\n\r\n\r\n\r\n\r\n\r\n        // Dibujar las líneas que forman el paralelogramo\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior\r\n        g.drawLine(x2+desvio, y1, x2-desvio, y2 );     // Lado derecho\r\n        g.drawLine(x1-desvio, y2 , x1+desvio, y1);     // Lado izquierdo\r\n        g.drawLine(x2-desvio, y2 , x1-desvio, y2 );     // Lado inferior\r\n\r\n\r\n        // Dibujar flecha de salida\r\n        g.setColor(Color.RED);\r\n        g.drawLine(x2+desvio, y1, x2+desvio - 10, y1 + 5);\r\n        g.drawLine(x2+desvio, y1, x2+desvio + 10, y1 - 5);\r\n        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 7,y1 - 1);\r\n        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 6,y1 - 5);\r\n\r\n        // Dibujar flujo\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(centro_x,0,centro_x,y1);               // Linea superior\r\n        g.drawLine(centro_x,y2 ,centro_x,getHeight() + 30);         // Linea inferior\r\n\r\n        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha\r\n        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo\r\n\r\n        // fuente con el tamaño especificado\r\n        g.setFont(textoFont);\r\n\r\n        // Dibuja el texto centrado\r\n        FontMetrics metrics = g.getFontMetrics();\r\n        int x = (getWidth() - metrics.stringWidth(texto)) / 2;\r\n        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();\r\n        g.drawString(texto, x, y);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dibujos/PanelesMovibles/DibujoSalida.java b/src/Dibujos/PanelesMovibles/DibujoSalida.java
+--- a/src/Dibujos/PanelesMovibles/DibujoSalida.java	
++++ b/src/Dibujos/PanelesMovibles/DibujoSalida.java	
+@@ -12,12 +12,11 @@
+         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
+     }
+ 
+-
+     @Override
+     protected void paintComponent(Graphics g) {
+-
+         super.paintComponent(g);
+-
++        Graphics2D g2d = (Graphics2D) g.create();
++        g2d.scale(zoomFactor, zoomFactor);
+ 
+         int widthTx  = this.anchoAlto[0];
+         int heightTx = this.anchoAlto[1];
+@@ -34,39 +33,35 @@
+         int desvio = (int) ((x2-x1)*0.1);                                    // Inclinación horizontal del paralelogramo
+ 
+ 
+-
+-
+-
+         // Dibujar las líneas que forman el paralelogramo
+-        g.setColor(Color.BLACK);
+-        g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
+-        g.drawLine(x2+desvio, y1, x2-desvio, y2 );     // Lado derecho
+-        g.drawLine(x1-desvio, y2 , x1+desvio, y1);     // Lado izquierdo
+-        g.drawLine(x2-desvio, y2 , x1-desvio, y2 );     // Lado inferior
+-
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
++        g2d.drawLine(x2+desvio, y1, x2-desvio, y2 );     // Lado derecho
++        g2d.drawLine(x1-desvio, y2 , x1+desvio, y1);     // Lado izquierdo
++        g2d.drawLine(x2-desvio, y2 , x1-desvio, y2 );     // Lado inferior
+ 
+         // Dibujar flecha de salida
+-        g.setColor(Color.RED);
+-        g.drawLine(x2+desvio, y1, x2+desvio - 10, y1 + 5);
+-        g.drawLine(x2+desvio, y1, x2+desvio + 10, y1 - 5);
+-        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 7,y1 - 1);
+-        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 6,y1 - 5);
++        g2d.setColor(Color.RED);
++        g2d.drawLine(x2+desvio, y1, x2+desvio - 10, y1 + 5);
++        g2d.drawLine(x2+desvio, y1, x2+desvio + 10, y1 - 5);
++        g2d.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 7,y1 - 1);
++        g2d.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 6,y1 - 5);
+ 
+         // Dibujar flujo
+-        g.setColor(Color.BLACK);
+-        g.drawLine(centro_x,0,centro_x,y1);               // Linea superior
+-        g.drawLine(centro_x,y2 ,centro_x,getHeight() + 30);         // Linea inferior
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(centro_x,0,centro_x,y1);               // Linea superior
++        g2d.drawLine(centro_x,y2 ,centro_x,getHeight() + 30);         // Linea inferior
+ 
+-        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
+-        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
++        g2d.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
++        g2d.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
+ 
+         // fuente con el tamaño especificado
+-        g.setFont(textoFont);
++        g2d.setFont(textoFont);
+ 
+         // Dibuja el texto centrado
+-        FontMetrics metrics = g.getFontMetrics();
++        FontMetrics metrics = g2d.getFontMetrics();
+         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
+         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
+-        g.drawString(texto, x, y);
++        g2d.drawString(texto, x, y);
+     }
+ }
+Index: src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dibujos.PanelesMovibles.Decision;\r\n\r\nimport Dibujos.PanelPersonalizado;\r\nimport Dibujos.Ventana.VentanaEmergente;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.MouseAdapter;\r\nimport java.awt.event.MouseEvent;\r\nimport java.util.List;\r\n\r\npublic class DibujoDecisionInicio extends PanelPersonalizado {\r\n    public DibujoDecisionInicio(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {\r\n        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);\r\n\r\n        addMouseListener(new MouseAdapter()\r\n        {\r\n\r\n            @Override\r\n            public void mouseClicked(MouseEvent e) {\r\n                super.mouseClicked(e);\r\n                if (e.getClickCount() == 2) { // Doble clic para editar el texto\r\n                    String nuevoTexto = JOptionPane.showInputDialog(null, \"Editar texto:\", texto);\r\n                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {\r\n                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura\r\n                    }\r\n                }\r\n\r\n            }\r\n        });\r\n    }\r\n\r\n\r\n\r\n\r\n    @Override\r\n    protected void paintComponent(Graphics g) {\r\n        super.paintComponent(g);\r\n\r\n        int widthTx  = this.anchoAlto[0];\r\n        int heightTx = this.anchoAlto[1];\r\n\r\n        int panelWidth  = getWidth();\r\n        int panelHeight = getHeight();\r\n\r\n\r\n        int centro_x = panelWidth/2;  // Centro horizontal\r\n        int centro_y = panelHeight/2; // Centro vertical\r\n\r\n\r\n        int cuarto_x = panelWidth/4;\r\n\r\n        double anguloY = Math.PI / 6;\r\n        double anguloX = Math.PI - anguloY;\r\n\r\n        double z1 = Math.sqrt( (widthTx*widthTx)   / (2 - (2 * Math.cos( anguloX ) ) ) );\r\n        double z2 = Math.sqrt( (heightTx*heightTx) / (2 - (2 * Math.cos( anguloY ) ) ) );\r\n\r\n        double z = z1+z2;\r\n\r\n        int deltX = (int) (z * Math.cos( anguloY / 2));\r\n        int deltY = (int) (z * Math.sin( anguloY / 2));\r\n\r\n\r\n        // Coordenadas del rombo\r\n        int x1 = centro_x - deltX; // Coordenada x del lado izquierdo del rectángulo\r\n        int x2 = centro_x + deltX; // Coordenada x del lado derecho del rectángulo\r\n        int y1 = centro_y - deltY; // Coordenada y del lado superior del rectángulo\r\n        int y2 = centro_y + deltY; // Coordenada y del lado inferior del rectángulo\r\n\r\n\r\n\r\n        // Dibujar las líneas que forman el rombo\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior\r\n        g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho\r\n        g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior\r\n        g.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo\r\n\r\n        // Dibujar flujo\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(centro_x,0,centro_x,y1);  // Linea superior\r\n\r\n        g.drawLine(centro_x,y1,centro_x,y1);   // Flecha\r\n        g.drawLine(centro_x,y1,centro_x,y1);   // de flujo\r\n\r\n        g.drawLine(x1,centro_y,cuarto_x,centro_y);\r\n        g.drawLine(x2,centro_y,cuarto_x*3,centro_y);\r\n        g.drawLine(cuarto_x,centro_y,cuarto_x,panelHeight);\r\n        g.drawLine(cuarto_x*3,centro_y,cuarto_x*3,panelHeight);\r\n\r\n        // fuente con el tamaño especificado\r\n        g.setFont(textoFont);\r\n\r\n        // Dibuja el texto centrado\r\n        FontMetrics metrics = g.getFontMetrics();\r\n        int x = (getWidth() - metrics.stringWidth(texto)) / 2;\r\n        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();\r\n        g.drawString(texto, x, y);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java b/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java
+--- a/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java	
++++ b/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java	
+@@ -36,6 +36,8 @@
+     @Override
+     protected void paintComponent(Graphics g) {
+         super.paintComponent(g);
++        Graphics2D g2d = (Graphics2D) g.create();
++        g2d.scale(zoomFactor, zoomFactor);
+ 
+         int widthTx  = this.anchoAlto[0];
+         int heightTx = this.anchoAlto[1];
+@@ -43,11 +45,9 @@
+         int panelWidth  = getWidth();
+         int panelHeight = getHeight();
+ 
+-
+         int centro_x = panelWidth/2;  // Centro horizontal
+         int centro_y = panelHeight/2; // Centro vertical
+ 
+-
+         int cuarto_x = panelWidth/4;
+ 
+         double anguloY = Math.PI / 6;
+@@ -69,33 +69,32 @@
+         int y2 = centro_y + deltY; // Coordenada y del lado inferior del rectángulo
+ 
+ 
+-
+         // Dibujar las líneas que forman el rombo
+-        g.setColor(Color.BLACK);
+-        g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
+-        g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
+-        g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
+-        g.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
++        g2d.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
++        g2d.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
++        g2d.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
+ 
+         // Dibujar flujo
+-        g.setColor(Color.BLACK);
+-        g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(centro_x,0,centro_x,y1);  // Linea superior
+ 
+-        g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
+-        g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
++        g2d.drawLine(centro_x,y1,centro_x,y1);   // Flecha
++        g2d.drawLine(centro_x,y1,centro_x,y1);   // de flujo
+ 
+-        g.drawLine(x1,centro_y,cuarto_x,centro_y);
+-        g.drawLine(x2,centro_y,cuarto_x*3,centro_y);
+-        g.drawLine(cuarto_x,centro_y,cuarto_x,panelHeight);
+-        g.drawLine(cuarto_x*3,centro_y,cuarto_x*3,panelHeight);
++        g2d.drawLine(x1,centro_y,cuarto_x,centro_y);
++        g2d.drawLine(x2,centro_y,cuarto_x*3,centro_y);
++        g2d.drawLine(cuarto_x,centro_y,cuarto_x,panelHeight);
++        g2d.drawLine(cuarto_x*3,centro_y,cuarto_x*3,panelHeight);
+ 
+         // fuente con el tamaño especificado
+-        g.setFont(textoFont);
++        g2d.setFont(textoFont);
+ 
+         // Dibuja el texto centrado
+-        FontMetrics metrics = g.getFontMetrics();
++        FontMetrics metrics = g2d.getFontMetrics();
+         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
+         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
+-        g.drawString(texto, x, y);
++        g2d.drawString(texto, x, y);
+     }
+ }
+Index: src/Front.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<form xmlns=\"http://www.intellij.com/uidesigner/form/\" version=\"1\" bind-to-class=\"Front\">\r\n  <grid id=\"27dc6\" binding=\"panel\" layout-manager=\"GridLayoutManager\" row-count=\"12\" column-count=\"7\" same-size-horizontally=\"false\" same-size-vertically=\"false\" hgap=\"-1\" vgap=\"-1\">\r\n    <margin top=\"5\" left=\"5\" bottom=\"5\" right=\"5\"/>\r\n    <constraints>\r\n      <xy x=\"20\" y=\"20\" width=\"743\" height=\"607\"/>\r\n    </constraints>\r\n    <properties>\r\n      <background color=\"-2502445\"/>\r\n      <foreground color=\"-4478029\"/>\r\n    </properties>\r\n    <clientProperties>\r\n      <html.disable class=\"java.lang.Boolean\" value=\"false\"/>\r\n    </clientProperties>\r\n    <border type=\"empty\">\r\n      <size top=\"2\" left=\"2\" bottom=\"2\" right=\"2\"/>\r\n    </border>\r\n    <children>\r\n      <component id=\"11dab\" class=\"javax.swing.JLabel\">\r\n        <constraints>\r\n          <grid row=\"1\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"1\"/>\r\n          <foreground color=\"-12828863\"/>\r\n          <text value=\"Comandos\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"8c37a\" class=\"javax.swing.JButton\" binding=\"etapaDelProcesoButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Proceso\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"79e0d\" class=\"javax.swing.JButton\" binding=\"decisionButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"4\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Decision\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"11435\" class=\"javax.swing.JButton\" binding=\"entradaButton\">\r\n        <constraints>\r\n          <grid row=\"3\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Entrada\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"a6daa\" class=\"javax.swing.JButton\" binding=\"limpiarButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"1\" indent=\"1\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-16772298\"/>\r\n          <font name=\"JetBrains Mono\" size=\"12\" style=\"1\"/>\r\n          <foreground color=\"-2765617\"/>\r\n          <text value=\"Limpiar\"/>\r\n        </properties>\r\n      </component>\r\n      <scrollpane id=\"4b1d\" binding=\"scroll\">\r\n        <constraints>\r\n          <grid row=\"1\" column=\"0\" row-span=\"9\" col-span=\"3\" vsize-policy=\"7\" hsize-policy=\"7\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\">\r\n            <minimum-size width=\"-1\" height=\"500\"/>\r\n            <preferred-size width=\"-1\" height=\"500\"/>\r\n            <maximum-size width=\"-1\" height=\"500\"/>\r\n          </grid>\r\n        </constraints>\r\n        <properties/>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <grid id=\"fceb0\" binding=\"panel1\" layout-manager=\"GridBagLayout\">\r\n            <constraints/>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children/>\r\n          </grid>\r\n        </children>\r\n      </scrollpane>\r\n      <hspacer id=\"f180a\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"1\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n      </hspacer>\r\n      <scrollpane id=\"dc074\">\r\n        <constraints>\r\n          <grid row=\"11\" column=\"0\" row-span=\"1\" col-span=\"7\" vsize-policy=\"7\" hsize-policy=\"7\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties/>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <grid id=\"9537c\" binding=\"pseudocodio\" layout-manager=\"BorderLayout\" hgap=\"0\" vgap=\"0\">\r\n            <constraints/>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children/>\r\n          </grid>\r\n        </children>\r\n      </scrollpane>\r\n      <component id=\"74aeb\" class=\"javax.swing.JButton\" binding=\"pseudoCodigoButton\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"1\" row-span=\"1\" col-span=\"3\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"8\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <horizontalTextPosition value=\"0\"/>\r\n          <text value=\"Pseudo-Codigo\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"11dab\" class=\"javax.swing.JLabel\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"1\"/>\r\n          <foreground color=\"-12828863\"/>\r\n          <text value=\"Comandos\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"8c37a\" class=\"javax.swing.JButton\" binding=\"etapaDelProcesoButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"1\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"10\" column=\"3\" row-span=\"1\" col-span=\"3\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Proceso\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"11435\" class=\"javax.swing.JButton\" binding=\"entradaButton\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Entrada\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"f8908\" class=\"javax.swing.JButton\" binding=\"doWhileButton\">\r\n        <constraints>\r\n          <grid row=\"7\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Do-While\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"649d2\" class=\"javax.swing.JButton\" binding=\"forButton\">\r\n        <constraints>\r\n          <grid row=\"9\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"8\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"For\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"79e0d\" class=\"javax.swing.JButton\" binding=\"decisionButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"3\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Decision\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"3bb5\" class=\"javax.swing.JButton\" binding=\"salidaButton\">\r\n        <constraints>\r\n          <grid row=\"5\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"4\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Salida\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"6be1d\" class=\"javax.swing.JButton\" binding=\"documentoButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"5\" column=\"2\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"6\" column=\"4\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Documento\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"e7935\" class=\"javax.swing.JButton\" binding=\"whileButton\">\r\n        <constraints>\r\n          <grid row=\"6\" column=\"2\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"7\" column=\"4\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"While\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"7cfc1\" class=\"javax.swing.JButton\" binding=\"ejecutar\">\r\n        <constraints>\r\n          <grid row=\"9\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"EJECUTAR\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"ca7cb\" class=\"javax.swing.JButton\" binding=\"zoomout\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Zoom Out\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"c6b6c\" class=\"javax.swing.JButton\" binding=\"zoomin\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"1\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Zoom In\"/>\r\n        </properties>\r\n      </component>\r\n    </children>\r\n  </grid>\r\n</form>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Front.form b/src/Front.form
+--- a/src/Front.form	
++++ b/src/Front.form	
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Front">
+-  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="12" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
++  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="13" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+     <margin top="5" left="5" bottom="5" right="5"/>
+     <constraints>
+-      <xy x="20" y="20" width="743" height="607"/>
++      <xy x="20" y="20" width="743" height="638"/>
+     </constraints>
+     <properties>
+       <background color="-2502445"/>
+@@ -18,50 +18,17 @@
+     <children>
+       <component id="11dab" class="javax.swing.JLabel">
+         <constraints>
+-          <grid row="1" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <font name="JetBrains Mono" size="14" style="1"/>
+           <foreground color="-12828863"/>
+           <text value="Comandos"/>
+-        </properties>
+-      </component>
+-      <component id="8c37a" class="javax.swing.JButton" binding="etapaDelProcesoButton" default-binding="true">
+-        <constraints>
+-          <grid row="2" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <text value="Proceso"/>
+-        </properties>
+-      </component>
+-      <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
+-        <constraints>
+-          <grid row="4" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <text value="Decision"/>
+-        </properties>
+-      </component>
+-      <component id="11435" class="javax.swing.JButton" binding="entradaButton">
+-        <constraints>
+-          <grid row="3" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <text value="Entrada"/>
+         </properties>
+       </component>
+       <component id="a6daa" class="javax.swing.JButton" binding="limpiarButton" default-binding="true">
+         <constraints>
+-          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
++          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-16772298"/>
+@@ -72,7 +39,7 @@
+       </component>
+       <scrollpane id="4b1d" binding="scroll">
+         <constraints>
+-          <grid row="1" column="0" row-span="9" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
++          <grid row="1" column="0" row-span="10" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+             <minimum-size width="-1" height="500"/>
+             <preferred-size width="-1" height="500"/>
+             <maximum-size width="-1" height="500"/>
+@@ -96,7 +63,7 @@
+       </hspacer>
+       <scrollpane id="dc074">
+         <constraints>
+-          <grid row="11" column="0" row-span="1" col-span="7" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
++          <grid row="12" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties/>
+         <border type="none"/>
+@@ -109,33 +76,32 @@
+           </grid>
+         </children>
+       </scrollpane>
+-      <component id="74aeb" class="javax.swing.JButton" binding="pseudoCodigoButton">
++      <component id="c6b6c" class="javax.swing.JButton" binding="zoomin">
+         <constraints>
+-          <grid row="10" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="8" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <horizontalTextPosition value="0"/>
+-          <text value="Pseudo-Codigo"/>
++          <text value="Zoom In"/>
+         </properties>
+       </component>
+-      <component id="11dab" class="javax.swing.JLabel">
++      <component id="74aeb" class="javax.swing.JButton" binding="pseudoCodigoButton">
+         <constraints>
+-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="11" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+-          <font name="JetBrains Mono" size="14" style="1"/>
+-          <foreground color="-12828863"/>
+-          <text value="Comandos"/>
++          <background color="-791314"/>
++          <font name="JetBrains Mono" size="14" style="3"/>
++          <foreground color="-16772298"/>
++          <horizontalTextPosition value="0"/>
++          <text value="Pseudo-Codigo"/>
+         </properties>
+       </component>
+       <component id="8c37a" class="javax.swing.JButton" binding="etapaDelProcesoButton" default-binding="true">
+         <constraints>
+-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="10" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+@@ -146,7 +112,7 @@
+       </component>
+       <component id="11435" class="javax.swing.JButton" binding="entradaButton">
+         <constraints>
+-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+@@ -155,68 +121,64 @@
+           <text value="Entrada"/>
+         </properties>
+       </component>
+-      <component id="f8908" class="javax.swing.JButton" binding="doWhileButton">
++      <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
+         <constraints>
+-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Do-While"/>
++          <text value="Decision"/>
+         </properties>
+       </component>
+-      <component id="649d2" class="javax.swing.JButton" binding="forButton">
++      <component id="ca7cb" class="javax.swing.JButton" binding="zoomout">
+         <constraints>
+-          <grid row="9" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="For"/>
++          <text value="Zoom Out"/>
+         </properties>
+       </component>
+-      <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
++      <component id="7cfc1" class="javax.swing.JButton" binding="ejecutar">
+         <constraints>
+-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Decision"/>
++          <text value="EJECUTAR"/>
+         </properties>
+       </component>
+-      <component id="3bb5" class="javax.swing.JButton" binding="salidaButton">
++      <component id="649d2" class="javax.swing.JButton" binding="forButton">
+         <constraints>
+-          <grid row="5" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Salida"/>
++          <text value="For"/>
+         </properties>
+       </component>
+-      <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
++      <component id="f8908" class="javax.swing.JButton" binding="doWhileButton">
+         <constraints>
+-          <grid row="5" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="6" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Documento"/>
++          <text value="Do-While"/>
+         </properties>
+       </component>
+       <component id="e7935" class="javax.swing.JButton" binding="whileButton">
+         <constraints>
+-          <grid row="6" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="7" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+@@ -225,37 +187,26 @@
+           <text value="While"/>
+         </properties>
+       </component>
+-      <component id="7cfc1" class="javax.swing.JButton" binding="ejecutar">
+-        <constraints>
+-          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <text value="EJECUTAR"/>
+-        </properties>
+-      </component>
+-      <component id="ca7cb" class="javax.swing.JButton" binding="zoomout">
++      <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
+         <constraints>
+-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Zoom Out"/>
++          <text value="Documento"/>
+         </properties>
+       </component>
+-      <component id="c6b6c" class="javax.swing.JButton" binding="zoomin">
++      <component id="3bb5" class="javax.swing.JButton" binding="salidaButton">
+         <constraints>
+-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Zoom In"/>
++          <text value="Salida"/>
+         </properties>
+       </component>
+     </children>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f2c63d2c-f798-4ff1-b245-2fede493910c\" name=\"Changes\" comment=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Compilador.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Compilador.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Controlador.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Controlador.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodyActiveAccount\">\r\n    <option name=\"activeAccountId\" value=\"VXNlcjozODM1ODI=\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <excluded-from-favorite>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"master\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </excluded-from-favorite>\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"Edgar\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n    &quot;associatedIndex&quot;: 4\r\n    }</component>\r\n  <component name=\"ProjectId\" id=\"2dirlefD5DxljA0N9gwNVNUnaIU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW\": \"true\",\r\n    \"UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH\": \"270\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"pollo__frito__trozado\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,\r\n    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;227&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;ramafeliz2&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\edgar\\OneDrive\\Desktop\\Proyecto de programacion\\Proyecto-Diagrama-de-Flujo\\Diagrama de Flujo\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"Dibujos.PanelesMovibles\" />\r\n      <recent name=\"LogicaFiguras\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"GraficadorInteractivo\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f2c63d2c-f798-4ff1-b245-2fede493910c\" name=\"Changes\" comment=\"\" />\r\n      <created>1710501892453</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1710501892453</updated>\r\n      <workItem from=\"1710501893482\" duration=\"19000\" />\r\n      <workItem from=\"1710501928960\" duration=\"597000\" />\r\n      <workItem from=\"1710502572541\" duration=\"8000\" />\r\n      <workItem from=\"1710502599781\" duration=\"108000\" />\r\n      <workItem from=\"1710502736836\" duration=\"725000\" />\r\n      <workItem from=\"1710503498694\" duration=\"18000\" />\r\n      <workItem from=\"1710503524960\" duration=\"42000\" />\r\n      <workItem from=\"1710503594128\" duration=\"922000\" />\r\n      <workItem from=\"1710509865136\" duration=\"522000\" />\r\n      <workItem from=\"1710550122912\" duration=\"2272000\" />\r\n      <workItem from=\"1710552608494\" duration=\"225000\" />\r\n      <workItem from=\"1710554332915\" duration=\"973000\" />\r\n      <workItem from=\"1710584677830\" duration=\"77000\" />\r\n      <workItem from=\"1710585350962\" duration=\"1285000\" />\r\n      <workItem from=\"1710586782759\" duration=\"267000\" />\r\n      <workItem from=\"1710587073308\" duration=\"165000\" />\r\n      <workItem from=\"1710587255476\" duration=\"87000\" />\r\n      <workItem from=\"1710587474880\" duration=\"1187000\" />\r\n      <workItem from=\"1710589963917\" duration=\"675000\" />\r\n      <workItem from=\"1710621523871\" duration=\"146000\" />\r\n      <workItem from=\"1710699958883\" duration=\"12982000\" />\r\n      <workItem from=\"1710720795353\" duration=\"53000\" />\r\n      <workItem from=\"1710787900013\" duration=\"84000\" />\r\n      <workItem from=\"1710788001213\" duration=\"110000\" />\r\n      <workItem from=\"1710788179290\" duration=\"1559000\" />\r\n      <workItem from=\"1710807091208\" duration=\"71000\" />\r\n      <workItem from=\"1711036718560\" duration=\"689000\" />\r\n      <workItem from=\"1711056144708\" duration=\"2118000\" />\r\n      <workItem from=\"1711069031272\" duration=\"202000\" />\r\n      <workItem from=\"1711204161415\" duration=\"3993000\" />\r\n      <workItem from=\"1711941059588\" duration=\"727000\" />\r\n      <workItem from=\"1712364788791\" duration=\"3062000\" />\r\n      <workItem from=\"1712415021566\" duration=\"789000\" />\r\n      <workItem from=\"1712431091306\" duration=\"5510000\" />\r\n      <workItem from=\"1712500818533\" duration=\"28960000\" />\r\n      <workItem from=\"1712579678706\" duration=\"1043000\" />\r\n      <workItem from=\"1712581071997\" duration=\"372000\" />\r\n      <workItem from=\"1712597557775\" duration=\"1778000\" />\r\n      <workItem from=\"1712796861319\" duration=\"12579000\" />\r\n      <workItem from=\"1713146491385\" duration=\"420000\" />\r\n      <workItem from=\"1713146941087\" duration=\"218000\" />\r\n      <workItem from=\"1713147237113\" duration=\"43000\" />\r\n      <workItem from=\"1713147364454\" duration=\"123000\" />\r\n      <workItem from=\"1714533075828\" duration=\"492000\" />\r\n      <workItem from=\"1715208009576\" duration=\"62000\" />\r\n      <workItem from=\"1715556573296\" duration=\"3817000\" />\r\n      <workItem from=\"1715615290791\" duration=\"9503000\" />\r\n      <workItem from=\"1717203469550\" duration=\"5000\" />\r\n      <workItem from=\"1717357044709\" duration=\"3034000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Intercambio de figuras parcial\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712580312170</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712580312170</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718771398687</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718771398687</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"Edgar\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Intercambio de figuras parcial\" />\r\n    <MESSAGE value=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Controlador.java</url>\r\n          <line>164</line>\r\n          <properties class=\"Controlador\" method=\"prueba\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"13\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Compilador.java</url>\r\n          <line>41</line>\r\n          <properties class=\"Compilador\" method=\"ejecutar\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"15\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Compilador.java</url>\r\n          <line>64</line>\r\n          <option name=\"timeStamp\" value=\"17\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"componete\" />\r\n        <watch expression=\"componete\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,11 +4,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)">
++    <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compilador.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DesicionVacia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DesicionVacia.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionFin.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Front.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.form" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Front.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -68,41 +74,30 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.Main.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "270",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "pollo__frito__trozado",
+-    "kotlin-language-version-configured": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.2",
+-    "vue.rearranger.settings.migration": "true"
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;227&quot;,
++    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;199&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;ramafeliz2&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\edgar\OneDrive\Desktop\Proyecto de programacion\Proyecto-Diagrama-de-Flujo\Diagrama de Flujo" />
+Index: src/Dibujos/PanelesMovibles/DibujoDocumento.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dibujos.PanelesMovibles;\r\nimport Dibujos.PanelMovible;\r\nimport Dibujos.PanelPersonalizado;\r\nimport Dibujos.Ventana.VentanaEmergente;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.geom.QuadCurve2D;\r\nimport java.util.List;\r\n\r\npublic class DibujoDocumento extends PanelMovible {\r\n    public DibujoDocumento(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {\r\n        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);\r\n\r\n    }\r\n\r\n    @Override\r\n    protected void paintComponent(Graphics g) {\r\n        super.paintComponent(g);\r\n\r\n        Graphics2D g2d = (Graphics2D) g;\r\n\r\n\r\n\r\n        int widthTx  = this.anchoAlto[0];\r\n        int heightTx = this.anchoAlto[1];\r\n\r\n        int centro_x = this.getWidth()  / 2;\r\n        int centro_y = this.getHeight() / 2;\r\n\r\n\r\n\r\n        // Coordenadas del rectángulo\r\n        int x1 = centro_x - ( ( widthTx  / 2 ) + 10); // Coordenada x del lado izquierdo del rectángulo\r\n        int x2 = centro_x + ( ( widthTx  / 2 ) + 10); // Coordenada x del lado derecho del rectángulo\r\n        int y1 = centro_y - ( ( heightTx / 2 ) + 10); // Coordenada y del lado superior del rectángulo\r\n        int y2 = centro_y + ( ( heightTx / 2 ) + 10); // Coordenada y del lado inferior del rectángulo\r\n\r\n        double ctrl1x = (x1 + (x1 / 2) * 0.3);\r\n        double ctrl1y = -1.1 * (y2);\r\n        double ctrl2x = (x2 + (x2 / 4) * -0.3);\r\n        double ctrl2y = 0.9 * (y2);\r\n\r\n\r\n        // Dibujar las líneas que forman el rectángulo\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(x1, y1, x2, y1);     // Lado superior\r\n        g.drawLine(x2, y1, x2, y2);     // Lado derecho\r\n        g.drawLine(x1, y2, x1, y1);     // Lado izquierdo\r\n        g2d.setColor(Color.BLACK);\r\n        g2d.setStroke(new BasicStroke(1)); // Grosor de línea\r\n        g2d.draw(new QuadCurve2D.Double(x1, y2, ctrl1x, -ctrl1y, centro_x, y2));\r\n        g2d.draw(new QuadCurve2D.Double(centro_x, y2, ctrl2x, ctrl2y, x2, y2));\r\n\r\n        // Dibujar flujo\r\n        g2d.setStroke(new BasicStroke(1));\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(centro_x,0,centro_x,y1);        // Linea superior\r\n        g.drawLine(centro_x,y2,centro_x,this.getHeight());  // Linea inferior\r\n        g.drawLine(centro_x,y1,centro_x+10,y1-10);\r\n        g.drawLine(centro_x,y1,centro_x-10,y1-10);\r\n\r\n        // fuente con el tamaño especificado\r\n        g.setFont(textoFont);\r\n\r\n        // Dibuja el texto centrado\r\n        FontMetrics metrics = g.getFontMetrics();\r\n        int x = (getWidth() - metrics.stringWidth(texto)) / 2;\r\n        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();\r\n        g.drawString(texto, x, y);\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dibujos/PanelesMovibles/DibujoDocumento.java b/src/Dibujos/PanelesMovibles/DibujoDocumento.java
+--- a/src/Dibujos/PanelesMovibles/DibujoDocumento.java	
++++ b/src/Dibujos/PanelesMovibles/DibujoDocumento.java	
+@@ -17,10 +17,8 @@
+     @Override
+     protected void paintComponent(Graphics g) {
+         super.paintComponent(g);
+-
+-        Graphics2D g2d = (Graphics2D) g;
+-
+-
++        Graphics2D g2d = (Graphics2D) g.create();
++        g2d.scale(zoomFactor, zoomFactor);
+ 
+         int widthTx  = this.anchoAlto[0];
+         int heightTx = this.anchoAlto[1];
+@@ -43,10 +41,10 @@
+ 
+ 
+         // Dibujar las líneas que forman el rectángulo
+-        g.setColor(Color.BLACK);
+-        g.drawLine(x1, y1, x2, y1);     // Lado superior
+-        g.drawLine(x2, y1, x2, y2);     // Lado derecho
+-        g.drawLine(x1, y2, x1, y1);     // Lado izquierdo
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(x1, y1, x2, y1);     // Lado superior
++        g2d.drawLine(x2, y1, x2, y2);     // Lado derecho
++        g2d.drawLine(x1, y2, x1, y1);     // Lado izquierdo
+         g2d.setColor(Color.BLACK);
+         g2d.setStroke(new BasicStroke(1)); // Grosor de línea
+         g2d.draw(new QuadCurve2D.Double(x1, y2, ctrl1x, -ctrl1y, centro_x, y2));
+@@ -54,20 +52,20 @@
+ 
+         // Dibujar flujo
+         g2d.setStroke(new BasicStroke(1));
+-        g.setColor(Color.BLACK);
+-        g.drawLine(centro_x,0,centro_x,y1);        // Linea superior
+-        g.drawLine(centro_x,y2,centro_x,this.getHeight());  // Linea inferior
+-        g.drawLine(centro_x,y1,centro_x+10,y1-10);
+-        g.drawLine(centro_x,y1,centro_x-10,y1-10);
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(centro_x,0,centro_x,y1);        // Linea superior
++        g2d.drawLine(centro_x,y2,centro_x,this.getHeight());  // Linea inferior
++        g2d.drawLine(centro_x,y1,centro_x+10,y1-10);
++        g2d.drawLine(centro_x,y1,centro_x-10,y1-10);
+ 
+         // fuente con el tamaño especificado
+-        g.setFont(textoFont);
++        g2d.setFont(textoFont);
+ 
+         // Dibuja el texto centrado
+-        FontMetrics metrics = g.getFontMetrics();
++        FontMetrics metrics = g2d.getFontMetrics();
+         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
+         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
+-        g.drawString(texto, x, y);
++        g2d.drawString(texto, x, y);
+     }
+ }
+ 
+Index: src/Dibujos/PanelesMovibles/DibujoEntrada.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dibujos.PanelesMovibles;\r\n\r\nimport Dibujos.PanelMovible;\r\nimport Dibujos.PanelPersonalizado;\r\nimport Dibujos.Ventana.VentanaEmergente;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.util.List;\r\n\r\npublic class DibujoEntrada extends PanelMovible {\r\n    private int ultimoEjeY;\r\n    private boolean moviendo;\r\n    private int ejeYMouse;\r\n\r\n    public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {\r\n        super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);\r\n        this.texto = validar(validarCadena.validar(texto),\"Cadena\",texto);\r\n        this.variables.add(this.texto);\r\n    }\r\n\r\n    @Override\r\n    protected void paintComponent(Graphics g) {\r\n        super.paintComponent(g);\r\n\r\n        int widthTx  = this.anchoAlto[0];\r\n        int heightTx = this.anchoAlto[1];\r\n\r\n        int centro_x = getWidth()  / 2;\r\n        int centro_y = getHeight() / 2;\r\n\r\n        // Coordenadas del Paralelogramo\r\n\r\n        int x1 = centro_x - ( ( widthTx  / 2 ) +10);                    // Coordenada x del lado izquierdo del rectángulo\r\n        int x2 = centro_x + ( ( widthTx  / 2 ) +10);     // Coordenada x del lado derecho del rectángulo\r\n        int y1 = centro_y - ( ( heightTx / 2 ) +10);                 // Coordenada y del lado superior del rectángulo\r\n        int y2 = centro_y + ( ( heightTx / 2 ) +10);\r\n        int desvio = (int) ((x2-x1)*0.1);\r\n\r\n        // Dibujar las líneas que forman el paralelogramo\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior\r\n        g.drawLine(x2+desvio, y1, x2-desvio, y2);     // Lado derecho\r\n        g.drawLine(x2-desvio, y2 , x1-desvio, y2);     // Lado inferior\r\n        g.drawLine(x1-desvio, y2 , x1+desvio, y1);     // Lado izquierdo\r\n\r\n\r\n        // Dibujar flecha de entrada\r\n        g.setColor(Color.RED);\r\n        g.drawLine(x2 + desvio, y1, x2 + desvio - 10, y1 + 5);              // Linea de\r\n        g.drawLine(x2 + desvio, y1, x2 + desvio + 10, y1 - 5);              // Flecha\r\n\r\n        g.drawLine( x2 + desvio - 10, y1 + 5, x2 + desvio - 7, y1 + 1);  // Punta de\r\n        g.drawLine( x2 + desvio - 10, y1 + 5, x2 + desvio - 6, y1 + 5);  // Flecha\r\n\r\n        // Dibujar flujo\r\n        g.setColor(Color.BLACK);\r\n        g.drawLine(centro_x,0,centro_x,y1);               // Linea superior\r\n        g.drawLine(centro_x,y2 ,centro_x,getHeight());         // Linea inferior\r\n\r\n        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha\r\n        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo\r\n\r\n        // fuente con el tamaño especificado\r\n        g.setFont(textoFont);\r\n\r\n        // Dibuja el texto centrado\r\n        FontMetrics metrics = g.getFontMetrics();\r\n        int x = (getWidth() - metrics.stringWidth(texto)) / 2;\r\n        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();\r\n        g.drawString(texto, x, y);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dibujos/PanelesMovibles/DibujoEntrada.java b/src/Dibujos/PanelesMovibles/DibujoEntrada.java
+--- a/src/Dibujos/PanelesMovibles/DibujoEntrada.java	
++++ b/src/Dibujos/PanelesMovibles/DibujoEntrada.java	
+@@ -22,6 +22,8 @@
+     @Override
+     protected void paintComponent(Graphics g) {
+         super.paintComponent(g);
++        Graphics2D g2d = (Graphics2D) g.create();
++        g2d.scale(zoomFactor, zoomFactor);
+ 
+         int widthTx  = this.anchoAlto[0];
+         int heightTx = this.anchoAlto[1];
+@@ -38,36 +40,36 @@
+         int desvio = (int) ((x2-x1)*0.1);
+ 
+         // Dibujar las líneas que forman el paralelogramo
+-        g.setColor(Color.BLACK);
+-        g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
+-        g.drawLine(x2+desvio, y1, x2-desvio, y2);     // Lado derecho
+-        g.drawLine(x2-desvio, y2 , x1-desvio, y2);     // Lado inferior
+-        g.drawLine(x1-desvio, y2 , x1+desvio, y1);     // Lado izquierdo
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
++        g2d.drawLine(x2+desvio, y1, x2-desvio, y2);     // Lado derecho
++        g2d.drawLine(x2-desvio, y2 , x1-desvio, y2);     // Lado inferior
++        g2d.drawLine(x1-desvio, y2 , x1+desvio, y1);     // Lado izquierdo
+ 
+ 
+         // Dibujar flecha de entrada
+-        g.setColor(Color.RED);
+-        g.drawLine(x2 + desvio, y1, x2 + desvio - 10, y1 + 5);              // Linea de
+-        g.drawLine(x2 + desvio, y1, x2 + desvio + 10, y1 - 5);              // Flecha
++        g2d.setColor(Color.RED);
++        g2d.drawLine(x2 + desvio, y1, x2 + desvio - 10, y1 + 5);              // Linea de
++        g2d.drawLine(x2 + desvio, y1, x2 + desvio + 10, y1 - 5);              // Flecha
+ 
+-        g.drawLine( x2 + desvio - 10, y1 + 5, x2 + desvio - 7, y1 + 1);  // Punta de
+-        g.drawLine( x2 + desvio - 10, y1 + 5, x2 + desvio - 6, y1 + 5);  // Flecha
++        g2d.drawLine( x2 + desvio - 10, y1 + 5, x2 + desvio - 7, y1 + 1);  // Punta de
++        g2d.drawLine( x2 + desvio - 10, y1 + 5, x2 + desvio - 6, y1 + 5);  // Flecha
+ 
+         // Dibujar flujo
+-        g.setColor(Color.BLACK);
+-        g.drawLine(centro_x,0,centro_x,y1);               // Linea superior
+-        g.drawLine(centro_x,y2 ,centro_x,getHeight());         // Linea inferior
++        g2d.setColor(Color.BLACK);
++        g2d.drawLine(centro_x,0,centro_x,y1);               // Linea superior
++        g2d.drawLine(centro_x,y2 ,centro_x,getHeight());         // Linea inferior
+ 
+-        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
+-        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
++        g2d.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
++        g2d.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
+ 
+         // fuente con el tamaño especificado
+-        g.setFont(textoFont);
++        g2d.setFont(textoFont);
+ 
+         // Dibuja el texto centrado
+-        FontMetrics metrics = g.getFontMetrics();
++        FontMetrics metrics = g2d.getFontMetrics();
+         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
+         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
+-        g.drawString(texto, x, y);
++        g2d.drawString(texto, x, y);
+     }
+ }
+\ No newline at end of file

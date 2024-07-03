@@ -13,7 +13,6 @@ public class DibujoDoWhileInterno extends JPanel {
     private DoWhileInterno verdadero1;
     private DoWhileInterno verdadero2;
 
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
 
     public DibujoDoWhileInterno() {
         this.verdadero1 = new DoWhileInterno();
@@ -25,14 +24,20 @@ public class DibujoDoWhileInterno extends JPanel {
 
         this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
         this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero1.add(new DoWhileVacio(null,null,null,null,null,null));
+        this.verdadero1.add(new DoWhileVacio("izquierda",null,null,null,null,null));
 
         this.verdadero2.setLayout(new BoxLayout(this.verdadero2, BoxLayout.Y_AXIS));
-        this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 249));
-        this.verdadero2.add(new DoWhileVacio(null,null,null,null,null,null));
+        this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.verdadero2.add(new DoWhileVacio("null",null,this,null,null,null));
+
+        JPanel espacio = new JPanel();
+        espacio.setPreferredSize(new Dimension(200, 100));
+        espacio.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
 
         this.add(verdadero1);
         this.add(verdadero2);
+        this.add(espacio);
     }
     public JPanel getVerdadero1() {
         return verdadero1;
@@ -91,6 +96,7 @@ public class DibujoDoWhileInterno extends JPanel {
 
     public class DoWhileInterno extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
+        public double zoomFactor = 1.0;
 
         DoWhileInterno() {
             listaFiguras = new ArrayList<>();
@@ -99,6 +105,8 @@ public class DibujoDoWhileInterno extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.scale(zoomFactor, zoomFactor);
 
             int panelWidth = getWidth();
             int panelHeight = getHeight();
@@ -108,14 +116,11 @@ public class DibujoDoWhileInterno extends JPanel {
 
             int cuarto = panelWidth/4;
 
-            g.setColor(BLACK);
-
-            //Para verdadero1: dibujar línea horizontal que conecta con el panel superior
-            //g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);
+            g2d.setColor(BLACK);
 
             // Para verdadero2: dibujar línea vertical en el centro del panel
             if (this == verdadero2) {
-                g.drawLine(centro_x, 0, centro_x, panelHeight);
+                g2d.drawLine(centro_x, 0, centro_x, panelHeight);
             }
         }
 

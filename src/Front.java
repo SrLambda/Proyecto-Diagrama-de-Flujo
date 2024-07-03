@@ -1,17 +1,20 @@
 import Dibujos.PanelPersonalizado;
 import Dibujos.Validador.Validador;
+import Dibujos.Zoomable;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Front extends JFrame {
 
-    private      JPanel panel1;
-    private      JPanel panel;
-    private      JPanel pseudocodio;
+    private     JPanel panel1;
+    private     JPanel panel;
+    private     JPanel pseudocodio;
     private     JButton etapaDelProcesoButton;
     private     JButton decisionButton;
     private     JButton entradaButton;
@@ -23,7 +26,15 @@ public class Front extends JFrame {
     private     JButton forButton;
     private     JButton doWhileButton;
     private     JScrollPane scroll;
-    private List <PanelPersonalizado> listaPaneles;
+    private     JButton ejecutar;
+    private     JButton zoomin;
+    private     JButton zoomout;
+    private     JButton agregarPSDCButton;
+    private     JButton undoButton;
+    private     JButton redoButton;
+    private     List <PanelPersonalizado> listaPaneles;
+    private     double zoomFactor = 1.0;
+
 
     public Front(Controlador controlador)
     {
@@ -37,8 +48,6 @@ public class Front extends JFrame {
         listaPaneles = new ArrayList<>();
 
         controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
-
-
 
         //botón para dibujar un rectángulo
         etapaDelProcesoButton.addActionListener(new ActionListener()
@@ -142,6 +151,17 @@ public class Front extends JFrame {
 
         });
 
+        agregarPSDCButton.addActionListener(new ActionListener() {
+
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+                controlador.entradaPorPseudocodigo(Front.this);
+            }
+        });
+
         forButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -163,6 +183,49 @@ public class Front extends JFrame {
             }
         });
 
+        ejecutar.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                controlador.prueba();
+
+            }
+
+        });
+
+        zoomin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                zoomFactor += 0.03;
+                ajustarZoom();
+            }
+        });
+
+        zoomout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //zoomFactor = Math.max(0.1, zoomFactor - 0.1);
+                zoomFactor -= 0.03;
+                ajustarZoom();
+            }
+        });
+
+
+        undoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        redoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public JPanel getPanel1()
@@ -174,4 +237,28 @@ public class Front extends JFrame {
     {
         return this.pseudocodio;
     }
+
+
+    private void ajustarZoom() {
+        for (PanelPersonalizado panel : listaPaneles) {
+            panel.setZoomFactor(zoomFactor);
+        }
+        panel1.revalidate();
+        panel1.repaint();
+    }
 }
+
+
+      /*⢀⣤⣤⣶⠶⠶⣶⣤⣤⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⣴⠾⠛⠉⠀⢠⣾⣴⡾⠛⠻⣷⣄⠀⠀⠀⠀⠀
+⠀⠀⢶⣶⣶⣿⣁⠀⠀⠀⠀⢸⣿⠏⢀⣤⣶⣌⠻⣦⡀⠀⠀⠀
+⠀⠀⣴⡟⠁⢉⣙⣿⣦⡀⠀⢸⡏⣴⠟⢡⣶⣿⣧⡹⣷⡀⠀⠀
+⠀⣼⠏⢀⣾⠟⠛⠛⠻⣿⡆⠀⠀⢿⣄⠀⠙⠉⠹⣷⡸⣷⠀⠀
+⢠⣿⠀⢸⡿⢿⠇⠀⠀⣾⠇⠀⣀⣈⠻⢷⣤⣤⣤⡾⠃⢹⣇⠀
+⢸⣿⠀⢸⣧⣀⣀⣠⣾⢋⣴⢿⣿⡛⠻⣶⣤⣉⠁⠀⠀⠀⣿⠀
+⠈⣿⠀⠀⠙⠛⠛⠋⠁⣼⣯⣀⣿⠿⠶⠟⠉⠛⢷⣄⠀⠀⣿⡇
+⠀⣿⠀⠀⠀⠀⠀⠀⠀⣿⡏⠉⠁⠀⠀⢀⣴⢶⣄⢻⡇⠀⢸⡇
+⠀⢻⣇⠀⠀⠀⠀⠀⢠⡿⢀⣀⢠⣾⠷⣾⣧⡶⠿⠟⠁⠀⣾⡇
+⠀⠈⣿⣧⡀⠀⠀⣠⣿⣷⠟⢻⣿⣷⡾⠛⠉⠀⠀⠀⠀⢀⣿⠀
+⠀⠀⢹⣿⢻⣦⡀⠉⠛⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⣼⠏⠀
+⠀⠀⠀⠛⠀⠈⠻⠷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠟*/

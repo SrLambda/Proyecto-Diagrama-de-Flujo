@@ -16,6 +16,7 @@ public class DibujoWhileInterno extends JPanel {
 
     public DibujoWhileInterno()
     {
+        setPreferredSize(new Dimension(600, 500));
         this.verdadero1 = verdadero1;
         this.verdadero2 = verdadero2;
         this.falso = falso;
@@ -28,15 +29,15 @@ public class DibujoWhileInterno extends JPanel {
 
         this.verdadero1.setLayout(new BoxLayout(this.verdadero1, BoxLayout.Y_AXIS));
         this.verdadero1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero1.add(new WhileVacio(null,null,null,null,null,null));
+        this.verdadero1.add(new WhileVacio("izquierda",null,this.verdadero2,null,null,null));
 
         this.verdadero2.setLayout(new BoxLayout(this.verdadero2, BoxLayout.Y_AXIS));
         this.verdadero2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.verdadero2.add(new WhileVacio(null,null,null,null,null,null));
+        this.verdadero2.add(new WhileVacio("null",null,this,null,null,null));
 
         this.falso.setLayout(new BoxLayout(this.falso, BoxLayout.Y_AXIS));
         this.falso.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        this.falso.add(new WhileVacio(null,null,null,null,null,null));
+        this.falso.add(new WhileVacio("derecha",null,this.verdadero2,null,null,null));
 
         this.add(verdadero1);
         this.add(verdadero2);
@@ -90,6 +91,7 @@ public class DibujoWhileInterno extends JPanel {
 
     public class WhileInterna extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
+        public double zoomFactor = 1.0;
 
         WhileInterna() {
             listaFiguras = new ArrayList<>();
@@ -98,19 +100,21 @@ public class DibujoWhileInterno extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.scale(zoomFactor, zoomFactor);
 
             int panelWidth = getWidth();
             int panelHeight = getHeight();
 
             int centro_x = panelWidth / 2; // Centro horizontal
 
-            g.setColor(Color.BLACK);
+            g2d.setColor(Color.BLACK);
 
-            g.drawLine(centro_x, 0, centro_x, panelHeight);
+            g2d.drawLine(centro_x, 0, centro_x, panelHeight);
 
             //Para falso: dibujar línea vertical que conecta con el panel inferior
             if (this == falso) {
-                g.drawLine(centro_x, 0, centro_x, panelHeight);
+                g2d.drawLine(centro_x, 0, centro_x, panelHeight);
             }
         }
 

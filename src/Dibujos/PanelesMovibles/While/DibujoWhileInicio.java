@@ -28,6 +28,7 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         this.interno = _interno;
         this.dibujoWhile = _while;
         panelesCiclo = lista;
+        setPreferredSize(new Dimension(600, 500));
         String nuevoTxt = quitarEspacios(texto);
         asignarVariable(nuevoTxt);
         manejoSalidas();
@@ -77,49 +78,70 @@ public class DibujoWhileInicio extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
 
-        int panelWidth = getWidth();
+        int widthTx  = this.anchoAlto[0];
+        int heightTx = this.anchoAlto[1];
+
+        int panelWidth  = getWidth();
         int panelHeight = getHeight();
 
+
+        int centro_x = panelWidth/2;  // Centro horizontal
+        int centro_y = panelHeight/2; // Centro vertical
+
+
+        int cuarto_x = panelWidth/4;
+
+        double anguloY = Math.PI / 6;
+        double anguloX = Math.PI - anguloY;
+
+        double z1 = Math.sqrt( (widthTx*widthTx)   / (2 - (2 * Math.cos( anguloX ) ) ) );
+        double z2 = Math.sqrt( (heightTx*heightTx) / (2 - (2 * Math.cos( anguloY ) ) ) );
+
+        double z = z1+z2;
+
+        int deltX = (int) (z * Math.cos( anguloY / 2));
+        int deltY = (int) (z * Math.sin( anguloY / 2));
+
+
         // Coordenadas del rombo
-        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del rectángulo
-        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del rectángulo
-        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del rectángulo
-        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del rectángulo
+        int x1 = centro_x - deltX; // Coordenada x del lado izquierdo del rectángulo
+        int x2 = centro_x + deltX; // Coordenada x del lado derecho del rectángulo
+        int y1 = centro_y - deltY; // Coordenada y del lado superior del rectángulo
+        int y2 = centro_y + deltY; // Coordenada y del lado inferior del rectángulo
 
-        int centro_x = panelWidth/2;                                         // Centro horizontal
-        int centro_y = panelHeight/2;                                        // Centro vertical
 
-        int cuarto = panelWidth/4;
 
         // Dibujar las líneas que forman el rombo
-        g.setColor(Color.BLACK);
-        g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
-        g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
-        g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
-        g.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
+        g2d.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
+        g2d.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
+        g2d.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
 
         // Dibujar flujo
-        g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
-        g.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
-        g.drawLine(x2,centro_y, (int) (cuarto*3.33),centro_y); //  Linea horizontal derecha
-        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(centro_x,0,centro_x,y1);  // Linea superior
+        g2d.drawLine(centro_x,y2,centro_x,panelHeight);     // Linea inferior
+        g2d.drawLine(x2,centro_y, panelWidth - 100,centro_y); //  Linea horizontal derecha
+        g2d.drawLine(100,(int) (panelHeight*0.25),centro_x,(int) (panelHeight*0.25)); //  Linea horizontal izquierda
 
-        g.drawLine((int) (cuarto*3.33),centro_y,(int) (cuarto*3.33),panelHeight); //  Linea vertical derecha
-        g.drawLine((int) (panelWidth*0.1665),(int) (panelHeight*0.25),(int) (panelWidth*0.1665),panelHeight); //  Linea vertical izquierda
+        g2d.drawLine(panelWidth - 100,centro_y,panelWidth - 100,panelHeight); //  Linea vertical derecha
+        g2d.drawLine(100,(int) (panelHeight*0.25),100,panelHeight); //  Linea vertical izquierda
 
-        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
-        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
+        g2d.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
+        g2d.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
         // fuente con el tamaño especificado
-        g.setFont(textoFont);
+        g2d.setFont(textoFont);
 
         // Dibuja el texto centrado
-        FontMetrics metrics = g.getFontMetrics();
+        FontMetrics metrics = g2d.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, y);
+        g2d.drawString(texto, x, y);
     }
 
     public void asignarVariable(String _entrada){

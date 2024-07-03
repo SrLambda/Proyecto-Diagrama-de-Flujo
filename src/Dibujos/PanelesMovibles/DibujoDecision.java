@@ -31,7 +31,7 @@ public class DibujoDecision extends PanelMovible {
         this.restriciones.weighty = 0; // No expandir en dirección vertical
         this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
 
-        setPreferredSize(new Dimension(750, 600));
+        setPreferredSize(new Dimension(400, 300));
         this.setLayout(new BoxLayout(DibujoDecision.this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 

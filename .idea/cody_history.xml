@@ -1,6 +1,593 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChatHistory">
+    <accountData>
+      <list>
+        <AccountData>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <chats>
+            <list>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="761a579d-bb39-4895-8ca6-9e2c6b68d90b" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="c89ad32b-ca56-4b6c-838d-af254e02feb6" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+                <messages>
+                  <list>
+                    <message>
+                      <speaker value="HUMAN" />
+                      <text value="public class Main {&#10;    public static void main(String[] args) {&#10;        Controlador controlador = Controlador.getInstancia();&#10;        new Front(controlador);&#10;    }&#10;}&#10;&#10;import Dibujos.PanelPersonalizado;&#10;&#10;import javax.swing.*;&#10;import java.awt.*;&#10;import java.awt.event.ActionEvent;&#10;import java.awt.event.ActionListener;&#10;import java.awt.event.MouseAdapter;&#10;import java.awt.event.MouseEvent;&#10;import java.util.ArrayList;&#10;import java.util.List;&#10;public class Front extends JFrame {&#10;    private JPanel panel1;&#10;    private JPanel panel;&#10;    private JButton inicioButton;&#10;    private JButton etapaDelProcesoButton;&#10;    private JButton decisionButton;&#10;    private JButton entradaButton;&#10;    private JButton salidaButton;&#10;    private JButton documentoButton;&#10;    private JButton limpiarButton;&#10;    private JButton FinButton;&#10;    private JPanel columna;&#10;    private List &amp;lt;PanelPersonalizado&amp;gt; listaPaneles;&#10;    private JButton EliminarFiguraButton;&#10;&#10;    public Front(Controlador controlador)&#10;    {&#10;        setContentPane(panel);&#10;        setSize(700, 600);&#10;        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#10;        setTitle(&amp;quot;Graficador Interactivo de Diagramas de flujo&amp;quot;);&#10;        setVisible(true);&#10;        listaPaneles = new ArrayList&amp;lt;&amp;gt;();&#10;        this.columna = new JPanel();&#10;        controlador.initFront(Front.this,listaPaneles, panel);&#10;&#10;&#10;        //botón para dibujar un rectángulo&#10;        etapaDelProcesoButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e)&#10;            {&#10;                controlador.crearProceso(Front.this);&#10;            }&#10;&#10;        });&#10;&#10;&#10;        //boton para dibujar un rombo&#10;        decisionButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e)&#10;            {&#10;                controlador.crearDecision(Front.this);&#10;            }&#10;        });&#10;&#10;        limpiarButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e) {&#10;&#10;                controlador.limpiarPantalla(Front.this);&#10;            }&#10;        });&#10;&#10;        //Dibujar Paralelogramo /__/&#10;        entradaButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e)&#10;            {&#10;                controlador.crearEntreda(Front.this);&#10;            }&#10;        });&#10;&#10;        //Dibujar Paralelogramo /__/&#10;        salidaButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e)&#10;            {&#10;                controlador.crearSalida(Front.this);&#10;            }&#10;        });&#10;&#10;        //Dibujar Impresion /_-/&#10;        documentoButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e)&#10;            {&#10;                controlador.crearImpresion(Front.this);&#10;                int bandera = 0;&#10;                while(bandera &amp;lt; listaPaneles.size()){&#10;                    System.out.println(&amp;quot;Posicion&amp;quot;+bandera+&amp;quot;: Eje Y:&amp;quot;+listaPaneles.get(bandera).getY());&#10;                    bandera++;&#10;                }&#10;            }&#10;        });&#10;&#10;        //Dibujar Rectangulo curvo (__)&#10;        inicioButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e)&#10;            {&#10;                controlador.crearInicio(Front.this);&#10;            }&#10;        });&#10;&#10;        FinButton.addActionListener(new ActionListener()&#10;        {&#10;            @Override&#10;            public void actionPerformed(ActionEvent e)&#10;            {&#10;                controlador.crearFin(Front.this);&#10;            }&#10;        });&#10;    }&#10;&#10;    // Método para obtener la figura clicada en las coordenadas dadas&#10;    private PanelPersonalizado obtenerFiguraClicada(int x, int y) {&#10;        for (PanelPersonalizado figura : listaPaneles) {&#10;            if (figura.getBounds().contains(x, y)) {&#10;                return figura;&#10;            }&#10;        }&#10;        return null; // No se encontró ninguna figura en las coordenadas dadas&#10;    }&#10;&#10;    public JPanel getPanel1()&#10;    {&#10;        return panel1;&#10;    }&#10;&#10;    public JPanel getColumna()&#10;    {&#10;        return columna;&#10;    }&#10;}&#10;&#10;package Dibujos;&#10;import javax.swing.*;&#10;import java.awt.*;&#10;import java.awt.event.MouseAdapter;&#10;import java.util.List;&#10;&#10;public class PanelPersonalizado extends JPanel&#10;{&#10;&#10;    protected String texto;&#10;    protected List &amp;lt;PanelPersonalizado&amp;gt; listaFiguras;&#10;    protected int altura;&#10;    protected int posOriginal = -1;&#10;    protected JPanel contenedor;&#10;&#10;    public PanelPersonalizado(String texto, List &amp;lt;PanelPersonalizado&amp;gt; lista, JPanel _contenedor) {&#10;        this.texto = texto;&#10;        this.listaFiguras = lista;&#10;        this.contenedor = _contenedor;&#10;        setPreferredSize(new Dimension(100, 50));&#10;    }&#10;&#10;&#10;    public void actualizarUbicacion(){&#10;        int indice = listaFiguras.indexOf(this);&#10;&#10;        if(indice != -1){&#10;            int nuevaUbicacion = this.getY();&#10;            altura = this.getHeight();&#10;            posOriginal = nuevaUbicacion;&#10;            listaFiguras.get(indice).setLocation(0, nuevaUbicacion);&#10;            //System.out.println(&amp;quot;Eje Y dentro de la lista: &amp;quot;+listaFiguras.get(indice).getY());&#10;&#10;        }&#10;&#10;    }&#10;&#10;    public void colisionesVisual() {&#10;    int i=0;&#10;    while(i &amp;lt; listaFiguras.size()){&#10;        PanelPersonalizado panelSiguiente = listaFiguras.get(i);&#10;        if(panelSiguiente != this){&#10;            int ejeY = getY();&#10;            int altura = getHeight();&#10;            int ejeYSiguiente = panelSiguiente.getY();&#10;            int alturaSiguiente = panelSiguiente.getHeight();&#10;&#10;            if(ejeY &amp;lt; ejeYSiguiente + alturaSiguiente &amp;amp;&amp;amp; ejeY + altura &amp;gt; ejeYSiguiente){&#10;            }&#10;        }&#10;        i++;&#10;    }&#10;    }&#10;&#10;    public int colisiones() {&#10;        int i=0;&#10;        while(i &amp;lt; listaFiguras.size()){&#10;            PanelPersonalizado panelSiguiente = listaFiguras.get(i);&#10;            if(panelSiguiente != this){&#10;                int ejeY = getY();&#10;                int altura = getHeight();&#10;                int ejeYSiguiente = panelSiguiente.getY();&#10;                int alturaSiguiente = panelSiguiente.getHeight();&#10;&#10;                if(ejeY &amp;lt; ejeYSiguiente + alturaSiguiente &amp;amp;&amp;amp; ejeY + altura &amp;gt; ejeYSiguiente){&#10;                    return i;&#10;                }&#10;            }&#10;            i++;&#10;        }&#10;        return -1;&#10;    }&#10;&#10;&#10;    public void guardarPosicion(int _posOriginal){&#10;        this.posOriginal = _posOriginal;&#10;        System.out.println(&amp;quot;Posicion guardada: &amp;quot;+posOriginal);&#10;    }&#10;&#10;    public int posicionOriginal(){&#10;        return this.posOriginal;&#10;    }&#10;&#10;    public void actualizarPosicion(){&#10;        this.posOriginal = getY();&#10;    }&#10;&#10;    public void cambiarTexto(String nuevoTexto) {&#10;        texto = nuevoTexto;&#10;        repaint(); // Redibujar la figura con el nuevo texto&#10;    }&#10;}&#10;&#10;import Dibujos.*;&#10;import javax.swing.*;&#10;import java.awt.*;&#10;import java.awt.geom.QuadCurve2D;&#10;import java.util.ArrayList;&#10;import java.util.List;&#10;public class Controlador {&#10;    private static Controlador instancia;&#10;    private final Graficador graficador;&#10;    private static List&amp;lt;PanelPersonalizado&amp;gt; listaFiguras;&#10;    private static JPanel contenedor;&#10;&#10;&#10;    // Instanciar Singleton&#10;    private Controlador() {&#10;        this.graficador = new Graficador();&#10;    }&#10;&#10;    public static Controlador getInstancia() {&#10;        if (instancia == null) {&#10;            instancia = new Controlador();&#10;        }&#10;        return instancia;&#10;    }&#10;&#10;    //Metodos&#10;    public void initFront(Front front, List&amp;lt;PanelPersonalizado&amp;gt; _listaFiguras, JPanel _contenedor) {&#10;        contenedor = _contenedor;&#10;        listaFiguras = _listaFiguras;&#10;        front.getPanel1().setLayout(new BoxLayout(front.getPanel1(), BoxLayout.Y_AXIS));&#10;        front.getPanel1().setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));&#10;    }&#10;&#10;    public void crearProceso(Front front) {&#10;        PanelPersonalizado nuevo = new DibujoProceso(entradaDeTexto(), listaFiguras, contenedor);&#10;        listaFiguras.add(nuevo);&#10;        front.getPanel1().add(nuevo);&#10;        front.getPanel1().revalidate();&#10;        timer(nuevo);&#10;    }&#10;&#10;&#10;    public void crearImpresion(Front front) {&#10;        PanelPersonalizado nuevo = new DibujoDocumento(entradaDeTexto(), listaFiguras, contenedor);&#10;        listaFiguras.add(nuevo);&#10;        front.getPanel1().add(nuevo);&#10;        front.getPanel1().revalidate();&#10;        timer(nuevo);&#10;    }&#10;&#10;&#10;    public void crearInicio(Front front) {&#10;        PanelPersonalizado nuevo = new DibujoInicio(&amp;quot;Inicio&amp;quot;, listaFiguras, contenedor);&#10;        listaFiguras.add(nuevo);&#10;        front.getPanel1().add(nuevo);&#10;        front.getPanel1().revalidate();&#10;    }&#10;&#10;    public void crearFin(Front front) {&#10;        PanelPersonalizado nuevo = new DibujoFin(&amp;quot;Fin&amp;quot;, listaFiguras, contenedor);&#10;        listaFiguras.add(nuevo);&#10;        front.getPanel1().add(nuevo);&#10;        front.getPanel1().revalidate();&#10;    }&#10;&#10;    public void crearDecision(Front front) {&#10;        PanelPersonalizado nuevo = new DibujarDecision(entradaDeTexto(), listaFiguras, contenedor);&#10;        PanelPersonalizado aux = new DibujoDecisionFin(&amp;quot;&amp;quot;, listaFiguras, contenedor);&#10;        listaFiguras.add(nuevo);&#10;        listaFiguras.add(aux);&#10;        front.getPanel1().add(nuevo);&#10;        front.getPanel1().add(aux);&#10;        front.getPanel1().revalidate();&#10;    }&#10;&#10;    public void crearSalida(Front front) {&#10;        PanelPersonalizado nuevo = new DibujoSalida(entradaDeTexto(), listaFiguras, contenedor);&#10;        listaFiguras.add(nuevo);&#10;        front.getPanel1().add(nuevo);&#10;        front.getPanel1().revalidate();&#10;    }&#10;&#10;    public void crearEntreda(Front front) {&#10;        PanelPersonalizado nuevo = new DibujoEntrada(entradaDeTexto(), listaFiguras, contenedor);&#10;        listaFiguras.add(nuevo);&#10;        front.getPanel1().add(nuevo);&#10;        front.getPanel1().revalidate();&#10;    }&#10;&#10;&#10;    public void limpiarPantalla(Front front) {&#10;        this.graficador.limpiarPantalla(front);&#10;    }&#10;&#10;    //===============================================================================================================&#10;&#10;    private static class Graficador {&#10;        public void dibujarProceso(JPanel lienzo) {&#10;            Graphics g = lienzo.getGraphics();&#10;            g.setColor(Color.BLUE);&#10;            g.drawLine(0, 50, 100, 50);   // Línea superior&#10;            g.drawLine(0, 50, 0, 10);     // Línea izquierda&#10;            g.drawLine(100, 50, 100, 10); // Línea derecha&#10;            g.drawLine(0, 10, 100, 10);   // Línea inferior&#10;        }&#10;&#10;        public void dibujarImpresion(Front front) {&#10;            JPanel lienzo = front.getPanel1();&#10;&#10;            QuadCurve2D curve = new QuadCurve2D.Double();&#10;            Graphics2D lapiz = (Graphics2D) lienzo.getGraphics();&#10;            lapiz.setColor(Color.CYAN);&#10;&#10;            lapiz.drawLine(100, 100, 200, 100);&#10;            lapiz.drawLine(200, 100, 200, 140);&#10;            lapiz.drawLine(100, 100, 100, 150);&#10;            curve.setCurve(100, 150, 125, 165, 150, 150);&#10;            lapiz.draw(curve);&#10;            curve.setCurve(150, 150, 175, 135, 200, 140);&#10;            lapiz.draw(curve);&#10;&#10;        }&#10;&#10;&#10;        public void dibujarInicio(Front front) {&#10;            QuadCurve2D curve = new QuadCurve2D.Double();&#10;            Graphics2D lapiz = (Graphics2D) front.getGraphics();&#10;&#10;            lapiz.setColor(Color.MAGENTA);&#10;            lapiz.drawLine(50, 200, 150, 200);&#10;            lapiz.drawLine(50, 250, 150, 250);&#10;            curve.setCurve(50, 200, 30, 205, 30, 225);&#10;            lapiz.draw(curve);&#10;            curve.setCurve(50, 250, 30, 245, 30, 225);&#10;            lapiz.draw(curve);&#10;            curve.setCurve(150, 200, 170, 205, 170, 225);&#10;            lapiz.draw(curve);&#10;            curve.setCurve(150, 250, 170, 245, 170, 225);&#10;            lapiz.draw(curve);&#10;        }&#10;&#10;        public void dibujarFin(Front front) {&#10;            QuadCurve2D curve = new QuadCurve2D.Double();&#10;            Graphics2D lapiz = (Graphics2D) front.getGraphics();&#10;&#10;            lapiz.setColor(Color.BLACK);&#10;            lapiz.drawLine(50, 200, 150, 200);&#10;            lapiz.drawLine(50, 250, 150, 250);&#10;            curve.setCurve(50, 200, 30, 205, 30, 225);&#10;            lapiz.draw(curve);&#10;            curve.setCurve(50, 250, 30, 245, 30, 225);&#10;            lapiz.draw(curve);&#10;            curve.setCurve(150, 200, 170, 205, 170, 225);&#10;            lapiz.draw(curve);&#10;            curve.setCurve(150, 250, 170, 245, 170, 225);&#10;            lapiz.draw(curve);&#10;        }&#10;&#10;        public void dibujarDecision(Front front) {&#10;            Graphics g = front.getGraphics();&#10;            g.setColor(Color.RED);&#10;            g.drawLine(100, 70, 150, 100);&#10;            g.drawLine(150, 100, 100, 130);&#10;            g.drawLine(100, 130, 50, 100);&#10;            g.drawLine(50, 100, 100, 70);&#10;        }&#10;&#10;&#10;        public void dibujarEntradaSalida(Front front) {&#10;            Graphics g = front.getGraphics();&#10;            g.setColor(Color.orange);&#10;            g.drawLine(125, 150, 250, 150);&#10;            g.drawLine(250, 150, 225, 200);&#10;            g.drawLine(225, 200, 100, 200);&#10;            g.drawLine(100, 200, 125, 150);&#10;        }&#10;&#10;&#10;        public void limpiarPantalla(Front front) {&#10;            JPanel lienzo = front.getPanel1();&#10;&#10;            lienzo.removeAll();&#10;            lienzo.repaint();&#10;        }&#10;    }&#10;    //===============================================================================================================&#10;&#10;    public static String entradaDeTexto() {&#10;        JTextField textField = new JTextField();&#10;        Object[] message = {&#10;                &amp;quot;Ingrese datos:&amp;quot;, textField&#10;        };&#10;        int option = JOptionPane.showConfirmDialog(null, message, &amp;quot;Datos&amp;quot;, JOptionPane.OK_CANCEL_OPTION);&#10;        if (option == JOptionPane.OK_OPTION) {&#10;            return textField.getText();&#10;        } else {&#10;            return &amp;quot;----&amp;quot;;&#10;        }&#10;    }&#10;&#10;    public void timer(PanelPersonalizado nuevo) {&#10;        Timer timer = new Timer(100, e -&amp;gt; {&#10;            nuevo.actualizarUbicacion();&#10;&#10;            for (PanelPersonalizado figura : listaFiguras) {&#10;                figura.actualizarUbicacion();&#10;            }&#10;        });&#10;        timer.setRepeats(false);&#10;        timer.start();&#10;    }&#10;}&#10;&#10;package Dibujos;&#10;import javax.swing.*;&#10;import java.awt.*;&#10;import java.awt.event.MouseAdapter;&#10;import java.awt.event.MouseEvent;&#10;import java.awt.event.MouseMotionListener;&#10;import java.util.List;&#10;&#10;public class DibujoProceso extends PanelPersonalizado {&#10;    private int ultimoEjeY;&#10;    private boolean moviendo;&#10;    private int ejeYMouse;&#10;    public DibujoProceso(String texto, List &amp;lt;PanelPersonalizado&amp;gt; lista, JPanel _contenedor) {&#10;        super(texto,lista,_contenedor);&#10;        addMouseListener(new MouseAdapter() {&#10;            @Override&#10;            public void mousePressed(MouseEvent e) {&#10;                ultimoEjeY = e.getYOnScreen();&#10;                moviendo = true;&#10;                //System.out.println(&amp;quot;Moviendo &amp;quot;+&amp;quot;Proceso&amp;quot;+&amp;quot; &amp;quot;); //Para verificar el movimiento sostenido&#10;&#10;            }&#10;&#10;            @Override&#10;            public void mouseReleased(MouseEvent e) {&#10;                moviendo = false;&#10;                int indice = colisiones();&#10;                if(indice != -1){&#10;                    intercambiarPosiciones();&#10;                }&#10;            }&#10;        });&#10;&#10;        addMouseMotionListener(new MouseMotionListener() {&#10;            @Override&#10;            //Aqui se implementa la toma de un panel y arrastre&#10;            public void mouseDragged(MouseEvent e) {&#10;                if(moviendo){&#10;                    int cambioPosicionY = e.getYOnScreen() - ultimoEjeY;&#10;                    setLocation(getX(), getY() + cambioPosicionY);&#10;                    ultimoEjeY = e.getYOnScreen();&#10;                    colisionesVisual();&#10;                }&#10;            }&#10;&#10;            @Override&#10;            //Detectamos la posicion del mouse dentro de un panel&#10;            public void mouseMoved(MouseEvent e) {&#10;                ejeYMouse = e.getY();&#10;                setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));&#10;                repaint(); //Volvemos a dibujar el panel&#10;            }&#10;        });&#10;&#10;        // Para editar texto ya ingresado&#10;        addMouseListener(new MouseAdapter() {&#10;            @Override&#10;            public void mouseClicked(MouseEvent e) {&#10;                super.mouseClicked(e);&#10;                if (e.getClickCount() == 2) { // Doble clic para editar el texto&#10;                    String nuevoTexto = JOptionPane.showInputDialog(null, &amp;quot;Editar texto:&amp;quot;, texto);&#10;                    if (nuevoTexto != null &amp;amp;&amp;amp; !nuevoTexto.isEmpty()) {&#10;                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura&#10;                    }&#10;                }&#10;&#10;                // Verificar si se hizo clic derecho&#10;                if (e.getButton() == MouseEvent.BUTTON3) {&#10;                    int option = JOptionPane.showConfirmDialog(null, &amp;quot;¿Eliminar esta figura?&amp;quot;, &amp;quot;Eliminar Figura&amp;quot;, JOptionPane.YES_NO_OPTION);&#10;                    if (option == JOptionPane.YES_OPTION) {&#10;                        eliminarFigura();&#10;                    }&#10;                }&#10;            }&#10;        });&#10;    }&#10;&#10;    @Override&#10;    protected void paintComponent(Graphics g) {&#10;&#10;        super.paintComponent(g);&#10;&#10;&#10;        int panelWidth = getWidth();&#10;        int panelHeight = getHeight();&#10;&#10;        // Coordenadas del rectángulo&#10;        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                  // Coordenada x del lado izquierdo del rectángulo&#10;        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);   // Coordenada x del lado derecho del rectángulo&#10;        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del rectángulo&#10;        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del rectángulo&#10;&#10;        // Coordenadas de Flujo&#10;        int centro_x = panelWidth/2;&#10;&#10;&#10;        // Dibujar las líneas que forman el rectángulo&#10;&#10;        g.setColor(Color.MAGENTA);&#10;        g.drawLine(x1, y1, x2, y1);     // Lado superior&#10;        g.drawLine(x2, y1, x2, y2);     // Lado derecho&#10;        g.drawLine(x2, y2, x1, y2);     // Lado inferior&#10;        g.drawLine(x1, y2, x1, y1);     // Lado izquierdo&#10;&#10;        // Dibujar flujo&#10;        g.setColor(Color.BLACK);&#10;        g.drawLine(centro_x,0,centro_x,y1);        // Linea superior&#10;        g.drawLine(centro_x,y2,centro_x,panelHeight);  // Linea inferior&#10;        g.drawLine(centro_x,y1,centro_x+10,y1-10);&#10;        g.drawLine(centro_x,y1,centro_x-10,y1-10);&#10;&#10;&#10;        // Dibuja el texto centrado&#10;        FontMetrics metrics = g.getFontMetrics();&#10;        int x = (getWidth() - metrics.stringWidth(texto)) / 2;&#10;        int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();&#10;        g.drawString(texto, x, y);&#10;    }&#10;&#10;    public void intercambiarPosiciones(){&#10;        int indice = colisiones();&#10;        if (indice != -1) {&#10;            PanelPersonalizado panelActual = listaFiguras.get(indice);&#10;            int indiceAnterior = indice - 1;&#10;&#10;            if (indiceAnterior &amp;gt;= 0) {&#10;                PanelPersonalizado panelAnterior = listaFiguras.get(indiceAnterior);&#10;                listaFiguras.set(indice, panelAnterior);&#10;                listaFiguras.set(indiceAnterior, panelActual);&#10;                actualizarPosicionesVisuales();&#10;            }&#10;        }&#10;    }&#10;&#10;    private void actualizarPosicionesVisuales() {&#10;        for (int i = 0; i &amp;lt; listaFiguras.size(); i++) {&#10;            PanelPersonalizado panel = listaFiguras.get(i);&#10;            panel.setLocation(0, i * panel.getHeight());&#10;        }&#10;        contenedor.repaint();&#10;    }&#10;&#10;    // Método para eliminar la figura y reorganizar las posiciones&#10;    private void eliminarFigura() {&#10;&#10;    }&#10;}&#10;&#10;Así cómo la clase &amp;quot;DibujoProceso&amp;quot; hay similares para el resto de figuras de un diagrama de flujo.&#10; &#10;Quiero que el proyecto sea capaz de permitir al usuario eliminar una figura del diagrama. Y quiero que se BORREN, no que sean tapadas por otra figura." />
+                    </message>
+                    <message>
+                      <speaker value="ASSISTANT" />
+                      <text value="Para permitir que el usuario elimine una figura del diagrama y que se borre completamente, puedes seguir estos pasos:&#10;&#10;1. En la clase `PanelPersonalizado`, agrega un método para eliminar la figura de la lista de figuras y del contenedor:&#10;&#10;```java&#10;public void eliminarFigura() {&#10;    listaFiguras.remove(this);&#10;    contenedor.remove(this);&#10;    contenedor.revalidate();&#10;    contenedor.repaint();&#10;}&#10;```&#10;&#10;2. En cada subclase de `PanelPersonalizado` (como `DibujoProceso`, `DibujoDecision`, etc.), sobrescribe el método `mouseClicked` para detectar el clic derecho del mouse y mostrar un diálogo de confirmación para eliminar la figura:&#10;&#10;```java&#10;@Override&#10;protected void paintComponent(Graphics g) {&#10;    // ... (código existente)&#10;&#10;    addMouseListener(new MouseAdapter() {&#10;        @Override&#10;        public void mouseClicked(MouseEvent e) {&#10;            super.mouseClicked(e);&#10;            if (e.getButton() == MouseEvent.BUTTON3) { // Clic derecho&#10;                int option = JOptionPane.showConfirmDialog(null, &quot;¿Eliminar esta figura?&quot;, &quot;Eliminar Figura&quot;, JOptionPane.YES_NO_OPTION);&#10;                if (option == JOptionPane.YES_OPTION) {&#10;                    eliminarFigura();&#10;                }&#10;            }&#10;        }&#10;    });&#10;}&#10;```&#10;&#10;3. En el método `eliminarFigura()` de `PanelPersonalizado`, agrega código para reorganizar las posiciones de las figuras restantes después de eliminar una figura:&#10;&#10;```java&#10;public void eliminarFigura() {&#10;    listaFiguras.remove(this);&#10;    contenedor.remove(this);&#10;    reorganizarPosiciones();&#10;    contenedor.revalidate();&#10;    contenedor.repaint();&#10;}&#10;&#10;private void reorganizarPosiciones() {&#10;    int y = 0;&#10;    for (PanelPersonalizado panel : listaFiguras) {&#10;        panel.setLocation(0, y);&#10;        y += panel.getHeight();&#10;    }&#10;}&#10;```&#10;&#10;Con estos cambios, cuando el usuario haga clic derecho en una figura, se mostrará un diálogo de confirmación. Si el usuario confirma, la figura se eliminará de la lista y del contenedor, y las posiciones de las figuras restantes se reorganizarán automáticamente.&#10;&#10;Asegúrate de aplicar estos cambios en todas las subclases de `PanelPersonalizado` que representan las diferentes figuras del diagrama de flujo." />
+                    </message>
+                  </list>
+                </messages>
+                <updatedAt value="2024-04-12T16:54:48.1567282" />
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="4c05f7c2-d62c-454c-9205-9b4b70eecdd3" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="87dd538c-9b1d-442e-8cec-e44a2a99a73f" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="d27ab7b3-cf58-49c6-8ba1-36eda54234c3" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="ab98d960-9f1c-4982-a9c1-69d8ccab8c05" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="66e8c3f3-efd5-47f3-af94-b1db9e93c6f5" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="a8e4f39e-8c28-431a-95f9-c373c24690a0" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="df244630-05a4-41b3-9c55-256e7a242923" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="415a4b75-caf3-4902-b1d3-589cae5e5714" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="e907cf6e-d317-429c-82ef-7825f6e52cc7" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="12b49639-fa76-4dd2-8e1a-de761a97ac2d" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="d826a704-ef43-4200-91bb-e17df1ca3e38" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="76c50426-59dd-47f9-90c6-aefdf54f696d" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="3a78a25e-631b-4794-a6af-844bbd0c21cd" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="785f618d-b507-4aa8-a0bd-f7698e2c33d5" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="8d9ef4bb-43c0-4d35-a8fc-192076120314" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="7c7aa232-5c1f-45db-b8de-1dea207d0510" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="7fdb3b35-c1c8-4e51-82cd-966463aaaeb4" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="211539f6-50a4-4ded-9fc1-2b421682bc02" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="dbea41ba-7f57-4e9b-a9a6-225d9f76e576" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="f3736548-0751-45df-828f-63afad19cb40" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="247cc77d-4cb2-4745-a18c-7a5315e31310" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="3b6cd2e1-7e36-42da-a3c1-2f08bc206d07" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="94fea05a-6242-498d-99b5-b2bee3780044" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="b49b0666-44a7-4b0e-a9c9-b221d5b1f446" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="46113753-6099-4425-8e95-ea80c3c10246" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="3c507b58-cee7-4614-a648-3b6f7403d63a" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="c5b1ca89-ae45-49ee-bfa9-92e8e251b2ca" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="2b463f21-13f5-488f-90bc-ecf30f8db3d9" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="4b66bca6-c319-4584-b821-7ae9cef9f490" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="d0aa1e44-02a5-4482-ae98-5fe99eadac54" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="51acb6d5-ae56-4386-941f-98ee3a70dd45" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="1098b488-79fd-45a3-928f-f5b8cd683f27" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="348f1b03-47da-4a90-a8a3-9bc018a8073f" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="dfab6901-ccee-4448-8ba4-20056683bbe3" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="12b1099c-14d3-48f3-bd78-0fc0c3615ed3" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="0079c7b6-b31a-4ca0-9d14-82c5a17cdb7b" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="e17b1065-0047-4d3c-8744-b9a8c17f6fae" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="8b3bb785-45a1-4865-93fd-90142b1e02f9" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="e91c9459-8f77-4dbc-9269-1ac2d516ef66" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="7d4d2084-e9ba-4d0f-950b-8b6b93c431bc" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="340008c1-78bd-4c52-91e2-638243a6a3c6" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="174a361a-b059-49de-bc4b-f8de67b723b0" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="7877522d-646a-4886-a44c-f5f00d8b4e92" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="eee7725c-80da-4218-9780-d38cedbb330a" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="1491c747-9aaa-4e57-95ee-cdbba3ef7685" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="13461480-c2dc-4947-bb0a-e0360c4ac237" />
+                <llm>
+                  <llm>
+                    <model value="anthropic/claude-3-sonnet-20240229" />
+                    <provider value="Anthropic" />
+                    <title value="Claude 3 Sonnet" />
+                  </llm>
+                </llm>
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="292474b0-3220-43c1-8e8e-dbc068fbf6ab" />
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="be8247cb-a6e0-4101-8d3b-8c2a7e541347" />
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="2010b69a-61a3-4e72-86f3-bc5c9b4e5c25" />
+              </chat>
+              <chat>
+                <accountId value="VXNlcjozODM1ODI=" />
+                <internalId value="3454155a-f9bc-4d2e-bf6c-765c21adc201" />
+              </chat>
+              <chat>
+                <internalId value="1c049212-1971-411f-b00e-3d96c55c2925" />
+              </chat>
+              <chat>
+                <internalId value="93e5e5b1-d161-478b-8ab2-ed2d63082315" />
+              </chat>
+              <chat>
+                <internalId value="61be3c32-f2f9-4de1-93ba-dcd752d81f16" />
+              </chat>
+              <chat>
+                <internalId value="f0934f60-540a-4bc1-875f-ca9932e68e3e" />
+              </chat>
+            </list>
+          </chats>
+          <defaultLlm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </defaultLlm>
+        </AccountData>
+      </list>
+    </accountData>
     <chats>
       <list>
         <chat>
@@ -465,6 +1052,110 @@
               <title value="Claude 3 Sonnet" />
             </llm>
           </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="e91c9459-8f77-4dbc-9269-1ac2d516ef66" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="7d4d2084-e9ba-4d0f-950b-8b6b93c431bc" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="340008c1-78bd-4c52-91e2-638243a6a3c6" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="174a361a-b059-49de-bc4b-f8de67b723b0" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="7877522d-646a-4886-a44c-f5f00d8b4e92" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="eee7725c-80da-4218-9780-d38cedbb330a" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="1491c747-9aaa-4e57-95ee-cdbba3ef7685" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="13461480-c2dc-4947-bb0a-e0360c4ac237" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="292474b0-3220-43c1-8e8e-dbc068fbf6ab" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="be8247cb-a6e0-4101-8d3b-8c2a7e541347" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="2010b69a-61a3-4e72-86f3-bc5c9b4e5c25" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozODM1ODI=" />
+          <internalId value="3454155a-f9bc-4d2e-bf6c-765c21adc201" />
         </chat>
       </list>
     </chats>

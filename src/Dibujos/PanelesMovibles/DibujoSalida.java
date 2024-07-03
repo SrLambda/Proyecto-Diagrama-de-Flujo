@@ -24,53 +24,57 @@ public class DibujoSalida extends PanelMovible {
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        // Ajustar para zoom centralizado
+        g2d.translate(getWidth() / 2, getHeight() / 2);
+        g2d.scale(zoomFactor, zoomFactor);
+        g2d.translate(-getWidth() / 2, -getHeight() / 2);
 
+        int widthTx  = this.anchoAlto[0];
+        int heightTx = this.anchoAlto[1];
 
-        int panelWidth = getWidth();
-        int panelHeight = getHeight();
+        int centro_x = getWidth()  / 2;
+        int centro_y = getHeight() / 2;
 
         // Coordenadas del Paralelogramo
-        int x1 = (int) ((panelWidth / 4)+panelWidth*0.1);                    // Coordenada x del lado izquierdo del paralelogramo
-        int x2 = (int) ((panelWidth - (panelWidth / 4))-panelWidth*0.1);     // Coordenada x del lado derecho del paralelogramo
-        int y1 = (int) ((panelHeight / 4)+panelHeight*0.15);                 // Coordenada y del lado superior del paralelogramo
-        int y2 = (int) ((panelHeight - (panelHeight / 4))-panelHeight*0.15); // Coordenada y del lado inferior del paralelogramo
+
+        int x1 = centro_x - ( ( widthTx  / 2 ) +10);                    // Coordenada x del lado izquierdo del rectángulo
+        int x2 = centro_x + ( ( widthTx  / 2 ) +10);     // Coordenada x del lado derecho del rectángulo
+        int y1 = centro_y - ( ( heightTx / 2 ) +10);                 // Coordenada y del lado superior del rectángulo
+        int y2 = centro_y + ( ( heightTx / 2 ) +10);
         int desvio = (int) ((x2-x1)*0.1);                                    // Inclinación horizontal del paralelogramo
 
 
-        int centro_x = panelWidth/2;
-
-
         // Dibujar las líneas que forman el paralelogramo
-        g.setColor(Color.BLACK);
-        g.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
-        g.drawLine(x2+desvio, y1, x2-desvio, y2 + 30);     // Lado derecho
-        g.drawLine(x2-desvio, y2 + 30, x1-desvio, y2 + 30);     // Lado inferior
-        g.drawLine(x1-desvio, y2 + 30, x1+desvio, y1);     // Lado izquierdo
-
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(x1+desvio, y1, x2+desvio, y1);     // Lado superior
+        g2d.drawLine(x2+desvio, y1, x2-desvio, y2 );     // Lado derecho
+        g2d.drawLine(x1-desvio, y2 , x1+desvio, y1);     // Lado izquierdo
+        g2d.drawLine(x2-desvio, y2 , x1-desvio, y2 );     // Lado inferior
 
         // Dibujar flecha de salida
-        g.setColor(Color.RED);
-        g.drawLine(x2+desvio, y1, x2+desvio - 10, y1 + 5);
-        g.drawLine(x2+desvio, y1, x2+desvio + 10, y1 - 5);
-        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 7,y1 - 1);
-        g.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 6,y1 - 5);
+        g2d.setColor(Color.RED);
+        g2d.drawLine(x2+desvio, y1, x2+desvio - 10, y1 + 5);
+        g2d.drawLine(x2+desvio, y1, x2+desvio + 10, y1 - 5);
+        g2d.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 7,y1 - 1);
+        g2d.drawLine(x2+desvio + 10, y1 - 5,x2+desvio + 6,y1 - 5);
 
         // Dibujar flujo
-        g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,y1);               // Linea superior
-        g.drawLine(centro_x,y2 + 30,centro_x,panelHeight + 30);         // Linea inferior
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(centro_x,0,centro_x,y1);               // Linea superior
+        g2d.drawLine(centro_x,y2 ,centro_x,getHeight() + 30);         // Linea inferior
 
-        g.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
-        g.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
+        g2d.drawLine(centro_x,y1,centro_x+10,y1-10);    //  Flecha
+        g2d.drawLine(centro_x,y1,centro_x-10,y1-10);    //  de flujo
 
         // fuente con el tamaño especificado
-        g.setFont(textoFont);
+        g2d.setFont(textoFont);
 
         // Dibuja el texto centrado
-        FontMetrics metrics = g.getFontMetrics();
+        FontMetrics metrics = g2d.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, y);
+        g2d.drawString(texto, x, y);
     }
 
     public void verVariable(String _entrada) {
