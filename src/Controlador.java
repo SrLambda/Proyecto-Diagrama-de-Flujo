@@ -190,6 +190,8 @@ public class Controlador {
 
         this.pseudocodigo.agregarMediantePseudocodigo(this.parseador.getPseuddoCodigo(),front);
 
+        front.getPanel1().revalidate();
+
     }
 
     //===============================================================================================================

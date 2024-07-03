@@ -10,6 +10,7 @@ import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pseudocodigo {
@@ -39,10 +40,11 @@ public class Pseudocodigo {
         //Mostrar Pseudocodigo en una ventana emergente
 
 
-
-
         EntradaPseudocodigo ventana = new EntradaPseudocodigo(_front, "Pseudocodigo", _pseudocodigoInicial);
         ventana.setVisible(true);
+
+
+
 
 
         //Recojer texto editado de la ventana emergente
@@ -50,17 +52,69 @@ public class Pseudocodigo {
         this.pseudocodigo = ventana.getPseudocodigo();
         System.out.println(this.pseudocodigo);
 
+
+
+        //Crear respaldo
+
+        List<PanelPersonalizado> backup_paneles   = new ArrayList<>();
+        List<Object>             backup_variables = new ArrayList<>();
+
+
+        backup_paneles.addAll(this.lista);
+        backup_variables.addAll(this.variables);
+
+
+
+
+
+
         //Transformar de texto a Diagrama
 
         String[] lineas = this.limpiarPsCod(this.pseudocodigo);
 
-        JPanel
+        try{
 
-        armarDiagrama(lineas,this.contenedor,this.lista,0,lineas.length);
+            this.contenedor.removeAll();
+            this.lista.clear();
+            this.variables.clear();
+
+            Integer i = 0;
+
+            armarDiagrama(lineas,this.contenedor,this.lista,i,lineas.length);
+
+
+
+        }
+        catch (Exception e)
+        {
+
+            this.mostrarError(e);
+
+
+            // Utilizar respaldo
+
+            this.contenedor.removeAll();
+            this.lista.clear();
+            this.variables.clear();
+
+            for (int i = 0; i < backup_paneles.size(); i++)
+            {
+
+                this.lista.add(backup_paneles.get(i));
+
+                this.contenedor.add(backup_paneles.get(i),this.restricciones);
+
+            }
+
+            backup_variables.addAll(this.variables);
+
+
+        }
 
     }
 
-    public void armarDiagrama(String[] lineas, JPanel _contenedor,List<PanelPersonalizado> _lista,int i, int fin){
+
+    public void armarDiagrama(String[] lineas, JPanel _contenedor,List<PanelPersonalizado> _lista,Integer i, int fin){
 
 
         PanelPersonalizado panel_act;
@@ -68,22 +122,119 @@ public class Pseudocodigo {
 
         panel_act = this.identificarPanel(lineas[i],_lista,_contenedor);
 
-        if(panel_act instanceof DibujoDecision)
+        if(panel_act != null)
         {
+
+
+            if(i == fin)
+            {
+
+
+                _contenedor.add(panel_act,this.restricciones);
+                _lista.add(panel_act);
+
+            }
+            else if(panel_act instanceof DibujoDecision)
+            {
+
+                //Agregar
+                _contenedor.add(panel_act,this.restricciones);
+                _lista.add(panel_act);
+
+
+                DibujoDecision aux = (DibujoDecision) panel_act;
+
+                //Agregar en verdad
+                i++;
+                armarDiagrama(lineas,aux.getContVerdad(),aux.getVerdad(),i,fin);
+
+                //Agregar en falso
+                i++;
+                armarDiagrama(lineas,aux.getContFalso(),aux.getFalso(),i,fin);
+
+                //Avanzar
+                i++;
+                armarDiagrama(lineas,_contenedor,_lista,i,fin);
+
+            }
+            else if (panel_act instanceof DibujoWhile)
+            {
+
+                //Agregar
+                _contenedor.add(panel_act,this.restricciones);
+                _lista.add(panel_act);
+
+
+                DibujoWhile aux = (DibujoWhile) panel_act;
+
+                //Agregar dentro de bucle
+                i++;
+                armarDiagrama(lineas,aux.getContenido(),aux.getLista(),i,fin);
+
+                //Avanzar
+                i++;
+                armarDiagrama(lineas,_contenedor,_lista,i,fin);
+
+            }
+            else if (panel_act instanceof DibujoFor)
+            {
+
+                //Agregar
+                _contenedor.add(panel_act,this.restricciones);
+                _lista.add(panel_act);
+
+
+                DibujoFor aux = (DibujoFor) panel_act;
+
+                //Agregar dentro de bucle
+                i++;
+                armarDiagrama(lineas,aux.getContenido(),aux.getLista(),i,fin);
+
+                //Avanzar
+                i++;
+                armarDiagrama(lineas,_contenedor,_lista,i,fin);
+
+            }
+            else if ((panel_act instanceof DibujoDoWhile))
+            {
+
+                //Agregar
+                _contenedor.add(panel_act,this.restricciones);
+                _lista.add(panel_act);
+
+                DibujoDoWhile aux = (DibujoDoWhile) panel_act;
+
+                //Agregar dentro de bucle
+                i++;
+                armarDiagrama(lineas,aux.getContenido(),aux.getLista(),i,fin);
+
+                //Ingresar texto en condición de ciclo
+                DibujoDoWhile fn_ciclo = (DibujoDoWhile) this.identificarPanel(lineas[i],_lista,_contenedor);
+                aux.setTexto(fn_ciclo.getTexto());
+
+                //Avanzar
+                i++;
+                armarDiagrama(lineas,_contenedor,_lista,i,fin);
+
+            }
+            else
+            {
+
+                //Agregar
+                _contenedor.add(panel_act,this.restricciones);
+                _lista.add(panel_act);
+
+                //Avanzar
+                i++;
+                armarDiagrama(lineas,_contenedor,_lista,i,fin);
+
+            }
 
         }
-        else if (panel_act instanceof DibujoWhile)
-        {
 
-        }
-        else if (panel_act instanceof DibujoFor)
-        {
-
-        }
-        else if ((panel_act instanceof DibujoDoWhile))
-        {
-
-        }else
+        //Avanzar
+        i++;
+        armarDiagrama(lineas,_contenedor,_lista,i,fin);
 
 
     }
@@ -107,7 +258,7 @@ public class Pseudocodigo {
 
         if(psdc.contains("==>"))
         {
-            String[] psdc_div = psdc.split(" ==> ", 2);
+            String[] psdc_div = psdc.split("\\s==>\\s", 2);
 
             panel = factoryPanel.crearPanel(psdc_div[0],psdc_div[1],_lista,_contenedor,this.restricciones,this.ventanaEmergente,this.variables);
 
@@ -185,4 +336,11 @@ public class Pseudocodigo {
     }
 
 
+    private  void mostrarError(Exception e) {
+        // Obtener el mensaje de la excepción
+        String mensajeError = e.getMessage();
+
+        // Mostrar el mensaje de error en una ventana de diálogo
+        JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 }
