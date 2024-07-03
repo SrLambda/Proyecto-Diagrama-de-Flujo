@@ -1,0 +1,325 @@
+Index: src/Front.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<form xmlns=\"http://www.intellij.com/uidesigner/form/\" version=\"1\" bind-to-class=\"Front\">\r\n  <grid id=\"27dc6\" binding=\"panel\" layout-manager=\"GridLayoutManager\" row-count=\"12\" column-count=\"7\" same-size-horizontally=\"false\" same-size-vertically=\"false\" hgap=\"-1\" vgap=\"-1\">\r\n    <margin top=\"5\" left=\"5\" bottom=\"5\" right=\"5\"/>\r\n    <constraints>\r\n      <xy x=\"20\" y=\"20\" width=\"743\" height=\"607\"/>\r\n    </constraints>\r\n    <properties>\r\n      <background color=\"-2502445\"/>\r\n      <foreground color=\"-4478029\"/>\r\n    </properties>\r\n    <clientProperties>\r\n      <html.disable class=\"java.lang.Boolean\" value=\"false\"/>\r\n    </clientProperties>\r\n    <border type=\"empty\">\r\n      <size top=\"2\" left=\"2\" bottom=\"2\" right=\"2\"/>\r\n    </border>\r\n    <children>\r\n      <component id=\"11dab\" class=\"javax.swing.JLabel\">\r\n        <constraints>\r\n          <grid row=\"1\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"1\"/>\r\n          <foreground color=\"-12828863\"/>\r\n          <text value=\"Comandos\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"8c37a\" class=\"javax.swing.JButton\" binding=\"etapaDelProcesoButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Proceso\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"79e0d\" class=\"javax.swing.JButton\" binding=\"decisionButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"4\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Decision\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"11435\" class=\"javax.swing.JButton\" binding=\"entradaButton\">\r\n        <constraints>\r\n          <grid row=\"3\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Entrada\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"a6daa\" class=\"javax.swing.JButton\" binding=\"limpiarButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"1\" indent=\"1\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-16772298\"/>\r\n          <font name=\"JetBrains Mono\" size=\"12\" style=\"1\"/>\r\n          <foreground color=\"-2765617\"/>\r\n          <text value=\"Limpiar\"/>\r\n        </properties>\r\n      </component>\r\n      <scrollpane id=\"4b1d\" binding=\"scroll\">\r\n        <constraints>\r\n          <grid row=\"1\" column=\"0\" row-span=\"9\" col-span=\"3\" vsize-policy=\"7\" hsize-policy=\"7\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\">\r\n            <minimum-size width=\"-1\" height=\"500\"/>\r\n            <preferred-size width=\"-1\" height=\"500\"/>\r\n            <maximum-size width=\"-1\" height=\"500\"/>\r\n          </grid>\r\n        </constraints>\r\n        <properties/>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <grid id=\"fceb0\" binding=\"panel1\" layout-manager=\"GridBagLayout\">\r\n            <constraints/>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children/>\r\n          </grid>\r\n        </children>\r\n      </scrollpane>\r\n      <hspacer id=\"f180a\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"1\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n      </hspacer>\r\n      <scrollpane id=\"dc074\">\r\n        <constraints>\r\n          <grid row=\"11\" column=\"0\" row-span=\"1\" col-span=\"7\" vsize-policy=\"7\" hsize-policy=\"7\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties/>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <grid id=\"9537c\" binding=\"pseudocodio\" layout-manager=\"BorderLayout\" hgap=\"0\" vgap=\"0\">\r\n            <constraints/>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children/>\r\n          </grid>\r\n        </children>\r\n      </scrollpane>\r\n      <component id=\"74aeb\" class=\"javax.swing.JButton\" binding=\"pseudoCodigoButton\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"1\" row-span=\"1\" col-span=\"3\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"8\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <horizontalTextPosition value=\"0\"/>\r\n          <text value=\"Pseudo-Codigo\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"11dab\" class=\"javax.swing.JLabel\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"1\"/>\r\n          <foreground color=\"-12828863\"/>\r\n          <text value=\"Comandos\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"8c37a\" class=\"javax.swing.JButton\" binding=\"etapaDelProcesoButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"1\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"10\" column=\"3\" row-span=\"1\" col-span=\"3\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"0\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Proceso\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"11435\" class=\"javax.swing.JButton\" binding=\"entradaButton\">\r\n        <constraints>\r\n          <grid row=\"2\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Entrada\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"f8908\" class=\"javax.swing.JButton\" binding=\"doWhileButton\">\r\n        <constraints>\r\n          <grid row=\"7\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Do-While\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"649d2\" class=\"javax.swing.JButton\" binding=\"forButton\">\r\n        <constraints>\r\n          <grid row=\"9\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"8\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"For\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"79e0d\" class=\"javax.swing.JButton\" binding=\"decisionButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"3\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Decision\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"3bb5\" class=\"javax.swing.JButton\" binding=\"salidaButton\">\r\n        <constraints>\r\n          <grid row=\"5\" column=\"3\" row-span=\"1\" col-span=\"4\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"4\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Salida\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"6be1d\" class=\"javax.swing.JButton\" binding=\"documentoButton\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"5\" column=\"2\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"6\" column=\"4\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Documento\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"e7935\" class=\"javax.swing.JButton\" binding=\"whileButton\">\r\n        <constraints>\r\n          <grid row=\"6\" column=\"2\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n          <grid row=\"7\" column=\"4\" row-span=\"1\" col-span=\"2\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"While\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"7cfc1\" class=\"javax.swing.JButton\" binding=\"ejecutar\">\r\n        <constraints>\r\n          <grid row=\"9\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"EJECUTAR\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"ca7cb\" class=\"javax.swing.JButton\" binding=\"zoomout\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Zoom Out\"/>\r\n        </properties>\r\n      </component>\r\n      <component id=\"c6b6c\" class=\"javax.swing.JButton\" binding=\"zoomin\">\r\n        <constraints>\r\n          <grid row=\"10\" column=\"1\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"1\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n        </constraints>\r\n        <properties>\r\n          <background color=\"-791314\"/>\r\n          <font name=\"JetBrains Mono\" size=\"14\" style=\"3\"/>\r\n          <foreground color=\"-16772298\"/>\r\n          <text value=\"Zoom In\"/>\r\n        </properties>\r\n      </component>\r\n    </children>\r\n  </grid>\r\n</form>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Front.form b/src/Front.form
+--- a/src/Front.form	
++++ b/src/Front.form	
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Front">
+-  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="12" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
++  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="12" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+     <margin top="5" left="5" bottom="5" right="5"/>
+     <constraints>
+-      <xy x="20" y="20" width="743" height="607"/>
++      <xy x="20" y="20" width="743" height="638"/>
+     </constraints>
+     <properties>
+       <background color="-2502445"/>
+@@ -16,49 +16,6 @@
+       <size top="2" left="2" bottom="2" right="2"/>
+     </border>
+     <children>
+-      <component id="11dab" class="javax.swing.JLabel">
+-        <constraints>
+-          <grid row="1" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <font name="JetBrains Mono" size="14" style="1"/>
+-          <foreground color="-12828863"/>
+-          <text value="Comandos"/>
+-        </properties>
+-      </component>
+-      <component id="8c37a" class="javax.swing.JButton" binding="etapaDelProcesoButton" default-binding="true">
+-        <constraints>
+-          <grid row="2" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <text value="Proceso"/>
+-        </properties>
+-      </component>
+-      <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
+-        <constraints>
+-          <grid row="4" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <text value="Decision"/>
+-        </properties>
+-      </component>
+-      <component id="11435" class="javax.swing.JButton" binding="entradaButton">
+-        <constraints>
+-          <grid row="3" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <text value="Entrada"/>
+-        </properties>
+-      </component>
+       <component id="a6daa" class="javax.swing.JButton" binding="limpiarButton" default-binding="true">
+         <constraints>
+           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+@@ -96,7 +53,7 @@
+       </hspacer>
+       <scrollpane id="dc074">
+         <constraints>
+-          <grid row="11" column="0" row-span="1" col-span="7" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
++          <grid row="11" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties/>
+         <border type="none"/>
+@@ -109,22 +66,9 @@
+           </grid>
+         </children>
+       </scrollpane>
+-      <component id="74aeb" class="javax.swing.JButton" binding="pseudoCodigoButton">
+-        <constraints>
+-          <grid row="10" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="8" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-        </constraints>
+-        <properties>
+-          <background color="-791314"/>
+-          <font name="JetBrains Mono" size="14" style="3"/>
+-          <foreground color="-16772298"/>
+-          <horizontalTextPosition value="0"/>
+-          <text value="Pseudo-Codigo"/>
+-        </properties>
+-      </component>
+       <component id="11dab" class="javax.swing.JLabel">
+         <constraints>
+-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <font name="JetBrains Mono" size="14" style="1"/>
+@@ -134,8 +78,7 @@
+       </component>
+       <component id="8c37a" class="javax.swing.JButton" binding="etapaDelProcesoButton" default-binding="true">
+         <constraints>
+-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="10" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+@@ -146,7 +89,7 @@
+       </component>
+       <component id="11435" class="javax.swing.JButton" binding="entradaButton">
+         <constraints>
+-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+@@ -157,7 +100,7 @@
+       </component>
+       <component id="f8908" class="javax.swing.JButton" binding="doWhileButton">
+         <constraints>
+-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+@@ -166,74 +109,81 @@
+           <text value="Do-While"/>
+         </properties>
+       </component>
+-      <component id="649d2" class="javax.swing.JButton" binding="forButton">
++      <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
++        <constraints>
++          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++        </constraints>
++        <properties>
++          <background color="-791314"/>
++          <font name="JetBrains Mono" size="14" style="3"/>
++          <foreground color="-16772298"/>
++          <text value="Decision"/>
++        </properties>
++      </component>
++      <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
+         <constraints>
+-          <grid row="9" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="For"/>
++          <text value="Documento"/>
+         </properties>
+       </component>
+-      <component id="79e0d" class="javax.swing.JButton" binding="decisionButton" default-binding="true">
++      <component id="e7935" class="javax.swing.JButton" binding="whileButton">
+         <constraints>
+-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Decision"/>
++          <text value="While"/>
+         </properties>
+       </component>
+-      <component id="3bb5" class="javax.swing.JButton" binding="salidaButton">
++      <component id="7cfc1" class="javax.swing.JButton" binding="ejecutar">
+         <constraints>
+-          <grid row="5" column="3" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Salida"/>
++          <text value="EJECUTAR"/>
+         </properties>
+       </component>
+-      <component id="6be1d" class="javax.swing.JButton" binding="documentoButton" default-binding="true">
++      <component id="c6b6c" class="javax.swing.JButton" binding="zoomin">
+         <constraints>
+-          <grid row="5" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="6" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Documento"/>
++          <text value="Zoom In"/>
+         </properties>
+       </component>
+-      <component id="e7935" class="javax.swing.JButton" binding="whileButton">
++      <component id="3bb5" class="javax.swing.JButton" binding="salidaButton">
+         <constraints>
+-          <grid row="6" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+-          <grid row="7" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="While"/>
++          <text value="Salida"/>
+         </properties>
+       </component>
+-      <component id="7cfc1" class="javax.swing.JButton" binding="ejecutar">
++      <component id="649d2" class="javax.swing.JButton" binding="forButton">
+         <constraints>
+-          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="EJECUTAR"/>
++          <text value="For"/>
+         </properties>
+       </component>
+       <component id="ca7cb" class="javax.swing.JButton" binding="zoomout">
+@@ -247,15 +197,16 @@
+           <text value="Zoom Out"/>
+         </properties>
+       </component>
+-      <component id="c6b6c" class="javax.swing.JButton" binding="zoomin">
++      <component id="74aeb" class="javax.swing.JButton" binding="pseudoCodigoButton">
+         <constraints>
+-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
++          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+         </constraints>
+         <properties>
+           <background color="-791314"/>
+           <font name="JetBrains Mono" size="14" style="3"/>
+           <foreground color="-16772298"/>
+-          <text value="Zoom In"/>
++          <horizontalTextPosition value="0"/>
++          <text value="Pseudo-Codigo"/>
+         </properties>
+       </component>
+     </children>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f2c63d2c-f798-4ff1-b245-2fede493910c\" name=\"Changes\" comment=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Compilador.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Compilador.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Controlador.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Controlador.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodyActiveAccount\">\r\n    <option name=\"activeAccountId\" value=\"VXNlcjozODM1ODI=\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <excluded-from-favorite>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"master\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </excluded-from-favorite>\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"Edgar\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n    &quot;associatedIndex&quot;: 4\r\n    }</component>\r\n  <component name=\"ProjectId\" id=\"2dirlefD5DxljA0N9gwNVNUnaIU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW\": \"true\",\r\n    \"UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH\": \"270\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"pollo__frito__trozado\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,\r\n    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;227&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;ramafeliz2&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\edgar\\OneDrive\\Desktop\\Proyecto de programacion\\Proyecto-Diagrama-de-Flujo\\Diagrama de Flujo\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"Dibujos.PanelesMovibles\" />\r\n      <recent name=\"LogicaFiguras\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"GraficadorInteractivo\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f2c63d2c-f798-4ff1-b245-2fede493910c\" name=\"Changes\" comment=\"\" />\r\n      <created>1710501892453</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1710501892453</updated>\r\n      <workItem from=\"1710501893482\" duration=\"19000\" />\r\n      <workItem from=\"1710501928960\" duration=\"597000\" />\r\n      <workItem from=\"1710502572541\" duration=\"8000\" />\r\n      <workItem from=\"1710502599781\" duration=\"108000\" />\r\n      <workItem from=\"1710502736836\" duration=\"725000\" />\r\n      <workItem from=\"1710503498694\" duration=\"18000\" />\r\n      <workItem from=\"1710503524960\" duration=\"42000\" />\r\n      <workItem from=\"1710503594128\" duration=\"922000\" />\r\n      <workItem from=\"1710509865136\" duration=\"522000\" />\r\n      <workItem from=\"1710550122912\" duration=\"2272000\" />\r\n      <workItem from=\"1710552608494\" duration=\"225000\" />\r\n      <workItem from=\"1710554332915\" duration=\"973000\" />\r\n      <workItem from=\"1710584677830\" duration=\"77000\" />\r\n      <workItem from=\"1710585350962\" duration=\"1285000\" />\r\n      <workItem from=\"1710586782759\" duration=\"267000\" />\r\n      <workItem from=\"1710587073308\" duration=\"165000\" />\r\n      <workItem from=\"1710587255476\" duration=\"87000\" />\r\n      <workItem from=\"1710587474880\" duration=\"1187000\" />\r\n      <workItem from=\"1710589963917\" duration=\"675000\" />\r\n      <workItem from=\"1710621523871\" duration=\"146000\" />\r\n      <workItem from=\"1710699958883\" duration=\"12982000\" />\r\n      <workItem from=\"1710720795353\" duration=\"53000\" />\r\n      <workItem from=\"1710787900013\" duration=\"84000\" />\r\n      <workItem from=\"1710788001213\" duration=\"110000\" />\r\n      <workItem from=\"1710788179290\" duration=\"1559000\" />\r\n      <workItem from=\"1710807091208\" duration=\"71000\" />\r\n      <workItem from=\"1711036718560\" duration=\"689000\" />\r\n      <workItem from=\"1711056144708\" duration=\"2118000\" />\r\n      <workItem from=\"1711069031272\" duration=\"202000\" />\r\n      <workItem from=\"1711204161415\" duration=\"3993000\" />\r\n      <workItem from=\"1711941059588\" duration=\"727000\" />\r\n      <workItem from=\"1712364788791\" duration=\"3062000\" />\r\n      <workItem from=\"1712415021566\" duration=\"789000\" />\r\n      <workItem from=\"1712431091306\" duration=\"5510000\" />\r\n      <workItem from=\"1712500818533\" duration=\"28960000\" />\r\n      <workItem from=\"1712579678706\" duration=\"1043000\" />\r\n      <workItem from=\"1712581071997\" duration=\"372000\" />\r\n      <workItem from=\"1712597557775\" duration=\"1778000\" />\r\n      <workItem from=\"1712796861319\" duration=\"12579000\" />\r\n      <workItem from=\"1713146491385\" duration=\"420000\" />\r\n      <workItem from=\"1713146941087\" duration=\"218000\" />\r\n      <workItem from=\"1713147237113\" duration=\"43000\" />\r\n      <workItem from=\"1713147364454\" duration=\"123000\" />\r\n      <workItem from=\"1714533075828\" duration=\"492000\" />\r\n      <workItem from=\"1715208009576\" duration=\"62000\" />\r\n      <workItem from=\"1715556573296\" duration=\"3817000\" />\r\n      <workItem from=\"1715615290791\" duration=\"9503000\" />\r\n      <workItem from=\"1717203469550\" duration=\"5000\" />\r\n      <workItem from=\"1717357044709\" duration=\"3034000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Intercambio de figuras parcial\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712580312170</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712580312170</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718771398687</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718771398687</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"Edgar\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Intercambio de figuras parcial\" />\r\n    <MESSAGE value=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Controlador.java</url>\r\n          <line>164</line>\r\n          <properties class=\"Controlador\" method=\"prueba\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"13\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/Compilador.java</url>\r\n          <line>41</line>\r\n          <properties class=\"Compilador\" method=\"ejecutar\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"15\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/Compilador.java</url>\r\n          <line>64</line>\r\n          <option name=\"timeStamp\" value=\"17\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"componete\" />\r\n        <watch expression=\"componete\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,11 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)">
++    <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Compilador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compilador.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInterno.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Front.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.form" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -54,7 +54,7 @@
+     </favorite-branches>
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="pollo_frito" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -76,31 +76,13 @@
+     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "270",
+     "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "pollo__frito__trozado",
++    "git-widget-placeholder": "master",
+     "kotlin-language-version-configured": "true",
+     "node.js.detected.package.eslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.2",
+     "vue.rearranger.settings.migration": "true"
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;227&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;ramafeliz2&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }]]></component>
+   <component name="RecentsManager">

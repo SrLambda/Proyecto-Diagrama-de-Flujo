@@ -18,9 +18,10 @@ public class Controlador {
     private JPanel contenedor;
     private Parseador parseador;
     private VentanaEmergente ventanaEmergente;
-    private GridBagConstraints restriciones;
     private List <Object> variables;
-
+    private final GridBagConstraints restriciones;
+    private Compilador compilador;
+    private Pseudocodigo pseudocodigo;
 
     // Instanciar Singleton
     private Controlador() {
@@ -32,6 +33,7 @@ public class Controlador {
         this.restriciones.fill    = GridBagConstraints.HORIZONTAL; // Llenar horizontalmente
         this.restriciones.weighty = 0; // No expandir en dirección vertical
         this.restriciones.insets  = new Insets(0, 0, 0, 0); // Sin espacio entre paneles
+        this.compilador           = new Compilador();
         this.variables = new ArrayList<>();
         inicializarLista();
     }
@@ -73,6 +75,8 @@ public class Controlador {
         crearFin(front);
 
         this.ventanaEmergente = new VentanaEmergente(_listaFiguras,_contenedor,this.restriciones);
+
+        this.pseudocodigo = new Pseudocodigo(this.parseador.getPseuddoCodigo(),_contenedor,_listaFiguras,this.restriciones,this.ventanaEmergente,this.variables);
 
     }
 
@@ -167,10 +171,26 @@ public class Controlador {
         contenedor.repaint();
     }
 
-    public void prueba(){
-        this.ventanaEmergente.mostrar();
+
+
+    public void prueba()
+    {
+
+        this.compilador.run(this.parseador.generarEjecutable());
+
     }
 
+
+    public void entradaPorPseudocodigo(Front front)
+    {
+
+        this.parseador.actualizar();
+
+        this.pseudocodigo.agregarMediantePseudocodigo(this.parseador.getPseuddoCodigo(),front);
+
+        front.getPanel1().revalidate();
+
+    }
 
     //===============================================================================================================
 

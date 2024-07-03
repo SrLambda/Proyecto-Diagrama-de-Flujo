@@ -83,7 +83,8 @@ public class DibujoForInterno extends JPanel {
         this.revalidate();
     }
 
-    public JPanel getIzquierda() {
+    public JPanel getIzquierda()
+    {
         return izquierda;
     }
 
@@ -102,6 +103,13 @@ public class DibujoForInterno extends JPanel {
         
         return inter;
 
+    }
+
+    public void setIntervalo(int[] vals)
+    {
+        this.datos.setValorinicial(vals[0]);
+        this.datos.setIncremento(vals[1]);
+        this.datos.setValorFinal(vals[2]);
     }
 
 

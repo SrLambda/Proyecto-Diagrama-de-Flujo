@@ -50,14 +50,28 @@ public class ForVacio2 extends PanelPersonalizado{
         return this.v_inicial;
     }
 
+    public void setValorinicial(int _val)
+    {
+        this.v_inicial = _val;
+    }
+
     public int getIncremento()
     {
         return this.incremento;
     }
 
+    public void setIncremento(int _val)
+    {
+        this.incremento = _val;
+    }
+
     public int getValorFinal()
     {
         return this.v_final;
+    }
+
+    public void setValorFinal(int _val){
+        this.v_final = _val;
     }
 
     public String getVar1S() {
@@ -91,7 +105,6 @@ public class ForVacio2 extends PanelPersonalizado{
     public void setIncreS(String increS) {
         this.increS = increS;
     }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -171,51 +184,51 @@ public class ForVacio2 extends PanelPersonalizado{
 
 
     public String buscar(String _entrada, String _opcion) {
-        while(true){
-            if(_entrada == null || _entrada == ""){
+        while (true) {
+            if (_entrada == null || _entrada == "") {
                 return null;
             }
             try {
                 Integer.parseInt(_entrada);
                 _entrada = validarMixto(validarEntero.validar(_entrada), _entrada);
-                if(_entrada == null){
+                if (_entrada == null) {
                     return null;
                 }
                 return _entrada;
             } catch (NumberFormatException ex1) {
-                _entrada = JOptionPane.showInputDialog(null,"["+_opcion+"]"+" requiere un entero");
+                _entrada = JOptionPane.showInputDialog(null, "[" + _opcion + "]" + " requiere un entero");
                 _entrada = quitarEspacios(_entrada);
             }
         }
     }
 
-    public void manejarSalidas(String dato1, String dato2, String dato3, String dato4){
+    public void manejarSalidas (String dato1, String dato2, String dato3, String dato4){
 
         verVariable(dato1);
-        if(this.getVar1S() == null){
+        if (this.getVar1S() == null) {
             dibujoFor.setTexto(null);
             this.texto = null;
             return;
         }
 
-        setValorIniS(buscar(dato2,"Valor inicial"));
-        if(this.getValorIniS() == null){
+        setValorIniS(buscar(dato2, "Valor inicial"));
+        if (this.getValorIniS() == null) {
             dibujoFor.setTexto(null);
             this.texto = null;
             return;
         }
 
-        setIncreS(buscar(dato3,"Incremento"));
+        setIncreS(buscar(dato3, "Incremento"));
 
-        if(this.getIncreS() == null){
+        if (this.getIncreS() == null) {
             dibujoFor.setTexto(null);
             this.texto = null;
             return;
         }
 
-        setValorFinS(buscar(dato4,"Valor final"));
+        setValorFinS(buscar(dato4, "Valor final"));
 
-        if(this.getValorFinS() == null){
+        if (this.getValorFinS() == null) {
             dibujoFor.setTexto(null);
             this.texto = null;
             return;
@@ -224,12 +237,11 @@ public class ForVacio2 extends PanelPersonalizado{
         incremento = Integer.parseInt(getIncreS());
         v_inicial = Integer.parseInt(getValorIniS());
         v_final = Integer.parseInt(getValorFinS());
-        String txtALter = getVar1S()+";"+getValorIniS()+";"+getValorFinS()+";"+getIncreS();
+        String txtALter = getVar1S() + ";" + getValorIniS() + ";" + getValorFinS() + ";" + getIncreS();
         indice1 = indice1 + 1;
-        dibujoFor.setTipo("For"+indice1);
-        this.setTipo("For"+indice1);
-        this.variables.add("For"+indice1);
+        dibujoFor.setTipo("For" + indice1);
+        this.setTipo("For" + indice1);
+        this.variables.add("For" + indice1);
         this.variables.add(txtALter);
     }
-
 }

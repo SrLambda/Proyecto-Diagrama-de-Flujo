@@ -16,6 +16,7 @@ public class DibujoWhileFin extends PanelPersonalizado {
     public DibujoWhileFin(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                           VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto,lista,_contenedor,_restriciones,_ventanaEmergente,_variables);
+        setPreferredSize(new Dimension(600, 500));
     }
 
     @Override
@@ -33,10 +34,10 @@ public class DibujoWhileFin extends PanelPersonalizado {
         // Dibujar flujo
         g.setColor(Color.BLACK);
         g.drawLine(centro_x,0,centro_x,panelHeight/2);    // Linea vertical central inferior
-        g.drawLine((int) (panelWidth*0.1665),0,(int) (panelWidth*0.1665), centro_y);     // Linea vertical izquierda --------------
-        g.drawLine((int) (cuarto*3.33), 0,(int) (cuarto*3.33), (int) (centro_y+centro_y*0.5));   // Linea vertical derecha
-        g.drawLine((int) (panelWidth*0.1665), centro_y,centro_x, centro_y); // Linea horizontal izquierda
-        g.drawLine(centro_x, (int) (panelHeight*0.75),(int) (cuarto*3.33), (int) (panelHeight*0.75)); // Linea horizontal derecha
+        g.drawLine( 100,0,100, centro_y);     // Linea vertical izquierda --------------
+        g.drawLine(panelWidth-100, 0,panelWidth-100, (int) (centro_y+centro_y*0.5));   // Linea vertical derecha
+        g.drawLine(100, centro_y,centro_x, centro_y); // Linea horizontal izquierda
+        g.drawLine(centro_x, (int) (panelHeight*0.75),panelWidth-100, (int) (panelHeight*0.75)); // Linea horizontal derecha
         g.drawLine(centro_x, (int) (panelHeight*0.75),centro_x,panelHeight); // Linea inferior
 
     }

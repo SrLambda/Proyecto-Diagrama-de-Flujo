@@ -1,9 +1,11 @@
 package Dibujos;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
-
 import Dibujos.Validador.Validador;
 import Dibujos.Validador.ValidadorCadena;
 import Dibujos.Validador.ValidadorDouble;
@@ -19,6 +21,14 @@ public abstract class PanelPersonalizado extends JPanel {
     public boolean habilitado = true;
     protected int posicion = -1;
     protected VentanaEmergente ventanaEmergente;
+
+    protected int[] anchoAlto;
+
+    protected static Font textoFont;
+    protected static Float zoom;
+    protected Integer witdh;
+    protected Integer height;
+
     protected Validador validarEntero;
     protected Validador validarDouble;
     protected Validador validarCadena;
@@ -27,6 +37,7 @@ public abstract class PanelPersonalizado extends JPanel {
     protected static int indice1 = 0;
     private String tipo;
 
+    public double zoomFactor = 1.0;
 
     public PanelPersonalizado(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                               VentanaEmergente _ventanaEmergente, List <Object> _variables) {
@@ -40,6 +51,25 @@ public abstract class PanelPersonalizado extends JPanel {
         this.validarCadena = new ValidadorCadena();
         this.variables = _variables;
         setPreferredSize(new Dimension(750, 200));
+
+        if (null == zoom){
+            zoom = 1.0f;
+        }
+
+        try {
+            InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
+            assert is != null;
+            textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
+        }
+        catch (IOException | FontFormatException e)
+        {
+            e.printStackTrace();
+        }
+
+
+
+        this.anchoAlto = this.getAnchoAlto();
+        setPreferredSize(new Dimension(200, 100));
 
     }
 
@@ -103,6 +133,20 @@ public abstract class PanelPersonalizado extends JPanel {
 
     }
 
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
+        revalidate(); // Revalidar el layout
+        repaint();   // Repintar el panel con el nuevo zoom
+    }
+
+    //para los paneles de las figuras
+    @Override
+    public Dimension getPreferredSize() {
+        // Obtener el tamaño original del panel y aplicarle el factor de zoom
+        Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
+        Integer Height = (int) (100 * zoomFactor); // Alto original del panel
+        return new Dimension((int) (Width * zoomFactor * 2.5), (int) (Height * zoomFactor));
+    }
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
@@ -134,9 +178,8 @@ public abstract class PanelPersonalizado extends JPanel {
     public String getTexto() {
         return texto;
     }
-
-    public void setTexto(String _texto){
-        this.texto = _texto;
+    public void setTexto(String _tx){
+        this.texto = _tx;
     }
 
     public void actualizarContenedor(List<PanelPersonalizado> list, JPanel cont) {
@@ -204,6 +247,30 @@ public abstract class PanelPersonalizado extends JPanel {
                 }
             }
         }
+    }
+
+
+    private int[] getAnchoAlto(){
+
+        JLabel tempLabel = new JLabel();
+        FontMetrics metrics = tempLabel.getFontMetrics(this.textoFont);
+
+        int width  = metrics.stringWidth(this.texto);
+        int height = metrics.getHeight();
+
+        if(width < 105) //  ANCHO DE LA CADENA 'WWWWW'
+        {
+
+            width = 105;
+
+        }
+
+        int[] valores = new int[2];
+
+        valores[0] = width;
+        valores[1] = height;
+
+        return valores;
     }
 
     public String validarVariable(String _variable) {

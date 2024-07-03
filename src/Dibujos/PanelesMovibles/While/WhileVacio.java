@@ -24,7 +24,24 @@ public class WhileVacio extends PanelPersonalizado {
         int ancho = this.getWidth();
         int alto = this.getHeight();
 
-        g.drawLine(ancho/2,0,ancho/2,alto);
+        int x;
+
+        if(this.texto == "izquierda")
+        {
+
+            x = 100;
+
+        }
+        else if (this.texto == "derecha")
+        {
+            x = ancho - 100;
+        }
+        else
+        {
+            x = ancho / 2;
+        }
+        g.drawLine(x,0,x ,alto);
+
     }
 
     public void ajustarSize(int altura)
