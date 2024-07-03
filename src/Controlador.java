@@ -198,7 +198,7 @@ public class Controlador {
 
     public void inicializarLista(){
         for(int i=0; i<100; i++){
-            variables.add("Catacresis");
+            variables = new ArrayList<>();
         }
     }
 

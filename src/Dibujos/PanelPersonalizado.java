@@ -24,8 +24,8 @@ public abstract class PanelPersonalizado extends JPanel {
     protected Validador validarCadena;
     protected GridBagConstraints restriciones;
     protected List <Object> variables;
-    protected static int indice = 0;
-    public String txtAyuda;
+    protected static int indice1 = 0;
+    private String tipo;
 
 
     public PanelPersonalizado(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
@@ -42,6 +42,15 @@ public abstract class PanelPersonalizado extends JPanel {
         setPreferredSize(new Dimension(750, 200));
 
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
 
     public int colisiones() {
         int i = 0;
@@ -143,9 +152,7 @@ public abstract class PanelPersonalizado extends JPanel {
                 this.texto = entrada;
                 entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
                 if(entrada == null){
-                    System.out.println("Texto antes ->: "+this.texto);
                     this.texto = null;
-                    System.out.println("Texto a null ->: "+this.texto);
                     return null;
                 }
                 this.texto = entrada;
@@ -216,9 +223,7 @@ public abstract class PanelPersonalizado extends JPanel {
     public boolean validarVariableTrueFalse(String _entrada) {
         for (int i=0; i < variables.size(); i++) {
             if (variables.get(i).equals(_entrada)) {
-                if(i % 2 ==0){
-                    return true;
-                }
+                return true;
             }
         }
         return false;

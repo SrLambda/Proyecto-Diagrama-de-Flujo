@@ -37,14 +37,11 @@ public class ForVacio2 extends PanelPersonalizado{
 
                 if (e.getClickCount() == 2) {
 
-                    modificarValores();
+                        modificarValores();
 
                 }
             }
         });
-
-        //manejarSalidas();
-
     }
 
 
@@ -126,7 +123,7 @@ public class ForVacio2 extends PanelPersonalizado{
     {
 
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Establecer el layout vertical
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         JTextField variable = new JTextField(10);
         JTextField _inicial = new JTextField(10);
         JTextField _incremento = new JTextField(10);
@@ -145,7 +142,6 @@ public class ForVacio2 extends PanelPersonalizado{
                 "Editar ciclo", JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
-            // Obtener los datos ingresados por el usuario
             String dato1 = variable.getText();
             String dato2 = _inicial.getText();
             String dato3 = _incremento.getText();
@@ -153,9 +149,9 @@ public class ForVacio2 extends PanelPersonalizado{
             texto = dato1;
             manejarSalidas(dato1, dato2, dato3, dato4);
 
-
         } else {
-            System.out.println("Operación cancelada.");
+            dibujoFor.setTexto(null);
+            this.texto = null;
         }
 
     }
@@ -173,20 +169,23 @@ public class ForVacio2 extends PanelPersonalizado{
         setVar1S(_entrada);
     }
 
-    @Override
-    public String buscar(String _entrada) {
-        if(_entrada == null || _entrada == ""){
-            return null;
-        }
-        try {
-            Integer.parseInt(_entrada);
-            _entrada = validarMixto(validarEntero.validar(_entrada), _entrada);
-            if(_entrada == null){
+
+    public String buscar(String _entrada, String _opcion) {
+        while(true){
+            if(_entrada == null || _entrada == ""){
                 return null;
             }
-            return _entrada;
-        } catch (NumberFormatException ex1) {
-            return null;
+            try {
+                Integer.parseInt(_entrada);
+                _entrada = validarMixto(validarEntero.validar(_entrada), _entrada);
+                if(_entrada == null){
+                    return null;
+                }
+                return _entrada;
+            } catch (NumberFormatException ex1) {
+                _entrada = JOptionPane.showInputDialog(null,"["+_opcion+"]"+" requiere un entero");
+                _entrada = quitarEspacios(_entrada);
+            }
         }
     }
 
@@ -199,14 +198,14 @@ public class ForVacio2 extends PanelPersonalizado{
             return;
         }
 
-        setValorIniS(buscar(dato2));
+        setValorIniS(buscar(dato2,"Valor inicial"));
         if(this.getValorIniS() == null){
             dibujoFor.setTexto(null);
             this.texto = null;
             return;
         }
 
-        setIncreS(buscar(dato3));
+        setIncreS(buscar(dato3,"Incremento"));
 
         if(this.getIncreS() == null){
             dibujoFor.setTexto(null);
@@ -214,19 +213,23 @@ public class ForVacio2 extends PanelPersonalizado{
             return;
         }
 
-        setValorFinS(buscar(dato4));
+        setValorFinS(buscar(dato4,"Valor final"));
 
         if(this.getValorFinS() == null){
             dibujoFor.setTexto(null);
             this.texto = null;
             return;
         }
-
+        this.texto = getVar1S();
+        incremento = Integer.parseInt(getIncreS());
+        v_inicial = Integer.parseInt(getValorIniS());
+        v_final = Integer.parseInt(getValorFinS());
         String txtALter = getVar1S()+";"+getValorIniS()+";"+getValorFinS()+";"+getIncreS();
-        this.variables.set(this.indice, "For");
-        this.variables.set(this.indice + 1, txtALter);
-        System.out.println("Guardando FOR en pos: "+this.indice+" con valor: "+txtALter);
-        this.indice += 2;
+        indice1 = indice1 + 1;
+        dibujoFor.setTipo("For"+indice1);
+        this.setTipo("For"+indice1);
+        this.variables.add("For"+indice1);
+        this.variables.add(txtALter);
     }
 
 }

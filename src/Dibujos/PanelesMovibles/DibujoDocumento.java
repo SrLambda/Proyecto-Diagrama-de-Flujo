@@ -11,10 +11,21 @@ import java.util.Map;
 
 public class DibujoDocumento extends PanelMovible {
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+    private String salidaS;
     public DibujoDocumento(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                            VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        String nuevoTxt = quitarEspacios(texto);
+        verVariable(nuevoTxt);
+        manejoSalidas();
+    }
 
+    public String getSalidaS() {
+        return this.salidaS;
+    }
+
+    public void setSalidaS(String _salidaS) {
+        this.salidaS = _salidaS;
     }
 
     @Override
@@ -66,6 +77,33 @@ public class DibujoDocumento extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g.drawString(texto, x, y);
     }
+
+    public void verVariable(String _entrada) {
+        if(_entrada == null){
+            return;
+        }
+        while(!validarVariableTrueFalse(_entrada)){
+            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+            if(_entrada == null){
+                return;
+            }
+        }
+        this.setSalidaS(_entrada);
+    }
+
+
+    public void manejoSalidas(){
+        if(getSalidaS() == null){
+            this.texto = null;
+            return;
+        }
+        this.texto = getSalidaS();
+        indice1 = indice1 + 1;
+        this.setTipo("Documento"+indice1);
+        this.variables.add("Documento"+indice1);
+        this.variables.add(this.getSalidaS());
+    }
+
 }
 
 

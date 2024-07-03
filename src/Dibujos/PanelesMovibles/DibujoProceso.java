@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoProceso extends PanelMovible {
-    private int ultimoEjeY;
-    private boolean moviendo;
-    private int ejeYMouse;
     private String variableS;
     private String procesoS;
     protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
@@ -126,16 +123,8 @@ public class DibujoProceso extends PanelMovible {
             partes.add(buscar(parte.toString()));
         }
         this.setProcesoS(String.join("",partes));
-        this.texto = this.getVariableS() +" = "+ this.getProcesoS();
+        this.texto = this.getVariableS() +"="+ this.getProcesoS();
         return true;
-    }
-
-    public void asignarALista(String _variable, String _asignacion){
-        for(int i=0; i < variables.size()-1; i++){
-            if(variables.get(i).equals(_variable)){
-                variables.set(i+1,_asignacion);
-            }
-        }
     }
 
     public String getVariableS() {
@@ -181,7 +170,11 @@ public class DibujoProceso extends PanelMovible {
             this.texto = null;
             return;
         }
-        asignarALista(this.getVariableS(), this.getProcesoS());
+        indice1 = indice1 + 1;
+        this.setTipo("Proceso"+indice1);
+        variables.add("Proceso"+indice1);
+        variables.add(getVariableS()+"="+getProcesoS());
+
     }
 
 }

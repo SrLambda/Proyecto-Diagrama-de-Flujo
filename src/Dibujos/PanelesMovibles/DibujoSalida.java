@@ -100,9 +100,12 @@ public class DibujoSalida extends PanelMovible {
             this.texto = null;
             return;
         }
-        this.variables.set(this.indice,"Salida");
-        this.variables.set(this.indice+1,this.getSalidaS());
-        this.indice += 2;
+        indice1 = indice1 + 1;
+        System.out.println(indice1);
+        this.setTipo("Salida"+indice1);
+        this.texto = getSalidaS();
+        this.variables.add("Salida"+indice1);
+        this.variables.add(this.getSalidaS());
     }
 
 }
