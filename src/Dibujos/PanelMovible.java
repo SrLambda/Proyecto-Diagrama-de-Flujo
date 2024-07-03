@@ -98,7 +98,7 @@ public abstract class PanelMovible extends PanelPersonalizado{
 
                 if(indice != -1)
                 {
-
+                    //System.out.println("Intercambiando posiciones:");
                     intercambiarPosiciones();
 
                 }
@@ -151,6 +151,7 @@ public abstract class PanelMovible extends PanelPersonalizado{
 
             PanelPersonalizado tempPosicion = listaFiguras.get(posicion);
             PanelPersonalizado tempColision = listaFiguras.get(indice);
+            System.out.println("Intercambiando "+this.posicion+" con "+indice);
             listaFiguras.set(this.posicion, tempColision);
             listaFiguras.set(indice, tempPosicion);
             actualizarPosicionesVisuales();

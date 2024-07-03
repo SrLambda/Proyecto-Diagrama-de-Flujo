@@ -176,6 +176,7 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
         this.texto = getVar1() + getCondicion() + getVar2();
         indice1 = indice1 + 1;
+        dibujoDecision.setTipo("Decision"+indice1);
         this.setTipo("Decision"+indice1);
         this.variables.add("Decision"+indice1);
         this.variables.add(this.texto);

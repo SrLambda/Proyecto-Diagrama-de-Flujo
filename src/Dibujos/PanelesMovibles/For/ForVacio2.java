@@ -226,6 +226,7 @@ public class ForVacio2 extends PanelPersonalizado{
         v_final = Integer.parseInt(getValorFinS());
         String txtALter = getVar1S()+";"+getValorIniS()+";"+getValorFinS()+";"+getIncreS();
         indice1 = indice1 + 1;
+        dibujoFor.setTipo("For"+indice1);
         this.setTipo("For"+indice1);
         this.variables.add("For"+indice1);
         this.variables.add(txtALter);

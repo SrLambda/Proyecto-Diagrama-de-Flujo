@@ -183,6 +183,7 @@ public class DibujoWhileInicio extends PanelPersonalizado {
 
         this.texto = getVar1() + getCondicion() + getVar2();
         indice1 = indice1 + 1;
+        dibujoWhile.setTipo("While"+indice1);
         this.setTipo("While"+indice1);
         this.variables.add("While"+indice1);
         this.variables.add(this.texto);

@@ -179,6 +179,7 @@ public class DibujoDoWhileFin extends PanelPersonalizado {
 
             this.texto = getVar1() + getCondicion() + getVar2();
             indice1 = indice1 + 1;
+            dibujoDoWhile.setTipo("DoWhile"+indice1);
             this.setTipo("DoWhile"+indice1);
             this.variables.add("DoWhile"+indice1);
             this.variables.add(this.texto);
