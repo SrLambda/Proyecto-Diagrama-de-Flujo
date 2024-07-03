@@ -71,6 +71,8 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
 
         int widthTx  = this.anchoAlto[0];
         int heightTx = this.anchoAlto[1];
@@ -78,10 +80,8 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int panelWidth  = getWidth();
         int panelHeight = getHeight();
 
-
         int centro_x = panelWidth/2;  // Centro horizontal
         int centro_y = panelHeight/2; // Centro vertical
-
 
         int cuarto_x = panelWidth/4;
 
@@ -96,42 +96,39 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         int deltX = (int) (z * Math.cos( anguloY / 2));
         int deltY = (int) (z * Math.sin( anguloY / 2));
 
-
         // Coordenadas del rombo
         int x1 = centro_x - deltX; // Coordenada x del lado izquierdo del rectángulo
         int x2 = centro_x + deltX; // Coordenada x del lado derecho del rectángulo
         int y1 = centro_y - deltY; // Coordenada y del lado superior del rectángulo
         int y2 = centro_y + deltY; // Coordenada y del lado inferior del rectángulo
 
-
-
         // Dibujar las líneas que forman el rombo
-        g.setColor(Color.BLACK);
-        g.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
-        g.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
-        g.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
-        g.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(x1, centro_y,centro_x, y1);     // Lado superior
+        g2d.drawLine(x2, centro_y,centro_x, y1);     // Lado derecho
+        g2d.drawLine(x1, centro_y,centro_x, y2);     // Lado inferior
+        g2d.drawLine(x2, centro_y,centro_x, y2);     // Lado izquierdo
 
         // Dibujar flujo
-        g.setColor(Color.BLACK);
-        g.drawLine(centro_x,0,centro_x,y1);  // Linea superior
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(centro_x,0,centro_x,y1);  // Linea superior
 
-        g.drawLine(centro_x,y1,centro_x,y1);   // Flecha
-        g.drawLine(centro_x,y1,centro_x,y1);   // de flujo
+        g2d.drawLine(centro_x,y1,centro_x,y1);   // Flecha
+        g2d.drawLine(centro_x,y1,centro_x,y1);   // de flujo
 
-        g.drawLine(x1,centro_y,cuarto_x,centro_y);
-        g.drawLine(x2,centro_y,cuarto_x*3,centro_y);
-        g.drawLine(cuarto_x,centro_y,cuarto_x,panelHeight);
-        g.drawLine(cuarto_x*3,centro_y,cuarto_x*3,panelHeight);
+        g2d.drawLine(x1,centro_y,cuarto_x,centro_y);
+        g2d.drawLine(x2,centro_y,cuarto_x*3,centro_y);
+        g2d.drawLine(cuarto_x,centro_y,cuarto_x,panelHeight);
+        g2d.drawLine(cuarto_x*3,centro_y,cuarto_x*3,panelHeight);
 
         // fuente con el tamaño especificado
-        g.setFont(textoFont);
+        g2d.setFont(textoFont);
 
         // Dibuja el texto centrado
-        FontMetrics metrics = g.getFontMetrics();
+        FontMetrics metrics = g2d.getFontMetrics();
         int x = (getWidth() - metrics.stringWidth(texto)) / 2;
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
-        g.drawString(texto, x, y);
+        g2d.drawString(texto, x, y);
     }
 
     public void asignarVariable(String _entrada){

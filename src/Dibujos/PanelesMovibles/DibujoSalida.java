@@ -25,7 +25,10 @@ public class DibujoSalida extends PanelMovible {
 
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
+        // Ajustar para zoom centralizado
+        g2d.translate(getWidth() / 2, getHeight() / 2);
         g2d.scale(zoomFactor, zoomFactor);
+        g2d.translate(-getWidth() / 2, -getHeight() / 2);
 
         int widthTx  = this.anchoAlto[0];
         int heightTx = this.anchoAlto[1];

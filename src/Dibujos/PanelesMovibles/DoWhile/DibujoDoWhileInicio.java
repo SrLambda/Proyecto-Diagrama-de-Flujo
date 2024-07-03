@@ -23,6 +23,8 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.scale(zoomFactor, zoomFactor);
 
         int panelWidth = getWidth();
         int panelHeight = getHeight();
@@ -32,9 +34,9 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
 
         int cuarto = panelWidth / 4;
 
-        g.drawLine(100,centro_y,100, centro_y*3);     // Linea vertical izquierda
-        g.drawLine(centro_x,0,centro_x, panelHeight);     // Linea vertical central
-        g.drawLine(centro_x, centro_y,100, centro_y); // Linea horizontal izquierda
+        g2d.drawLine(100,centro_y,100, centro_y*3);     // Linea vertical izquierda
+        g2d.drawLine(centro_x,0,centro_x, panelHeight);     // Linea vertical central
+        g2d.drawLine(centro_x, centro_y,100, centro_y); // Linea horizontal izquierda
     }
 }
 

@@ -52,7 +52,7 @@ public abstract class PanelPersonalizado extends JPanel {
         this.variables = _variables;
         setPreferredSize(new Dimension(750, 200));
 
-        if (null == zoom){
+        if (null == zoom) {
             zoom = 1.0f;
         }
 
@@ -60,12 +60,9 @@ public abstract class PanelPersonalizado extends JPanel {
             InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
             assert is != null;
             textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
-        }
-        catch (IOException | FontFormatException e)
-        {
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
-
 
 
         this.anchoAlto = this.getAnchoAlto();
@@ -133,6 +130,25 @@ public abstract class PanelPersonalizado extends JPanel {
 
     }
 
+
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
+        revalidate();
+        repaint();
+    }
+
+    public double getZoomFactor() {
+        return zoomFactor;
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        Dimension originalSize = super.getPreferredSize();
+        return new Dimension((int) (originalSize.width * zoomFactor), (int) (originalSize.height * zoomFactor));
+    }
+
+
+    /*
     public void setZoomFactor(double zoomFactor) {
         this.zoomFactor = zoomFactor;
         revalidate(); // Revalidar el layout
@@ -145,8 +161,9 @@ public abstract class PanelPersonalizado extends JPanel {
         // Obtener el tamaño original del panel y aplicarle el factor de zoom
         Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
         Integer Height = (int) (100 * zoomFactor); // Alto original del panel
-        return new Dimension((int) (Width * zoomFactor * 2.5), (int) (Height * zoomFactor));
-    }
+        return new Dimension((int) (Width * zoomFactor * 2.4), (int) (Height * zoomFactor));
+    }*/
+
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
