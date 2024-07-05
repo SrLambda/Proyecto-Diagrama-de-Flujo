@@ -69,6 +69,7 @@ public class DibujoFor extends PanelMovible {
         return aux.getListaIzquierda();
     }
 
+    @Override
     public void ajustarSize()
     {
         DibujoForInterno aux = (DibujoForInterno) this.contenido;

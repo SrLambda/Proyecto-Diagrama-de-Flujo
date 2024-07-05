@@ -2,6 +2,7 @@ package Dibujos.Ventana;
 
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.*;
+import Dibujos.PanelesNoMovibles.DibujoFin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,365 +10,314 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class VentanaEmergente {
 
     private List<PanelPersonalizado> lista;
-    private List<String> compnentes;
     private JPanel contenedor;
-    private boolean esPrincipal;
     private GridBagConstraints restricciones;
+
+    private DefaultMutableTreeNode inicio;
+
+    private static DefaultMutableTreeNode selecion;
+
+
+    private boolean esPrincipal; //eliminar
+    private List<String> compnentes; //eliminar
 
     public VentanaEmergente(List<PanelPersonalizado> _lista, JPanel _contenedor,GridBagConstraints _restricciones)
     {
         this.lista         =  _lista;
         this.contenedor    =  _contenedor;
-        this.compnentes    =  new ArrayList<>();
-        this.esPrincipal   =  !_lista.isEmpty();
         this.restricciones = _restricciones;
 
-        this.actualizarCompnentes();
+        this.inicio = new DefaultMutableTreeNode(new Seleccion(_lista,"AGREGAR FIN",_contenedor,null,-1));
+
+
+
+        //eliminar
+        this.compnentes    =  new ArrayList<>();
+        this.esPrincipal   =  !_lista.isEmpty();
+        this.actualizarComponentes(this.lista,this.contenedor,this.inicio,null);
     }
 
-    public void actualizarCompnentes()
+    public void actualizar()
+    {
+        this.actualizarComponentes(this.lista,this.contenedor,this.inicio,null);
+    }
+
+    private void actualizarComponentes(List<PanelPersonalizado> _lista, JPanel _contenedor,DefaultMutableTreeNode _root,PanelPersonalizado _padre)
     {
 
-        this.compnentes.clear();
-        this.compnentes.add("AGREGAR FINAL");
+       _root.removeAllChildren();
 
-        StringBuilder opcion;
-        String         texto;
-        int           indice;
+        for (int i = 0; i < _lista.size(); i++)
+        {
+            StringBuilder seleccion = new StringBuilder();
+            String texto_panel = _lista.get(i).getTexto();
 
 
-        for (int i=0 ; i < this.lista.size() ; i++ ) {
 
-            if(this.esPrincipal)
+
+            if(_lista.get(i) instanceof DibujoProceso)
             {
-                indice = i;
+
+
+                seleccion.append(" Proceso -> ").append(texto_panel);
+
+                _root.add(new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i)));
+
+
             }
-            else
+            else if(_lista.get(i) instanceof DibujoEntrada)
             {
-                indice = i+1;
+
+
+                seleccion.append(" Entrada -> ").append(texto_panel);
+
+                _root.add(new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i)));
+
+
             }
+            else if (_lista.get(i) instanceof DibujoSalida)
+            {
 
 
+                seleccion.append(" Salida -> ").append(texto_panel);
 
-            opcion = new StringBuilder();
-            texto  = this.lista.get(i).getTexto();
-
-
+                _root.add(new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i)));
 
 
-           if(this.lista.get(i) instanceof DibujoProceso)
-           {
+            }
+            else if (_lista.get(i) instanceof DibujoDocumento)
+            {
 
 
-               opcion.append(indice).append(" | PROCESO ");
+                seleccion.append(" Documento -> ").append(texto_panel);
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
+                _root.add(new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i)));
 
 
-
-           }
-           else if(this.lista.get(i) instanceof DibujoEntrada)
-           {
-
-
-               opcion.append(indice).append(" | ENTRADA ");
-
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
+            }
+            else if (_lista.get(i) instanceof DibujoDecision)
+            {
 
 
-           }
-           else if (this.lista.get(i) instanceof DibujoSalida)
-           {
+                seleccion.append(" Decision -> ").append(texto_panel);
+
+                DefaultMutableTreeNode aux = new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i));
+                _root.add(aux);
+
+                DibujoDecision panel = (DibujoDecision) _lista.get(i);
 
 
-               opcion.append(indice).append(" | SALIDA ");
+                DefaultMutableTreeNode verd = new DefaultMutableTreeNode(new Seleccion(panel.getVerdad(),"Verdad",panel.getContVerdad(),panel,-1));
+                DefaultMutableTreeNode fals = new DefaultMutableTreeNode(new Seleccion(panel.getFalso(),"Falso",panel.getContFalso(),panel,-1));
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
+                aux.add(verd);
+                aux.add(fals);
 
-               this.compnentes.add(opcion.toString());
-
-
-           }
-           else if (this.lista.get(i) instanceof DibujoDocumento)
-           {
+                this.actualizarComponentes(panel.getVerdad(),panel.getContVerdad(),verd,panel);
+                this.actualizarComponentes(panel.getFalso(),panel.getContFalso(),fals,panel);
 
 
-               opcion.append(indice).append(" | DOCUMENTO ");
+            }
+            else if (_lista.get(i) instanceof DibujoWhile)
+            {
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
+                seleccion.append(" While -> ").append(texto_panel);
 
-               this.compnentes.add(opcion.toString());
+                DefaultMutableTreeNode aux = new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i));
+                _root.add(aux);
 
-
-           }
-           else if (this.lista.get(i) instanceof DibujoDecision)
-           {
+                DibujoWhile panel = (DibujoWhile) _lista.get(i);
 
 
-               opcion.append(indice).append(" | DECICION ");
+                DefaultMutableTreeNode cicl = new DefaultMutableTreeNode(new Seleccion(panel.getLista(),"Ciclo",panel.getContenido(),panel,-1));
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
+                aux.add(cicl);
 
-               this.compnentes.add(opcion.toString());
+                this.actualizarComponentes(panel.getLista(),panel.getContenido(),cicl,panel);
 
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE VERDAD | --");
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE FALSO  | --");
+            }
+            else if (_lista.get(i) instanceof DibujoFor)
+            {
 
+                seleccion.append(" For -> ").append(texto_panel);
 
-           }
-           else if (this.lista.get(i) instanceof DibujoWhile)
-           {
+                DefaultMutableTreeNode aux = new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i));
+                _root.add(aux);
 
-               opcion.append(indice).append(" | WHILE ");
-
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
-
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
-
-           }
-           else if (this.lista.get(i) instanceof DibujoFor)
-           {
-
-               opcion.append(indice).append(" | FOR ");
-
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
-
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
-
-           }
-           else if (this.lista.get(i) instanceof DibujoDoWhile)
-           {
-               opcion.append(indice).append(" | DO-WHILE ");
-
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
-
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DEL CICLO | --");
-
-           }
+                DibujoFor panel = (DibujoFor) _lista.get(i);
 
 
+                DefaultMutableTreeNode cicl = new DefaultMutableTreeNode(new Seleccion(panel.getLista(),"Ciclo",panel.getContenido(),panel,-1));
+
+                aux.add(cicl);
+
+                this.actualizarComponentes(panel.getLista(),panel.getContenido(),cicl,panel);
+
+            }
+            else if (_lista.get(i) instanceof DibujoDoWhile)
+            {
+                seleccion.append(" DoWhile -> ").append(texto_panel);
+
+                DefaultMutableTreeNode aux = new DefaultMutableTreeNode(new Seleccion(_lista,seleccion.toString(),_contenedor,_padre,i));
+                _root.add(aux);
+
+                DibujoDoWhile panel = (DibujoDoWhile) _lista.get(i);
+
+
+                DefaultMutableTreeNode cicl = new DefaultMutableTreeNode(new Seleccion(panel.getLista(),"Ciclo",panel.getContenido(),panel,-1));
+
+                aux.add(cicl);
+
+                this.actualizarComponentes(panel.getLista(),panel.getContenido(),cicl,panel);
+
+            }
         }
-
     }
 
-    public void agregar(PanelPersonalizado nuevo)
+    public void agregar(PanelPersonalizado nuevo, Frame front)
+
     {
-        String seleccion = new String();
 
-        String[] componentes_aux = new String[this.compnentes.size()];
-        componentes_aux = this.compnentes.toArray(componentes_aux);
 
-        JComboBox<String> comboBox = new JComboBox<>(componentes_aux);
+        DefaultTreeModel treeModel = new DefaultTreeModel(this.inicio);
 
-        JButton botonAgregar = new JButton("Agregar");
+        // Crear el JTree con el modelo
+        JTree tree = new JTree(treeModel);
 
-        JPanel panelBotones = new JPanel();
-        panelBotones.setLayout(new FlowLayout(FlowLayout.RIGHT)); // Alinear los botones a la derecha
-        panelBotones.add(botonAgregar);
-
-        botonAgregar.addActionListener(new ActionListener() {
+        // Añadir un TreeSelectionListener para guardar la selección
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
+            public void valueChanged(TreeSelectionEvent e)
             {
-                ((Window) SwingUtilities.getRoot(panelBotones)).dispose();
-                agregarElemento((String) comboBox.getSelectedItem(),nuevo);
-
+                selecion = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
             }
-
         });
 
-        // Crear un panel para el contenido de la ventana emergente
-        JPanel panelContenido = new JPanel();
-        panelContenido.setLayout(new BorderLayout());
-        panelContenido.add(comboBox, BorderLayout.CENTER);
-        panelContenido.add(panelBotones, BorderLayout.SOUTH);
 
-        // Mostrar la ventana emergente
-        int resultado = JOptionPane.showOptionDialog(null, panelContenido, "Agregar en lugar en especifico",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
+        JScrollPane treeScrollPane = new JScrollPane(tree);
 
+
+        JDialog dialog = new JDialog(front, "Seleccionar Posición", true);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setSize(300, 400);
+        dialog.setLocationRelativeTo(null);
+        dialog.getContentPane().add(treeScrollPane, BorderLayout.CENTER);
+
+
+        JButton closeButton = new JButton("Agregar");
+
+        closeButton.addActionListener(e -> {
+
+            Seleccion aux = (Seleccion) selecion.getUserObject();
+
+
+            if (selecion != null)
+            {
+
+                if(aux.getPosicion() == -1)
+                {
+
+                    agregarFinal(nuevo, aux);
+                }
+                else
+                {
+                    aux.getLista().add(aux.getPosicion(),nuevo);
+                    aux.getContenedor().add(nuevo,this.restricciones,aux.getPosicion());
+                }
+
+            }
+            else{
+
+                agregarFinal(nuevo, aux);
+            }
+
+            //en caso de estar dentro de sub contenedores
+            if (aux.getPadre() != null)
+            {
+                aux.getPadre().ajustarSize();
+
+                if(aux.getPadre() instanceof DibujoDecision)
+                {
+                    DibujoDecision descAux = (DibujoDecision) aux.getPadre();
+                    descAux.eliminarEspaciosEnBlanco();
+                }
+            }
+
+            dialog.dispose();
+        });
+
+
+        dialog.getContentPane().add(closeButton, BorderLayout.SOUTH);
+
+        dialog.setVisible(true);
     }
 
-    private void agregarElemento(String seleccion, PanelPersonalizado nuevo)
-    {
-        int posicion;
-
-
-        if(seleccion.equals("AGREGAR FINAL"))
+    private void agregarFinal(PanelPersonalizado nuevo, Seleccion aux) {
+        if(!aux.getLista().isEmpty() && aux.getLista().get(aux.getLista().size()-1) instanceof DibujoFin)
         {
 
-            if(this.lista.isEmpty())
-            {
-                this.lista.add(nuevo);
-                this.contenedor.add(nuevo,this.restricciones);
-            }
-            else
-            {
-                posicion = this.lista.size()-1;
-
-                this.lista.add(posicion, nuevo);
-                this.contenedor.add(nuevo,this.restricciones,posicion);
-            }
-
-
+            aux.getLista().add(aux.getLista().size()-1,nuevo);
+            aux.getContenedor().add(nuevo,this.restricciones,aux.getLista().size()-2);
 
         }
         else
         {
 
+            aux.getLista().add(nuevo);
+            aux.getContenedor().add(nuevo,this.restricciones);
 
-            String[] sel_desarmada = seleccion.split(" ");
-            posicion = Integer.parseInt(sel_desarmada[0]);
-
-
-
-            if(sel_desarmada[1].equals("--"))
-            {
-
-
-                if(sel_desarmada[6].equals("VERDAD"))
-                {
-
-                    DibujoDecision aux = (DibujoDecision) lista.get(posicion);
-
-                    List<PanelPersonalizado> lista_aux = aux.getVerdad();
-                    JPanel                    cont_aux = aux.getContVerdad();
-
-                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
-
-                    nuevo.actualizarContenedor(lista_aux,cont_aux);
-                    vent_aux.agregar(nuevo);
-
-                    aux.eliminarEspaciosEnBlanco();
-                    aux.ajustarSize();
-
-
-                }
-                else if(sel_desarmada[6].equals("CICLO"))
-                {
-
-                    if(lista.get(posicion) instanceof DibujoWhile)
-                    {
-
-                        DibujoWhile aux = (DibujoWhile) lista.get(posicion);
-
-                        List<PanelPersonalizado> lista_aux = aux.getLista();
-                        JPanel                    cont_aux = aux.getContenido();
-
-                        VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
-
-                        nuevo.actualizarContenedor(lista_aux,cont_aux);
-                        vent_aux.agregar(nuevo);
-                        aux.ajustarSize();
-
-                    }
-                    else if (lista.get(posicion) instanceof DibujoFor)
-                    {
-
-                        DibujoFor aux = (DibujoFor) lista.get(posicion);
-
-                        List<PanelPersonalizado> lista_aux = aux.getLista();
-                        JPanel                    cont_aux = aux.getContenido();
-
-                        VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
-
-                        nuevo.actualizarContenedor(lista_aux,cont_aux);
-                        vent_aux.agregar(nuevo);
-                        aux.ajustarSize();
-                    }
-                    else if (lista.get(posicion) instanceof DibujoDoWhile)
-                    {
-
-                        DibujoDoWhile aux = (DibujoDoWhile) lista.get(posicion);
-
-                        List <PanelPersonalizado> lista_aux = aux.getLista();
-                        JPanel                     cont_aux = aux.getContenido();
-
-                        VentanaEmergente vent_aux = new VentanaEmergente(lista_aux, cont_aux, this.restricciones);
-
-                        nuevo.actualizarContenedor(lista_aux, cont_aux);
-                        vent_aux.agregar(nuevo);
-                        aux.ajustarSize();
-                    }
-
-                }
-                else
-                {
-                    DibujoDecision aux = (DibujoDecision) lista.get(posicion);
-
-                    List<PanelPersonalizado> lista_aux = aux.getFalso();
-                    JPanel                    cont_aux = aux.getContFalso();
-
-                    VentanaEmergente vent_aux = new VentanaEmergente(lista_aux,cont_aux,this.restricciones);
-
-                    nuevo.actualizarContenedor(lista_aux,cont_aux);
-                    vent_aux.agregar(nuevo);
-
-                    aux.eliminarEspaciosEnBlanco();
-                    aux.ajustarSize();
-                }
-
-
-
-
-            }
-            else
-            {
-
-                if(!this.esPrincipal)
-                {
-                    posicion--;
-                }
-
-                this.lista.add(posicion, nuevo);
-                this.contenedor.add(nuevo,this.restricciones,posicion);
-
-            }
         }
-
     }
 
-    public void mostrar(){
-        for (String opcion: this.compnentes) {
-            System.out.println(opcion);
+
+    private class Seleccion
+    {
+        private List<PanelPersonalizado> lista;
+        private PanelPersonalizado padre;
+        private String textoMostrar;
+        private JPanel contenedor;
+        private int posicion;
+
+        Seleccion(List<PanelPersonalizado> _lista,String _tx,JPanel _contenedor,PanelPersonalizado _padre,int _posicion)
+        {
+            this.textoMostrar = _tx;
+            this.contenedor   = _contenedor;
+            this.posicion     = _posicion;
+            this.lista        = _lista;
+            this.padre        = _padre;
+        }
+
+        public List<PanelPersonalizado> getLista()
+        {
+            return lista;
+        }
+
+        public JPanel getContenedor() {
+            return contenedor;
+        }
+
+        public int getPosicion()
+        {
+            return posicion;
+        }
+
+        public PanelPersonalizado getPadre()
+        {
+            return padre;
+        }
+
+        @Override
+        public String toString()
+        {
+            return this.textoMostrar;
         }
     }
 }

@@ -63,6 +63,7 @@ public class DibujoWhile extends PanelMovible {
         return aux.getListaVerdadera2();
     }
 
+    @Override
     public void ajustarSize()
     {
         DibujoWhileInterno aux = (DibujoWhileInterno) this.contenido;

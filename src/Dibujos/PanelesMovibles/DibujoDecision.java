@@ -69,6 +69,7 @@ public class DibujoDecision extends PanelMovible {
         return this.contenido.getFalso();
     }
 
+    @Override
     public void ajustarSize()
     {
 

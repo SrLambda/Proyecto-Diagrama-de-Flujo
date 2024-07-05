@@ -126,13 +126,14 @@ public class Controlador {
             }
 
             if(!(nuevo.texto == null)){
-                //---------------cambios-----------------
-                //posicion
-                this.ventanaEmergente.agregar(nuevo);
-                //---------------------------------------
 
-                // Actualizan los cambios
-                this.ventanaEmergente.actualizarCompnentes();
+                //posicion
+
+                this.ventanaEmergente.actualizar();
+                this.ventanaEmergente.agregar(nuevo,front);
+
+
+
                 front.getPanel1().revalidate();
             }
         }

@@ -161,7 +161,6 @@ public abstract class PanelPersonalizado extends JPanel {
             }
 
             parent.repaint();
-            ventanaEmergente.actualizarCompnentes();
         }
     }
 
@@ -348,6 +347,10 @@ public abstract class PanelPersonalizado extends JPanel {
                 return _entrada;
             }
         }
+    }
+
+    public void ajustarSize(){
+
     }
 
 }
