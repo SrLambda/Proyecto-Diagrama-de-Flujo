@@ -1,4 +1,5 @@
 import Dibujos.PanelPersonalizado;
+import Dibujos.RehacerDeshacer;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -32,8 +33,7 @@ public class Front extends JFrame {
     private     JButton redoButton;
     private List <PanelPersonalizado> listaPaneles;
     private double zoomFactor = 1.0;
-    
-
+    private RehacerDeshacer manager;
 
     public Front(Controlador controlador)
     {
@@ -44,6 +44,8 @@ public class Front extends JFrame {
         setVisible(true);
 
         listaPaneles = new ArrayList<>();
+        manager = RehacerDeshacer.getInstance(listaPaneles);
+
 
         controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
 
