@@ -5,30 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/Historial.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelMovible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelPersonalizado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/Decision/DibujoDecisionInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDoWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDoWhile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoEntrada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoFor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoFor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoProceso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoSalida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DibujoWhile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/DoWhile/DibujoDoWhileInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInterno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/DibujoForInterno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/For/ForVacio2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileFin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileFin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/DibujoWhileInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/WhileVacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/PanelesMovibles/While/WhileVacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/Ventana/VentanaEmergente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Ventana/VentanaEmergente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/Zoomable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Front.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Front.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Front.java" afterDir="false" />
     </list>
@@ -239,7 +215,7 @@
       <workItem from="1720020199833" duration="628000" />
       <workItem from="1720297125453" duration="8021000" />
       <workItem from="1720310355953" duration="2957000" />
-      <workItem from="1720371269593" duration="8307000" />
+      <workItem from="1720371269593" duration="8640000" />
     </task>
     <task id="LOCAL-00001" summary="Intercambio de figuras parcial">
       <option name="closed" value="true" />

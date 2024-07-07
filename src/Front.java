@@ -224,8 +224,8 @@ public class Front extends JFrame {
         redoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //manager.rehacer();
-                //manager.mostrarFiguras();
+                manager.rehacer();
+                manager.mostrarFiguras();
                 panel1.revalidate();
                 panel1.repaint();
             }
