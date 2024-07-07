@@ -186,8 +186,7 @@ public class VentanaEmergente {
     public void agregar(PanelPersonalizado nuevo, Frame front)
 
     {
-
-
+        RehacerDeshacer manager = RehacerDeshacer.getInstance(lista);
         DefaultTreeModel treeModel = new DefaultTreeModel(this.inicio);
 
         // Crear el JTree con el modelo
@@ -225,12 +224,12 @@ public class VentanaEmergente {
 
                 if(aux.getPosicion() == -1)
                 {
-
                     agregarFinal(nuevo, aux);
                 }
                 else
                 {
                     aux.getLista().add(aux.getPosicion(),nuevo);
+                    manager.agregar(nuevo);
                     aux.getContenedor().add(nuevo,this.restricciones,aux.getPosicion());
                 }
 
@@ -262,10 +261,12 @@ public class VentanaEmergente {
     }
 
     private void agregarFinal(PanelPersonalizado nuevo, Seleccion aux) {
+        RehacerDeshacer manager = RehacerDeshacer.getInstance(lista);
         if(!aux.getLista().isEmpty() && aux.getLista().get(aux.getLista().size()-1) instanceof DibujoFin)
         {
 
             aux.getLista().add(aux.getLista().size()-1,nuevo);
+            manager.agregar(nuevo);
             aux.getContenedor().add(nuevo,this.restricciones,aux.getLista().size()-2);
 
         }
@@ -273,6 +274,7 @@ public class VentanaEmergente {
         {
 
             aux.getLista().add(nuevo);
+            manager.agregar(nuevo);
             aux.getContenedor().add(nuevo,this.restricciones);
 
         }
