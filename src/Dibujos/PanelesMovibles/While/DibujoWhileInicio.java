@@ -1,4 +1,5 @@
 package Dibujos.PanelesMovibles.While;
+import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoWhile;
 import Dibujos.Ventana.VentanaEmergente;
@@ -12,10 +13,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DibujoWhileInicio extends PanelPersonalizado {
+public class DibujoWhileInicio extends PanelMovible {
     private DibujoWhileInterno interno;
     private List<PanelPersonalizado> panelesCiclo;
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     private String var1;
     private String condicion;
     private String var2;
@@ -29,22 +29,8 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         this.dibujoWhile = _while;
         panelesCiclo = lista;
         setPreferredSize(new Dimension(600, 500));
-        String nuevoTxt = quitarEspacios(texto);
-        asignarVariable(nuevoTxt);
-        manejoSalidas();
+        manejoSalidas(texto);
 
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) { // Doble clic para editar el texto
-                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
-                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
-                        cambiarTexto(nuevoTexto);
-                    }
-                }
-
-            }
-        });
     }
 
     public List<PanelPersonalizado> getPanelesCiclo() {
@@ -87,12 +73,8 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         int panelWidth  = getWidth();
         int panelHeight = getHeight();
 
-
         int centro_x = panelWidth/2;  // Centro horizontal
         int centro_y = panelHeight/2; // Centro vertical
-
-
-        int cuarto_x = panelWidth/4;
 
         double anguloY = Math.PI / 6;
         double anguloX = Math.PI - anguloY;
@@ -105,14 +87,11 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         int deltX = (int) (z * Math.cos( anguloY / 2));
         int deltY = (int) (z * Math.sin( anguloY / 2));
 
-
         // Coordenadas del rombo
         int x1 = centro_x - deltX; // Coordenada x del lado izquierdo del rectángulo
         int x2 = centro_x + deltX; // Coordenada x del lado derecho del rectángulo
         int y1 = centro_y - deltY; // Coordenada y del lado superior del rectángulo
         int y2 = centro_y + deltY; // Coordenada y del lado inferior del rectángulo
-
-
 
         // Dibujar las líneas que forman el rombo
         g2d.setColor(Color.BLACK);
@@ -165,15 +144,15 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         this.setVar2(_entrada.substring(posOperador + getCondicion().length()).trim());
     }
 
-    public void manejoSalidas(){
+    public void manejoSalidas(String _texto){
+        String nuevoTxt = quitarEspacios(_texto);
+        asignarVariable(nuevoTxt);
 
         if (this.getVar1() == null) {
             dibujoWhile.setTexto(null);
             this.texto = null;
             return;
         }
-
-
 
         if (this.getCondicion() == null) {
             dibujoWhile.setTexto(null);
@@ -206,6 +185,8 @@ public class DibujoWhileInicio extends PanelPersonalizado {
         this.texto = getVar1() + getCondicion() + getVar2();
         indice1 = indice1 + 1;
         dibujoWhile.setTipo("While"+indice1);
+        dibujoWhile.setEntrada(this.texto);
+        dibujoWhile.setTexto(this.texto);
         this.setTipo("While"+indice1);
         this.variables.add("While"+indice1);
         this.variables.add(this.texto);

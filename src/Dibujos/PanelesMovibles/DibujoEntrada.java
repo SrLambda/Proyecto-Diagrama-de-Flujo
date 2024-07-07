@@ -10,14 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoEntrada extends PanelMovible {
-    private int ultimoEjeY;
-    private boolean moviendo;
-    private int ejeYMouse;
-
     public DibujoEntrada(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
-        manejarSalidas();
+        manejarSalidas(texto);
     }
 
     @Override
@@ -76,17 +72,6 @@ public class DibujoEntrada extends PanelMovible {
         g2d.drawString(texto, x, y);
     }
 
-    public void cambiarVariable(String varAntigua, String varNueva) {
-        for(int i=0; i < variables.size(); i++){
-            if(variables.get(i).equals(varAntigua)){
-                varNueva = buscarYValidarEntrada(varNueva);
-                variables.set(i,varNueva);
-                this.texto = varNueva;
-                return;
-            }
-        }
-    }
-
     public String buscarYValidarEntrada(String _entrada) {
         if (_entrada == null) {
             return null;
@@ -134,14 +119,14 @@ public class DibujoEntrada extends PanelMovible {
         return _entrada;
     }
 
-    public void manejarSalidas(){
-        this.texto = buscarYValidarEntrada(texto);
+    public void manejarSalidas(String _texto){
+        this.texto = buscarYValidarEntrada(_texto);
         if(this.texto == null){
             return;
         }
         indice1 = indice1 + 1;
         this.setTipo("Entrada"+indice1);
-        System.out.println("Entrada con POSICION "+indice1);
+        this.setEntrada(this.texto);
         this.variables.add("Entrada"+indice1);
         this.variables.add(this.texto);
     }

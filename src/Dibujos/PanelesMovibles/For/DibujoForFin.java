@@ -23,8 +23,6 @@ public class DibujoForFin extends PanelPersonalizado {
 
         int anchoPanel = getWidth();
         int altoPanel = getHeight();
-        int x1 = (int) (anchoPanel*0.171);
-        int x2 = (int) (anchoPanel*0.828);
         int centro_x = anchoPanel/2;
         int centro_y = altoPanel/2;
         int cuarto = anchoPanel/4;

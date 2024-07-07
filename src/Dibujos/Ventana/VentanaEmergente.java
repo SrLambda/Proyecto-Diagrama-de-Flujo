@@ -2,6 +2,7 @@ package Dibujos.Ventana;
 
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.*;
+import Dibujos.RehacerDeshacer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -209,7 +210,6 @@ public class VentanaEmergente {
             {
                 ((Window) SwingUtilities.getRoot(panelBotones)).dispose();
                 agregarElemento((String) comboBox.getSelectedItem(),nuevo);
-
             }
 
         });
@@ -229,6 +229,7 @@ public class VentanaEmergente {
     private void agregarElemento(String seleccion, PanelPersonalizado nuevo)
     {
         int posicion;
+        RehacerDeshacer manager = RehacerDeshacer.getInstance(lista);
 
 
         if(seleccion.equals("AGREGAR FINAL"))
@@ -237,6 +238,7 @@ public class VentanaEmergente {
             if(this.lista.isEmpty())
             {
                 this.lista.add(nuevo);
+                //manager.agregar(nuevo);
                 this.contenedor.add(nuevo,this.restricciones);
             }
             else
@@ -244,6 +246,7 @@ public class VentanaEmergente {
                 posicion = this.lista.size()-1;
 
                 this.lista.add(posicion, nuevo);
+                //manager.agregar(nuevo);
                 this.contenedor.add(nuevo,this.restricciones,posicion);
             }
 
@@ -358,6 +361,7 @@ public class VentanaEmergente {
                 }
 
                 this.lista.add(posicion, nuevo);
+                //manager.agregar(nuevo);
                 this.contenedor.add(nuevo,this.restricciones,posicion);
 
             }

@@ -1,5 +1,6 @@
 package Dibujos.PanelesMovibles.For;
 
+import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoFor;
 import Dibujos.Ventana.VentanaEmergente;
@@ -10,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class ForVacio2 extends PanelPersonalizado{
+public class ForVacio2 extends PanelPersonalizado {
 
     private int v_inicial;
     private int v_final;
@@ -241,6 +242,8 @@ public class ForVacio2 extends PanelPersonalizado{
         String txtALter = getVar1S() + ";" + getValorIniS() + ";" + getValorFinS() + ";" + getIncreS();
         indice1 = indice1 + 1;
         dibujoFor.setTipo("For" + indice1);
+        dibujoFor.setEntrada(txtALter);
+        dibujoFor.setTexto(txtALter);
         this.setTipo("For" + indice1);
         this.variables.add("For" + indice1);
         this.variables.add(txtALter);

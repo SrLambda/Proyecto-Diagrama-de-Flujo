@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+
+import Dibujos.PanelesMovibles.*;
 import Dibujos.Validador.Validador;
 import Dibujos.Validador.ValidadorCadena;
 import Dibujos.Validador.ValidadorDouble;
@@ -36,6 +38,7 @@ public abstract class PanelPersonalizado extends JPanel {
     protected List <Object> variables;
     protected static int indice1 = 0;
     private String tipo;
+    private String entrada;
 
     public double zoomFactor = 1.0;
 
@@ -68,6 +71,14 @@ public abstract class PanelPersonalizado extends JPanel {
         this.anchoAlto = this.getAnchoAlto();
         setPreferredSize(new Dimension(200, 100));
 
+    }
+
+    public String getEntrada() {
+        return this.entrada;
+    }
+
+    public void setEntrada(String _entrada) {
+        this.entrada = _entrada;
     }
 
     public String getTipo() {
@@ -122,15 +133,6 @@ public abstract class PanelPersonalizado extends JPanel {
         return -1;
     }
 
-    public void cambiarTexto(String nuevoTexto) {
-
-        this.texto = nuevoTexto;
-        repaint();// Redibujar la figura con el nuevo texto
-        revalidate();
-
-    }
-
-
     public void setZoomFactor(double zoomFactor) {
         this.zoomFactor = zoomFactor;
         revalidate();
@@ -147,28 +149,9 @@ public abstract class PanelPersonalizado extends JPanel {
         return new Dimension((int) (originalSize.width * zoomFactor), (int) (originalSize.height * zoomFactor));
     }
 
-
-    /*
-    public void setZoomFactor(double zoomFactor) {
-        this.zoomFactor = zoomFactor;
-        revalidate(); // Revalidar el layout
-        repaint();   // Repintar el panel con el nuevo zoom
-    }
-
-    //para los paneles de las figuras
-    @Override
-    public Dimension getPreferredSize() {
-        // Obtener el tamaño original del panel y aplicarle el factor de zoom
-        Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
-        Integer Height = (int) (100 * zoomFactor); // Alto original del panel
-        return new Dimension((int) (Width * zoomFactor * 2.4), (int) (Height * zoomFactor));
-    }*/
-
-
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
-
-        // Obtener el índice de esta figura en la lista
+        RehacerDeshacer manager = RehacerDeshacer.getInstance(listaFiguras);
         int indice = listaFiguras.indexOf(this);
 
         if (indice != -1) {
@@ -178,7 +161,7 @@ public abstract class PanelPersonalizado extends JPanel {
                 ((JPanel) parent).remove(this);
             }
 
-            // Eliminar esta figura de la lista de figuras
+            manager.remover(listaFiguras.get(indice));
             listaFiguras.remove(indice);
 
             // Reorganizar las posiciones visuales de las figuras restantes en el panel principal
@@ -202,32 +185,6 @@ public abstract class PanelPersonalizado extends JPanel {
     public void actualizarContenedor(List<PanelPersonalizado> list, JPanel cont) {
         this.listaFiguras = list;
         this.contenedor = cont;
-    }
-
-    public String validar(boolean evidencia, String opcion, String entrada) {
-        while (true) {
-            if (evidencia) {
-                return entrada;
-            } else {
-                this.texto = entrada;
-                entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
-                if(entrada == null){
-                    this.texto = null;
-                    return null;
-                }
-                this.texto = entrada;
-                if (opcion.equals("Cadena")) {
-                    evidencia = validarCadena.validar(entrada);
-                } else if (opcion.equals("Entero")) {
-                    evidencia = validarEntero.validar(entrada);
-                } else if (opcion.equals("Double")) {
-                    evidencia = validarDouble.validar(entrada);
-                }
-                if (evidencia) {
-                    return entrada;
-                }
-            }
-        }
     }
 
     public String validarMixto(boolean evidencia, String entrada) {

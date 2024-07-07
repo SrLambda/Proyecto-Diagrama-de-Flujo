@@ -9,16 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoSalida extends PanelMovible {
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     private String salidaS;
     public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
-        String nuevoTxt = quitarEspacios(texto);
-        verVariable(nuevoTxt);
-        manejoSalidas();
+        manejoSalidas(texto);
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -99,14 +95,16 @@ public class DibujoSalida extends PanelMovible {
         this.salidaS = _salidaS;
     }
 
-    public void manejoSalidas(){
+    public void manejoSalidas(String _txt){
+        String nuevoTxt = quitarEspacios(_txt);
+        verVariable(nuevoTxt);
         if(getSalidaS() == null){
             this.texto = null;
             return;
         }
         indice1 = indice1 + 1;
-        System.out.println(indice1);
         this.setTipo("Salida"+indice1);
+        this.setEntrada(this.getSalidaS());
         this.texto = getSalidaS();
         this.variables.add("Salida"+indice1);
         this.variables.add(this.getSalidaS());

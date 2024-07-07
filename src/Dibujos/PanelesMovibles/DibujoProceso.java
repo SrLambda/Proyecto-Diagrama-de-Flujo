@@ -15,9 +15,7 @@ public class DibujoProceso extends PanelMovible {
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones,
                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
-        String nuevoTxt = quitarEspacios(texto);
-        asignarVariable(nuevoTxt);
-        manejo();
+        manejo(texto);
 
     }
 
@@ -147,8 +145,9 @@ public class DibujoProceso extends PanelMovible {
         this.procesoS = _procesoS;
     }
 
-    public void manejo(){
-
+    public void manejo(String _texto){
+        String nuevoTxt = quitarEspacios(_texto);
+        asignarVariable(nuevoTxt);
         if(this.getVariableS() == null){
             this.texto = null;
             return;
@@ -176,6 +175,7 @@ public class DibujoProceso extends PanelMovible {
         }
         indice1 = indice1 + 1;
         this.setTipo("Proceso"+indice1);
+        this.setEntrada(getVariableS()+"="+getProcesoS());
         variables.add("Proceso"+indice1);
         variables.add(getVariableS()+"="+getProcesoS());
 

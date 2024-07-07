@@ -215,9 +215,10 @@
         </constraints>
         <properties>
           <background color="-791314"/>
+          <enabled value="false"/>
           <font name="JetBrains Mono" size="14" style="3"/>
           <foreground color="-16772298"/>
-          <text value="Undo"/>
+          <text value="deshacer"/>
         </properties>
       </component>
       <component id="8f873" class="javax.swing.JButton" binding="redoButton">
@@ -226,9 +227,10 @@
         </constraints>
         <properties>
           <background color="-791314"/>
+          <enabled value="false"/>
           <font name="JetBrains Mono" size="14" style="3"/>
           <foreground color="-16772298"/>
-          <text value="Redo"/>
+          <text value="rehacer"/>
         </properties>
       </component>
       <component id="c4999" class="javax.swing.JButton" binding="agregarPSDCButton">

@@ -38,10 +38,6 @@ public class DibujoForInterno extends JPanel {
 
         this.add(derecha);
         this.add(izquierda);
-
-
-
-
     }
 
     public void modificarValores()
