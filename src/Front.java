@@ -1,6 +1,5 @@
 import Dibujos.PanelPersonalizado;
 import Dibujos.RehacerDeshacer;
-import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
 
@@ -8,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Front extends JFrame {
 
@@ -215,10 +213,8 @@ public class Front extends JFrame {
         redoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                manager.deshacer();
-                manager.mostrarFiguras();
-                panel1.revalidate();
-                panel1.repaint();
+                manager.rehacer();
+                //actualizarDiagrama();
             }
         });
     }
@@ -233,6 +229,14 @@ public class Front extends JFrame {
         return this.pseudocodio;
     }
 
+    /*private void actualizarDiagrama() {
+        panel1.removeAll();
+        for (PanelPersonalizado panel : listaPaneles) {
+            panel1.add(panel);
+        }
+        panel1.revalidate();
+        panel1.repaint();
+    }*/
 
     private void ajustarZoom() {
         for (PanelPersonalizado panel : listaPaneles) {

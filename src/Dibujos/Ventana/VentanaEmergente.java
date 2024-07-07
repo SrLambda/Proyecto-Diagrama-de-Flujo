@@ -2,6 +2,7 @@ package Dibujos.Ventana;
 
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.*;
+import Dibujos.RehacerDeshacer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,129 +60,129 @@ public class VentanaEmergente {
 
 
 
-           if(this.lista.get(i) instanceof DibujoProceso)
-           {
+            if(this.lista.get(i) instanceof DibujoProceso)
+            {
 
 
-               opcion.append(indice).append(" | PROCESO ");
+                opcion.append(indice).append(" | PROCESO ");
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
 
-               this.compnentes.add(opcion.toString());
-
-
-
-           }
-           else if(this.lista.get(i) instanceof DibujoEntrada)
-           {
+                this.compnentes.add(opcion.toString());
 
 
-               opcion.append(indice).append(" | ENTRADA ");
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
+            }
+            else if(this.lista.get(i) instanceof DibujoEntrada)
+            {
 
 
-           }
-           else if (this.lista.get(i) instanceof DibujoSalida)
-           {
+                opcion.append(indice).append(" | ENTRADA ");
+
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
+
+                this.compnentes.add(opcion.toString());
 
 
-               opcion.append(indice).append(" | SALIDA ");
-
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
+            }
+            else if (this.lista.get(i) instanceof DibujoSalida)
+            {
 
 
-           }
-           else if (this.lista.get(i) instanceof DibujoDocumento)
-           {
+                opcion.append(indice).append(" | SALIDA ");
+
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
+
+                this.compnentes.add(opcion.toString());
 
 
-               opcion.append(indice).append(" | DOCUMENTO ");
-
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
+            }
+            else if (this.lista.get(i) instanceof DibujoDocumento)
+            {
 
 
-           }
-           else if (this.lista.get(i) instanceof DibujoDecision)
-           {
+                opcion.append(indice).append(" | DOCUMENTO ");
+
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
+
+                this.compnentes.add(opcion.toString());
 
 
-               opcion.append(indice).append(" | DECICION ");
-
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
-
-               this.compnentes.add(opcion.toString());
-
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE VERDAD | --");
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE FALSO  | --");
+            }
+            else if (this.lista.get(i) instanceof DibujoDecision)
+            {
 
 
-           }
-           else if (this.lista.get(i) instanceof DibujoWhile)
-           {
+                opcion.append(indice).append(" | DECICION ");
 
-               opcion.append(indice).append(" | WHILE ");
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
+                this.compnentes.add(opcion.toString());
 
-               this.compnentes.add(opcion.toString());
+                this.compnentes.add(indice + " -- | INGRESAR DENTRO DE VERDAD | --");
+                this.compnentes.add(indice + " -- | INGRESAR DENTRO DE FALSO  | --");
 
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
 
-           }
-           else if (this.lista.get(i) instanceof DibujoFor)
-           {
+            }
+            else if (this.lista.get(i) instanceof DibujoWhile)
+            {
 
-               opcion.append(indice).append(" | FOR ");
+                opcion.append(indice).append(" | WHILE ");
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
 
-               this.compnentes.add(opcion.toString());
+                this.compnentes.add(opcion.toString());
 
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
+                this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
 
-           }
-           else if (this.lista.get(i) instanceof DibujoDoWhile)
-           {
-               opcion.append(indice).append(" | DO-WHILE ");
+            }
+            else if (this.lista.get(i) instanceof DibujoFor)
+            {
 
-               for (int j = 0; (j < 5) && (j < texto.length() ); j++)
-               {
-                   opcion.append(texto.charAt(j));
-               }
+                opcion.append(indice).append(" | FOR ");
 
-               this.compnentes.add(opcion.toString());
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
 
-               this.compnentes.add(indice + " -- | INGRESAR DENTRO DEL CICLO | --");
+                this.compnentes.add(opcion.toString());
 
-           }
+                this.compnentes.add(indice + " -- | INGRESAR DENTRO DE CICLO | --");
+
+            }
+            else if (this.lista.get(i) instanceof DibujoDoWhile)
+            {
+                opcion.append(indice).append(" | DO-WHILE ");
+
+                for (int j = 0; (j < 5) && (j < texto.length() ); j++)
+                {
+                    opcion.append(texto.charAt(j));
+                }
+
+                this.compnentes.add(opcion.toString());
+
+                this.compnentes.add(indice + " -- | INGRESAR DENTRO DEL CICLO | --");
+
+            }
 
 
         }
@@ -209,7 +210,6 @@ public class VentanaEmergente {
             {
                 ((Window) SwingUtilities.getRoot(panelBotones)).dispose();
                 agregarElemento((String) comboBox.getSelectedItem(),nuevo);
-
             }
 
         });
@@ -223,11 +223,13 @@ public class VentanaEmergente {
         // Mostrar la ventana emergente
         int resultado = JOptionPane.showOptionDialog(null, panelContenido, "Agregar en lugar en especifico",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
+
     }
 
     private void agregarElemento(String seleccion, PanelPersonalizado nuevo)
     {
         int posicion;
+        RehacerDeshacer manager = RehacerDeshacer.getInstance(lista);
 
 
         if(seleccion.equals("AGREGAR FINAL"))
@@ -236,6 +238,7 @@ public class VentanaEmergente {
             if(this.lista.isEmpty())
             {
                 this.lista.add(nuevo);
+                manager.agregar(nuevo);
                 this.contenedor.add(nuevo,this.restricciones);
             }
             else
@@ -243,6 +246,7 @@ public class VentanaEmergente {
                 posicion = this.lista.size()-1;
 
                 this.lista.add(posicion, nuevo);
+                manager.agregar(nuevo);
                 this.contenedor.add(nuevo,this.restricciones,posicion);
             }
 
@@ -357,12 +361,14 @@ public class VentanaEmergente {
                 }
 
                 this.lista.add(posicion, nuevo);
+                manager.agregar(nuevo);
                 this.contenedor.add(nuevo,this.restricciones,posicion);
 
             }
         }
 
     }
+
 
     public void mostrar(){
         for (String opcion: this.compnentes) {

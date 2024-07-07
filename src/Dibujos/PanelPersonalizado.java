@@ -40,7 +40,8 @@ public abstract class PanelPersonalizado extends JPanel implements Serializable 
     protected Map<String, Object> variables2;
 
     public double zoomFactor = 1.0;
-    private static Stack<PanelPersonalizado> figurasEliminadas = new Stack<>();
+    private EstadoFigura estadoActual;
+    private GridBagConstraints restricciones;
 
 
     public PanelPersonalizado(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
@@ -73,6 +74,11 @@ public abstract class PanelPersonalizado extends JPanel implements Serializable 
         setPreferredSize(new Dimension(200, 100));
 
     }
+
+    public EstadoFigura guardarEstado() {
+        return new EstadoFigura(getLocation(), getSize(), getTexto());
+    }
+
 
     public int colisiones() {
         int i = 0;
@@ -157,9 +163,6 @@ public abstract class PanelPersonalizado extends JPanel implements Serializable 
                 ((JPanel) parent).remove(this);
             }
 
-            // Guardar la figura eliminada en la pila de figuras eliminadas
-            figurasEliminadas.push(this);
-
             // Eliminar esta figura de la lista de figuras
             listaFiguras.remove(indice);
 
@@ -172,15 +175,6 @@ public abstract class PanelPersonalizado extends JPanel implements Serializable 
 
             parent.repaint();
             ventanaEmergente.actualizarCompnentes();
-        }
-    }
-
-    public static void redoFigura() {
-        if (!figurasEliminadas.isEmpty()) {
-            PanelPersonalizado figuraRedo = figurasEliminadas.pop();
-            listaFiguras.add(figuraRedo);
-            contenedor.add(figuraRedo, restriciones);
-            contenedor.repaint(); // Asegúrate de repintar el contenedor para actualizar la vista
         }
     }
 
