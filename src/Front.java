@@ -203,14 +203,20 @@ public class Front extends JFrame {
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                manager.deshacer();
+                manager.mostrarFiguras();
+                panel1.revalidate();
+                panel1.repaint();
             }
         });
 
         redoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelPersonalizado.redoFigura();
+                manager.deshacer();
+                manager.mostrarFiguras();
+                panel1.revalidate();
+                panel1.repaint();
             }
         });
     }
