@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Stack;
 
 public class Controlador {
     private static Controlador instancia;
@@ -17,6 +18,7 @@ public class Controlador {
     private VentanaEmergente ventanaEmergente;
     private final GridBagConstraints restriciones;
     private Compilador compilador;
+
 
     // Instanciar Singleton
     private Controlador() {

@@ -1,7 +1,6 @@
 package Dibujos;
 
 import Dibujos.PanelesMovibles.DibujoEntrada;
-import Dibujos.PanelesMovibles.DibujoProceso;
 import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
@@ -74,16 +73,9 @@ public abstract class PanelMovible extends PanelPersonalizado{
 
                 if(indice != -1)
                 {
-
                     intercambiarPosiciones();
-
                 }
-
             }
-
-
-
-
         });
 
         addMouseMotionListener(new MouseMotionListener() {
@@ -134,7 +126,7 @@ public abstract class PanelMovible extends PanelPersonalizado{
         }
     }
 
-    protected void actualizarPosicionesVisuales()
+    public void actualizarPosicionesVisuales()
     {
 
         this.contenedor.removeAll();

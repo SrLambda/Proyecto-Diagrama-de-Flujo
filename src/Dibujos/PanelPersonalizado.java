@@ -1,23 +1,26 @@
 package Dibujos;
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
+
 import Dibujos.Validador.Validador;
 import Dibujos.Validador.ValidadorCadena;
 import Dibujos.Validador.ValidadorDouble;
 import Dibujos.Validador.ValidadorEntero;
 import Dibujos.Ventana.VentanaEmergente;
 
-public abstract class PanelPersonalizado extends JPanel{
+public abstract class PanelPersonalizado extends JPanel implements Serializable {
 
     public String texto;
-    protected List<PanelPersonalizado> listaFiguras;
+    protected static List<PanelPersonalizado> listaFiguras;
     protected int posOriginal = -1;
-    protected JPanel contenedor;
+    protected static JPanel contenedor;
     public boolean habilitado = true;
     protected int posicion = -1;
     protected VentanaEmergente ventanaEmergente;
@@ -32,11 +35,12 @@ public abstract class PanelPersonalizado extends JPanel{
     protected Validador validarEntero;
     protected Validador validarDouble;
     protected Validador validarCadena;
-    protected GridBagConstraints restriciones;
+    protected static GridBagConstraints restriciones;
     protected List<String> variables;
     protected Map<String, Object> variables2;
 
     public double zoomFactor = 1.0;
+    private static Stack<PanelPersonalizado> figurasEliminadas = new Stack<>();
 
 
     public PanelPersonalizado(String _texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
@@ -49,6 +53,7 @@ public abstract class PanelPersonalizado extends JPanel{
         this.validarDouble = new ValidadorDouble();
         this.validarCadena = new ValidadorCadena();
         this.variables = new ArrayList<>();
+
         setPreferredSize(new Dimension(750, 200));
 
         if (null == zoom) {
@@ -138,26 +143,8 @@ public abstract class PanelPersonalizado extends JPanel{
     }
 
 
-    /*
-    public void setZoomFactor(double zoomFactor) {
-        this.zoomFactor = zoomFactor;
-        revalidate(); // Revalidar el layout
-        repaint();   // Repintar el panel con el nuevo zoom
-    }
-
-    //para los paneles de las figuras
-    @Override
-    public Dimension getPreferredSize() {
-        // Obtener el tamaño original del panel y aplicarle el factor de zoom
-        Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
-        Integer Height = (int) (100 * zoomFactor); // Alto original del panel
-        return new Dimension((int) (Width * zoomFactor * 2.4), (int) (Height * zoomFactor));
-    }*/
-
-
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
-
         // Obtener el índice de esta figura en la lista
         int indice = listaFiguras.indexOf(this);
 
@@ -169,6 +156,9 @@ public abstract class PanelPersonalizado extends JPanel{
             {
                 ((JPanel) parent).remove(this);
             }
+
+            // Guardar la figura eliminada en la pila de figuras eliminadas
+            figurasEliminadas.push(this);
 
             // Eliminar esta figura de la lista de figuras
             listaFiguras.remove(indice);
@@ -182,6 +172,15 @@ public abstract class PanelPersonalizado extends JPanel{
 
             parent.repaint();
             ventanaEmergente.actualizarCompnentes();
+        }
+    }
+
+    public static void redoFigura() {
+        if (!figurasEliminadas.isEmpty()) {
+            PanelPersonalizado figuraRedo = figurasEliminadas.pop();
+            listaFiguras.add(figuraRedo);
+            contenedor.add(figuraRedo, restriciones);
+            contenedor.repaint(); // Asegúrate de repintar el contenedor para actualizar la vista
         }
     }
 

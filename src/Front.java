@@ -1,9 +1,8 @@
 import Dibujos.PanelPersonalizado;
-import Dibujos.Validador.Validador;
-import Dibujos.Zoomable;
+import Dibujos.Ventana.VentanaEmergente;
 
 import javax.swing.*;
-import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,11 +32,11 @@ public class Front extends JFrame {
     private     JButton redoButton;
     private List <PanelPersonalizado> listaPaneles;
     private double zoomFactor = 1.0;
+    
 
 
     public Front(Controlador controlador)
     {
-
         setContentPane(panel);
         setSize(700, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -211,7 +210,7 @@ public class Front extends JFrame {
         redoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                PanelPersonalizado.redoFigura();
             }
         });
     }

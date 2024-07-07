@@ -223,7 +223,6 @@ public class VentanaEmergente {
         // Mostrar la ventana emergente
         int resultado = JOptionPane.showOptionDialog(null, panelContenido, "Agregar en lugar en especifico",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
-
     }
 
     private void agregarElemento(String seleccion, PanelPersonalizado nuevo)

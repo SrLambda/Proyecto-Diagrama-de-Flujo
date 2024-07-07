@@ -11,6 +11,7 @@ public class DibujoProceso extends PanelMovible {
     private int ultimoEjeY;
     private boolean moviendo;
     private int ejeYMouse;
+
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones, VentanaEmergente _ventanaEmergente) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente);
 
