@@ -2,6 +2,7 @@ package Dibujos.Ventana;
 
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.*;
+import Dibujos.RehacerDeshacer;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 
 import javax.swing.*;

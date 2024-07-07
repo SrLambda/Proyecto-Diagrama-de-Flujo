@@ -1,14 +1,11 @@
 import Dibujos.PanelPersonalizado;
-import Dibujos.Validador.Validador;
-import Dibujos.Zoomable;
+import Dibujos.RehacerDeshacer;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Front extends JFrame {
 
@@ -34,6 +31,7 @@ public class Front extends JFrame {
     private     JButton redoButton;
     private     List <PanelPersonalizado> listaPaneles;
     private     double zoomFactor = 1.0;
+    private RehacerDeshacer manager;
 
 
     public Front(Controlador controlador)
@@ -46,10 +44,10 @@ public class Front extends JFrame {
         setVisible(true);
 
         listaPaneles = new ArrayList<>();
+        manager = RehacerDeshacer.getInstance(listaPaneles);
 
         controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
 
-        //botón para dibujar un rectángulo
         etapaDelProcesoButton.addActionListener(new ActionListener()
         {
 
@@ -216,14 +214,20 @@ public class Front extends JFrame {
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                manager.deshacer();
+                manager.mostrarFiguras();
+                panel1.revalidate();
+                panel1.repaint();
             }
         });
 
         redoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                manager.rehacer();
+                manager.mostrarFiguras();
+                panel1.revalidate();
+                panel1.repaint();
             }
         });
     }

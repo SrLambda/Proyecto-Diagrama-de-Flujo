@@ -19,11 +19,9 @@ public class DibujoWhile extends PanelMovible {
     private JPanel condicion;
     private JPanel contenido;
     private JPanel fin;
-
     private GridBagConstraints restricciones;
 
     private List<PanelPersonalizado> lista;
-
 
     public DibujoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                        VentanaEmergente _ventanaEmergente, List <Object> _variables) {

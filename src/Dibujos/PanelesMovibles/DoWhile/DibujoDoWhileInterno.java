@@ -39,14 +39,6 @@ public class DibujoDoWhileInterno extends JPanel {
         this.add(verdadero2);
         this.add(espacio);
     }
-    public JPanel getVerdadero1() {
-        return verdadero1;
-    }
-
-    public java.util.List<PanelPersonalizado> getListaVerdadera1()
-    {
-        return verdadero1.getListaFiguras();
-    }
 
     public JPanel getVerdadero2() {
         return verdadero2;
@@ -112,9 +104,6 @@ public class DibujoDoWhileInterno extends JPanel {
             int panelHeight = getHeight();
 
             int centro_x = panelWidth / 2; // Centro horizontal
-            int centro_y = panelHeight/2;                                        // Centro vertical
-
-            int cuarto = panelWidth/4;
 
             g2d.setColor(BLACK);
 

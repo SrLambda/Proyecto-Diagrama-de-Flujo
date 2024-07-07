@@ -22,7 +22,6 @@ public class DibujoFor extends PanelMovible {
     private List<PanelPersonalizado> lista;
     private GridBagConstraints    restriciones;
 
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     private String txtAyuda;
 
     public DibujoFor(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
@@ -112,13 +111,5 @@ public class DibujoFor extends PanelMovible {
         DibujoForInterno aux = (DibujoForInterno) this.contenido;
 
         return aux.getTexto();
-    }
-
-    public String getTxtAyuda() {
-        return this.txtAyuda;
-    }
-
-    public void setTxtAyuda(String _txtAyuda) {
-        this.txtAyuda = _txtAyuda;
     }
 }

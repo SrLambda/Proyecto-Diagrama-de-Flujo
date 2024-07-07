@@ -10,14 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoDocumento extends PanelMovible {
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
     private String salidaS;
     public DibujoDocumento(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                            VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
-        String nuevoTxt = quitarEspacios(texto);
-        verVariable(nuevoTxt);
-        manejoSalidas();
+        manejoSalidas(texto);
     }
 
     public String getSalidaS() {
@@ -53,7 +50,6 @@ public class DibujoDocumento extends PanelMovible {
         double ctrl1y = -1.1 * (y2);
         double ctrl2x = (x2 + (x2 / 4) * -0.3);
         double ctrl2y = 0.9 * (y2);
-
 
         // Dibujar las líneas que forman el rectángulo
         g2d.setColor(Color.BLACK);
@@ -97,7 +93,9 @@ public class DibujoDocumento extends PanelMovible {
     }
 
 
-    public void manejoSalidas(){
+    public void manejoSalidas(String _texto){
+        String nuevoTxt = quitarEspacios(_texto);
+        verVariable(nuevoTxt);
         if(getSalidaS() == null){
             this.texto = null;
             return;
@@ -105,6 +103,7 @@ public class DibujoDocumento extends PanelMovible {
         this.texto = getSalidaS();
         indice1 = indice1 + 1;
         this.setTipo("Documento"+indice1);
+        this.setEntrada(this.getSalidaS());
         this.variables.add("Documento"+indice1);
         this.variables.add(this.getSalidaS());
     }

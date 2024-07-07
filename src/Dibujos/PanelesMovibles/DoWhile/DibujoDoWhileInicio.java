@@ -32,7 +32,6 @@ public class DibujoDoWhileInicio extends PanelPersonalizado {
         int centro_x = panelWidth / 2;     // Centro horizontal
         int centro_y = panelHeight / 2;    // Centro vertical
 
-        int cuarto = panelWidth / 4;
 
         g2d.drawLine(100,centro_y,100, centro_y*3);     // Linea vertical izquierda
         g2d.drawLine(centro_x,0,centro_x, panelHeight);     // Linea vertical central

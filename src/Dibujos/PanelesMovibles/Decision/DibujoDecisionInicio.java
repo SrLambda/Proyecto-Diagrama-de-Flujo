@@ -1,5 +1,6 @@
 package Dibujos.PanelesMovibles.Decision;
 
+import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoDecision;
 import Dibujos.Ventana.VentanaEmergente;
@@ -12,9 +13,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DibujoDecisionInicio extends PanelPersonalizado {
-
-    protected Font textoFont = new Font("Serif", Font.PLAIN, 20);
+public class DibujoDecisionInicio extends PanelMovible {
     private String var1;
     private String condicion;
     private String var2;
@@ -23,26 +22,10 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
                                 VentanaEmergente _ventanaEmergente, List <Object> _variables, DibujoDecision _dibujoDecision) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         this.dibujoDecision = _dibujoDecision;
-        String nuevoTxt = quitarEspacios(texto);
-        asignarVariable(nuevoTxt);
-        manejoSalidas();
-
-        addMouseListener(new MouseAdapter()
-        {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                if (e.getClickCount() == 2) { // Doble clic para editar el texto
-                    String nuevoTexto = JOptionPane.showInputDialog(null, "Editar texto:", texto);
-                    if (nuevoTexto != null && !nuevoTexto.isEmpty()) {
-                        cambiarTexto(nuevoTexto); // Actualizar el texto de la figura
-                    }
-                }
-
-            }
-        });
+        manejoSalidas(texto);
     }
+
+
 
     public String getVar1() {
         return var1;
@@ -153,7 +136,9 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
 
     }
 
-    public void manejoSalidas() {
+    public void manejoSalidas(String _texto) {
+        String nuevoTxt = quitarEspacios(_texto);
+        asignarVariable(nuevoTxt);
 
         if (this.getVar1() == null) {
             dibujoDecision.setTexto(null);
@@ -193,6 +178,8 @@ public class DibujoDecisionInicio extends PanelPersonalizado {
         indice1 = indice1 + 1;
         dibujoDecision.setTipo("Decision"+indice1);
         this.setTipo("Decision"+indice1);
+        dibujoDecision.setTexto(this.texto);
+        dibujoDecision.setEntrada(this.texto);
         this.variables.add("Decision"+indice1);
         this.variables.add(this.texto);
 
