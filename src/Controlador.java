@@ -57,6 +57,7 @@ public class Controlador {
         this.contenedor   = _contenedor;
         this.listaFiguras = _listaFiguras;
         this.parseador    = new Parseador(_listaFiguras);
+        this.variables = new ArrayList<>();
 
 
 

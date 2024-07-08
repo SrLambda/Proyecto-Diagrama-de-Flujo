@@ -10,11 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/GraficadorInteractivo_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/GraficadorInteractivo_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/init.bat" beforeDir="false" afterPath="$PROJECT_DIR$/resources/init.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/init.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/init.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/resources/init.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,28 +70,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "227",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/edgar/OneDrive/Desktop/Proyecto de programacion/Proyecto-Diagrama-de-Flujo/Diagrama de Flujo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;227&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/edgar/OneDrive/Desktop/Proyecto de programacion/Proyecto-Diagrama-de-Flujo/Diagrama de Flujo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\edgar\OneDrive\Desktop\Proyecto de programacion\Proyecto-Diagrama-de-Flujo\Diagrama de Flujo" />
