@@ -227,7 +227,7 @@
         </constraints>
         <properties>
           <background color="-791314"/>
-          <enabled value="true"/>
+          <enabled value="false"/>
           <font name="JetBrains Mono" size="14" style="3"/>
           <foreground color="-16772298"/>
           <text value="rehacer"/>

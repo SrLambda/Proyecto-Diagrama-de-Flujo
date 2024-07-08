@@ -1,3 +1,6 @@
+//Lenguaje de programación: Java 21
+//SDK: 21.0.2
+//IDE: IntelliJ
 public class Main {
     public static void main(String[] args) {
         Controlador controlador = Controlador.getInstancia();
