@@ -24,9 +24,7 @@ public class RehacerDeshacer {
     public void agregar(PanelPersonalizado figura) {
         undoStack.push(() -> {
             figura.eliminarFigura();
-            System.out.println("Figura removida: " + figura);
         });
-        System.out.println("Figura agregada: " + figura);
         redoStack.clear();
     }
 
@@ -34,9 +32,7 @@ public class RehacerDeshacer {
     public void remover(PanelPersonalizado figura) {
         undoStack.push(() -> {
             figuras.add(figura);
-            System.out.println("Figura reagregada: " + figura);
         });
-        System.out.println("Figura removida: " + figura);
         redoStack.clear();
     }
 
@@ -46,8 +42,6 @@ public class RehacerDeshacer {
             Runnable action = undoStack.pop();
             redoStack.push(action);
             action.run();
-        } else {
-            System.out.println("No hay acciones para deshacer.");
         }
     }
 
@@ -57,16 +51,6 @@ public class RehacerDeshacer {
             Runnable action = redoStack.pop();
             undoStack.push(action);
             action.run();
-        } else {
-            System.out.println("No hay acciones para rehacer.");
-        }
-    }
-
-
-
-    public void mostrarFiguras() {
-        for (int i=0; i<figuras.size(); i++){
-            System.out.println(figuras.get(i).getTexto());
         }
     }
 

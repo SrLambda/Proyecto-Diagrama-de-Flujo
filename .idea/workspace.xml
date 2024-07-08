@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f2c63d2c-f798-4ff1-b245-2fede493910c" name="Changes" comment="Arreglo de los ZOOMSSSS (Aplicado de momento solo a Inicio y Fin uwu)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/init.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/init.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujos/Ventana/VentanaEmergente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujos/Ventana/VentanaEmergente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -215,7 +215,6 @@ public class Front extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 manager.deshacer();
-                manager.mostrarFiguras();
                 panel1.revalidate();
                 panel1.repaint();
             }
@@ -225,7 +224,6 @@ public class Front extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 manager.rehacer();
-                manager.mostrarFiguras();
                 panel1.revalidate();
                 panel1.repaint();
             }
