@@ -1,13 +1,9 @@
 package Dibujos;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
-
-import Dibujos.PanelesMovibles.*;
 import Dibujos.Validador.Validador;
 import Dibujos.Validador.ValidadorCadena;
 import Dibujos.Validador.ValidadorDouble;
@@ -28,9 +24,6 @@ public abstract class PanelPersonalizado extends JPanel {
 
     protected static Font textoFont;
     protected static Float zoom;
-    protected Integer witdh;
-    protected Integer height;
-
     protected Validador validarEntero;
     protected Validador validarDouble;
     protected Validador validarCadena;
@@ -90,6 +83,53 @@ public abstract class PanelPersonalizado extends JPanel {
     }
 
 
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
+        revalidate();
+        repaint();
+    }
+
+    public double getZoomFactor() {
+        return zoomFactor;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+    public void setTexto(String _tx){
+        this.texto = _tx;
+    }
+
+
+    @Override
+    public Dimension getPreferredSize() {
+        Dimension originalSize = super.getPreferredSize();
+        return new Dimension((int) (originalSize.width * zoomFactor), (int) (originalSize.height * zoomFactor));
+    }
+
+    private int[] getAnchoAlto(){
+
+        JLabel tempLabel = new JLabel();
+        FontMetrics metrics = tempLabel.getFontMetrics(this.textoFont);
+
+        int width  = metrics.stringWidth(this.texto);
+        int height = metrics.getHeight();
+
+        if(width < 105) //  ANCHO DE LA CADENA 'WWWWW'
+        {
+
+            width = 105;
+
+        }
+
+        int[] valores = new int[2];
+
+        valores[0] = width;
+        valores[1] = height;
+
+        return valores;
+    }
+
     public int colisiones() {
         int i = 0;
         int num = listaFiguras.indexOf(this);
@@ -133,21 +173,6 @@ public abstract class PanelPersonalizado extends JPanel {
         return -1;
     }
 
-    public void setZoomFactor(double zoomFactor) {
-        this.zoomFactor = zoomFactor;
-        revalidate();
-        repaint();
-    }
-
-    public double getZoomFactor() {
-        return zoomFactor;
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-        Dimension originalSize = super.getPreferredSize();
-        return new Dimension((int) (originalSize.width * zoomFactor), (int) (originalSize.height * zoomFactor));
-    }
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
@@ -172,18 +197,6 @@ public abstract class PanelPersonalizado extends JPanel {
 
             parent.repaint();
         }
-    }
-
-    public String getTexto() {
-        return texto;
-    }
-    public void setTexto(String _tx){
-        this.texto = _tx;
-    }
-
-    public void actualizarContenedor(List<PanelPersonalizado> list, JPanel cont) {
-        this.listaFiguras = list;
-        this.contenedor = cont;
     }
 
     public String validarMixto(boolean evidencia, String entrada) {
@@ -220,30 +233,6 @@ public abstract class PanelPersonalizado extends JPanel {
                 }
             }
         }
-    }
-
-
-    private int[] getAnchoAlto(){
-
-        JLabel tempLabel = new JLabel();
-        FontMetrics metrics = tempLabel.getFontMetrics(this.textoFont);
-
-        int width  = metrics.stringWidth(this.texto);
-        int height = metrics.getHeight();
-
-        if(width < 105) //  ANCHO DE LA CADENA 'WWWWW'
-        {
-
-            width = 105;
-
-        }
-
-        int[] valores = new int[2];
-
-        valores[0] = width;
-        valores[1] = height;
-
-        return valores;
     }
 
     public String validarVariable(String _variable) {

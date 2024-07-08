@@ -7,7 +7,6 @@ import Dibujos.PanelesMovibles.DibujoWhile;
 import Dibujos.PanelesNoMovibles.DibujoFin;
 import Dibujos.PanelesNoMovibles.DibujoInicio;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -340,7 +339,7 @@ public class Pseudocodigo {
         // Obtener el mensaje de la excepción
         String mensajeError = e.getMessage();
 
-        // Mostrar el mensaje de error en una ventana de diálogo
+        // Mostrar el mensaje de error en una ven   tana de diálogo
         JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

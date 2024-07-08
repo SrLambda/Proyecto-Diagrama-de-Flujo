@@ -3,13 +3,9 @@ import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoWhile;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,10 +27,6 @@ public class DibujoWhileInicio extends PanelMovible {
         setPreferredSize(new Dimension(600, 500));
         manejoSalidas(texto);
 
-    }
-
-    public List<PanelPersonalizado> getPanelesCiclo() {
-        return panelesCiclo;
     }
 
     public String getVar1() {

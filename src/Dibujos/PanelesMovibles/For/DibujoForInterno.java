@@ -1,8 +1,6 @@
 package Dibujos.PanelesMovibles.For;
-
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoFor;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -39,6 +37,42 @@ public class DibujoForInterno extends JPanel {
         this.add(derecha);
         this.add(izquierda);
     }
+
+    public JPanel getIzquierda()
+    {
+        return izquierda;
+    }
+
+    public List<PanelPersonalizado> getListaIzquierda()
+    {
+        return izquierda.getListaFiguras();
+    }
+
+    public int[] getIntervalo()
+    {
+
+        int[] inter = new int[3];
+        inter[0]    = this.datos.getValorInicial();
+        inter[1]    = this.datos.getIncremento();
+        inter[2]    = this.datos.getValorFinal();
+
+        return inter;
+
+    }
+
+    public void setIntervalo(int[] vals)
+    {
+        this.datos.setValorinicial(vals[0]);
+        this.datos.setIncremento(vals[1]);
+        this.datos.setValorFinal(vals[2]);
+    }
+
+
+    public String getTexto()
+    {
+        return this.datos.getTexto();
+    }
+
 
     public void modificarValores()
     {
@@ -79,49 +113,17 @@ public class DibujoForInterno extends JPanel {
         this.revalidate();
     }
 
-    public JPanel getIzquierda()
-    {
-        return izquierda;
-    }
-
-    public List<PanelPersonalizado> getListaIzquierda()
-    {
-        return izquierda.getListaFiguras();
-    }
-
-    public int[] getIntervalo()
-    {
-
-        int[] inter = new int[3];
-        inter[0]    = this.datos.getValorInicial();
-        inter[1]    = this.datos.getIncremento();
-        inter[2]    = this.datos.getValorFinal();
-        
-        return inter;
-
-    }
-
-    public void setIntervalo(int[] vals)
-    {
-        this.datos.setValorinicial(vals[0]);
-        this.datos.setIncremento(vals[1]);
-        this.datos.setValorFinal(vals[2]);
-    }
-
-
-    public String getTexto()
-    {
-        return this.datos.getTexto();
-    }
-
-
-
     public class ForInterno extends JPanel{
         private final List<PanelPersonalizado> listaFiguras;
         public double zoomFactor = 1.0;
 
         ForInterno(){
             listaFiguras = new ArrayList<>();
+        }
+
+        public List<PanelPersonalizado> getListaFiguras()
+        {
+            return listaFiguras;
         }
 
         @Override
@@ -144,10 +146,6 @@ public class DibujoForInterno extends JPanel {
             }
         }
 
-        public List<PanelPersonalizado> getListaFiguras()
-        {
-            return listaFiguras;
-        }
 
         public void ajustarSize(int ancho,int alto)
         {

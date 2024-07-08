@@ -1,5 +1,4 @@
 package Dibujos.PanelesMovibles;
-
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.Decision.DesicionVacia;

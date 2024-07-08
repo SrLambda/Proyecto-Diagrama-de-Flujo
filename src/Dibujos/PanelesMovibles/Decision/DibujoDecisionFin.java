@@ -1,12 +1,9 @@
 package Dibujos.PanelesMovibles.Decision;
-
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoDecisionFin extends PanelPersonalizado {
 

@@ -1,9 +1,5 @@
 package Dibujos.PanelesMovibles.While;
-
 import Dibujos.PanelPersonalizado;
-import Dibujos.PanelesMovibles.Decision.DibujoDecisionInterno;
-import Dibujos.PanelesMovibles.For.ForVacio;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -97,6 +93,11 @@ public class DibujoWhileInterno extends JPanel {
             listaFiguras = new ArrayList<>();
         }
 
+        public List<PanelPersonalizado> getListaFiguras()
+        {
+            return listaFiguras;
+        }
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -116,11 +117,6 @@ public class DibujoWhileInterno extends JPanel {
             if (this == falso) {
                 g2d.drawLine(centro_x, 0, centro_x, panelHeight);
             }
-        }
-
-        public List<PanelPersonalizado> getListaFiguras()
-        {
-            return listaFiguras;
         }
 
         public void ajustarSize(int alto)

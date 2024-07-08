@@ -2,7 +2,6 @@ package Dibujos.PanelesMovibles;
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -18,6 +17,24 @@ public class DibujoProceso extends PanelMovible {
         manejo(texto);
 
     }
+
+
+    public String getVariableS() {
+        return this.variableS;
+    }
+
+    public void setVariableS(String _variableS) {
+        this.variableS = _variableS;
+    }
+
+    public String getProcesoS() {
+        return this.procesoS;
+    }
+
+    public void setProcesoS(String _procesoS) {
+        this.procesoS = _procesoS;
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -128,23 +145,6 @@ public class DibujoProceso extends PanelMovible {
         this.texto = this.getVariableS() +"="+ this.getProcesoS();
         return true;
     }
-
-    public String getVariableS() {
-        return this.variableS;
-    }
-
-    public void setVariableS(String _variableS) {
-        this.variableS = _variableS;
-    }
-
-    public String getProcesoS() {
-        return this.procesoS;
-    }
-
-    public void setProcesoS(String _procesoS) {
-        this.procesoS = _procesoS;
-    }
-
     public void manejo(String _texto){
         String nuevoTxt = quitarEspacios(_texto);
         asignarVariable(nuevoTxt);

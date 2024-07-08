@@ -1,8 +1,6 @@
 package Dibujos.PanelesMovibles.While;
-
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;

@@ -1,19 +1,15 @@
 package Dibujos;
-
 import Dibujos.PanelesMovibles.*;
 import Dibujos.PanelesMovibles.Decision.DibujoDecisionInicio;
 import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileFin;
-import Dibujos.PanelesMovibles.For.DibujoForFin;
 import Dibujos.PanelesMovibles.While.DibujoWhileInicio;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
-import java.util.Map;
 
 public abstract class PanelMovible extends PanelPersonalizado{
 

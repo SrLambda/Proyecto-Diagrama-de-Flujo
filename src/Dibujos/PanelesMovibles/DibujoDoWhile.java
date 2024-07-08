@@ -1,18 +1,14 @@
 package Dibujos.PanelesMovibles;
-
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileFin;
 import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileInicio;
 import Dibujos.PanelesMovibles.DoWhile.DibujoDoWhileInterno;
-import Dibujos.PanelesMovibles.While.DibujoWhileInterno;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoDoWhile extends PanelMovible {
     private JPanel condicion;

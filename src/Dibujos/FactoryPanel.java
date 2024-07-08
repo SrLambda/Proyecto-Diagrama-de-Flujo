@@ -1,12 +1,9 @@
 package Dibujos;
-
 import Dibujos.PanelesMovibles.*;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import java.util.Map;
 
 public class FactoryPanel {
     public PanelMovible crearPanel(String tipo, String texto, List<PanelPersonalizado> lista, JPanel _contenedor,

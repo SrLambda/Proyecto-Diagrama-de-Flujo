@@ -1,3 +1,4 @@
 import funciones
 
-a = funciones.entrada()
+x = funciones.entrada()
+funciones.salida(x)

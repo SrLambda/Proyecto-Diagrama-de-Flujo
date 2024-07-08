@@ -1,18 +1,14 @@
 package Dibujos.PanelesMovibles;
-
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.For.DibujoForFin;
 import Dibujos.PanelesMovibles.For.DibujoForInicio;
 import Dibujos.PanelesMovibles.For.DibujoForInterno;
-import Dibujos.PanelesMovibles.For.ForVacio2;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoFor extends PanelMovible {
 
@@ -21,8 +17,6 @@ public class DibujoFor extends PanelMovible {
     private JPanel fin;
     private List<PanelPersonalizado> lista;
     private GridBagConstraints    restriciones;
-
-    private String txtAyuda;
 
     public DibujoFor(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                      VentanaEmergente _ventanaEmergente, List <Object> _variables){

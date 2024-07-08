@@ -1,14 +1,10 @@
 package Dibujos.PanelesMovibles.Decision;
-
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoDecision;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

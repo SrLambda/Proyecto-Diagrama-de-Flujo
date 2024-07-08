@@ -1,12 +1,9 @@
 package Dibujos.PanelesMovibles.Decision;
-
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import java.util.Map;
 
 public class DesicionVacia extends PanelPersonalizado{
 
@@ -14,7 +11,6 @@ public class DesicionVacia extends PanelPersonalizado{
                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(_texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {

@@ -1,4 +1,4 @@
-//Lenguaje de programación: Java 21
+//Lenguaje de programación: Java 21 y Python 3
 //SDK: 21.0.2
 //IDE: IntelliJ
 public class Main {

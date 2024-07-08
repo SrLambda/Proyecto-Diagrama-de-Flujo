@@ -1,13 +1,10 @@
 package Dibujos.PanelesNoMovibles;
-
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoInicio extends PanelPersonalizado {
 

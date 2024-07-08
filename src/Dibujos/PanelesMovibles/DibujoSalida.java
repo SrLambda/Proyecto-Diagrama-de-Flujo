@@ -2,11 +2,9 @@ package Dibujos.PanelesMovibles;
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoSalida extends PanelMovible {
     private String salidaS;
@@ -14,6 +12,14 @@ public class DibujoSalida extends PanelMovible {
                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
         manejoSalidas(texto);
+    }
+
+    public String getSalidaS() {
+        return this.salidaS;
+    }
+
+    public void setSalidaS(String _salidaS) {
+        this.salidaS = _salidaS;
     }
 
     @Override
@@ -84,15 +90,6 @@ public class DibujoSalida extends PanelMovible {
             }
         }
         this.setSalidaS(_entrada);
-    }
-
-
-    public String getSalidaS() {
-        return this.salidaS;
-    }
-
-    public void setSalidaS(String _salidaS) {
-        this.salidaS = _salidaS;
     }
 
     public void manejoSalidas(String _txt){

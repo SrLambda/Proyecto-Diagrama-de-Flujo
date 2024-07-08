@@ -1,10 +1,7 @@
 package Dibujos.PanelesMovibles.For;
-
-import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.DibujoFor;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

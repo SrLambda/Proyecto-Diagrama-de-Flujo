@@ -1,18 +1,14 @@
 package Dibujos.PanelesMovibles.DoWhile;
-
 import Dibujos.PanelPersonalizado;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import static java.awt.Color.*;
 
 public class DibujoDoWhileInterno extends JPanel {
     private DoWhileInterno verdadero1;
     private DoWhileInterno verdadero2;
-
 
     public DibujoDoWhileInterno() {
         this.verdadero1 = new DoWhileInterno();
@@ -94,6 +90,11 @@ public class DibujoDoWhileInterno extends JPanel {
             listaFiguras = new ArrayList<>();
         }
 
+        public List<PanelPersonalizado> getListaFiguras()
+        {
+            return listaFiguras;
+        }
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -111,11 +112,6 @@ public class DibujoDoWhileInterno extends JPanel {
             if (this == verdadero2) {
                 g2d.drawLine(centro_x, 0, centro_x, panelHeight);
             }
-        }
-
-        public List<PanelPersonalizado> getListaFiguras()
-        {
-            return listaFiguras;
         }
     }
 }

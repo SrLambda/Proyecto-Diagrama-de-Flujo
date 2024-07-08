@@ -2,12 +2,10 @@ package Dibujos.PanelesMovibles;
 import Dibujos.PanelMovible;
 import Dibujos.PanelPersonalizado;
 import Dibujos.Ventana.VentanaEmergente;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.QuadCurve2D;
 import java.util.List;
-import java.util.Map;
 
 public class DibujoDocumento extends PanelMovible {
     private String salidaS;
@@ -91,7 +89,6 @@ public class DibujoDocumento extends PanelMovible {
         }
         this.setSalidaS(_entrada);
     }
-
 
     public void manejoSalidas(String _texto){
         String nuevoTxt = quitarEspacios(_texto);

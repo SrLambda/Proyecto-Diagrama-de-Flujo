@@ -1,7 +1,5 @@
 package Dibujos.PanelesMovibles.Decision;
-
 import Dibujos.PanelPersonalizado;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -116,6 +114,11 @@ public class DibujoDecisionInterno extends JPanel {
             listaFiguras = new ArrayList<>();
         }
 
+        public List<PanelPersonalizado> getListaFiguras()
+        {
+            return listaFiguras;
+        }
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -128,11 +131,6 @@ public class DibujoDecisionInterno extends JPanel {
             int alto = this.getHeight();
 
             g2d.drawLine(ancho / 2, 0, ancho / 2, alto);
-        }
-
-        public List<PanelPersonalizado> getListaFiguras()
-        {
-            return listaFiguras;
         }
     }
 

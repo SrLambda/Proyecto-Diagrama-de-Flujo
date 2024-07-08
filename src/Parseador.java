@@ -1,10 +1,7 @@
 import Dibujos.PanelPersonalizado;
 import Dibujos.PanelesMovibles.*;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.List;
-
-
 
 public class Parseador {
 
