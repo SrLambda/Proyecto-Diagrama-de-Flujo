@@ -116,7 +116,6 @@ public class Controlador {
         }
 
         if(!texto.equals("null")){
-            // Crea el panel
             PanelPersonalizado nuevo = factory.crearPanel(tipo,texto,listaFiguras,contenedor,restriciones,ventanaEmergente,variables);
 
             if(nuevo instanceof DibujoFor)
@@ -124,7 +123,6 @@ public class Controlador {
                 DibujoFor aux = (DibujoFor) nuevo;
                 aux.modificarValores();
             }
-
             if(!(nuevo.texto == null)){
 
                 //posicion
@@ -207,7 +205,6 @@ public class Controlador {
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Datos", JOptionPane.OK_CANCEL_OPTION);
-
         if (option == JOptionPane.OK_OPTION)
         {
             return textField.getText();
@@ -221,9 +218,8 @@ public class Controlador {
     }
 
     public void inicializarLista(){
-        int j = 100;
         for(int i=0; i<100; i++){
-            variables.add("Catacresis");
+            variables = new ArrayList<>();
         }
     }
 

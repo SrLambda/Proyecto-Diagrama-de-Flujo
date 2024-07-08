@@ -10,18 +10,29 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoDocumento extends PanelMovible {
-
+    private String salidaS;
     public DibujoDocumento(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                            VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        manejoSalidas(texto);
+    }
 
+    public String getSalidaS() {
+        return this.salidaS;
+    }
+
+    public void setSalidaS(String _salidaS) {
+        this.salidaS = _salidaS;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
+        // Ajustar para zoom centralizado
+        g2d.translate(getWidth() / 2, getHeight() / 2);
         g2d.scale(zoomFactor, zoomFactor);
+        g2d.translate(-getWidth() / 2, -getHeight() / 2);
 
         int widthTx  = this.anchoAlto[0];
         int heightTx = this.anchoAlto[1];
@@ -39,7 +50,6 @@ public class DibujoDocumento extends PanelMovible {
         double ctrl1y = -1.1 * (y2);
         double ctrl2x = (x2 + (x2 / 4) * -0.3);
         double ctrl2y = 0.9 * (y2);
-
 
         // Dibujar las líneas que forman el rectángulo
         g2d.setColor(Color.BLACK);
@@ -68,6 +78,36 @@ public class DibujoDocumento extends PanelMovible {
         int y = ((getHeight() - metrics.getHeight()) / 2) + metrics.getAscent();
         g2d.drawString(texto, x, y);
     }
+
+    public void verVariable(String _entrada) {
+        if(_entrada == null){
+            return;
+        }
+        while(!validarVariableTrueFalse(_entrada)){
+            _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+            if(_entrada == null){
+                return;
+            }
+        }
+        this.setSalidaS(_entrada);
+    }
+
+
+    public void manejoSalidas(String _texto){
+        String nuevoTxt = quitarEspacios(_texto);
+        verVariable(nuevoTxt);
+        if(getSalidaS() == null){
+            this.texto = null;
+            return;
+        }
+        this.texto = getSalidaS();
+        indice1 = indice1 + 1;
+        this.setTipo("Documento"+indice1);
+        this.setEntrada(this.getSalidaS());
+        this.variables.add("Documento"+indice1);
+        this.variables.add(this.getSalidaS());
+    }
+
 }
 
 

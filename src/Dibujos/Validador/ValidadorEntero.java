@@ -9,7 +9,6 @@ public class ValidadorEntero implements Validador {
         }
         try{
             Integer.parseInt(entrada);
-            System.out.println("ENTERO!");
             return true;
         }
         catch (NumberFormatException ex1){

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+
+import Dibujos.PanelesMovibles.*;
 import Dibujos.Validador.Validador;
 import Dibujos.Validador.ValidadorCadena;
 import Dibujos.Validador.ValidadorDouble;
@@ -34,7 +36,9 @@ public abstract class PanelPersonalizado extends JPanel {
     protected Validador validarCadena;
     protected GridBagConstraints restriciones;
     protected List <Object> variables;
-    protected static int indice = 0;
+    protected static int indice1 = 0;
+    private String tipo;
+    private String entrada;
 
     public double zoomFactor = 1.0;
 
@@ -51,7 +55,7 @@ public abstract class PanelPersonalizado extends JPanel {
         this.variables = _variables;
         setPreferredSize(new Dimension(750, 200));
 
-        if (null == zoom){
+        if (null == zoom) {
             zoom = 1.0f;
         }
 
@@ -59,18 +63,32 @@ public abstract class PanelPersonalizado extends JPanel {
             InputStream is = PanelPersonalizado.class.getResourceAsStream("/fonts/GohuFont14NerdFontMono-Regular.ttf");
             assert is != null;
             textoFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(14f);
-        }
-        catch (IOException | FontFormatException e)
-        {
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
-
 
 
         this.anchoAlto = this.getAnchoAlto();
         setPreferredSize(new Dimension(200, 100));
 
     }
+
+    public String getEntrada() {
+        return this.entrada;
+    }
+
+    public void setEntrada(String _entrada) {
+        this.entrada = _entrada;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
 
     public int colisiones() {
         int i = 0;
@@ -115,33 +133,25 @@ public abstract class PanelPersonalizado extends JPanel {
         return -1;
     }
 
-    public void cambiarTexto(String nuevoTexto) {
-
-        this.texto = nuevoTexto;
-        repaint();// Redibujar la figura con el nuevo texto
-        revalidate();
-
-    }
-
     public void setZoomFactor(double zoomFactor) {
         this.zoomFactor = zoomFactor;
-        revalidate(); // Revalidar el layout
-        repaint();   // Repintar el panel con el nuevo zoom
+        revalidate();
+        repaint();
     }
 
-    //para los paneles de las figuras
+    public double getZoomFactor() {
+        return zoomFactor;
+    }
+
     @Override
     public Dimension getPreferredSize() {
-        // Obtener el tamaño original del panel y aplicarle el factor de zoom
-        Integer Width = (int) (200 * zoomFactor);  // Ancho original del panel
-        Integer Height = (int) (100 * zoomFactor); // Alto original del panel
-        return new Dimension((int) (Width * zoomFactor * 2.5), (int) (Height * zoomFactor));
+        Dimension originalSize = super.getPreferredSize();
+        return new Dimension((int) (originalSize.width * zoomFactor), (int) (originalSize.height * zoomFactor));
     }
 
     // Método para eliminar la figura y reorganizar las posiciones
     public void eliminarFigura() {
-
-        // Obtener el índice de esta figura en la lista
+        RehacerDeshacer manager = RehacerDeshacer.getInstance(listaFiguras);
         int indice = listaFiguras.indexOf(this);
 
         if (indice != -1) {
@@ -151,7 +161,7 @@ public abstract class PanelPersonalizado extends JPanel {
                 ((JPanel) parent).remove(this);
             }
 
-            // Eliminar esta figura de la lista de figuras
+            manager.remover(listaFiguras.get(indice));
             listaFiguras.remove(indice);
 
             // Reorganizar las posiciones visuales de las figuras restantes en el panel principal
@@ -176,33 +186,9 @@ public abstract class PanelPersonalizado extends JPanel {
         this.contenedor = cont;
     }
 
-    public String validar(boolean evidencia, String opcion, String entrada) {
-        while (true) {
-            System.out.println("validando...");
-            if (evidencia) {
-                return entrada;
-            } else {
-                this.texto = entrada;
-                entrada = JOptionPane.showInputDialog(null, "Variable invalida", this.texto);
-                this.texto = entrada;
-                if (opcion.equals("Cadena")) {
-                    evidencia = validarCadena.validar(entrada);
-                } else if (opcion.equals("Entero")) {
-                    evidencia = validarEntero.validar(entrada);
-                } else if (opcion.equals("Double")) {
-                    evidencia = validarDouble.validar(entrada);
-                }
-                if (evidencia) {
-                    return entrada;
-                }
-            }
-        }
-    }
-
     public String validarMixto(boolean evidencia, String entrada) {
         while (true) {
             if (evidencia) {
-                System.out.println("Retorno: "+entrada);
                 return entrada;
             } else {
                 this.texto = entrada;
@@ -219,20 +205,14 @@ public abstract class PanelPersonalizado extends JPanel {
                 } else {
                     try {
                         Integer.parseInt(entrada);
-                        System.out.println("INT-------------");
                         evidencia = validarEntero.validar(entrada);
                     } catch (NumberFormatException ex1) {
                         try {
                             Double.parseDouble(entrada);
-                            System.out.println("DOUBLE-------------");
                             evidencia = validarDouble.validar(entrada);
                         } catch (NumberFormatException ex2) {
-                            System.out.println("STRING-------------");
                             evidencia = validarCadena.validar(entrada);
                             if(evidencia){
-                                System.out.println("----------");
-                                mostrar();
-                                System.out.println("----------");
                                 evidencia = validarVariableTrueFalse(entrada);
                             }
                         }
@@ -283,21 +263,10 @@ public abstract class PanelPersonalizado extends JPanel {
     public boolean validarVariableTrueFalse(String _entrada) {
         for (int i=0; i < variables.size(); i++) {
             if (variables.get(i).equals(_entrada)) {
-                if(i % 2 ==0){
-                    System.out.println("Indice: "+i);
-                    System.out.println("->"+variables.get(i)+" = "+_entrada+" ?");
-                    return true;
-                }
+                return true;
             }
         }
         return false;
-    }
-
-    public void mostrar(){
-        for(int i=0; i < variables.size(); i++){
-            if(!variables.get(i).equals("Catacresis"))
-            System.out.println("["+i+"] "+variables.get(i));
-        }
     }
 
     public String quitarEspacios(String texto){
@@ -305,7 +274,6 @@ public abstract class PanelPersonalizado extends JPanel {
             return "null";
         }
         String sinEspacios = texto.replaceAll("\\s", "");
-        System.out.println("Cad sin espacios: |"+sinEspacios);
         return sinEspacios;
     }
 

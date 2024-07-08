@@ -15,14 +15,11 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoDoWhile extends PanelMovible {
-
     private JPanel condicion;
     private JPanel contenido;
     private JPanel fin;
-
     private GridBagConstraints restriciones;
     private List<PanelPersonalizado> lista;
-
 
     public DibujoDoWhile(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
@@ -37,7 +34,7 @@ public class DibujoDoWhile extends PanelMovible {
                 this.ventanaEmergente,this.variables);
         this.contenido = new DibujoDoWhileInterno();
         this.fin = new DibujoDoWhileFin(this.texto,lista,this,(DibujoDoWhileInterno) contenido, this.restriciones,
-                this.ventanaEmergente,this.variables);
+                this.ventanaEmergente,this.variables,this);
 
         this.add(condicion,this.restriciones);
         this.add(contenido,this.restriciones);

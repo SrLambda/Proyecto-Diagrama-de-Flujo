@@ -9,7 +9,6 @@ public class ValidadorDouble implements Validador {
         }
         try{
             Double.parseDouble(entrada);
-            System.out.println("DOUBLE!");
             return true;
         }
         catch (NumberFormatException ex1){

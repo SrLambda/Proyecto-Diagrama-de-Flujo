@@ -9,20 +9,22 @@ import java.util.List;
 import java.util.Map;
 
 public class DibujoSalida extends PanelMovible {
-
-    String variableS;
+    private String salidaS;
     public DibujoSalida(String texto, List<PanelPersonalizado> lista, JPanel _contenedor, GridBagConstraints _restriciones,
                         VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
+        manejoSalidas(texto);
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
+        // Ajustar para zoom centralizado
+        g2d.translate(getWidth() / 2, getHeight() / 2);
         g2d.scale(zoomFactor, zoomFactor);
+        g2d.translate(-getWidth() / 2, -getHeight() / 2);
 
         int widthTx  = this.anchoAlto[0];
         int heightTx = this.anchoAlto[1];
@@ -72,10 +74,40 @@ public class DibujoSalida extends PanelMovible {
     }
 
     public void verVariable(String _entrada) {
+        if(_entrada == null){
+            return;
+        }
         while(!validarVariableTrueFalse(_entrada)){
             _entrada = JOptionPane.showInputDialog(null, "Variable ["+_entrada+"] no creada");
+            if(_entrada == null){
+                return;
+            }
         }
-        this.variableS = _entrada;
+        this.setSalidaS(_entrada);
+    }
+
+
+    public String getSalidaS() {
+        return this.salidaS;
+    }
+
+    public void setSalidaS(String _salidaS) {
+        this.salidaS = _salidaS;
+    }
+
+    public void manejoSalidas(String _txt){
+        String nuevoTxt = quitarEspacios(_txt);
+        verVariable(nuevoTxt);
+        if(getSalidaS() == null){
+            this.texto = null;
+            return;
+        }
+        indice1 = indice1 + 1;
+        this.setTipo("Salida"+indice1);
+        this.setEntrada(this.getSalidaS());
+        this.texto = getSalidaS();
+        this.variables.add("Salida"+indice1);
+        this.variables.add(this.getSalidaS());
     }
 
 }

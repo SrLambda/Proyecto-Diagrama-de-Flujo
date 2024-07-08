@@ -39,14 +39,6 @@ public class DibujoDoWhileInterno extends JPanel {
         this.add(verdadero2);
         this.add(espacio);
     }
-    public JPanel getVerdadero1() {
-        return verdadero1;
-    }
-
-    public java.util.List<PanelPersonalizado> getListaVerdadera1()
-    {
-        return verdadero1.getListaFiguras();
-    }
 
     public JPanel getVerdadero2() {
         return verdadero2;
@@ -96,6 +88,7 @@ public class DibujoDoWhileInterno extends JPanel {
 
     public class DoWhileInterno extends JPanel {
         private final List<PanelPersonalizado> listaFiguras;
+        public double zoomFactor = 1.0;
 
         DoWhileInterno() {
             listaFiguras = new ArrayList<>();
@@ -104,23 +97,19 @@ public class DibujoDoWhileInterno extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.scale(zoomFactor, zoomFactor);
 
             int panelWidth = getWidth();
             int panelHeight = getHeight();
 
             int centro_x = panelWidth / 2; // Centro horizontal
-            int centro_y = panelHeight/2;                                        // Centro vertical
 
-            int cuarto = panelWidth/4;
-
-            g.setColor(BLACK);
-
-            //Para verdadero1: dibujar línea horizontal que conecta con el panel superior
-            //g.drawLine(0, panelHeight / 2, centro_x, panelHeight / 2);
+            g2d.setColor(BLACK);
 
             // Para verdadero2: dibujar línea vertical en el centro del panel
             if (this == verdadero2) {
-                g.drawLine(centro_x, 0, centro_x, panelHeight);
+                g2d.drawLine(centro_x, 0, centro_x, panelHeight);
             }
         }
 

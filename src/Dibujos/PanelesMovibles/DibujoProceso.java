@@ -9,18 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DibujoProceso extends PanelMovible {
-    private int ultimoEjeY;
-    private boolean moviendo;
-    private int ejeYMouse;
     private String variableS;
     private String procesoS;
 
     public DibujoProceso(String texto, List <PanelPersonalizado> lista, JPanel _contenedor,GridBagConstraints _restriciones,
                          VentanaEmergente _ventanaEmergente, List <Object> _variables) {
         super(texto, lista, _contenedor,_restriciones,_ventanaEmergente,_variables);
-        String nuevoTxt = quitarEspacios(texto);
-        asignarVariable(nuevoTxt);
-        manejo();
+        manejo(texto);
 
     }
 
@@ -29,7 +24,10 @@ public class DibujoProceso extends PanelMovible {
 
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
+        // Ajustar para zoom centralizado
+        g2d.translate(getWidth() / 2, getHeight() / 2);
         g2d.scale(zoomFactor, zoomFactor);
+        g2d.translate(-getWidth() / 2, -getHeight() / 2);
 
         int widthTx  = this.anchoAlto[0];
         int heightTx = this.anchoAlto[1];
@@ -127,16 +125,8 @@ public class DibujoProceso extends PanelMovible {
             partes.add(buscar(parte.toString()));
         }
         this.setProcesoS(String.join("",partes));
-        this.texto = this.getVariableS() +" = "+ this.getProcesoS();
+        this.texto = this.getVariableS() +"="+ this.getProcesoS();
         return true;
-    }
-
-    public void asignarALista(String _variable, String _asignacion){
-        for(int i=0; i < variables.size()-1; i++){
-            if(variables.get(i).equals(_variable)){
-                variables.set(i+1,_asignacion);
-            }
-        }
     }
 
     public String getVariableS() {
@@ -155,16 +145,17 @@ public class DibujoProceso extends PanelMovible {
         this.procesoS = _procesoS;
     }
 
-    public void manejo(){
-
+    public void manejo(String _texto){
+        String nuevoTxt = quitarEspacios(_texto);
+        asignarVariable(nuevoTxt);
         if(this.getVariableS() == null){
-            this.texto = getVariableS();
+            this.texto = null;
             return;
         }
         asignarProceso(this.texto);
 
         if(this.getProcesoS() == null){
-            this.texto = getVariableS();
+            this.texto = null;
             return;
         }
 
@@ -182,8 +173,12 @@ public class DibujoProceso extends PanelMovible {
             this.texto = null;
             return;
         }
+        indice1 = indice1 + 1;
+        this.setTipo("Proceso"+indice1);
+        this.setEntrada(getVariableS()+"="+getProcesoS());
+        variables.add("Proceso"+indice1);
+        variables.add(getVariableS()+"="+getProcesoS());
 
-        asignarALista(this.getVariableS(), this.getProcesoS());
     }
 
 }

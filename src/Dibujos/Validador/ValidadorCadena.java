@@ -13,7 +13,6 @@ public class ValidadorCadena implements Validador{
                     return false;
                 }
             }
-            System.out.println("CADENA!");
             return true;
         }
     }

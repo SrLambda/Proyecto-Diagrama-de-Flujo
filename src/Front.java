@@ -1,8 +1,7 @@
 import Dibujos.PanelPersonalizado;
-import Dibujos.Validador.Validador;
+import Dibujos.RehacerDeshacer;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,9 +9,9 @@ import java.util.List;
 
 public class Front extends JFrame {
 
-    private      JPanel panel1;
-    private      JPanel panel;
-    private      JPanel pseudocodio;
+    private     JPanel panel1;
+    private     JPanel panel;
+    private     JPanel pseudocodio;
     private     JButton etapaDelProcesoButton;
     private     JButton decisionButton;
     private     JButton entradaButton;
@@ -25,13 +24,15 @@ public class Front extends JFrame {
     private     JButton doWhileButton;
     private     JScrollPane scroll;
     private     JButton ejecutar;
-
-    // Crear los botones
     private     JButton zoomin;
     private     JButton zoomout;
-    private JButton agregarPSDCButton;
-    private List <PanelPersonalizado> listaPaneles;
-    private double zoomFactor = 1.0;
+    private     JButton agregarPSDCButton;
+    private     JButton undoButton;
+    private     JButton redoButton;
+    private     List <PanelPersonalizado> listaPaneles;
+    private     double zoomFactor = 1.0;
+    private RehacerDeshacer manager;
+
 
     public Front(Controlador controlador)
     {
@@ -43,10 +44,10 @@ public class Front extends JFrame {
         setVisible(true);
 
         listaPaneles = new ArrayList<>();
+        manager = RehacerDeshacer.getInstance(listaPaneles);
 
         controlador.initFront(Front.this,listaPaneles,this.scroll,this.panel1);
 
-        //botón para dibujar un rectángulo
         etapaDelProcesoButton.addActionListener(new ActionListener()
         {
 
@@ -195,14 +196,36 @@ public class Front extends JFrame {
         zoomin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                zoomIn();
+                zoomFactor += 0.03;
+                ajustarZoom();
             }
         });
 
         zoomout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                zoomOut();
+                //zoomFactor = Math.max(0.1, zoomFactor - 0.1);
+                zoomFactor -= 0.03;
+                ajustarZoom();
+            }
+        });
+
+
+        undoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manager.deshacer();
+                panel1.revalidate();
+                panel1.repaint();
+            }
+        });
+
+        redoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                manager.rehacer();
+                panel1.revalidate();
+                panel1.repaint();
             }
         });
     }
@@ -217,39 +240,13 @@ public class Front extends JFrame {
         return this.pseudocodio;
     }
 
-    private void zoomIn() {
-        zoomFactor *= 1.025; // Aumentar el zoom en un 10%
-        applyZoom();
-    }
 
-    private void zoomOut() {
-        zoomFactor /= 1.025; // Reducir el zoom en un 10%
-        applyZoom();
-    }
-
-    private void applyZoom() {
+    private void ajustarZoom() {
         for (PanelPersonalizado panel : listaPaneles) {
-            panel.setZoomFactor(zoomFactor); // Aplicar el factor de zoom a cada panel personalizado
-
-            // Ajustar tamaño y posición de cada panel
-            int originalWidth = 200;
-            int originalHeight = 100;
-
-            int newWidth = (int) (originalWidth * zoomFactor);
-            int newHeight = (int) (originalHeight * zoomFactor);
-
-            // Obtener la posición actual y recalcular según el zoom
-            int currentX = panel.getX();
-            int currentY = panel.getY();
-
-            // Centrar el panel ajustado en la misma posición relativa
-            int newX = (int) (currentX * zoomFactor);
-            int newY = (int) (currentY * zoomFactor);
-
-            panel.setBounds(newX, newY, newWidth, newHeight);
+            panel.setZoomFactor(zoomFactor);
         }
-        panel1.revalidate(); // Revalidar el layout del panel contenedor
-        panel1.repaint();    // Repintar el panel contenedor con los nuevos tamaños
+        panel1.revalidate();
+        panel1.repaint();
     }
 }
 
